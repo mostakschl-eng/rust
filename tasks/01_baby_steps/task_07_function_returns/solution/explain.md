@@ -24,3 +24,4 @@ fn calculate_perimeter(width: i32, height: i32) -> i32 {
 let area = calculate_area(width, height);
 ```
 Here, `calculate_area` returns `50`. Rust places `50` into the variable box named `area`. Now you can reuse `area` anywhere in your code!
+

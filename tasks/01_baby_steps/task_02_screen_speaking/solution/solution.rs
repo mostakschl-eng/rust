@@ -4,3 +4,4 @@ fn main() {
     println!("Hello, my name is {} and I live in {}.", "Rahim", "Dhaka");
     println!("My lucky number is {} and my favorite language is {}.", 7, "Rust");
 }
+

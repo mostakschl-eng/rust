@@ -14,3 +14,4 @@ fn main() {
     // Section 3: Print bottom closing border
     println!("========================================");
 }
+

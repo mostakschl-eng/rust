@@ -15,3 +15,4 @@ fn main() {
     println!("Cheering for the third time:");
     cheer();
 }
+

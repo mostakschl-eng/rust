@@ -52,3 +52,4 @@ fn print_item(item_name: &str, quantity: i32, price: i32) {
 ## 🔒 Solution & Explanations
 * Working Code: [`solution/solution.rs`](file:///d:/rust-learning/tasks/01_baby_steps/task_06_function_inputs/solution/solution.rs)
 * Line-by-Line Breakdown: [`solution/explain.md`](file:///d:/rust-learning/tasks/01_baby_steps/task_06_function_inputs/solution/explain.md)
+

@@ -16,3 +16,4 @@ fn main() {
 
     println!("=== FINAL SCORE: {} POINTS ===", score);
 }
+

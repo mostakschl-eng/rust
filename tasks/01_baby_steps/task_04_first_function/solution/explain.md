@@ -19,3 +19,4 @@ fn cheer() {
 
 ## 2. Order of Functions in the File
 In Rust, it does **not** matter whether `fn cheer()` is written *above* `main()` or *below* `main()`. Rust reads the whole file first, finds all functions, and links them automatically!
+

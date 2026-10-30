@@ -10,3 +10,4 @@
 
 ## 2. Immutability by Default
 Notice that we did not change `hero_gold` itself—we created a new variable `remaining_gold`. In the next lesson, we will learn how to actually update existing variable boxes in-place using `mut`!
+

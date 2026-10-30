@@ -21,3 +21,4 @@ score = score + 150;
 
 ## 2. Why Immutability Matters
 Because Rust forces you to write `mut` explicitly, whenever you read someone else's Rust code, you immediately know which variables are guaranteed never to change, and which ones will be modified. This makes debugging 10x easier!
+

@@ -1,0 +1,6 @@
+[package]
+name = "task_15_math_operations"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]

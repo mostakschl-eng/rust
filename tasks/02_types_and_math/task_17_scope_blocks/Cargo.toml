@@ -1,0 +1,6 @@
+[package]
+name = "task_17_scope_blocks"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]

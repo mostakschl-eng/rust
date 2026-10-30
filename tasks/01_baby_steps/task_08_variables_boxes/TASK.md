@@ -59,3 +59,4 @@ let remaining_gold = hero_gold - 50;
 ## 🔒 Solution & Explanations
 * Working Code: [`solution/solution.rs`](file:///d:/rust-learning/tasks/01_baby_steps/task_08_variables_boxes/solution/solution.rs)
 * Line-by-Line Breakdown: [`solution/explain.md`](file:///d:/rust-learning/tasks/01_baby_steps/task_08_variables_boxes/solution/explain.md)
+

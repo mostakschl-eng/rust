@@ -59,3 +59,4 @@ println!("My lucky number is {} and my language is {}.", 7, "Rust");
 ## 🔒 Solution & Explanations
 * Working Code: [`solution/solution.rs`](file:///d:/rust-learning/tasks/01_baby_steps/task_02_screen_speaking/solution/solution.rs)
 * Line-by-Line Breakdown: [`solution/explain.md`](file:///d:/rust-learning/tasks/01_baby_steps/task_02_screen_speaking/solution/explain.md)
+

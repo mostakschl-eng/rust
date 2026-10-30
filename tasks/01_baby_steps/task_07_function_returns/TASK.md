@@ -53,3 +53,4 @@ fn calculate_area(width: i32, height: i32) -> i32 {
 ## 🔒 Solution & Explanations
 * Working Code: [`solution/solution.rs`](file:///d:/rust-learning/tasks/01_baby_steps/task_07_function_returns/solution/solution.rs)
 * Line-by-Line Breakdown: [`solution/explain.md`](file:///d:/rust-learning/tasks/01_baby_steps/task_07_function_returns/solution/explain.md)
+

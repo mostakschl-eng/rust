@@ -18,3 +18,4 @@ fn main() {
     println!("Remaining Gold:    {} coins", remaining_gold);
     println!("=========================");
 }
+

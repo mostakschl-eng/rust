@@ -24,3 +24,4 @@ fn main() {
 
 1. **Mismatching Count:** If you have 3 `{}` placeholders but only give 2 values, the Rust compiler immediately stops you with an error. Always ensure count of `{}` equals count of values!
 2. **Missing Commas:** Forgetting the comma between values (e.g. `println!("Score: {}", 100 200)`) will cause a syntax error.
+

@@ -17,3 +17,4 @@ fn print_item(item_name: &str, quantity: i32, price: i32) {
 
 ## 2. Parameter Reusability
 By writing `print_item` once, you can print 100 or 1,000 grocery items with zero repeated code. This is modular software design!
+

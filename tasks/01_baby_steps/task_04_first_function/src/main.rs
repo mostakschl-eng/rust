@@ -14,3 +14,4 @@ fn main() {
     // TODO: Call cheer() 3 times here:
 
 }
+

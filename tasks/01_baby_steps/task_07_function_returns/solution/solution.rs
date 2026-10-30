@@ -19,3 +19,4 @@ fn main() {
     println!("Total Area:      {} square meters", area);
     println!("Total Perimeter: {} meters", perimeter);
 }
+
