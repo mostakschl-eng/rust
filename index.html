@@ -43,6 +43,32 @@
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
+    /* CUSTOM ULTRA-THIN SCROLLBAR (ELIMINATES THICK WHITE WINDOWS SCROLLBAR) */
+    ::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+    * {
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
+    }
+    [data-theme="light"] ::-webkit-scrollbar-thumb {
+      background: rgba(0, 0, 0, 0.18);
+    }
+    [data-theme="light"] * {
+      scrollbar-color: rgba(0, 0, 0, 0.18) transparent;
+    }
+
     body {
       font-family: var(--font-ui);
       background-color: var(--bg-page);
@@ -64,7 +90,7 @@
 
     /* TOP HEADER */
     header.portal-header {
-      height: 54px;
+      height: 52px;
       background: var(--bg-sidebar);
       border-bottom: 1px solid var(--border);
       display: flex;
@@ -83,7 +109,7 @@
 
     .btn-hamburger {
       display: none;
-      background: none;
+      background: var(--bg-card);
       border: 1px solid var(--border);
       color: var(--text-main);
       width: 32px;
@@ -99,7 +125,7 @@
       align-items: center;
       gap: 8px;
       font-weight: 700;
-      font-size: 1rem;
+      font-size: 0.95rem;
       color: var(--text-main);
       text-decoration: none;
     }
@@ -107,7 +133,7 @@
     .brand-tag {
       background: var(--accent);
       color: #fff;
-      font-size: 0.68rem;
+      font-size: 0.65rem;
       padding: 1px 6px;
       border-radius: 4px;
       font-weight: 600;
@@ -125,9 +151,9 @@
       background: var(--bg-page);
       border: 1px solid var(--border);
       color: var(--text-main);
-      padding: 5px 10px 5px 30px;
+      padding: 5px 10px 5px 28px;
       border-radius: 6px;
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       outline: none;
       transition: border 0.15s;
     }
@@ -138,7 +164,7 @@
 
     .search-icon {
       position: absolute;
-      left: 9px;
+      left: 8px;
       top: 50%;
       transform: translateY(-50%);
       color: var(--text-sub);
@@ -151,20 +177,20 @@
     }
 
     .progress-tracker {
-      font-size: 0.78rem;
+      font-size: 0.76rem;
       font-weight: 600;
       color: var(--text-muted);
       display: flex;
       align-items: center;
       gap: 8px;
       background: var(--bg-card);
-      padding: 4px 10px;
-      border-radius: 6px;
+      padding: 3px 8px;
+      border-radius: 5px;
       border: 1px solid var(--border);
     }
 
     .progress-bar-shell {
-      width: 55px;
+      width: 50px;
       height: 5px;
       background: var(--border);
       border-radius: 3px;
@@ -182,9 +208,9 @@
       background: var(--bg-card);
       border: 1px solid var(--border);
       color: var(--text-main);
-      width: 32px;
-      height: 32px;
-      border-radius: 6px;
+      width: 30px;
+      height: 30px;
+      border-radius: 5px;
       cursor: pointer;
       display: flex;
       align-items: center;
@@ -195,14 +221,14 @@
     .app-body {
       display: flex;
       flex: 1;
-      height: calc(100vh - 54px);
+      height: calc(100vh - 52px);
       overflow: hidden;
       position: relative;
     }
 
     /* SIDEBAR (3-TIER TREE VIEW) */
     aside.sidebar-tree {
-      width: 300px;
+      width: 290px;
       background: var(--bg-sidebar);
       border-right: 1px solid var(--border);
       display: flex;
@@ -213,12 +239,12 @@
     }
 
     .sidebar-top {
-      padding: 8px 14px;
+      padding: 8px 12px;
       border-bottom: 1px solid var(--border);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.5px;
@@ -240,13 +266,13 @@
       width: 100%;
       background: none;
       border: none;
-      padding: 9px 12px;
+      padding: 8px 12px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       color: var(--text-main);
       font-weight: 700;
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       cursor: pointer;
       text-align: left;
       transition: background 0.15s;
@@ -289,7 +315,7 @@
       justify-content: space-between;
       color: var(--text-muted);
       font-weight: 600;
-      font-size: 0.78rem;
+      font-size: 0.76rem;
       cursor: pointer;
       text-align: left;
       transition: all 0.15s;
@@ -325,10 +351,10 @@
     .leaf-lesson {
       display: flex;
       align-items: center;
-      gap: 8px;
-      padding: 5px 12px 5px 30px;
+      gap: 7px;
+      padding: 5px 12px 5px 28px;
       color: var(--text-muted);
-      font-size: 0.78rem;
+      font-size: 0.76rem;
       text-decoration: none;
       cursor: pointer;
       transition: all 0.15s;
@@ -347,9 +373,15 @@
       border-left-color: var(--accent);
     }
 
+    .leaf-lesson.is-project {
+      color: #fbbf24;
+      font-weight: 600;
+      background: rgba(251, 191, 36, 0.04);
+    }
+
     .leaf-num {
       font-family: var(--font-code);
-      font-size: 0.7rem;
+      font-size: 0.68rem;
       color: var(--text-sub);
       min-width: 18px;
     }
@@ -362,7 +394,7 @@
     }
 
     .leaf-status {
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       color: var(--text-sub);
     }
 
@@ -375,7 +407,7 @@
     .sidebar-backdrop {
       display: none;
       position: fixed;
-      top: 54px;
+      top: 52px;
       left: 0;
       right: 0;
       bottom: 0;
@@ -395,8 +427,7 @@
     }
 
     /* MASTER TAB BAR */
-    .tab-bar {
-      height: 44px;
+    .tab-bar-container {
       background: var(--bg-card);
       border-bottom: 1px solid var(--border);
       display: flex;
@@ -404,6 +435,7 @@
       justify-content: space-between;
       padding: 0 16px;
       flex-shrink: 0;
+      height: 44px;
     }
 
     .tabs-group {
@@ -411,6 +443,11 @@
       gap: 2px;
       height: 100%;
       overflow-x: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    .tabs-group::-webkit-scrollbar {
+      display: none;
     }
 
     .tab-btn {
@@ -421,7 +458,7 @@
       padding: 0 12px;
       color: var(--text-muted);
       font-weight: 600;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       cursor: pointer;
       display: flex;
       align-items: center;
@@ -445,7 +482,7 @@
       color: var(--text-main);
       padding: 4px 10px;
       border-radius: 5px;
-      font-size: 0.76rem;
+      font-size: 0.74rem;
       font-weight: 600;
       cursor: pointer;
       display: flex;
@@ -485,7 +522,7 @@
     }
 
     .meta-path {
-      font-size: 0.74rem;
+      font-size: 0.72rem;
       color: var(--text-sub);
       text-transform: uppercase;
       letter-spacing: 0.5px;
@@ -493,13 +530,13 @@
     }
 
     .meta-heading {
-      font-size: 1.45rem;
+      font-size: 1.4rem;
       font-weight: 800;
       color: var(--text-main);
       line-height: 1.25;
     }
 
-    /* MARKDOWN PROSE STYLES (NO BLOAT, TIGHT SPACING) */
+    /* MARKDOWN PROSE STYLES (CLEAN & TIGHT) */
     .prose-body {
       font-size: 14.5px;
       color: var(--text-main);
@@ -507,21 +544,21 @@
     }
 
     .prose-body h1 {
-      font-size: 1.35rem;
-      margin: 20px 0 10px 0;
+      font-size: 1.3rem;
+      margin: 18px 0 8px 0;
       padding-bottom: 4px;
       border-bottom: 1px solid var(--border);
     }
 
     .prose-body h2 {
-      font-size: 1.15rem;
-      margin: 18px 0 8px 0;
+      font-size: 1.12rem;
+      margin: 16px 0 8px 0;
       color: var(--accent);
     }
 
     .prose-body h3 {
-      font-size: 1rem;
-      margin: 14px 0 6px 0;
+      font-size: 0.98rem;
+      margin: 12px 0 6px 0;
       color: var(--text-main);
     }
 
@@ -542,10 +579,10 @@
       border: 0;
       height: 1px;
       background: var(--border);
-      margin: 16px 0;
+      margin: 14px 0;
     }
 
-    /* CRUST/RUST TABLES (FIXES IMAGE 1 & 2) */
+    /* TABLE STYLES (CLEAN GRID BORDERS, HEADER, NO EMPTY VOID) */
     .table-wrap {
       width: 100%;
       overflow-x: auto;
@@ -558,7 +595,7 @@
     .prose-body table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 0.84rem;
+      font-size: 0.82rem;
       text-align: left;
     }
 
@@ -571,7 +608,7 @@
       font-weight: 700;
       color: var(--text-main);
       text-transform: uppercase;
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       letter-spacing: 0.5px;
       border-bottom: 2px solid var(--border);
       border-right: 1px solid var(--border);
@@ -629,7 +666,7 @@
       align-items: center;
       justify-content: space-between;
       font-family: var(--font-code);
-      font-size: 0.7rem;
+      font-size: 0.68rem;
       color: var(--text-sub);
     }
 
@@ -652,7 +689,7 @@
       padding: 12px 14px;
       overflow-x: auto;
       font-family: var(--font-code);
-      font-size: 0.85rem;
+      font-size: 0.84rem;
       line-height: 1.5;
       color: #e2e8f0;
     }
@@ -675,7 +712,7 @@
       gap: 5px;
     }
 
-    .dot { width: 8px; height: 8px; border-radius: 50%; }
+    .dot { width: 7px; height: 7px; border-radius: 50%; }
     .dot-r { background: #ef4444; }
     .dot-y { background: #f59e0b; }
     .dot-g { background: #10b981; }
@@ -692,11 +729,16 @@
     /* CLEAN BLOCKQUOTE */
     .prose-body blockquote {
       border-left: 3px solid var(--accent);
-      background: rgba(249, 115, 22, 0.04);
-      padding: 6px 12px;
+      background: rgba(255, 255, 255, 0.02);
+      padding: 8px 12px;
       margin: 10px 0;
       color: var(--text-main);
       border-radius: 0 4px 4px 0;
+      font-size: 0.92rem;
+    }
+
+    [data-theme="light"] .prose-body blockquote {
+      background: rgba(0, 0, 0, 0.02);
     }
 
     .prose-body blockquote p {
@@ -712,7 +754,7 @@
       border: 1px solid var(--border);
       border-radius: 6px;
       padding: 8px 12px;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -723,7 +765,7 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       overflow: hidden;
     }
 
@@ -764,7 +806,7 @@
       padding: 7px 16px;
       border-radius: 5px;
       font-weight: 600;
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       cursor: pointer;
       margin-top: 10px;
     }
@@ -778,8 +820,8 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-top: 30px;
-      padding-top: 16px;
+      margin-top: 26px;
+      padding-top: 14px;
       border-top: 1px solid var(--border);
     }
 
@@ -787,10 +829,10 @@
       background: var(--bg-card);
       border: 1px solid var(--border);
       color: var(--text-main);
-      padding: 7px 14px;
+      padding: 6px 12px;
       border-radius: 5px;
       font-weight: 600;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       cursor: pointer;
     }
 
@@ -812,7 +854,7 @@
     .macro { color: #c084fc; font-weight: 600; }
     .cmnt { color: #64748b; font-style: italic; }
 
-    /* MOBILE BREAKPOINTS */
+    /* MOBILE RESPONSIVE MEDIA QUERIES */
     @media (max-width: 860px) {
       .search-wrapper {
         display: none;
@@ -825,12 +867,12 @@
       }
       aside.sidebar-tree {
         position: fixed;
-        top: 54px;
+        top: 52px;
         left: 0;
         bottom: 0;
-        width: 280px;
+        width: 270px;
         transform: translateX(-100%);
-        transition: transform 0.22s ease-in-out;
+        transition: transform 0.2s ease-in-out;
         box-shadow: 4px 0 20px rgba(0,0,0,0.5);
       }
       aside.sidebar-tree.mobile-open {
@@ -840,17 +882,21 @@
         display: block;
       }
       .tab-content-area {
-        padding: 14px 14px 40px 14px;
+        padding: 12px 12px 40px 12px;
       }
       .meta-heading {
-        font-size: 1.25rem;
+        font-size: 1.2rem;
       }
-      .tab-bar {
+      .tab-bar-container {
         padding: 0 10px;
       }
       .tab-btn {
         padding: 0 8px;
-        font-size: 0.75rem;
+        font-size: 0.74rem;
+      }
+      .complete-action-btn {
+        padding: 3px 7px;
+        font-size: 0.7rem;
       }
     }
   </style>
@@ -861,11 +907,11 @@
   <header class="portal-header">
     <div class="header-left">
       <button class="btn-hamburger" id="hamburgerBtn" onclick="toggleMobileSidebar()" aria-label="Toggle navigation">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
       </button>
 
       <a href="#" class="brand" onclick="openLesson('lesson_01')">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent);">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent);">
           <path d="m18 16 4-4-4-4M6 8l-4 4 4 4m8.5-12-5 16"/>
         </svg>
         <span>Rust Academy</span>
@@ -875,7 +921,7 @@
 
     <div class="search-wrapper">
       <span class="search-icon">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
       </span>
       <input type="text" id="filterInput" placeholder="Search 80 lessons, concepts (e.g. match, Vec)..." oninput="onSearchChange(this.value)">
     </div>
@@ -889,7 +935,7 @@
       </div>
 
       <button class="btn-theme" id="themeBtn" title="Toggle Theme" onclick="toggleColorTheme()">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
       </button>
     </div>
   </header>
@@ -899,11 +945,11 @@
 
   <!-- APP WORKSPACE -->
   <div class="app-body">
-    <!-- LEFT SIDEBAR: 4 STEPS -> 8 LEVELS -> 80 LESSONS -->
+    <!-- LEFT SIDEBAR: 4 STEPS -> 8 LEVELS -> 80 LESSONS + 8 MILESTONES -->
     <aside class="sidebar-tree" id="sidebarTree">
       <div class="sidebar-top">
         <span>Curriculum Tree</span>
-        <span id="lessonCountBadge" style="font-family:var(--font-code);">80 Lessons</span>
+        <span id="lessonCountBadge" style="font-family:var(--font-code);">88 Items</span>
       </div>
 
       <div class="tree-scroll" id="treeView">
@@ -914,29 +960,29 @@
     <!-- MAIN READING VIEW -->
     <main class="main-viewport">
       <!-- MASTER TAB BAR -->
-      <div class="tab-bar">
+      <div class="tab-bar-container">
         <div class="tabs-group">
           <button class="tab-btn active" id="tabLessonBtn" onclick="switchTab('lesson')">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
             <span>Lesson Theory</span>
           </button>
           <button class="tab-btn" id="tabTaskBtn" onclick="switchTab('task')">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
             <span>Task Brief</span>
           </button>
           <button class="tab-btn" id="tabStarterBtn" onclick="switchTab('starter')">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-            <span>Starter (<span style="font-family:var(--font-code);font-size:0.72rem;">main.rs</span>)</span>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            <span>Starter (<span style="font-family:var(--font-code);font-size:0.7rem;">main.rs</span>)</span>
           </button>
           <button class="tab-btn" id="tabSolutionBtn" onclick="switchTab('solution')">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
             <span>Solution & Explain</span>
           </button>
         </div>
 
         <button class="complete-action-btn" id="markDoneBtn" onclick="toggleLessonDone()">
           <span id="markIcon">○</span>
-          <span id="markLabel">Mark Completed</span>
+          <span id="markLabel">Mark Done</span>
         </button>
       </div>
 
@@ -964,7 +1010,7 @@
                 <span class="task-tag">Terminal</span>
                 <span class="cmd-string" id="taskRunCmd">cd tasks/... && cargo run</span>
               </div>
-              <button class="btn-copy" onclick="copyTaskRunCommand()">Copy Command</button>
+              <button class="btn-copy" onclick="copyTaskRunCommand()">Copy</button>
             </div>
             <article class="prose-body" id="proseTaskContent">
               <!-- Rendered TASK.md -->
@@ -975,7 +1021,7 @@
           <section id="panelStarter" class="tab-panel" style="display: none;">
             <div class="task-run-strip">
               <div class="task-run-left">
-                <span class="task-tag">Starter File</span>
+                <span class="task-tag">File</span>
                 <span class="cmd-string" id="starterFilePath">src/main.rs</span>
               </div>
               <button class="btn-copy" onclick="copyStarterCode()">Copy Code</button>
@@ -992,8 +1038,8 @@
           <!-- TAB 4: SOLUTION & EXPLANATION -->
           <section id="panelSolution" class="tab-panel" style="display: none;">
             <div id="solutionShieldBox" class="solution-shield">
-              <h3 style="font-size:1.1rem;margin-bottom:4px;">🔒 Solution Protected</h3>
-              <p style="color:var(--text-muted);font-size:0.82rem;">
+              <h3 style="font-size:1.05rem;margin-bottom:4px;">🔒 Solution Protected</h3>
+              <p style="color:var(--text-muted);font-size:0.8rem;">
                 Try solving the exercise in your terminal first. Reveal the solution when you are ready to review!
               </p>
               <button class="btn-reveal" onclick="revealSolution()">Reveal Solution Code</button>
@@ -1036,7 +1082,7 @@
     </main>
   </div>
 
-  <!-- LOAD STANDARDS-COMPLIANT MARKED.JS & DATA -->
+  <!-- LOAD STANDARDS-COMPLIANT MARKED.JS & COMPILED DATA -->
   <script src="marked.min.js"></script>
   <script src="portal_data.js"></script>
 
@@ -1050,7 +1096,7 @@
     let revealedSolutions = new Set();
     let query = '';
 
-    // CONFIGURE MARKED WITH CLEAN TABLE WRAPPER & CODE BLOCKS
+    // CONFIGURE MARKED
     if (window.marked) {
       const renderer = new marked.Renderer();
 
@@ -1141,15 +1187,15 @@
     function updateThemeIcon(theme) {
       const btn = document.getElementById('themeBtn');
       if (theme === 'dark') {
-        btn.innerHTML = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>`;
+        btn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>`;
       } else {
-        btn.innerHTML = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>`;
+        btn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>`;
       }
     }
 
     function refreshProgress() {
-      const total = window.PORTAL_DATA?.lessons?.length || 80;
-      const done = completedSet.size;
+      const total = 80; // Core 80 lessons
+      const done = Array.from(completedSet).filter(id => id.startsWith('lesson_')).length;
       const pct = Math.round((done / total) * 100);
       document.getElementById('progressSummary').innerText = `${done} / ${total} Done (${pct}%)`;
       document.getElementById('progressBar').style.width = `${pct}%`;
@@ -1179,7 +1225,7 @@
       } else {
         btn.classList.remove('done');
         icon.innerText = '○';
-        label.innerText = 'Mark Completed';
+        label.innerText = 'Mark Done';
       }
     }
 
@@ -1263,7 +1309,7 @@
               levelLessons = levelLessons.filter(l => 
                 l.title.toLowerCase().includes(query) ||
                 l.content.toLowerCase().includes(query) ||
-                l.padNum.includes(query)
+                l.padNum.toLowerCase().includes(query)
               );
               if (levelLessons.length === 0) return;
             }
@@ -1288,7 +1334,7 @@
               const isDone = completedSet.has(ls.id);
 
               const leafA = document.createElement('a');
-              leafA.className = `leaf-lesson ${isActive ? 'active' : ''}`;
+              leafA.className = `leaf-lesson ${isActive ? 'active' : ''} ${ls.isProject ? 'is-project' : ''}`;
               leafA.onclick = () => {
                 openLesson(ls.id);
                 if (window.innerWidth <= 768) closeMobileSidebar();
@@ -1338,7 +1384,7 @@
       openLevels.add(lesson.levelId);
 
       document.getElementById('metaBreadcrumb').innerText = `Step 1 • ${lesson.levelName}`;
-      document.getElementById('metaTitle').innerText = `Lesson ${lesson.padNum}: ${lesson.title}`;
+      document.getElementById('metaTitle').innerText = lesson.isProject ? lesson.title : `Lesson ${lesson.padNum}: ${lesson.title}`;
 
       // Tab 1: Render Lesson with standard marked.js
       document.getElementById('proseLessonContent').innerHTML = renderContent(lesson.content);
@@ -1415,14 +1461,14 @@
         prev.style.visibility = 'hidden';
       } else {
         prev.style.visibility = 'visible';
-        prev.innerText = `⬅️ Lesson ${lessons[idx - 1].padNum}`;
+        prev.innerText = `⬅️ ${lessons[idx - 1].padNum}`;
       }
 
       if (idx >= lessons.length - 1) {
         next.style.visibility = 'hidden';
       } else {
         next.style.visibility = 'visible';
-        next.innerText = `Lesson ${lessons[idx + 1].padNum} ➡️`;
+        next.innerText = `${lessons[idx + 1].padNum} ➡️`;
       }
     }
 
@@ -1500,7 +1546,6 @@
 
     function renderContent(md) {
       if (!md) return '';
-      // Strip initial H1 if it repeats the title
       let text = md.replace(/^#\s+[^\r\n]+\r?\n/, '');
 
       if (window.marked) {

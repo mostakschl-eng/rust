@@ -8,7 +8,7 @@ const steps = [
     id: 'step_1',
     number: 1,
     title: 'Step 1: Core Foundations',
-    subtitle: '8 Levels • 80 Lessons',
+    subtitle: '8 Levels • 80 Lessons • 8 Milestone Projects',
     levels: [
       { id: '01_baby_steps', num: 1, name: 'Level 1: Absolute Baby Steps', range: '01–10' },
       { id: '02_types_and_math', num: 2, name: 'Level 2: Basic Types & Arithmetic', range: '11–20' },
@@ -48,7 +48,7 @@ const steps = [
 
 const allLessons = [];
 
-// Process Step 1 Lessons and Tasks
+// Process Step 1 Lessons, Tasks, and Milestone Projects
 const step1 = steps[0];
 for (const lvl of step1.levels) {
   const lessonDir = path.join(rootDir, 'lessons', 'step_1_core_foundations', lvl.id);
@@ -59,6 +59,7 @@ for (const lvl of step1.levels) {
   const files = fs.readdirSync(lessonDir).filter(f => f.endsWith('.md')).sort();
   const taskDirs = fs.existsSync(taskDir) ? fs.readdirSync(taskDir) : [];
 
+  // Add 10 regular lessons
   for (const f of files) {
     const fullPath = path.join(lessonDir, f);
     const content = fs.readFileSync(fullPath, 'utf8');
@@ -96,6 +97,7 @@ for (const lvl of step1.levels) {
 
     allLessons.push({
       id: `lesson_${padNum}`,
+      isProject: false,
       num,
       padNum,
       title,
@@ -106,6 +108,52 @@ for (const lvl of step1.levels) {
       levelName: lvl.name,
       filename: f,
       content,
+      taskFolder: taskFolderRel,
+      taskBrief,
+      starterCode,
+      solutionCode,
+      solutionExplain
+    });
+  }
+
+  // Check for Milestone Project in this level
+  const projectDirName = taskDirs.find(t => t.startsWith('project_'));
+  if (projectDirName) {
+    const fullProjPath = path.join(taskDir, projectDirName);
+    const taskFolderRel = `tasks/step_1_core_foundations/${lvl.id}/${projectDirName}`;
+
+    let taskBrief = '';
+    const taskMd = path.join(fullProjPath, 'TASK.md');
+    if (fs.existsSync(taskMd)) taskBrief = fs.readFileSync(taskMd, 'utf8');
+
+    let starterCode = '';
+    const mainRs = path.join(fullProjPath, 'src', 'main.rs');
+    if (fs.existsSync(mainRs)) starterCode = fs.readFileSync(mainRs, 'utf8');
+
+    let solutionCode = '';
+    const solRs = path.join(fullProjPath, 'solution', 'solution.rs');
+    if (fs.existsSync(solRs)) solutionCode = fs.readFileSync(solRs, 'utf8');
+
+    let solutionExplain = '';
+    const solMd = path.join(fullProjPath, 'solution', 'explain.md');
+    if (fs.existsSync(solMd)) solutionExplain = fs.readFileSync(solMd, 'utf8');
+
+    const firstLine = taskBrief.split(/\r?\n/)[0] || '';
+    const projTitle = firstLine.replace(/^#\s*/, '').trim() || `Milestone Project ${lvl.num}`;
+
+    allLessons.push({
+      id: `project_0${lvl.num}`,
+      isProject: true,
+      num: 900 + lvl.num,
+      padNum: `P${lvl.num}`,
+      title: `⭐ ${projTitle}`,
+      stepId: 'step_1',
+      stepName: step1.title,
+      levelId: lvl.id,
+      levelNum: lvl.num,
+      levelName: lvl.name,
+      filename: 'TASK.md',
+      content: taskBrief,
       taskFolder: taskFolderRel,
       taskBrief,
       starterCode,
@@ -145,4 +193,4 @@ const outputJs = `window.PORTAL_DATA = ${JSON.stringify(data)};\n`;
 const outputPath = path.join(rootDir, 'portal_data.js');
 fs.writeFileSync(outputPath, outputJs, 'utf8');
 
-console.log(`Generated portal_data.js successfully! Total lessons: ${allLessons.length}, data size: ${(outputJs.length / 1024).toFixed(1)} KB`);
+console.log(`Generated portal_data.js successfully! Total entries: ${allLessons.length} (80 lessons + 8 milestone projects), data size: ${(outputJs.length / 1024).toFixed(1)} KB`);
