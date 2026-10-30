@@ -113,3 +113,4 @@ Each task is an independent Cargo project created so the student can run `cargo 
 * Each task must compile cleanly with `cargo check` and run with `cargo run`.
 * All markdown files must have accurate relative links to each other for easy navigation in VS Code / Antigravity editor.
 * Initial bootstrap will include Level 1, Lesson 01, and Task 01 pre-built and verified.
+
