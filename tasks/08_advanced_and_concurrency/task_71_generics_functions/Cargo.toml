@@ -1,0 +1,7 @@
+[package]
+name = "task_71_generics_functions"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+
