@@ -19,7 +19,7 @@ I am starting my Rust developer journey!
 
 ## 🛠️ Step-by-Step Instructions
 
-1. Open the starter code file: [`src/main.rs`](file:///d:/rust-learning/tasks/01_basics/task_01_hello/src/main.rs).
+1. Open the starter code file: [`src/main.rs`](file:///d:/rust-learning/tasks/01_baby_steps/task_01_hello/src/main.rs).
 2. Look for the `// TODO` comment.
 3. Write your instructions inside the `fn main() { ... }` curly braces.
 4. Open your terminal in this task folder and run:
@@ -57,6 +57,6 @@ fn main() {
 
 ## 🔒 Need to Check the Solution?
 If you get stuck or want to compare your finished code with the official answer:
-* Official Code: [`solution/solution.rs`](file:///d:/rust-learning/tasks/01_basics/task_01_hello/solution/solution.rs)
-* Line-by-Line Explanation: [`solution/explain.md`](file:///d:/rust-learning/tasks/01_basics/task_01_hello/solution/explain.md)
+* Official Code: [`solution/solution.rs`](file:///d:/rust-learning/tasks/01_baby_steps/task_01_hello/solution/solution.rs)
+* Line-by-Line Explanation: [`solution/explain.md`](file:///d:/rust-learning/tasks/01_baby_steps/task_01_hello/solution/explain.md)
 

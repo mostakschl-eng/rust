@@ -39,11 +39,11 @@
 * **Current Level:** `Level 1: Absolute Baby Steps (Lessons 01 – 10)`
 * **Current Lesson:** `Lesson 01: What is Code & Instructions`
 * **Active Reading:** [`lessons/01_baby_steps/01_what_is_code.md`](file:///d:/rust-learning/lessons/01_baby_steps/01_what_is_code.md)
-* **Active Practice Task:** [`tasks/01_basics/task_01_hello/`](file:///d:/rust-learning/tasks/01_basics/task_01_hello/README.md)
+* **Active Practice Task:** [`tasks/01_baby_steps/task_01_hello/`](file:///d:/rust-learning/tasks/01_baby_steps/task_01_hello/README.md)
 * **Immediate Next Action:**
   1. Open and read Lesson 01.
-  2. Open `tasks/01_basics/task_01_hello/README.md`.
-  3. Write and run code in `tasks/01_basics/task_01_hello/src/main.rs`.
+  2. Open `tasks/01_baby_steps/task_01_hello/README.md`.
+  3. Write and run code in `tasks/01_baby_steps/task_01_hello/src/main.rs`.
   4. Once working, unlock Lesson 02: Speaking to the Screen.
 
 ### Completed History

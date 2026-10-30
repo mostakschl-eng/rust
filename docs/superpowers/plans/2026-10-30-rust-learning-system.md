@@ -79,7 +79,7 @@ Translate common beginner compiler errors (type mismatch, unused variables, muta
 - [x] **Step 1: Write `progress/log.md`**
 Create the initial log entry documenting the creation of the workspace.
 - [x] **Step 2: Scaffold directory tree**
-Create directory folders for `lessons/01_basics` through `06_projects` and `tasks/01_basics` through `06_projects`.
+Create directory folders for `lessons/01_baby_steps` through `06_projects` and `tasks/01_baby_steps` through `06_projects`.
 - [x] **Step 3: Commit**
 `git add progress/ && git commit -m "feat: initialize progress diary and directory layout"`
 
@@ -88,23 +88,23 @@ Create directory folders for `lessons/01_basics` through `06_projects` and `task
 ### Task 6: Author Level 1, Lesson 01: First Program
 
 **Files:**
-- Create: `lessons/01_basics/01_first_program.md`
+- Create: `lessons/01_baby_steps/01_first_program.md`
 
-- [x] **Step 1: Write `lessons/01_basics/01_first_program.md`**
+- [x] **Step 1: Write `lessons/01_baby_steps/01_first_program.md`**
 Explain computers, instructions, `fn main()`, `{ }`, `println!()`, and semicolons `;` in clear, conversational Simple English.
 - [x] **Step 2: Commit**
-`git add lessons/01_basics/01_first_program.md; git commit -m "docs: add lesson 01 - first program"`
+`git add lessons/01_baby_steps/01_first_program.md; git commit -m "docs: add lesson 01 - first program"`
 
 ---
 
 ### Task 7: Build & Verify Task 01: Hello World
 
 **Files:**
-- Create: `tasks/01_basics/task_01_hello/Cargo.toml`
-- Create: `tasks/01_basics/task_01_hello/README.md`
-- Create: `tasks/01_basics/task_01_hello/src/main.rs`
-- Create: `tasks/01_basics/task_01_hello/solution/solution.rs`
-- Create: `tasks/01_basics/task_01_hello/solution/explain.md`
+- Create: `tasks/01_baby_steps/task_01_hello/Cargo.toml`
+- Create: `tasks/01_baby_steps/task_01_hello/README.md`
+- Create: `tasks/01_baby_steps/task_01_hello/src/main.rs`
+- Create: `tasks/01_baby_steps/task_01_hello/solution/solution.rs`
+- Create: `tasks/01_baby_steps/task_01_hello/solution/explain.md`
 
 - [x] **Step 1: Scaffold Task 01 with Cargo manifest and README**
 Write `Cargo.toml`, `README.md` with goals and hidden hints.
@@ -113,6 +113,6 @@ Provide clean template with `// TODO` for the student.
 - [x] **Step 3: Write isolated solution and explanation**
 Write `solution/solution.rs` and `solution/explain.md`.
 - [x] **Step 4: Verify task compilation**
-Run `cargo check` in `tasks/01_basics/task_01_hello/` to guarantee no syntax errors.
+Run `cargo check` in `tasks/01_baby_steps/task_01_hello/` to guarantee no syntax errors.
 - [x] **Step 5: Commit**
 `git add tasks/ && git commit -m "feat: add task 01 hello world with isolated solution"`

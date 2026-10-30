@@ -44,7 +44,7 @@ d:\rust-learning\
 │   └── cargo_cheatsheet.md  # 4 essential Cargo commands with explanations
 │
 ├── lessons/                 # Structured, deep lesson guides
-│   ├── 01_basics/
+│   ├── 01_baby_steps/
 │   │   ├── 01_first_program.md
 │   │   ├── 02_functions.md
 │   │   ├── 03_variables_and_mutability.md
@@ -56,7 +56,7 @@ d:\rust-learning\
 │   └── 06_projects/
 │
 ├── tasks/                   # Hands-on practice tasks (standalone Cargo packages)
-│   ├── 01_basics/
+│   ├── 01_baby_steps/
 │   │   ├── task_01_hello/
 │   │   │   ├── Cargo.toml
 │   │   │   ├── README.md         # Task goals, instructions, hidden hints

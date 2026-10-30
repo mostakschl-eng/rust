@@ -39,7 +39,7 @@ d:\rust-learning\
 │   └── 08_advanced_and_concurrency/ # Lessons 71 – 80 (Generics, traits, closures, threads)
 │
 ├── tasks/                       # Hands-on practice tasks (each is an isolated Cargo package)
-│   ├── 01_basics/
+│   ├── 01_baby_steps/
 │   │   ├── task_01_hello/
 │   │   │   ├── Cargo.toml       # Cargo package configuration
 │   │   │   ├── README.md        # Task objective, instructions & hidden progressive hints

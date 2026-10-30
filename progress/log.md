@@ -7,7 +7,7 @@ Welcome to your personal learning diary! Whenever you finish a lesson or task, y
 ## 📌 Current State Snapshot (Quick View)
 * **Current Level:** `Level 1: Absolute Baby Steps`
 * **Current Lesson:** `Lesson 01: What is Code & Instructions`
-* **Active Task:** [`tasks/01_basics/task_01_hello/`](file:///d:/rust-learning/tasks/01_basics/task_01_hello/README.md)
+* **Active Task:** [`tasks/01_baby_steps/task_01_hello/`](file:///d:/rust-learning/tasks/01_baby_steps/task_01_hello/README.md)
 * **Status:** 🟢 In Progress
 
 ---
@@ -42,7 +42,7 @@ Whenever you complete a lesson or task, copy this blank template and paste it at
   - Rust programs start at `fn main() { ... }`.
   - `println!` is the loudspeaker that speaks text to the screen.
   - Semicolons `;` are like full stops at the end of a sentence.
-* **Code Ran Successfully:** Ready for testing in `tasks/01_basics/task_01_hello/`
+* **Code Ran Successfully:** Ready for testing in `tasks/01_baby_steps/task_01_hello/`
 * **Difficulty:** ⭐ (Very easy first step)
 
 ---

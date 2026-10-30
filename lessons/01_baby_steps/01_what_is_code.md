@@ -60,4 +60,4 @@ Hello, World!
 ---
 
 ## 🎯 Practice Task:
-Go to **[Task 01: Hello World](../../tasks/01_basics/task_01_hello/README.md)** and run your first code!
+Go to **[Task 01: Hello World](../../tasks/01_baby_steps/task_01_hello/README.md)** and run your first code!

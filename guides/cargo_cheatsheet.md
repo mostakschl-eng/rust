@@ -47,7 +47,7 @@ cargo build
 Always open your terminal inside the specific task folder before running Cargo:
 ```bash
 # Example: Navigating to Task 01
-cd tasks/01_basics/task_01_hello
+cd tasks/01_baby_steps/task_01_hello
 cargo run
 ```
 
