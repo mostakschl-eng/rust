@@ -1,0 +1,7 @@
+[package]
+name = "task_43_tuple_and_unit_structs"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+

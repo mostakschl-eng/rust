@@ -1,0 +1,7 @@
+[package]
+name = "task_47_enums_with_data"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+
