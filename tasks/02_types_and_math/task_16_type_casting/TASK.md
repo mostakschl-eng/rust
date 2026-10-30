@@ -63,3 +63,4 @@ let average = (total_score as f64) / 4.0;
 ## 🔒 Solution & Explanations
 * Working Code: [`solution/solution.rs`](file:///d:/rust-learning/tasks/02_types_and_math/task_16_type_casting/solution/solution.rs)
 * Line-by-Line Breakdown: [`solution/explain.md`](file:///d:/rust-learning/tasks/02_types_and_math/task_16_type_casting/solution/explain.md)
+

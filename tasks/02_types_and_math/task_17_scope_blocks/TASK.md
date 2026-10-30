@@ -62,3 +62,4 @@ println!("Back outside room: Gold = {}", gold);
 ## 🔒 Solution & Explanations
 * Working Code: [`solution/solution.rs`](file:///d:/rust-learning/tasks/02_types_and_math/task_17_scope_blocks/solution/solution.rs)
 * Line-by-Line Breakdown: [`solution/explain.md`](file:///d:/rust-learning/tasks/02_types_and_math/task_17_scope_blocks/solution/explain.md)
+

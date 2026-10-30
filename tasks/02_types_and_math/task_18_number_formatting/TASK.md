@@ -58,3 +58,4 @@ println!("{:<15} $ {:>6.2}", "Espresso", 2.75);
 ## 🔒 Solution & Explanations
 * Working Code: [`solution/solution.rs`](file:///d:/rust-learning/tasks/02_types_and_math/task_18_number_formatting/solution/solution.rs)
 * Line-by-Line Breakdown: [`solution/explain.md`](file:///d:/rust-learning/tasks/02_types_and_math/task_18_number_formatting/solution/explain.md)
+

@@ -21,3 +21,4 @@ fn main() {
     println!("Exact Average:  {}%", average);
     println!("===============================");
 }
+

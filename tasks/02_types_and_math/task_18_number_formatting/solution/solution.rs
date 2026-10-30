@@ -26,3 +26,4 @@ fn main() {
     println!("{:<16}${:>7.2}", "TOTAL DUE:", total);
     println!("========================");
 }
+

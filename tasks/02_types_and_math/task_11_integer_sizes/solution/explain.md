@@ -10,3 +10,4 @@
 
 ## 2. Memory Efficiency
 Choosing small integer types when possible saves memory and cache space. In high-performance backend servers handling millions of records, this is why Rust is chosen over other languages!
+

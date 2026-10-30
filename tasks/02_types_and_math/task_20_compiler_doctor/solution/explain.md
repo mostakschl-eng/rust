@@ -12,3 +12,4 @@
    Using debug formatting `{:?}` satisfies error `E0277` (*`(&str, i32)` cannot be formatted with the default formatter*).
 
 Congratulations on completing all 20 lessons and tasks across Level 1 and Level 2!
+

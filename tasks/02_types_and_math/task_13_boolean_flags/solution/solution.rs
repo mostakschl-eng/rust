@@ -13,3 +13,4 @@ fn main() {
     println!("Can Make Purchases:    {}", can_make_purchases);
     println!("================================");
 }
+

@@ -17,3 +17,4 @@ fn main() {
     println!("Back outside room: Gold = {}", gold);
     println!("=========================");
 }
+

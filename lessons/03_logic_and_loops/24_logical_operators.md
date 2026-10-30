@@ -1,37 +1,95 @@
-# Lesson 24: Logical Operators (&&, ||, !)
+# Lesson 24: Logical Operators (AND `&&`, OR `||`, NOT `!`)
 
-> **Level:** Level 3: Logic, Choices & Loops  
-> **Topic:** Combining multiple conditions with AND, OR, and NOT
+Welcome to Lesson 24! 
 
----
+In real life, decisions are rarely based on just one single question.
+Usually, multiple conditions must be checked at the same time:
+* *"Do you have a driver's license **AND** are you wearing a seatbelt?"*
+* *"Do you have a Student ID **OR** are you under 12 years old?"*
 
-## 1. Real-Life Analogy (Child-Friendly Explanation)
-*Coming up in this lesson: Combining multiple conditions with AND, OR, and NOT*
-
-Think of this concept like everyday life:
-- In the real world, we take things one step at a time.
-- Computers need simple, unambiguous rules.
+In Rust, we combine conditions using **Logical Operators**!
 
 ---
 
-## 2. Key Rust Concepts to Master
-- What this concept means in plain English.
-- How to write it in Rust syntax.
-- What common mistakes beginners make.
+## 1. The 3 Logical Operators in Rust
+
+| Operator | Name | Meaning | Truth Rule |
+|---|---|---|---|
+| **`&&`** | **Logical AND** | Both sides must be true | Returns `true` **ONLY if BOTH A and B are true**. |
+| **`\|\|`** | **Logical OR** | At least one side must be true | Returns `true` **if EITHER A is true OR B is true**. |
+| **`!`** | **Logical NOT** | Flips true to false | Inverts the boolean (`!true` is `false`). |
 
 ---
 
-## 3. Code Example & Breakdown
+## 2. Logical AND (`&&`): The Two-Key Safe
+
+Imagine a bank vault that requires **two keys turned at the same time**:
+* Key A (Manager) = `true`
+* Key B (Security Guard) = `true`
+* `Key A && Key B` -> Vault opens!
+
+If either person is missing, `&&` evaluates to `false` and the door stays shut:
 
 ```rust
-// Lesson 24: Logical Operators (&&, ||, !)
 fn main() {
-    // We will practice Logical Operators (&&, ||, !) step-by-step
-    println!("Learning Lesson 24: Logical Operators (&&, ||, !)");
+    let has_license = true;
+    let is_sober = true;
+
+    if has_license && is_sober {
+        println!("You can drive safely! 🚗");
+    } else {
+        println!("You cannot drive! 🛑");
+    }
 }
 ```
 
 ---
 
-## 4. Next Practice Task
-When you finish reading this concept with your AI tutor, you will practice the hands-on task!
+## 3. Logical OR (`||`): The Multiple Payment Options
+
+Imagine buying a coffee:
+* You can pay with **Cash** (`cash_available`)
+* **OR** you can pay with **Credit Card** (`card_available`)
+
+As long as you have **at least one** of them, you can buy the coffee:
+
+```rust
+fn main() {
+    let has_cash = false;
+    let has_card = true;
+
+    if has_cash || has_card {
+        println!("Payment accepted! ☕");
+    } else {
+        println!("Payment declined: Need cash or card! ❌");
+    }
+}
+```
+
+---
+
+## 4. Short-Circuit Evaluation (Rust's Speed Optimization)
+
+Rust is famous for speed, and it is smart about logic:
+
+1. **In `A && B`:** If `A` is `false`, Rust doesn't even bother looking at `B`. It immediately knows the whole thing is `false`!
+2. **In `A || B`:** If `A` is `true`, Rust doesn't evaluate `B`. It already knows the answer is `true`!
+
+This saves CPU cycles and protects against errors!
+
+---
+
+## 5. Summary Checklist
+- [x] `&&` requires both sides to be `true`.
+- [x] `||` requires at least one side to be `true`.
+- [x] `!` inverts any boolean condition.
+- [x] Short-circuit evaluation skips unnecessary checks.
+
+---
+
+## 🛠️ Ready for Practice!
+
+👉 Open **[`tasks/03_logic_and_loops/task_24_logical_operators/TASK.md`](file:///d:/rust-learning/tasks/03_logic_and_loops/task_24_logical_operators/TASK.md)**.
+1. Read the task requirements.
+2. Build an airport boarding gate verification check using both `&&` and `||`.
+3. Run `cargo run` and test your compound logic!

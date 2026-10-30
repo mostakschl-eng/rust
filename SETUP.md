@@ -42,7 +42,7 @@ d:\rust-learning\
 │   ├── 01_baby_steps/
 │   │   ├── task_01_hello/
 │   │   │   ├── Cargo.toml       # Cargo package configuration
-│   │   │   ├── README.md        # Task objective, instructions & hidden progressive hints
+│   │   │   ├── TASK.md          # Task objective, instructions & hidden progressive hints
 │   │   │   ├── src/
 │   │   │   │   └── main.rs      # Starter code where the student writes and runs code
 │   │   │   └── solution/        # Dedicated anti-spoiler subfolder

@@ -58,3 +58,4 @@ let final_total = fuel_cost - 2.50;
 ## 🔒 Solution & Explanations
 * Working Code: [`solution/solution.rs`](file:///d:/rust-learning/tasks/02_types_and_math/task_12_floating_points/solution/solution.rs)
 * Line-by-Line Breakdown: [`solution/explain.md`](file:///d:/rust-learning/tasks/02_types_and_math/task_12_floating_points/solution/explain.md)
+

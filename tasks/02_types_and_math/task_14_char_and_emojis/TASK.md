@@ -55,3 +55,4 @@ let crab: char = '🦀';
 ## 🔒 Solution & Explanations
 * Working Code: [`solution/solution.rs`](file:///d:/rust-learning/tasks/02_types_and_math/task_14_char_and_emojis/solution/solution.rs)
 * Line-by-Line Breakdown: [`solution/explain.md`](file:///d:/rust-learning/tasks/02_types_and_math/task_14_char_and_emojis/solution/explain.md)
+
