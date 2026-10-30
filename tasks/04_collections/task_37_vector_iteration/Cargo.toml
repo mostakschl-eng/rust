@@ -1,0 +1,7 @@
+[package]
+name = "task_37_vector_iteration"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+

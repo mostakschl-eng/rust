@@ -1,0 +1,7 @@
+[package]
+name = "task_34_array_indexing"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+

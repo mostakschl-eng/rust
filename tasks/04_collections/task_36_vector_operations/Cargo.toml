@@ -1,0 +1,7 @@
+[package]
+name = "task_36_vector_operations"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+
