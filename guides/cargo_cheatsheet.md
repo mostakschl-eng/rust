@@ -50,3 +50,4 @@ Always open your terminal inside the specific task folder before running Cargo:
 cd tasks/01_basics/task_01_hello
 cargo run
 ```
+

@@ -72,3 +72,4 @@ Check your spelling!
 This is NOT an error. Your program will still run! Rust is just letting you know: *"Hey, you created a variable named `x`, but you never used it anywhere."*
 ### How to fix:
 Either use the variable, or if you plan to use it later, put an underscore in front: `let _x = 10;`.
+
