@@ -1,0 +1,7 @@
+[package]
+name = "task_51_stack_vs_heap"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+

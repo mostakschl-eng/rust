@@ -1,0 +1,7 @@
+[package]
+name = "task_67_terminal_user_input"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+

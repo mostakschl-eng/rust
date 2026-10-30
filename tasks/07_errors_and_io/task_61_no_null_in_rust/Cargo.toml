@@ -1,0 +1,7 @@
+[package]
+name = "task_61_no_null_in_rust"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+

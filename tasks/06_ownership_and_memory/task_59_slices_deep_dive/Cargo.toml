@@ -1,0 +1,7 @@
+[package]
+name = "task_59_slices_deep_dive"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+
