@@ -42,7 +42,7 @@ println!("Hello, World!")
 // CORRECT:
 println!("Hello, World!");
 ```
-* **Why:** The semicolon `;` tells Rust that this instruction has ended. If you forget it, the compiler will say: `error: expected ';', found ...`.
+* **Why:** A missing semicolon before another printing statement is an error. A final `println!` without `;` is valid because its result is `()`.
 
 ---
 

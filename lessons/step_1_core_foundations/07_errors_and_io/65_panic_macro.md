@@ -3,7 +3,7 @@
 In Lesson 64, we handled **recoverable errors** using `Result<T, E>`.  
 When a user types an invalid password or a file is missing, you don't want your program to crash! You want to display an error and let them try again.
 
-However, sometimes a program encounters a catastrophic situation where **continuing execution is physically unsafe**:
+However, sometimes a program encounters a catastrophic situation where **continuing would violate an internal assumption**:
 * Essential operating system files are corrupt.
 * A critical cryptographic invariant was violated.
 * An array index out of bounds bug in internal logic was triggered.
@@ -22,7 +22,7 @@ Think of a high-speed industrial assembly line or subway train:
 
 In Rust:
 > The **`panic!`** macro is Rust's emergency stop button.  
-> It prints an error message, cleans up stack memory (unwinding), and terminates the program immediately.
+> It invokes the panic hook, then normally unwinds the current thread. An abort configuration ends the process without unwinding. A panic is not a hardware shutdown or a guarantee of external safety.
 
 ---
 
@@ -60,8 +60,8 @@ The program printed the exact file and line number (`src/main.rs:7:9`) and stopp
 
 By default, when a panic occurs, Rust performs **Stack Unwinding**:
 1. Rust walks back up the stack frame by frame.
-2. It calls `drop` on every active variable, safely freeing heap memory and closing files!
-3. It exits the program cleanly.
+2. It drops initialized local values in the unwound frames, releasing resources according to their types.
+3. An uncaught panic ends that thread; in the main thread this normally ends the process with failure. Other threads can observe a worker panic through `join()`.
 
 *(In resource-constrained embedded systems, you can tell Cargo to immediately `abort` without unwinding to keep the binary size as small as possible).*
 
@@ -92,14 +92,27 @@ This will print a complete step-by-step diagnostic trace of every function calle
 ---
 
 ## 6. Quick Recap Checklist
-- [x] `panic!("message")` immediately terminates the thread.
+- [x] `panic!("message")` stops normal execution and starts panic handling.
 - [x] Used exclusively for unrecoverable errors and internal contract violations.
-- [x] Rust unwinds the stack to clean up memory before shutting down.
+- [x] The usual strategy unwinds; abort skips destructors. Neither guarantees a safe state in external equipment.
 - [x] Set `RUST_BACKTRACE=1` to view the full call stack trace.
 - [x] Always prefer returning `Result` for expected operational failures!
 
 ---
 
+
+## Symbols and Practical Boundaries
+
+A software emergency brake stops normal execution. It cannot by itself turn off a real engine or repair a corrupted file.
+
+| Symbol or term | Meaning |
+|---|---|
+| `panic!(...)` | trigger panic handling |
+| `unwind` | drop stack locals |
+| `abort` | end process without unwind |
+
+**Common pitfall:** Panic is for failed assumptions in this toy example. Low fuel is normally an operational condition handled by Result; real safety controllers require verified shutdown behavior.
+
 ## 🎯 Next Steps
-* Ready to practice? Complete [`tasks/07_errors_and_io/task_65_panic_macro/TASK.md`](file:///d:/rust-learning/tasks/07_errors_and_io/task_65_panic_macro/TASK.md).
-* Next lesson: [Lesson 66: Propagating Errors: The `?` (Question Mark) Operator](file:///d:/rust-learning/lessons/07_errors_and_io/66_question_mark_operator.md).
+* Ready to practice? Complete [`tasks/step_1_core_foundations/07_errors_and_io/task_65_panic_macro/TASK.md`](../../../tasks/step_1_core_foundations/07_errors_and_io/task_65_panic_macro/TASK.md).
+* Next lesson: [Lesson 66: Propagating Errors: The `?` (Question Mark) Operator](66_question_mark_operator.md).

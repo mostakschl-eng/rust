@@ -88,7 +88,18 @@ If you try to pass a number or text, Rust will immediately stop you:
 
 ## 🛠️ Ready for Practice!
 
-👉 Open **[`tasks/03_logic_and_loops/task_21_if_statement/TASK.md`](file:///d:/rust-learning/tasks/03_logic_and_loops/task_21_if_statement/TASK.md)**.
+👉 Open **[`tasks/step_1_core_foundations/03_logic_and_loops/task_21_if_statement/TASK.md`](../../../tasks/step_1_core_foundations/03_logic_and_loops/task_21_if_statement/TASK.md)**.
 1. Read the task requirements.
 2. Build an ATM cash withdrawal validator that only dispenses cash if account balance is sufficient.
 3. Run `cargo run` and test with different balances!
+
+## Symbol reference
+
+| Symbol | Meaning |
+|---|---|
+| `if` | Evaluate a bool and conditionally run a block |
+| `>=` | Greater than or equal comparison |
+
+## Common pitfalls and limits
+
+Use a boolean condition. This small ATM example assumes a positive requested amount; it demonstrates a branch rather than a complete banking system.

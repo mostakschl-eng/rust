@@ -67,7 +67,7 @@ Look at this line: `let age = 25;`
 Did you notice that we didn't tell Rust that `25` is a number or `"Rahim"` is text?
 
 Rust has **Type Inference** (smart detection).
-When Rust sees `25`, it automatically knows: *"That's an integer (`i32`). I will make the box the right size for a number."*
+Rust uses the surrounding code to infer the type. If nothing constrains an integer literal such as `25`, it defaults to `i32`: *"That's an integer (`i32`). I will make the box the right size for a number."*
 
 If you want to be extra clear, you can also write the type explicitly:
 ```rust
@@ -122,7 +122,7 @@ fn main() {
 
 ## 🛠️ Ready for Practice!
 
-👉 Open **[`tasks/01_baby_steps/task_08_variables_boxes/TASK.md`](file:///d:/rust-learning/tasks/01_baby_steps/task_08_variables_boxes/TASK.md)**.
+👉 Open **[`tasks/step_1_core_foundations/01_baby_steps/task_08_variables_boxes/TASK.md`](../../../tasks/step_1_core_foundations/01_baby_steps/task_08_variables_boxes/TASK.md)**.
 1. Read the task requirements.
 2. Create variables for a video game character profile (name, level, health, gold).
 3. Run `cargo run` and display your character stats!

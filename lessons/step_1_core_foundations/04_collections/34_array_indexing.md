@@ -14,12 +14,12 @@ Imagine a street with 5 houses built in a row:
 * House 5 is at index **4**
 
 If a mail carrier is asked to deliver a letter to **House 10**, what happens?  
-There is no House 10! The street ends at House 4.
+There is no House 10! The street ends at House 5 (index 4).
 
 In programming:
 * Trying to access an index that doesn't exist is called an **Out-of-Bounds Error**.
-* In older languages like C or C++, the computer would happily read whatever random memory was sitting past the street—causing massive security vulnerabilities or silent data corruption!
-* **Rust protects you:** Rust strictly checks bounds and halts immediately before any unauthorized memory can ever be accessed!
+* Unchecked out-of-bounds access in C or C++ is undefined behavior: it may crash, corrupt data, or expose memory.
+* **Rust protects you:** Safe Rust checks array indexing and prevents that access from reading or writing beyond the array.
 
 ---
 
@@ -60,12 +60,13 @@ fn main() {
 
     // Index 0: Apple, Index 1: Banana, Index 2: Cherry
     // There is NO index 5!
-    let mystery = fruits[5]; 
+    let index: usize = "5".parse().expect("valid demo index");
+    let mystery = fruits[index]; 
     println!("{}", mystery);
 }
 ```
 
-If you compile and run this, the Rust program refuses to corrupt memory and immediately triggers a **panic**:
+Here the index is read at runtime using `.parse()` (text-to-number conversion); `.expect()` accepts this known-valid demonstration text. Direct `fruits[5]` on this fixed array can instead be rejected by the compiler. The runtime lookup triggers a **panic**; exact file locations vary:
 
 ```text
 thread 'main' panicked at src/main.rs:6:19:
@@ -74,7 +75,7 @@ index out of bounds: the len is 3 but the index is 5
 
 > [!CAUTION]
 > A **panic** is Rust's emergency brake.  
-> It stops the program immediately to prevent security leaks or data corruption.
+> It stops normal execution of the current thread. An unhandled panic in `main` ends this demonstration; other threads and panic handlers are a later topic.
 
 ---
 
@@ -128,7 +129,7 @@ No color at this index! (Safely handled!)
 If an array has 5 items (`len() == 5`):
 * Valid indices are: `0, 1, 2, 3, 4`.
 * Trying to access `arr[5]` will **always panic**!
-* Formula for the last item: `arr[arr.len() - 1]`.
+* For a **nonempty** array, the last item is `arr[arr.len() - 1]`. For possibly empty collections, use `.last()`, which returns `Some(reference)` or `None`.
 
 ---
 
@@ -141,6 +142,20 @@ If an array has 5 items (`len() == 5`):
 
 ---
 
+## Small prerequisite bridge: optional results and matching
+
+Think of `Option<T>` as a parcel that either contains a value (`Some(value)`) or is empty (`None`). Here `.get(i)` returns `Option<&T>`: it borrows an element instead of copying or moving it. `Some(value)` is a **pattern** that gives the borrowed element the local name `value`; it is not a new lookup. `match` chooses one arm and must handle both possibilities. `=>` separates a pattern from its action. Lessons 46–50 develop enums and matching fully.
+
+
+## Symbol reading guide
+
+| Symbol or syntax | Meaning |
+|---|---|
+| `[i]` | Index; panics if a runtime index is invalid |
+| `.get(i)` | Return an optional borrowed element |
+| `Some(code) =>` | Name and handle a found element |
+| `None =>` | Handle absence |
+
 ## 🎯 Next Steps
-* Ready to practice? Complete [`tasks/04_collections/task_34_array_indexing/TASK.md`](file:///d:/rust-learning/tasks/04_collections/task_34_array_indexing/TASK.md).
-* Next lesson: [Lesson 35: Dynamic Lists: Vectors](file:///d:/rust-learning/lessons/04_collections/35_vectors.md).
+* Ready to practice? Complete [`tasks/step_1_core_foundations/04_collections/task_34_array_indexing/TASK.md`](../../../tasks/step_1_core_foundations/04_collections/task_34_array_indexing/TASK.md).
+* Next lesson: [Lesson 35: Dynamic Lists: Vectors](35_vectors.md).

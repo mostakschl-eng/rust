@@ -35,17 +35,35 @@ Mixed Beacon:  X="Section-Alpha", Y=42
 
 ## 🛠️ How to Do This (Step-by-Step):
 
-1. Open [`src/main.rs`](file:///d:/rust-learning/tasks/08_advanced_and_concurrency/task_72_generic_structs/src/main.rs).
+1. Open [`src/main.rs`](src/main.rs).
 2. Declare `struct Coordinate<T, U>` and `impl<T, U> Coordinate<T, U>`.
 3. Test:
    ```bash
-   cd tasks/08_advanced_and_concurrency/task_72_generic_structs
+   cd tasks/step_1_core_foundations/08_advanced_and_concurrency/task_72_generic_structs
    cargo run
    ```
 
 ---
 
 ## 🔒 Solution & Explanations
-* Working Code: [`solution/solution.rs`](file:///d:/rust-learning/tasks/08_advanced_and_concurrency/task_72_generic_structs/solution/solution.rs)
-* Line-by-Line Breakdown: [`solution/explain.md`](file:///d:/rust-learning/tasks/08_advanced_and_concurrency/task_72_generic_structs/solution/explain.md)
+* Working Code: [`solution/solution.rs`](solution/solution.rs)
+* Line-by-Line Breakdown: [`solution/explain.md`](solution/explain.md)
 
+
+## Hints (Open One at a Time)
+
+<details>
+<summary>Hint 1: Choose the approach</summary>
+
+Declare two generic fields, then declare the parameters again after impl.
+
+</details>
+
+<details>
+<summary>Hint 2: Connect the pieces</summary>
+
+The constructor returns Self { x, y }; each getter returns a shared reference to its matching field.
+
+</details>
+
+**Before running:** T and U may be the same or different types. One generic instance does not change its field types at runtime; a borrowed getter cannot outlive the container.

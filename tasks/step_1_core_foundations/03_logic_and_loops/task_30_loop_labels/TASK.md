@@ -45,36 +45,34 @@ Radar deactivated. Mission successful! 🏁
 
 ## 🛠️ How to Do This (Step-by-Step):
 
-1. Open [`src/main.rs`](file:///d:/rust-learning/tasks/03_logic_and_loops/task_30_loop_labels/src/main.rs).
+1. Open [`src/main.rs`](src/main.rs).
 2. Label the outer loop with `'radar_grid:`.
 3. Break using `break 'radar_grid;` when `row == 3 && col == 2`.
 4. Test with:
    ```bash
-   cd tasks/03_logic_and_loops/task_30_loop_labels
+   cd tasks/step_1_core_foundations/03_logic_and_loops/task_30_loop_labels
    cargo run
    ```
 
 ---
 
-## 💡 Hints (Only open if you get stuck!)
+## 💡 Hints (open one at a time)
 
 <details>
-<summary><b>🔍 Hint: Loop label syntax</b></summary>
+<summary>Hint 1: Start with the idea</summary>
 
-```rust
-'radar_grid: for row in 1..=4 {
-    for col in 1..=4 {
-        if row == 3 && col == 2 {
-            break 'radar_grid;
-        }
-    }
-}
-```
+The outer loop controls rows; each row starts a fresh inner loop for columns. Print the coordinate before checking for the target.
+</details>
+
+<details>
+<summary>Hint 2: Connect it to Rust</summary>
+
+Name the outer loop with a label. When both coordinate comparisons are true, break to that label so no remaining rows or columns are scanned.
 </details>
 
 ---
 
 ## 🔒 Solution & Explanations
-* Working Code: [`solution/solution.rs`](file:///d:/rust-learning/tasks/03_logic_and_loops/task_30_loop_labels/solution/solution.rs)
-* Line-by-Line Breakdown: [`solution/explain.md`](file:///d:/rust-learning/tasks/03_logic_and_loops/task_30_loop_labels/solution/explain.md)
+* Working Code: [`solution/solution.rs`](solution/solution.rs)
+* Line-by-Line Breakdown: [`solution/explain.md`](solution/explain.md)
 

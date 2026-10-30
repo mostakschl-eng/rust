@@ -1,31 +1,7 @@
-use std::fs::{self, OpenOptions};
-use std::io::Write;
+// Starter: complete the TODOs to match TASK.md.
+// The reference answer is kept separately in solution/solution.rs.
 
-fn main() -> std::io::Result<()> {
-    println!("=== TELEMETRY FILE WRITER & LOGGER ===");
-
-    let log_file = "server_log.txt";
-
-    println!("Writing initial base configuration...");
-    // TODO 1: Write initial line to log_file
-    fs::write(log_file, "[CONFIG] Port=8080 | Mode=Production")?;
-
-    println!("Appending runtime security event...");
-    // TODO 2: Append event with OpenOptions
-    let mut file = OpenOptions::new()
-        .append(true)
-        .open(log_file)?;
-
-    writeln!(file, "\n[EVENT] Security Handshake Established")?;
-
-    println!("\nReading final saved log from disk:");
-    // TODO 3: Read back and print
-    let saved_data = fs::read_to_string(log_file)?;
-    println!("{}", saved_data.trim());
-
-    println!("File operations complete! 💾");
-    println!("======================================");
-
-    Ok(())
+fn main() {
+    // TODO 1: Write the initial line before opening the same path in append mode.
+    // TODO 2: Import std::io::Write for writeln!, propagate each I/O failure, and read back after appending.
 }
-

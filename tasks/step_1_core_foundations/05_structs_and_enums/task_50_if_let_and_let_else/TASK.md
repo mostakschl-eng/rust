@@ -42,18 +42,44 @@ Attempt 2 (Missing Badge):
 
 ## 🛠️ How to Do This (Step-by-Step):
 
-1. Open [`src/main.rs`](file:///d:/rust-learning/tasks/05_structs_and_enums/task_50_if_let_and_let_else/src/main.rs).
+1. Open [`src/main.rs`](src/main.rs).
 2. Implement `if let` for the prize scanner.
 3. Implement `let else` with early `return;` inside `verify_clearance`.
 4. Test:
    ```bash
-   cd tasks/05_structs_and_enums/task_50_if_let_and_let_else
+   cd tasks/step_1_core_foundations/05_structs_and_enums/task_50_if_let_and_let_else
    cargo run
    ```
 
 ---
 
-## 🔒 Solution & Explanations
-* Working Code: [`solution/solution.rs`](file:///d:/rust-learning/tasks/05_structs_and_enums/task_50_if_let_and_let_else/solution/solution.rs)
-* Line-by-Line Breakdown: [`solution/explain.md`](file:///d:/rust-learning/tasks/05_structs_and_enums/task_50_if_let_and_let_else/solution/explain.md)
+## 💡 Hints
 
+<details>
+<summary>Hint 1: choose the approach</summary>
+
+Use if let for the optional prize and keep the successful badge path after let else.
+
+</details>
+
+<details>
+<summary>Hint 2: connect the syntax</summary>
+
+The let-else failure block must return; afterwards id is in scope. Remember the semicolon after the else block.
+
+</details>
+
+## 🔒 Solution & Explanations
+* Working Code: [`solution/solution.rs`](solution/solution.rs)
+* Line-by-Line Breakdown: [`solution/explain.md`](solution/explain.md)
+
+
+## Watch out
+
+A badge ID being present is not authentication. This exercise only demonstrates optional values and early returns; it does not verify credentials or write an incident log.
+
+The starter intentionally does not produce the expected output yet. Complete its TODOs before comparing results.
+
+## Simulation scope
+
+Some(id) shows presence only. This example does not authenticate officers or write logs; its approval and incident messages are simulated output.

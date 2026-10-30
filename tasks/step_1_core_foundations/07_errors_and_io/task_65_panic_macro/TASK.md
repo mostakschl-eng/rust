@@ -28,17 +28,35 @@ Engines ignite! Liftoff confirmed! 🚀
 
 ## 🛠️ How to Do This (Step-by-Step):
 
-1. Open [`src/main.rs`](file:///d:/rust-learning/tasks/07_errors_and_io/task_65_panic_macro/src/main.rs).
+1. Open [`src/main.rs`](src/main.rs).
 2. Write `launch_sequence` using `panic!` for fatal conditions.
 3. Test:
    ```bash
-   cd tasks/07_errors_and_io/task_65_panic_macro
+   cd tasks/step_1_core_foundations/07_errors_and_io/task_65_panic_macro
    cargo run
    ```
 
 ---
 
 ## 🔒 Solution & Explanations
-* Working Code: [`solution/solution.rs`](file:///d:/rust-learning/tasks/07_errors_and_io/task_65_panic_macro/solution/solution.rs)
-* Line-by-Line Breakdown: [`solution/explain.md`](file:///d:/rust-learning/tasks/07_errors_and_io/task_65_panic_macro/solution/explain.md)
+* Working Code: [`solution/solution.rs`](solution/solution.rs)
+* Line-by-Line Breakdown: [`solution/explain.md`](solution/explain.md)
 
+
+## Hints (Open One at a Time)
+
+<details>
+<summary>Hint 1: Choose the approach</summary>
+
+Check the low-fuel branch before printing any successful countdown or ignition.
+
+</details>
+
+<details>
+<summary>Hint 2: Connect the pieces</summary>
+
+Call the function with 95 for the successful example; leave a commented call with 10 to explore the panic path.
+
+</details>
+
+**Before running:** Panic is for failed assumptions in this toy example. Low fuel is normally an operational condition handled by Result; real safety controllers require verified shutdown behavior.

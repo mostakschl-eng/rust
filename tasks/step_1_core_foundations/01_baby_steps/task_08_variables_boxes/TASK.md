@@ -10,7 +10,7 @@ You must create 4 variables:
 4. `hero_gold`: Whole number (e.g. `250`)
 
 Calculate one extra variable:
-5. `gold_after_potion`: Subtract `50` gold from `hero_gold` to buy a potion!
+5. `remaining_gold`: Subtract `50` gold from `hero_gold` to buy a potion!
 
 ---
 
@@ -30,33 +30,35 @@ Remaining Gold:    200 coins
 
 ## 🛠️ How to Do This (Step-by-Step):
 
-1. Open [`src/main.rs`](file:///d:/rust-learning/tasks/01_baby_steps/task_08_variables_boxes/src/main.rs).
+1. Open [`src/main.rs`](src/main.rs).
 2. Declare each variable using `let`.
 3. Perform the subtraction: `let remaining_gold = hero_gold - 50;`.
 4. Print all values using `println!`.
 5. Test with:
    ```bash
-   cd tasks/01_baby_steps/task_08_variables_boxes
+   cd tasks/step_1_core_foundations/01_baby_steps/task_08_variables_boxes
    cargo run
    ```
 
 ---
 
-## 💡 Hints (Only open if you get stuck!)
+## 💡 Hints (open one at a time)
 
 <details>
-<summary><b>🔍 Hint: Declaring variables</b></summary>
+<summary>Hint 1: Start with the idea</summary>
 
-```rust
-let hero_name = "Warrior Rahim";
-let hero_level = 5;
-let remaining_gold = hero_gold - 50;
-```
+Create named bindings for the four starting attributes before printing them.
+</details>
+
+<details>
+<summary>Hint 2: Connect it to Rust</summary>
+
+Create a new remaining_gold binding from starting gold minus the potion cost; printing the new value does not change the original.
 </details>
 
 ---
 
 ## 🔒 Solution & Explanations
-* Working Code: [`solution/solution.rs`](file:///d:/rust-learning/tasks/01_baby_steps/task_08_variables_boxes/solution/solution.rs)
-* Line-by-Line Breakdown: [`solution/explain.md`](file:///d:/rust-learning/tasks/01_baby_steps/task_08_variables_boxes/solution/explain.md)
+* Working Code: [`solution/solution.rs`](solution/solution.rs)
+* Line-by-Line Breakdown: [`solution/explain.md`](solution/explain.md)
 

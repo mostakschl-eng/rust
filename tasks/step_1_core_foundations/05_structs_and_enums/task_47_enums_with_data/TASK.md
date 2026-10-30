@@ -30,17 +30,39 @@ Event 4: Logout
 
 ## 🛠️ How to Do This (Step-by-Step):
 
-1. Open [`src/main.rs`](file:///d:/rust-learning/tasks/05_structs_and_enums/task_47_enums_with_data/src/main.rs).
+1. Open [`src/main.rs`](src/main.rs).
 2. Define the enum variants holding different types of data.
 3. Test:
    ```bash
-   cd tasks/05_structs_and_enums/task_47_enums_with_data
+   cd tasks/step_1_core_foundations/05_structs_and_enums/task_47_enums_with_data
    cargo run
    ```
 
 ---
 
-## 🔒 Solution & Explanations
-* Working Code: [`solution/solution.rs`](file:///d:/rust-learning/tasks/05_structs_and_enums/task_47_enums_with_data/solution/solution.rs)
-* Line-by-Line Breakdown: [`solution/explain.md`](file:///d:/rust-learning/tasks/05_structs_and_enums/task_47_enums_with_data/solution/explain.md)
+## 💡 Hints
 
+<details>
+<summary>Hint 1: choose the approach</summary>
+
+Choose tuple-like, named-field, or empty syntax to match each variant’s definition.
+
+</details>
+
+<details>
+<summary>Hint 2: connect the syntax</summary>
+
+Create a1 through a4 with `UserActivity::...`, using String::from for owned text, then print each with `{:?}`.
+
+</details>
+
+## 🔒 Solution & Explanations
+* Working Code: [`solution/solution.rs`](solution/solution.rs)
+* Line-by-Line Breakdown: [`solution/explain.md`](solution/explain.md)
+
+
+## Watch out
+
+A variant is a member of UserActivity, not a separate struct type. Its payload is accessed through a matching pattern when needed.
+
+The starter intentionally does not produce the expected output yet. Complete its TODOs before comparing results.

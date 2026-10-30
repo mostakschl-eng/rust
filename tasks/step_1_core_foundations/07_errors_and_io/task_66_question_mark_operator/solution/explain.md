@@ -29,3 +29,17 @@ fn calculate_volume(w_str: &str, h_str: &str, d_str: &str) -> Result<i32, ParseI
 2. **Readability:**
    * Code reads like standard linear execution, with error propagation handled entirely behind the scenes!
 
+
+## Reading the Result Carefully
+
+A clerk forwards the first failed form to the caller and stops processing later forms; successful forms continue down the desk.
+
+| Symbol or term | Meaning |
+|---|---|
+| `?` | extract success or return failure |
+| `Ok(...)` | wrap final success |
+| `ParseIntError` | parse failure type |
+
+The ? operator does not catch overflow or validate positive dimensions. This introductory calculator assumes small inputs whose product fits i32; real dimensions need validation and checked multiplication.
+
+The complete runnable program is in `solution.rs`; snippets above may focus on only one part. Compare its output with the example in TASK.md.

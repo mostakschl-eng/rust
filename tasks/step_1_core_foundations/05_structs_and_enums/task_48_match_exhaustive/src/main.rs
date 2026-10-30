@@ -1,41 +1,9 @@
-#[allow(dead_code)]
-enum PaymentMethod {
-    Cash,
-    CreditCard(String),
-    Crypto { wallet: String, coin: String },
-}
-
-fn process_payment(method: PaymentMethod) {
-    // TODO: Write exhaustive match on method
-    match method {
-        PaymentMethod::Cash => {
-            println!("Payment via Cash received. Receipt printed. 💵");
-        }
-        PaymentMethod::CreditCard(num) => {
-            let last_4 = &num[num.len() - 4..];
-            println!("Processing Credit Card [****{}]... Approved! 💳", last_4);
-        }
-        PaymentMethod::Crypto { wallet, coin } => {
-            println!("Broadcasting {} transfer to wallet {}... Confirmed on blockchain! ⛓️", coin, wallet);
-        }
-    }
-}
+// Task 48: Multi-Gateway Payment Terminal (Exhaustive Match)
+// Complete the TODOs; the reference answer is kept separately in solution/.
 
 fn main() {
-    println!("=== CHECKOUT PAYMENT TERMINAL ===");
-
-    println!("Payment 1:");
-    process_payment(PaymentMethod::Cash);
-
-    println!("Payment 2:");
-    process_payment(PaymentMethod::CreditCard(String::from("4111222233334242")));
-
-    println!("Payment 3:");
-    process_payment(PaymentMethod::Crypto {
-        wallet: String::from("0x7a89b"),
-        coin: String::from("BTC"),
-    });
-
-    println!("=================================");
+    // TODO 1: Define PaymentMethod with Cash, CreditCard(String), Crypto { wallet: String, coin: String }.
+    // TODO 2: Implement process_payment(method: PaymentMethod) with an arm for each variant.
+    // TODO 3: Before slicing a card, reject inputs shorter than four bytes or containing non-ASCII digits.
+    // TODO 4: Call the function for the three supplied demo methods; print only the masked card suffix.
 }
-

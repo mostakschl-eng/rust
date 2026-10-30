@@ -10,7 +10,7 @@ Requirements:
 4. Use a `while attempts_used < max_allowed` loop:
    - Increment `attempts_used += 1;`
    - Print `"Attempt {} of {}: Incorrect PIN! ❌"`
-5. After the loop exits, print `"SECURITY ALERT: Maximum attempts exceeded! Account Locked! 🔒"`
+5. After the loop exits, print `"SECURITY ALERT: Maximum attempts reached! Account Locked! 🔒"`
 
 ---
 
@@ -20,39 +20,40 @@ SECURITY SYSTEM: Monitoring login attempts...
 Attempt 1 of 3: Incorrect PIN! ❌
 Attempt 2 of 3: Incorrect PIN! ❌
 Attempt 3 of 3: Incorrect PIN! ❌
-SECURITY ALERT: Maximum attempts exceeded! Account Locked! 🔒
+SECURITY ALERT: Maximum attempts reached! Account Locked! 🔒
 ```
 
 ---
 
 ## 🛠️ How to Do This (Step-by-Step):
 
-1. Open [`src/main.rs`](file:///d:/rust-learning/tasks/03_logic_and_loops/task_28_while_loops/src/main.rs).
+1. Open [`src/main.rs`](src/main.rs).
 2. Write the `while attempts_used < max_allowed { ... }` loop.
 3. Test with:
    ```bash
-   cd tasks/03_logic_and_loops/task_28_while_loops
+   cd tasks/step_1_core_foundations/03_logic_and_loops/task_28_while_loops
    cargo run
    ```
 
 ---
 
-## 💡 Hints (Only open if you get stuck!)
+## 💡 Hints (open one at a time)
 
 <details>
-<summary><b>🔍 Hint: While loop structure</b></summary>
+<summary>Hint 1: Start with the idea</summary>
 
-```rust
-while attempts_used < max_allowed {
-    attempts_used += 1;
-    println!("Attempt {} of {}: Incorrect PIN! ❌", attempts_used, max_allowed);
-}
-```
+The condition is checked before each attempt. Increase the used count inside the body so it eventually reaches the limit.
+</details>
+
+<details>
+<summary>Hint 2: Connect it to Rust</summary>
+
+An unconditional break ends the exercise after one attempt. Let the while condition stop it at three and put the lockout message after the loop.
 </details>
 
 ---
 
 ## 🔒 Solution & Explanations
-* Working Code: [`solution/solution.rs`](file:///d:/rust-learning/tasks/03_logic_and_loops/task_28_while_loops/solution/solution.rs)
-* Line-by-Line Breakdown: [`solution/explain.md`](file:///d:/rust-learning/tasks/03_logic_and_loops/task_28_while_loops/solution/explain.md)
+* Working Code: [`solution/solution.rs`](solution/solution.rs)
+* Line-by-Line Breakdown: [`solution/explain.md`](solution/explain.md)
 

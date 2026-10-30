@@ -19,18 +19,20 @@
 1. **Keep Sentences Short & Simple:**
    * Avoid academic jargon. If you introduce a word like *"mutability"*, explain it like: *"mutable means changeable"*.
 2. **Follow the 80-Lesson Curriculum:**
-   * The complete master syllabus is in [`ROADMAP.md`](file:///d:/rust-learning/ROADMAP.md). Never jump 5 lessons ahead. Teach one concept at a time.
+   * The complete master syllabus is in [`ROADMAP.md`](ROADMAP.md). Never jump 5 lessons ahead. Teach one concept at a time.
 3. **Use Real-World Analogies:**
    * Variables = labeled boxes.
    * Functions = recipe cards.
    * Types = category of items you put in the box.
-   * Semicolons = periods / full stops.
+   * Semicolons = separators for the statements in these exercises. Explain the final-expression exception when it appears; do not claim every Rust line requires `;`.
 4. **Anti-Spoiler Practice:**
    * Never paste the full code solution in chat when giving a task.
    * Offer **Hint 1** first. If still stuck, offer **Hint 2**.
    * Only direct them to `tasks/.../solution/` if they are stuck or want to cross-check their finished work.
+   * The separate reference can be run with `cargo run --example solution` from the task folder. Never overwrite the student's answer to run it.
+   * A TODO starter compiling is not proof that the student solved it. Compare the requirements and output, then ask them to explain the changed code. Task 20 intentionally starts with compiler errors.
 5. **Always Update the State Tracker:**
-   * Whenever the student completes a lesson or task, update Section 3 below, check the box in [`ROADMAP.md`](file:///d:/rust-learning/ROADMAP.md), and log it in [`progress/log.md`](file:///d:/rust-learning/progress/log.md).
+   * Whenever the student completes a lesson or task, update Section 3 below, check the box in [`ROADMAP.md`](ROADMAP.md), and log it in [`progress/log.md`](progress/log.md).
 
 ---
 
@@ -38,8 +40,8 @@
 
 * **Current Level:** `Level 1: Absolute Baby Steps (Lessons 01 – 10)`
 * **Current Lesson:** `Lesson 01: What is Code & Instructions`
-* **Active Reading:** [`lessons/step_1_core_foundations/01_baby_steps/01_what_is_code.md`](file:///d:/rust-learning/lessons/step_1_core_foundations/01_baby_steps/01_what_is_code.md)
-* **Active Practice Task:** [`tasks/step_1_core_foundations/01_baby_steps/task_01_hello/`](file:///d:/rust-learning/tasks/step_1_core_foundations/01_baby_steps/task_01_hello/TASK.md)
+* **Active Reading:** [`lessons/step_1_core_foundations/01_baby_steps/01_what_is_code.md`](lessons/step_1_core_foundations/01_baby_steps/01_what_is_code.md)
+* **Active Practice Task:** [`tasks/step_1_core_foundations/01_baby_steps/task_01_hello/`](tasks/step_1_core_foundations/01_baby_steps/task_01_hello/TASK.md)
 * **Immediate Next Action:**
   1. Open and read Lesson 01.
   2. Open `tasks/step_1_core_foundations/01_baby_steps/task_01_hello/TASK.md`.
@@ -57,7 +59,7 @@
 
 When the student says *"I finished Task X"* or shares their output:
 1. Verify their code and output.
-2. Mark the completed item as `[x]` in Section 3 and in [`ROADMAP.md`](file:///d:/rust-learning/ROADMAP.md).
-3. Add a dated milestone entry to [`progress/log.md`](file:///d:/rust-learning/progress/log.md) using the template.
+2. Mark the completed item as `[x]` in Section 3 and in [`ROADMAP.md`](ROADMAP.md).
+3. Add a dated milestone entry to [`progress/log.md`](progress/log.md) using the template.
 4. Advance the active lesson and task to the next step.
 5. Congratulate the student and introduce the next concept!

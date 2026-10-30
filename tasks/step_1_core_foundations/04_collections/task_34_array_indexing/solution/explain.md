@@ -1,6 +1,6 @@
 # Solution Explanation: Task 34 (Array Indexing & Bounds Checking)
 
-Let's dissect how Rust provides zero-cost bounds checking to protect systems from crashes and memory corruption!
+Let's dissect how Rust provides bounds checks to prevent out-of-bounds memory access!
 
 ---
 
@@ -34,11 +34,36 @@ fn main() {
 ## 🧩 Key Takeaways
 
 1. **Direct Indexing (`codes[1]`):**
-   * Instantaneous lookups.
+   * Constant-time element lookup; a runtime bounds check may be optimized away when provably unnecessary.
    * If you try `codes[9]`, the program would crash immediately with `panic: index out of bounds`.
 2. **Crash-Free Lookups (`codes.get(index)`):**
    * Returns an `Option<&T>`:
      - `Some(&value)` when valid.
      - `None` when outside bounds.
-   * By combining `.get()` with `match`, your program will never crash from unexpected indices!
+   * By combining `.get()` with `match`, these lookups handle unexpected indices without an indexing panic. Other failures remain possible.
 
+## Everyday picture and symbols
+
+Think of checking whether a street address actually exists. The code turns that picture into explicit values and operations.
+
+| Symbol or syntax | Meaning |
+|---|---|
+| `[i]` | Index; panics if a runtime index is invalid |
+| `.get(i)` | Return an optional borrowed element |
+| `Some(code) =>` | Name and handle a found element |
+| `None =>` | Handle absence |
+
+## Common pitfall
+
+An empty collection has no last index. `.get()` handles invalid indices without indexing; it does not promise the whole application cannot crash.
+
+## Expected output
+
+```text
+=== SERVER STATUS CODE LOOKUP ===
+Direct check [Index 1]: 204
+Direct check [Index 3]: 404
+Lookup [Index 2]: Found status code: 301
+Lookup [Index 9]: ⚠️ Status code at index 9 does not exist! (Safely handled, zero crashes)
+=================================
+```

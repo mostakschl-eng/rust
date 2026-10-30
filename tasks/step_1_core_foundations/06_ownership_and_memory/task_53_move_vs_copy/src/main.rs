@@ -1,27 +1,7 @@
-// TODO 1: Implement copy_primitive(val: i32)
-fn copy_primitive(val: i32) {
-    println!("Inside copy_primitive: {}", val);
-}
-
-// TODO 2: Implement consume_string(text: String)
-fn consume_string(text: String) {
-    println!("Inside consume_string: {} (Taking full ownership)", text);
-}
+// Starter: complete the TODOs to match TASK.md.
+// The reference answer is kept separately in solution/solution.rs.
 
 fn main() {
-    println!("=== MOVE VS COPY DISPATCHER ===");
-
-    println!("[1. Testing Primitive Copy]");
-    let original_num: i32 = 500;
-    copy_primitive(original_num);
-    println!("Still alive in main:   {} (Copy trait preserved it!)", original_num);
-
-    println!("\n[2. Testing Heap Move]");
-    let parcel = String::from("Rocket Fuel");
-    consume_string(parcel);
-    // parcel is moved! We do not access it anymore.
-    println!("Parcel ownership successfully moved and cleaned up.");
-
-    println!("===============================");
+    // TODO 1: Put the integer and String into separate helper functions with the requested parameter types.
+    // TODO 2: Print the integer again after its call. The String has moved, so do not print the old binding after its call.
 }
-

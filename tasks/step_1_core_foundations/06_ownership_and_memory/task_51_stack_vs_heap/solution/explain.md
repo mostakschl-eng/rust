@@ -39,8 +39,23 @@ fn main() {
 
 1. **Stack Memory:**
    * `age`, `rating`, and `is_pro` have fixed byte sizes (`4`, `8`, and `1` bytes).
-   * They sit directly inside `main`'s stack frame.
+   * They are local values, often pictured in main's stack frame; optimization can store them in registers or remove storage.
 2. **Heap Memory:**
    * `bio` and `skill_levels` can expand or shrink dynamically.
-   * A 24-byte controller sits on the stack, while their contents (`"Rust Explorer & System Architect"` and `[85, 90, 95, 99]`) reside on the heap.
+   * A fixed-size handle (commonly 24 bytes on 64-bit targets) is local here, while the buffer contents (`"Rust Explorer & System Architect"` and `[85, 90, 95, 99]`) reside on the heap.
 
+
+## Reading the Result Carefully
+
+The local handle is a warehouse receipt; the buffer is the stored goods. Moving the receipt need not move all the goods.
+
+| Symbol or term | Meaning |
+|---|---|
+| `String` | owned UTF-8 text |
+| `Vec<T>` | growable sequence |
+| `.len()` | used length |
+| `.capacity()` | reserved space |
+
+A type is not inherently a stack type or heap type. Local storage may be optimized into registers, and a fixed-size array can be boxed.
+
+The complete runnable program is in `solution.rs`; snippets above may focus on only one part. Compare its output with the example in TASK.md.

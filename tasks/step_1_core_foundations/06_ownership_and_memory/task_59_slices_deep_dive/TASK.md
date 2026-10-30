@@ -37,18 +37,36 @@ Peak Energy:   246 units
 
 ## 🛠️ How to Do This (Step-by-Step):
 
-1. Open [`src/main.rs`](file:///d:/rust-learning/tasks/06_ownership_and_memory/task_59_slices_deep_dive/src/main.rs).
+1. Open [`src/main.rs`](src/main.rs).
 2. Write `sum_slice(data: &[i32]) -> i32`.
 3. Use range slicing `&data[start..end]`.
 4. Test:
    ```bash
-   cd tasks/06_ownership_and_memory/task_59_slices_deep_dive
+   cd tasks/step_1_core_foundations/06_ownership_and_memory/task_59_slices_deep_dive
    cargo run
    ```
 
 ---
 
 ## 🔒 Solution & Explanations
-* Working Code: [`solution/solution.rs`](file:///d:/rust-learning/tasks/06_ownership_and_memory/task_59_slices_deep_dive/solution/solution.rs)
-* Line-by-Line Breakdown: [`solution/explain.md`](file:///d:/rust-learning/tasks/06_ownership_and_memory/task_59_slices_deep_dive/solution/explain.md)
+* Working Code: [`solution/solution.rs`](solution/solution.rs)
+* Line-by-Line Breakdown: [`solution/explain.md`](solution/explain.md)
 
+
+## Hints (Open One at a Time)
+
+<details>
+<summary>Hint 1: Choose the approach</summary>
+
+Use the given ASCII boundaries for the two words, and borrow readings[2..5].
+
+</details>
+
+<details>
+<summary>Hint 2: Connect the pieces</summary>
+
+Accumulate each numeric slice item into total in sum_slice; no clone or new vector is needed.
+
+</details>
+
+**Before running:** String ranges are byte ranges and must land on UTF-8 character boundaries. For example, &"é"[0..1] panics. Out-of-bounds and reversed ranges also panic; .get(range) returns Option instead.

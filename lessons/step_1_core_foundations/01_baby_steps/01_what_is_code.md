@@ -33,8 +33,8 @@ Humans cannot write millions of ones and zeros easily. So humans invented **prog
 **Rust** is a modern, super-fast programming language created to build reliable and safe software.
 
 ### Why do people love Rust?
-1. **It is Lightning Fast:** Programs written in Rust run as fast as the physical computer hardware can go.
-2. **It Prevents Crashes:** In many other languages, a tiny mistake can crash an entire company's server. Rust checks your code thoroughly before running it and catches mistakes early.
+1. **It is Lightning Fast:** Rust can produce efficient machine code. Speed still depends on the algorithm, input, hardware, and build settings.
+2. **It Catches Many Mistakes Early:** Rust checks types and many memory errors before running. Programs can still panic, contain logic bugs, or run out of resources.
 3. **It has a Friendly Compiler:** When you make a mistake, Rust doesn't just say *"Error"*. It acts like a patient teacher and often tells you: *"Hey, you forgot a semicolon on line 3, here is how to fix it!"*
 
 ---
@@ -64,7 +64,7 @@ Let's not skip anything. Every single word and symbol on those three lines has a
 | Code Symbol | What is it called? | What does it mean in easy English? |
 |---|---|---|
 | `fn` | Function keyword | Tells Rust: *"I am creating a reusable set of instructions called a function."* |
-| `main` | Main name | The special starting name. This is the **front door** of your program. Rust always starts running here. |
+| `main` | Main name | The special starting name. This is the **front door** of your program. These executable examples start their own code here. |
 | `()` | Parentheses | Holds extra inputs if needed. Right now, it's empty because `main` doesn't need any inputs. |
 | `{` | Opening curly brace | The start of the instruction room. Everything inside `{` and `}` belongs to `main`. |
 | `println!` | Print line macro | The **loudspeaker**. It prints whatever text you give it onto the screen, then moves down to a new line. |
@@ -78,7 +78,7 @@ Let's not skip anything. Every single word and symbol on those three lines has a
 ## 5. Printing Multiple Lines
 
 What if you want to print more than one line of text?
-You simply write multiple instructions, one after another, from top to bottom. Each instruction must end with a semicolon `;`.
+You simply write multiple instructions, one after another, from top to bottom. Use semicolons after these printing statements. Not every Rust construct needs one: function definitions and many block expressions do not.
 
 ```rust
 fn main() {
@@ -133,18 +133,15 @@ Let's look at mistakes every single beginner makes, so you don't feel scared if 
 ### Mistake 1: Forgetting the Semicolon `;`
 ```rust
 fn main() {
-    println!("Hello, World!") // <-- Forgot semicolon!
+    println!("Hello, World!") // <-- Needs a semicolon before the next statement!
+    println!("Next line");
 }
 ```
-**What Rust Tells You:**
+**What Rust Tells You (wording varies by compiler version):**
 ```text
-error: expected `;`, found `}`
-  --> src/main.rs:2:30
-   |
- 2 |     println!("Hello, World!")
-   |                              ^ help: add `;` here
+error: expected `;`, found `println`
 ```
-Rust literally puts a small arrow `^` and says: `help: add ';' here`. That is why we say Rust is like a helpful teacher!
+A final `println!(...)` without a semicolon actually compiles: it produces `()`, the unit value expected by this `main`. Here the following statement makes the missing separator an error.
 
 ### Mistake 2: Using Single Quotes instead of Double Quotes
 ```rust
@@ -159,9 +156,9 @@ fn main() {
 ## 8. Summary Checklist of Lesson 01
 Before moving to your practice task, check if you understand these 4 things:
 - [x] Code is instructions given to a computer.
-- [x] Every Rust program must have a starting door called `fn main() { ... }`.
+- [x] These executable programs start their own code in `fn main() { ... }`; library crates do not need `main`.
 - [x] `println!("Your text here");` prints text to the screen.
-- [x] Every instruction statement must end with a semicolon `;`.
+- [x] Use `;` after the printing statements in these exercises.
 
 ---
 
@@ -169,7 +166,7 @@ Before moving to your practice task, check if you understand these 4 things:
 
 Now it is your turn to write this with your own hands!
 
-👉 Open **[`tasks/01_baby_steps/task_01_hello/README.md`](file:///d:/rust-learning/tasks/01_baby_steps/task_01_hello/README.md)**.
-1. Open [`tasks/01_baby_steps/task_01_hello/src/main.rs`](file:///d:/rust-learning/tasks/01_baby_steps/task_01_hello/src/main.rs).
+👉 Open **[`tasks/step_1_core_foundations/01_baby_steps/task_01_hello/README.md`](../../../tasks/step_1_core_foundations/01_baby_steps/task_01_hello/TASK.md)**.
+1. Open [`tasks/step_1_core_foundations/01_baby_steps/task_01_hello/src/main.rs`](../../../tasks/step_1_core_foundations/01_baby_steps/task_01_hello/src/main.rs).
 2. Type your greeting and your goal.
 3. Run `cargo run` in your terminal!

@@ -28,34 +28,35 @@ Final Total Due:  $45.625
 
 ## 🛠️ How to Do This (Step-by-Step):
 
-1. Open [`src/main.rs`](file:///d:/rust-learning/tasks/02_types_and_math/task_12_floating_points/src/main.rs).
+1. Open [`src/main.rs`](src/main.rs).
 2. Declare variables using `f64` decimals.
 3. Perform multiplication and subtraction.
 4. Print the receipt.
 5. Test with:
    ```bash
-   cd tasks/02_types_and_math/task_12_floating_points
+   cd tasks/step_1_core_foundations/02_types_and_math/task_12_floating_points
    cargo run
    ```
 
 ---
 
-## 💡 Hints (Only open if you get stuck!)
+## 💡 Hints (open one at a time)
 
 <details>
-<summary><b>🔍 Hint: Floats syntax</b></summary>
+<summary>Hint 1: Start with the idea</summary>
 
-```rust
-let price_per_gallon = 3.85;
-let gallons_pumped = 12.5;
-let fuel_cost = price_per_gallon * gallons_pumped;
-let final_total = fuel_cost - 2.50;
-```
+Use f64 values for both operands of the multiplication. The discount is subtracted after computing the fuel subtotal.
+</details>
+
+<details>
+<summary>Hint 2: Connect it to Rust</summary>
+
+Print the calculated variables rather than fixed answer strings. Default float display may omit trailing zeros.
 </details>
 
 ---
 
 ## 🔒 Solution & Explanations
-* Working Code: [`solution/solution.rs`](file:///d:/rust-learning/tasks/02_types_and_math/task_12_floating_points/solution/solution.rs)
-* Line-by-Line Breakdown: [`solution/explain.md`](file:///d:/rust-learning/tasks/02_types_and_math/task_12_floating_points/solution/explain.md)
+* Working Code: [`solution/solution.rs`](solution/solution.rs)
+* Line-by-Line Breakdown: [`solution/explain.md`](solution/explain.md)
 

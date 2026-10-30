@@ -40,17 +40,39 @@ Updated catalog count: 4
 
 ## 🛠️ How to Do This (Step-by-Step):
 
-1. Open [`src/main.rs`](file:///d:/rust-learning/tasks/04_collections/task_40_hashmaps/src/main.rs).
+1. Open [`src/main.rs`](src/main.rs).
 2. Follow the TODOs to insert, query with `.get()`, and add with `.entry().or_insert()`.
 3. Test:
    ```bash
-   cd tasks/04_collections/task_40_hashmaps
+   cd tasks/step_1_core_foundations/04_collections/task_40_hashmaps
    cargo run
    ```
 
 ---
 
-## 🔒 Solution & Explanations
-* Working Code: [`solution/solution.rs`](file:///d:/rust-learning/tasks/04_collections/task_40_hashmaps/solution/solution.rs)
-* Line-by-Line Breakdown: [`solution/explain.md`](file:///d:/rust-learning/tasks/04_collections/task_40_hashmaps/solution/explain.md)
+## 💡 Hints
 
+<details>
+<summary>Hint 1: choose the approach</summary>
+
+Import HashMap and insert the three initial pairs before querying them.
+
+</details>
+
+<details>
+<summary>Hint 2: connect the syntax</summary>
+
+String literals already have type `&str`; use `.get("Mango")`, handle `Some(price)` and `None`, then insert Orange through entry.
+
+</details>
+
+## 🔒 Solution & Explanations
+* Working Code: [`solution/solution.rs`](solution/solution.rs)
+* Line-by-Line Breakdown: [`solution/explain.md`](solution/explain.md)
+
+
+## Watch out
+
+HashMap iteration order is unspecified. This task prints explicit lookups and counts so its output is stable.
+
+The starter intentionally does not produce the expected output yet. Complete its TODOs before comparing results.

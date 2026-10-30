@@ -11,7 +11,7 @@ Think of a spring-loaded tray dispenser in a cafeteria:
 * **Pop:** Hungry students pick the top tray off. The stack shrinks.
 * **Inspect:** You can glance at the stack to see how many trays are left (`len()`) or check if it's completely empty (`is_empty()`).
 
-This is how vectors work: adding and removing from the end is lightning fast!
+This models adding and removing at a vector’s end. `pop()` is constant time; `push()` is constant time on average but can take longer when it reallocates.
 
 ---
 
@@ -81,7 +81,7 @@ fn main() {
 ```text
 The stack was empty! Nothing to pop.
 ```
-This is Rust's safety shield protecting you from crashes!
+The empty case is represented explicitly. This lookup does not panic merely because the vector is empty; other code can still fail.
 
 ---
 
@@ -137,6 +137,19 @@ Always ensure `index < v.len()` before calling `.remove(index)`.
 
 ---
 
+## Bounds to remember
+
+`insert(i, value)` allows `i <= len()`; a larger index panics. `remove(i)` requires `i < len()`. Both shift later elements, so they can take time proportional to the vector length. `clear()` drops elements but keeps capacity for reuse.
+
+## Symbol reading guide
+
+| Symbol or syntax | Meaning |
+|---|---|
+| `.push(x)` | Append at the end |
+| `.pop()` | Remove last element as Option<T> |
+| `.clear()` | Drop all elements but retain capacity |
+| `.is_empty()` | Check whether length is zero |
+
 ## 🎯 Next Steps
-* Ready to practice? Complete [`tasks/04_collections/task_36_vector_operations/TASK.md`](file:///d:/rust-learning/tasks/04_collections/task_36_vector_operations/TASK.md).
-* Next lesson: [Lesson 37: Iterating Over Vectors with `for` Loops](file:///d:/rust-learning/lessons/04_collections/37_vector_iteration.md).
+* Ready to practice? Complete [`tasks/step_1_core_foundations/04_collections/task_36_vector_operations/TASK.md`](../../../tasks/step_1_core_foundations/04_collections/task_36_vector_operations/TASK.md).
+* Next lesson: [Lesson 37: Iterating Over Vectors with `for` Loops](37_vector_iteration.md).

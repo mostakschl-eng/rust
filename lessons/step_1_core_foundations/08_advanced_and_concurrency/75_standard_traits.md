@@ -11,7 +11,7 @@ Mastering these 4 essential traits will make your custom types feel like first-c
 |---|---|:---:|---|
 | **`Debug`** | Developer output formatting | `{:?}` or `{:#?}` | `#[derive(Debug)]` |
 | **`Display`** | End-user clean string formatting | `{}` | Manual `impl fmt::Display` |
-| **`Clone`** | Explicit deep copying of data | `.clone()` | `#[derive(Clone)]` |
+| **`Clone`** | Explicit type-defined duplication; may share data | `.clone()` | `#[derive(Clone)]` |
 | **`Default`** | Standard default values | `Type::default()` | `#[derive(Default)]` |
 
 ---
@@ -21,7 +21,7 @@ Mastering these 4 essential traits will make your custom types feel like first-c
 * **`Debug` (`{:?}`):** Meant for **programmers**. Shows exact field names, raw types, and internal struct details for troubleshooting.
 * **`Display` (`{}`):** Meant for **end users**. Clean, beautifully formatted text.
 
-Because user-facing formatting depends on human aesthetics, Rust does **not** allow deriving `Display` automatically. You write it manually using `std::fmt`:
+Because user-facing formatting depends on human aesthetics, The standard library does **not** provide a `Display` derive macro. You write it manually using `std::fmt`:
 
 ```rust
 use std::fmt;
@@ -103,7 +103,7 @@ struct Server {
 }
 ```
 
-This single line saves you from writing over 50 lines of boilerplate code!
+Each derive generates a trait implementation using the fields. The fields must support the corresponding trait; custom semantics may require a manual implementation.
 
 ---
 
@@ -115,6 +115,20 @@ This single line saves you from writing over 50 lines of boilerplate code!
 
 ---
 
+
+## Symbols and Practical Boundaries
+
+A price tag uses customer-facing formatting; a technician label uses diagnostic detail. Factory defaults are starting values, not proof of valid configuration.
+
+| Symbol or term | Meaning |
+|---|---|
+| `{}` | Display |
+| `{:?}` | Debug |
+| `{:02}` | minimum two digits with zero padding |
+| `..Default::default()` | fill remaining fields |
+
+**Common pitfall:** Derived Default uses each field type default; sample_rate = 0 need not be valid audio configuration. Clone behavior is type-specific and can share storage; standard Rust has no Display derive.
+
 ## 🎯 Next Steps
-* Ready to practice? Complete [`tasks/08_advanced_and_concurrency/task_75_standard_traits/TASK.md`](file:///d:/rust-learning/tasks/08_advanced_and_concurrency/task_75_standard_traits/TASK.md).
-* Next lesson: [Lesson 76: Closures: Anonymous Inline Functions (`\|x\| x + 1`)](file:///d:/rust-learning/lessons/08_advanced_and_concurrency/76_closures.md).
+* Ready to practice? Complete [`tasks/step_1_core_foundations/08_advanced_and_concurrency/task_75_standard_traits/TASK.md`](../../../tasks/step_1_core_foundations/08_advanced_and_concurrency/task_75_standard_traits/TASK.md).
+* Next lesson: [Lesson 76: Closures: Anonymous Inline Functions (`\|x\| x + 1`)](76_closures.md).

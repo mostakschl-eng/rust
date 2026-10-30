@@ -1,6 +1,6 @@
 # Solution Explanation: Task 53 (Move vs Copy)
 
-Let's dissect how Rust distinguishes stack copy operations from heap ownership moves!
+Let's dissect how Rust distinguishes implicit Copy operations from ownership moves!
 
 ---
 
@@ -31,10 +31,24 @@ fn main() {
 ## 🧩 Key Takeaways
 
 1. **`i32` Implements `Copy`:**
-   * Passing `original_num` to `copy_primitive` duplicates 4 bytes onto the function's stack frame.
+   * Passing `original_num` to `copy_primitive` copies its integer value. The compiler may use registers or inline the call; this does not guarantee a copy onto a stack frame.
    * `original_num` in `main` remains untouched and 100% valid.
-2. **`String` Implements `Move`:**
-   * Passing `parcel` to `consume_string` transfers its 24-byte controller.
+2. **`String` Does Not Implement `Copy`:**
+   * Passing `parcel` to `consume_string` transfers its fixed-size handle.
    * The function's scope `{}` drops `parcel`'s heap buffer when it returns.
    * Attempting to access `parcel` in `main` afterwards would result in `error[E0382]: use of moved value`.
 
+
+## Reading the Result Carefully
+
+Copying a written number makes two notes; handing over a suitcase transfers responsibility for one suitcase.
+
+| Symbol or term | Meaning |
+|---|---|
+| `Copy` | implicit duplication permission |
+| `String` parameter` | ownership transfer |
+| `&String` | shared borrowing |
+
+No standard Move trait exists. A non-Copy struct can contain only numbers and still move; location does not decide Copy.
+
+The complete runnable program is in `solution.rs`; snippets above may focus on only one part. Compare its output with the example in TASK.md.

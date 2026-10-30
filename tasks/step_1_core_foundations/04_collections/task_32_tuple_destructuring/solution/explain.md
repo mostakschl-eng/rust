@@ -42,7 +42,7 @@ fn main() {
 ```rust
 fn calculate_stats(...) -> (i32, f64, i32)
 ```
-In many older languages, if you need a function to return 3 numbers, you have to create a custom class or pass pointers. In Rust, you simply wrap them in `(sum, avg, max)` and return them!
+The function returns one tuple value containing three results: `(sum, avg, max)`. The positions in the returned tuple must match the declared return type.
 
 ### 2. Full Destructuring:
 ```rust
@@ -59,3 +59,29 @@ let (_, _, top_score) = calculate_stats(90, 95, 100);
 ```
 We told the compiler: *"Throw away items 0 and 1; bind only item 2 to `top_score`"*. This prevents unused variable warnings!
 
+## Everyday picture and symbols
+
+Think of unpacking an exam report into total, average, and best score. The code turns that picture into explicit values and operations.
+
+| Symbol or syntax | Meaning |
+|---|---|
+| `let (a, b) = pair` | Destructure by position |
+| `_` | Ignore this position |
+| `as f64` | Convert the sum before division |
+
+## Common pitfall
+
+Divide a floating-point sum by `3.0`; integer division would lose the fraction. Scores in this exercise are 0–100, so their sum fits in i32.
+
+## Expected output
+
+```text
+=== EXAM BATCH 1 RESULTS ===
+Total Points:  255
+Average Score: 85.00
+Highest Score: 92
+
+=== EXAM BATCH 2 RESULTS ===
+Batch 2 Top Score: 100
+============================
+```

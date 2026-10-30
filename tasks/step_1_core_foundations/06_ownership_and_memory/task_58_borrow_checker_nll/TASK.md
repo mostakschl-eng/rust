@@ -33,17 +33,35 @@ Shelf Inventory: ["Health Potion", "Mana Potion", "Elixir of Life"]
 
 ## 🛠️ How to Do This (Step-by-Step):
 
-1. Open [`src/main.rs`](file:///d:/rust-learning/tasks/06_ownership_and_memory/task_58_borrow_checker_nll/src/main.rs).
+1. Open [`src/main.rs`](src/main.rs).
 2. Read from `shelf[0]`, print it, and immediately mutate `shelf.push(...)`.
 3. Test:
    ```bash
-   cd tasks/06_ownership_and_memory/task_58_borrow_checker_nll
+   cd tasks/step_1_core_foundations/06_ownership_and_memory/task_58_borrow_checker_nll
    cargo run
    ```
 
 ---
 
 ## 🔒 Solution & Explanations
-* Working Code: [`solution/solution.rs`](file:///d:/rust-learning/tasks/06_ownership_and_memory/task_58_borrow_checker_nll/solution/solution.rs)
-* Line-by-Line Breakdown: [`solution/explain.md`](file:///d:/rust-learning/tasks/06_ownership_and_memory/task_58_borrow_checker_nll/solution/explain.md)
+* Working Code: [`solution/solution.rs`](solution/solution.rs)
+* Line-by-Line Breakdown: [`solution/explain.md`](solution/explain.md)
 
+
+## Hints (Open One at a Time)
+
+<details>
+<summary>Hint 1: Choose the approach</summary>
+
+Borrow and print the first potion before changing the shelf.
+
+</details>
+
+<details>
+<summary>Hint 2: Connect the pieces</summary>
+
+Keep the last use of active_potion above shelf.push; then print the updated whole vector.
+
+</details>
+
+**Before running:** Ending a borrow is not dropping the owner. Adding a later use of active_potion after push revives the conflict.

@@ -12,6 +12,7 @@ fn main() {
     println!("Performing pre-flight safety check...");
 
     launch_sequence(95, 0);
+    // To observe the panic path instead, try launch_sequence(10, 5).
 
     println!("====================================");
 }

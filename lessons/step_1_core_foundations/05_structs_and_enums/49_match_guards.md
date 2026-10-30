@@ -8,7 +8,7 @@ What if you want to match **both the shape of the data AND a specific runtime co
 For example:
 * Match Celsius **only if** `val < 0` (Freezing!).
 * Match Celsius **only if** `val >= 100` (Boiling!).
-* Match Celsius **otherwise** (Normal room temperature).
+* Match Celsius **otherwise** (Other Celsius readings).
 
 In Rust, this superpower is called a **Match Guard**! 🛡️
 
@@ -47,11 +47,11 @@ fn describe_weather(temp: Temperature) {
         }
         // Match Guard: Celsius where degrees are boiling:
         Temperature::Celsius(c) if c >= 100 => {
-            println!("Boiling hot! ({c}°C) Water turns to steam! ♨️");
+            println!("Boiling hot! ({c}°C) Above the usual sea-level boiling point. ♨️");
         }
         // Fallback for regular Celsius:
         Temperature::Celsius(c) => {
-            println!("Mild weather: {c}°C. Enjoy your day! ☀️");
+            println!("Other Celsius reading: {c}°C.");
         }
         // Catch-all for Fahrenheit:
         Temperature::Fahrenheit(f) => {
@@ -71,8 +71,8 @@ fn main() {
 ### 📋 Expected Terminal Output:
 ```text
 Freezing cold! (-10°C) Bundle up! ❄️
-Mild weather: 25°C. Enjoy your day! ☀️
-Boiling hot! (105°C) Water turns to steam! ♨️
+Other Celsius reading: 25°C.
+Boiling hot! (105°C) Above the usual sea-level boiling point. ♨️
 Fahrenheit reading: 72°F
 ```
 
@@ -137,6 +137,18 @@ match x {
 
 ---
 
+## Pitfall: overlapping guards
+
+Only the first matching arm whose guard is true runs. If both a broad condition and a narrow condition match, put the more specific rule first when it deserves priority. A failed guard continues to later arms; it does not mean the whole match failed.
+
+## Symbol reading guide
+
+| Symbol or syntax | Meaning |
+|---|---|
+| `Pattern if condition =>` | Match arm with an extra condition |
+| `u64::from(xp)` | Widen a u32 before arithmetic |
+| `_` | Wildcard covering remaining values |
+
 ## 🎯 Next Steps
-* Ready to practice? Complete [`tasks/05_structs_and_enums/task_49_match_guards/TASK.md`](file:///d:/rust-learning/tasks/05_structs_and_enums/task_49_match_guards/TASK.md).
-* Next lesson: [Lesson 50: Concise Matching: `if let` and `let else`](file:///d:/rust-learning/lessons/05_structs_and_enums/50_if_let_and_let_else.md).
+* Ready to practice? Complete [`tasks/step_1_core_foundations/05_structs_and_enums/task_49_match_guards/TASK.md`](../../../tasks/step_1_core_foundations/05_structs_and_enums/task_49_match_guards/TASK.md).
+* Next lesson: [Lesson 50: Concise Matching: `if let` and `let else`](50_if_let_and_let_else.md).

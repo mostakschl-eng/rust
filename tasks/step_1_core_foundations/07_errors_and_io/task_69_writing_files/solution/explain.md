@@ -44,3 +44,18 @@ fn main() -> std::io::Result<()> {
 3. **`writeln!` macro:**
    * Like `println!`, but writes directly into an open file buffer with an automatic trailing newline.
 
+
+## Reading the Result Carefully
+
+Replacing a report discards the previous pages; appending a log adds a new page without erasing the old entries.
+
+| Symbol or term | Meaning |
+|---|---|
+| `fs::write` | create or truncate file |
+| `.append(true)` | append writes |
+| `writeln!` | formatted write plus newline |
+| `?` | propagate failure |
+
+fs::write overwrites existing contents and is not an atomic backup or durable transaction. It creates the file, not missing parent directories. Each run of this demo resets its named log.
+
+The complete runnable program is in `solution.rs`; snippets above may focus on only one part. Compare its output with the example in TASK.md.

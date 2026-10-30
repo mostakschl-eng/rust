@@ -14,7 +14,7 @@ Today, we will master two very clever Rust concepts:
 Imagine values in the universe that can **never, ever change**:
 * The number of hours in a day: always `24`.
 * The speed of light: always `299,792,458` meters/second.
-* The freezing temperature of water: always `0` Celsius.
+* A chosen game rule, such as `MAX_PLAYERS = 4`. Constants describe values fixed by your program; physical measurements can depend on conditions.
 
 In Rust, you can declare permanent values using the keyword **`const`**:
 
@@ -29,7 +29,7 @@ fn main() {
 ```
 
 ### The 3 Rules of `const`:
-1. **ALL UPPERCASE:** Rust conventions require constants to be written in ALL CAPS with underscores (e.g. `MAX_POINTS`, `TAX_RATE`).
+1. **UPPERCASE BY CONVENTION:** Rust convention recommends constants be written in ALL CAPS with underscores (e.g. `MAX_POINTS`, `TAX_RATE`).
 2. **Type is Mandatory:** You **must** specify the type (e.g. `: u32` or `: f64`). Rust will not guess for constants.
 3. **Never `mut`:** You can never write `const mut`. Constants are permanently fixed across the entire life of the program.
 
@@ -67,17 +67,17 @@ Third x is: 12
 
 ---
 
-## 3. Why is Shadowing Better than `mut`?
+## 3. When is Shadowing Useful?
 
-Here is the genius secret of shadowing: **You can change the data type!**
+Shadowing creates a new binding, which may have a different type. Use `mut` when you intend to update the same binding repeatedly; neither tool is always better.
 
 Imagine a user types their age on a website: `"25"` (this is text).
-You want to convert it into a number `25` so you can do math.
+You want a number `25` so you can do math. The examples below replace the text with a literal; they do not parse the text. Parsing comes later.
 
-* **Without shadowing:** You have to invent two ugly names:
+* **Without shadowing:** You have to invent two descriptive names:
   ```rust
   let age_text = "25";
-  let age_number = 25; // Awkward!
+  let age_number = 25; // Useful when both meanings matter!
   ```
 * **With shadowing:** You reuse the clean, natural name `age`:
   ```rust
@@ -92,9 +92,9 @@ You want to convert it into a number `25` so you can do math.
 | Feature | `let x = 5;` | `let mut x = 5;` | `const X: i32 = 5;` |
 |---|---|---|---|
 | Can it change value? | ❌ No | ✅ Yes (`x = 10;`) | ❌ Never |
-| Can it change data type? | Only via shadowing | ❌ No | ❌ Never |
+| Can reassignment change its type? | No; shadowing creates a new binding | No; it too can be shadowed by a new binding | No |
 | Must you write the type? | Optional | Optional | ✅ Mandatory (`: i32`) |
-| Where can it be placed? | Inside functions | Inside functions | Anywhere (even global) |
+| Where can these declarations be placed? | In a block, such as a function body | In a block, such as a function body | Module scope or block scope |
 
 ---
 
@@ -111,7 +111,18 @@ You want to convert it into a number `25` so you can do math.
 
 ## 🛠️ Ready for Practice!
 
-👉 Open **[`tasks/01_baby_steps/task_10_constants_shadowing/TASK.md`](file:///d:/rust-learning/tasks/01_baby_steps/task_10_constants_shadowing/TASK.md)**.
+👉 Open **[`tasks/step_1_core_foundations/01_baby_steps/task_10_constants_shadowing/TASK.md`](../../../tasks/step_1_core_foundations/01_baby_steps/task_10_constants_shadowing/TASK.md)**.
 1. Read the task requirements.
 2. Build a store pricing & tax calculator using `const` and variable shadowing.
 3. Run `cargo run` and celebrate finishing Level 1!
+
+## Common pitfalls and limits
+
+Constants require a constant expression, not arbitrary runtime input. Uppercase naming is a convention, not a syntax requirement. Reusing a name via shadowing does not mutate the earlier binding.
+
+## Expected output of the constant example
+
+```text
+Hours in a day: 24
+Pi: 3.14159
+```

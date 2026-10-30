@@ -18,7 +18,7 @@ enum Option<T> {
 }
 ```
 
-* **`<T>`** is a generic placeholder (which we will study in Level 8). It means `Option` can wrap **any type in existence**!
+* **`<T>`** is a generic placeholder (which we will study in Level 8). It means `Option` can wrap different concrete value types.
   * `Option<i32>`: An integer that might exist (`Some(42)`) or might not (`None`).
   * `Option<String>`: A string that might exist (`Some("Alice")`) or might not (`None`).
   * `Option<bool>`: A boolean that might exist or might not.
@@ -122,7 +122,7 @@ Why? Because `y` might be `None`!
 Rust **forces you to convert or unwrap the `Option<i32>` into an `i32`** before you can do math with it.  
 This makes accidental null arithmetic bugs physically impossible!
 
-In Lesson 63, we will learn all the safe and graceful ways to unwrap options!
+In Lesson 63, we will learn several ways to handle options, including methods that can panic.
 
 ---
 
@@ -135,6 +135,19 @@ In Lesson 63, we will learn all the safe and graceful ways to unwrap options!
 
 ---
 
+
+## Symbols and Practical Boundaries
+
+A lookup desk returns either a record envelope or an explicit no-record slip. A zero score is a record, not a missing record.
+
+| Symbol or term | Meaning |
+|---|---|
+| `Some(0)` | present zero |
+| `None` | no value |
+| `.is_some()` | boolean presence check |
+
+**Common pitfall:** Testing is_some does not extract the number. Use match to bind the inner value; an unknown player should not become a zero score.
+
 ## 🎯 Next Steps
-* Ready to practice? Complete [`tasks/07_errors_and_io/task_62_option_enum/TASK.md`](file:///d:/rust-learning/tasks/07_errors_and_io/task_62_option_enum/TASK.md).
-* Next lesson: [Lesson 63: Safe Option Unwrapping (`unwrap_or`, `expect`)](file:///d:/rust-learning/lessons/07_errors_and_io/63_safe_option_unwrapping.md).
+* Ready to practice? Complete [`tasks/step_1_core_foundations/07_errors_and_io/task_62_option_enum/TASK.md`](../../../tasks/step_1_core_foundations/07_errors_and_io/task_62_option_enum/TASK.md).
+* Next lesson: [Lesson 63: Safe Option Unwrapping (`unwrap_or`, `expect`)](63_safe_option_unwrapping.md).

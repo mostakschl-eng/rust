@@ -1,40 +1,9 @@
-#[allow(dead_code)]
-enum QuestReward {
-    XP(u32),
-    Gold(u32),
-    Item(String),
-}
-
-fn evaluate_reward(reward: QuestReward, is_double_xp: bool) {
-    // TODO: Write match with match guards
-    match reward {
-        QuestReward::XP(xp) if is_double_xp => {
-            println!("⚡ Double XP Event Active! Awarded {} XP!", xp * 2);
-        }
-        QuestReward::XP(xp) if xp >= 1000 => {
-            println!("🏆 Epic Quest Milestone! Awarded {} XP!", xp);
-        }
-        QuestReward::XP(xp) => {
-            println!("⭐ Standard Quest: Awarded {} XP.", xp);
-        }
-        QuestReward::Gold(g) => {
-            println!("🪙 Pouch Collected: Earned {} gold coins!", g);
-        }
-        QuestReward::Item(item) => {
-            println!("⚔️ Loot Acquired: {}!", item);
-        }
-    }
-}
+// Task 49: Quest Reward Evaluation Engine (Match Guards)
+// Complete the TODOs; the reference answer is kept separately in solution/.
 
 fn main() {
-    println!("=== RPG QUEST REWARD ENGINE ===");
-
-    evaluate_reward(QuestReward::XP(500), true);
-    evaluate_reward(QuestReward::XP(1200), false);
-    evaluate_reward(QuestReward::XP(300), false);
-    evaluate_reward(QuestReward::Gold(250), false);
-    evaluate_reward(QuestReward::Item(String::from("Excalibur")), false);
-
-    println!("===============================");
+    // TODO 1: Define QuestReward with XP(u32), Gold(u32), Item(String).
+    // TODO 2: Implement evaluate_reward(reward, is_double_xp) with ordered guarded XP arms.
+    // TODO 3: Widen xp to u64 before doubling; include an unguarded XP fallback.
+    // TODO 4: Call it with all five sample rewards from TASK.md.
 }
-

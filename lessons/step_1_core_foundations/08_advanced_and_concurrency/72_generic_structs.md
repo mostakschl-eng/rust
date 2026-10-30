@@ -126,6 +126,20 @@ Notice how `distance_from_origin()` is only compiled for `Point<f64>`! An intege
 
 ---
 
+
+## Symbols and Practical Boundaries
+
+A two-slot organizer can hold two kinds of item, but each individual organizer has fixed slot types once constructed.
+
+| Symbol or term | Meaning |
+|---|---|
+| `Coordinate<T, U>` | two field types |
+| `impl<T, U>` | generic implementation |
+| `Self` | current concrete type |
+| `&T` | borrow field |
+
+**Common pitfall:** T and U may be the same or different types. One generic instance does not change its field types at runtime; a borrowed getter cannot outlive the container.
+
 ## 🎯 Next Steps
-* Ready to practice? Complete [`tasks/08_advanced_and_concurrency/task_72_generic_structs/TASK.md`](file:///d:/rust-learning/tasks/08_advanced_and_concurrency/task_72_generic_structs/TASK.md).
-* Next lesson: [Lesson 73: Traits: Defining Shared Behavior](file:///d:/rust-learning/lessons/08_advanced_and_concurrency/73_traits_basics.md).
+* Ready to practice? Complete [`tasks/step_1_core_foundations/08_advanced_and_concurrency/task_72_generic_structs/TASK.md`](../../../tasks/step_1_core_foundations/08_advanced_and_concurrency/task_72_generic_structs/TASK.md).
+* Next lesson: [Lesson 73: Traits: Defining Shared Behavior](73_traits_basics.md).

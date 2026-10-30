@@ -43,19 +43,41 @@ Student {
 
 ## 🛠️ How to Do This (Step-by-Step):
 
-1. Open [`src/main.rs`](file:///d:/rust-learning/tasks/05_structs_and_enums/task_41_named_structs/src/main.rs).
+1. Open [`src/main.rs`](src/main.rs).
 2. Define the `Student` struct with `#[derive(Debug)]`.
 3. Instantiate mutable `student1`.
 4. Modify `student1.gpa = 3.85;`.
 5. Test:
    ```bash
-   cd tasks/05_structs_and_enums/task_41_named_structs
+   cd tasks/step_1_core_foundations/05_structs_and_enums/task_41_named_structs
    cargo run
    ```
 
 ---
 
-## 🔒 Solution & Explanations
-* Working Code: [`solution/solution.rs`](file:///d:/rust-learning/tasks/05_structs_and_enums/task_41_named_structs/solution/solution.rs)
-* Line-by-Line Breakdown: [`solution/explain.md`](file:///d:/rust-learning/tasks/05_structs_and_enums/task_41_named_structs/solution/explain.md)
+## 💡 Hints
 
+<details>
+<summary>Hint 1: choose the approach</summary>
+
+Define all four field types before creating student1.
+
+</details>
+
+<details>
+<summary>Hint 2: connect the syntax</summary>
+
+Declare `let mut student1`, supply every field, update only gpa, and use `{:#?}` for the final multiline record.
+
+</details>
+
+## 🔒 Solution & Explanations
+* Working Code: [`solution/solution.rs`](solution/solution.rs)
+* Line-by-Line Breakdown: [`solution/explain.md`](solution/explain.md)
+
+
+## Watch out
+
+A struct field type validates representation, not all meaning: u8 permits grades outside the school’s actual range.
+
+The starter intentionally does not produce the expected output yet. Complete its TODOs before comparing results.

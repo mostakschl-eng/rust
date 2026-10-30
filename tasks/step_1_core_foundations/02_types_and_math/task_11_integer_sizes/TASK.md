@@ -26,33 +26,34 @@ World Population:    8000000000
 
 ## 🛠️ How to Do This (Step-by-Step):
 
-1. Open [`src/main.rs`](file:///d:/rust-learning/tasks/02_types_and_math/task_11_integer_sizes/src/main.rs).
+1. Open [`src/main.rs`](src/main.rs).
 2. Declare variables with explicit type annotations: `let var_name: Type = value;`.
 3. Print each variable.
 4. Test with:
    ```bash
-   cd tasks/02_types_and_math/task_11_integer_sizes
+   cd tasks/step_1_core_foundations/02_types_and_math/task_11_integer_sizes
    cargo run
    ```
 
 ---
 
-## 💡 Hints (Only open if you get stuck!)
+## 💡 Hints (open one at a time)
 
 <details>
-<summary><b>🔍 Hint: Explicit type syntax</b></summary>
+<summary>Hint 1: Start with the idea</summary>
 
-```rust
-let freezer_temp: i8 = -18;
-let battery_percentage: u8 = 95;
-let active_players: u32 = 1_250_000;
-let world_population: i64 = 8_000_000_000;
-```
+Choose signed storage for a possible minus sign. Check that the maximum value fits the chosen number of bits.
+</details>
+
+<details>
+<summary>Hint 2: Connect it to Rust</summary>
+
+Use a colon after each variable name to state the required type. Numeric underscores are only for source readability.
 </details>
 
 ---
 
 ## 🔒 Solution & Explanations
-* Working Code: [`solution/solution.rs`](file:///d:/rust-learning/tasks/02_types_and_math/task_11_integer_sizes/solution/solution.rs)
-* Line-by-Line Breakdown: [`solution/explain.md`](file:///d:/rust-learning/tasks/02_types_and_math/task_11_integer_sizes/solution/explain.md)
+* Working Code: [`solution/solution.rs`](solution/solution.rs)
+* Line-by-Line Breakdown: [`solution/explain.md`](solution/explain.md)
 

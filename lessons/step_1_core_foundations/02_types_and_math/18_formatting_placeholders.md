@@ -3,7 +3,7 @@
 Welcome to Lesson 18! 
 
 In Lesson 12, when we calculated gas prices, the output had three or four decimals: `$45.625`.
-In the real world, cash registers only show **2 decimal places**: `$45.63`!
+In the real world, cash registers only show **2 decimal places**: `$45.62`!
 
 Today, we will learn how to make our terminal outputs look like **professional receipts and dashboards** using Rust's formatting specifiers!
 
@@ -14,7 +14,7 @@ Today, we will learn how to make our terminal outputs look like **professional r
 Look at the magic inside the curly braces: `{:.2}`
 
 * The period `.` means: *"Look after the decimal point."*
-* The number `2` means: *"Show exactly 2 digits, and round properly!"*
+* The number `2` means: *"Show exactly 2 digits, and round the displayed value!"*
 
 ```rust
 fn main() {
@@ -23,7 +23,7 @@ fn main() {
 
     println!("Full Pi:      {}", pi);
     println!("Rounded Pi:   {:.2}", pi);    // 3.14
-    println!("Rounded Gas:  ${:.2}", gas_total); // $45.63 (rounds up!)
+    println!("Rounded Gas:  ${:.2}", gas_total); // $45.62 (exact halfway case: ties to even)
 }
 ```
 
@@ -31,7 +31,7 @@ fn main() {
 ```text
 Full Pi:      3.14159265359
 Rounded Pi:   3.14
-Rounded Gas:  $45.63
+Rounded Gas:  $45.62
 ```
 
 ---
@@ -113,7 +113,13 @@ fn main() {
 
 ## 🛠️ Ready for Practice!
 
-👉 Open **[`tasks/02_types_and_math/task_18_number_formatting/TASK.md`](file:///d:/rust-learning/tasks/02_types_and_math/task_18_number_formatting/TASK.md)**.
+👉 Open **[`tasks/step_1_core_foundations/02_types_and_math/task_18_number_formatting/TASK.md`](../../../tasks/step_1_core_foundations/02_types_and_math/task_18_number_formatting/TASK.md)**.
 1. Read the task requirements.
 2. Build an invoice table with neatly aligned columns and 2-decimal rounded currency.
 3. Run `cargo run` and admire your formatted invoice!
+
+## Common pitfalls and limits
+
+Formatting rounds the displayed value without changing the stored float. Rust uses ties-to-even at exact halfway values: 45.625 displays as 45.62 with two decimals. Width is a minimum and does not truncate longer text.
+
+Reference: [Rust formatting parameters and precision](https://doc.rust-lang.org/std/fmt/).

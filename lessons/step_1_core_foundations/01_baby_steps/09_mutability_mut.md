@@ -23,7 +23,7 @@ Imagine two kinds of storage boxes in your house:
 
 ## 2. The Big Rust Surprise: Variables Are Locked by Default!
 
-In most other programming languages (like Python or JavaScript), every variable is like an open desk drawer. Anyone can change it anywhere. 
+A binding controls how a name may be used in its scope. In Rust, `let` prevents reassignment unless you request mutability with `mut`. Other languages have their own binding rules too. 
 
 In giant applications with millions of lines of code, someone accidentally changing a number in one corner of the program can crash the whole system!
 
@@ -122,7 +122,11 @@ fn main() {
 
 ## 🛠️ Ready for Practice!
 
-👉 Open **[`tasks/01_baby_steps/task_09_mutability_score/TASK.md`](file:///d:/rust-learning/tasks/01_baby_steps/task_09_mutability_score/TASK.md)**.
+👉 Open **[`tasks/step_1_core_foundations/01_baby_steps/task_09_mutability_score/TASK.md`](../../../tasks/step_1_core_foundations/01_baby_steps/task_09_mutability_score/TASK.md)**.
 1. Read the task requirements.
 2. Build an arcade score tracker that starts at 0, gains points across 3 rounds, and displays the final score.
 3. Run `cargo run` and watch the score climb!
+
+## Common pitfalls and limits
+
+mut permits reassignment; it does not change a binding into a different type. Use a new let binding for shadowing.

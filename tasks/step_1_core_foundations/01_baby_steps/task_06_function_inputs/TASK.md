@@ -6,7 +6,7 @@ Write a Rust program with a reusable function named **`print_item()`** that acce
 2. `quantity: i32` (Number of items bought, e.g. `4`)
 3. `price: i32` (Price per item in dollars, e.g. `2`)
 
-Inside `print_item()`, print a formatted line showing all three pieces of data using `{}` placeholders.
+Inside `print_item()`, print a formatted line showing all three pieces of data using placeholders. To match the aligned sample, `{:<10}` is a preview of Lesson 18: left-align text in a field at least 10 characters wide.
 In `main()`, call `print_item()` for at least **three different items**!
 
 ---
@@ -24,32 +24,34 @@ Item: Coffee Mug | Qty: 3 | Price: $12
 
 ## 🛠️ How to Do This (Step-by-Step):
 
-1. Open [`src/main.rs`](file:///d:/rust-learning/tasks/01_baby_steps/task_06_function_inputs/src/main.rs).
+1. Open [`src/main.rs`](src/main.rs).
 2. Define `fn print_item(item_name: &str, quantity: i32, price: i32) { ... }`.
 3. In `main()`, call `print_item("Laptop", 1, 900);` and other items.
 4. Test with:
    ```bash
-   cd tasks/01_baby_steps/task_06_function_inputs
+   cd tasks/step_1_core_foundations/01_baby_steps/task_06_function_inputs
    cargo run
    ```
 
 ---
 
-## 💡 Hints (Only open if you get stuck!)
+## 💡 Hints (open one at a time)
 
 <details>
-<summary><b>🔍 Hint: Function signature</b></summary>
+<summary>Hint 1: Start with the idea</summary>
 
-```rust
-fn print_item(item_name: &str, quantity: i32, price: i32) {
-    println!("Item: {} | Qty: {} | Price: ${}", item_name, quantity, price);
-}
-```
+Give each parameter a name and type; text and whole numbers need different types.
+</details>
+
+<details>
+<summary>Hint 2: Connect it to Rust</summary>
+
+Inside the helper, match each placeholder to its argument. Call it three times with the receipt values; left alignment can pad the names.
 </details>
 
 ---
 
 ## 🔒 Solution & Explanations
-* Working Code: [`solution/solution.rs`](file:///d:/rust-learning/tasks/01_baby_steps/task_06_function_inputs/solution/solution.rs)
-* Line-by-Line Breakdown: [`solution/explain.md`](file:///d:/rust-learning/tasks/01_baby_steps/task_06_function_inputs/solution/explain.md)
+* Working Code: [`solution/solution.rs`](solution/solution.rs)
+* Line-by-Line Breakdown: [`solution/explain.md`](solution/explain.md)
 

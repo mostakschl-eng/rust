@@ -28,19 +28,41 @@ Cart successfully cleared! 🛒
 
 ## 🛠️ How to Do This (Step-by-Step):
 
-1. Open [`src/main.rs`](file:///d:/rust-learning/tasks/04_collections/task_36_vector_operations/src/main.rs).
+1. Open [`src/main.rs`](src/main.rs).
 2. Call `cart.push(...)`.
 3. Use `match cart.pop() { Some(item) => ..., None => ... }`.
 4. Call `cart.clear()` and check `cart.is_empty()`.
 5. Test:
    ```bash
-   cd tasks/04_collections/task_36_vector_operations
+   cd tasks/step_1_core_foundations/04_collections/task_36_vector_operations
    cargo run
    ```
 
 ---
 
-## 🔒 Solution & Explanations
-* Working Code: [`solution/solution.rs`](file:///d:/rust-learning/tasks/04_collections/task_36_vector_operations/solution/solution.rs)
-* Line-by-Line Breakdown: [`solution/explain.md`](file:///d:/rust-learning/tasks/04_collections/task_36_vector_operations/solution/explain.md)
+## 💡 Hints
 
+<details>
+<summary>Hint 1: choose the approach</summary>
+
+Push the items in order; popping removes Milk.
+
+</details>
+
+<details>
+<summary>Hint 2: connect the syntax</summary>
+
+Handle both `Some(item)` and `None`, then clear and check `is_empty()`.
+
+</details>
+
+## 🔒 Solution & Explanations
+* Working Code: [`solution/solution.rs`](solution/solution.rs)
+* Line-by-Line Breakdown: [`solution/explain.md`](solution/explain.md)
+
+
+## Watch out
+
+`pop()` removes an owned value; `get()` only borrows. Clearing does not necessarily release the allocation.
+
+The starter intentionally does not produce the expected output yet. Complete its TODOs before comparing results.

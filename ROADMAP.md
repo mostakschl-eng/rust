@@ -1,6 +1,6 @@
 # Master Rust Zero-to-Hero Roadmap (80 Lessons: Child to Adult)
 
-Welcome to the **complete, definitive Rust learning curriculum**. This roadmap takes you from an absolute beginner who has never written code ("child level") all the way to building professional, fast, multi-threaded software ("adult developer level").
+This roadmap introduces Rust through 80 core lessons across eight levels. Start with no programming experience, practise each idea, and build toward independent projects. Completing a lesson checklist is not a guarantee of professional readiness.
 
 Every lesson has:
 1. **Plain-English Explanation** with real-world analogies.
@@ -8,6 +8,8 @@ Every lesson has:
 3. **Anti-Spoiler Solution** in a separate folder if you get stuck.
 
 Check off `[x]` as you complete each lesson!
+
+The milestone names below are optional project ideas, not additional task packages. Attempt interactive milestones after Lesson 67, which teaches keyboard input. Complete the matching numbered tasks first; you do not need to invent an untaught feature to move to the next level.
 
 ---
 
@@ -33,11 +35,11 @@ Check off `[x]` as you complete each lesson!
 *Numbers, fractions, true/false, math calculations, and reading compiler messages.*
 
 - [ ] **Lesson 11:** [Whole Numbers (Integers: i32, u32, bit sizes)](lessons/step_1_core_foundations/02_types_and_math/11_integers.md) — *Understanding integer sizes (i8, i16, i32, i64, u8) and positive vs signed numbers*
-- [ ] **Lesson 12:** [Decimal Numbers (Floating Points: f32, f64)](lessons/step_1_core_foundations/02_types_and_math/12_floats.md) — *Working with fractions, money, and scientific decimals*
+- [ ] **Lesson 12:** [Decimal Numbers (Floating Points: f32, f64)](lessons/step_1_core_foundations/02_types_and_math/12_floats.md) — *Working with approximate fractional measurements and scientific decimals*
 - [ ] **Lesson 13:** [True or False (Booleans: bool)](lessons/step_1_core_foundations/02_types_and_math/13_booleans.md) — *Making binary choices with true and false*
 - [ ] **Lesson 14:** [Single Letters & Emojis (Characters: char)](lessons/step_1_core_foundations/02_types_and_math/14_characters.md) — *Unicode characters, single quotes, and emojis in Rust*
 - [ ] **Lesson 15:** [Math in Rust (Operators: +, -, *, /, %)](lessons/step_1_core_foundations/02_types_and_math/15_math_operators.md) — *Addition, subtraction, multiplication, integer division, and modulus remainder*
-- [ ] **Lesson 16:** [Type Casting & Explicit Conversion (as i32, as f64)](lessons/step_1_core_foundations/02_types_and_math/16_type_casting.md) — *Converting numbers between integer and decimal safely*
+- [ ] **Lesson 16:** [Type Casting & Explicit Conversion (as i32, as f64)](lessons/step_1_core_foundations/02_types_and_math/16_type_casting.md) — *Converting numbers explicitly and understanding possible information loss*
 - [ ] **Lesson 17:** [Scope & Code Blocks ({ let x = 5; })](lessons/step_1_core_foundations/02_types_and_math/17_scope_and_blocks.md) — *Where variables live and die inside curly braces {}*
 - [ ] **Lesson 18:** [Formatted Output & Placeholders ({}, {:.2})](lessons/step_1_core_foundations/02_types_and_math/18_formatting_placeholders.md) — *Controlling decimal precision and multi-variable printing*
 - [ ] **Lesson 19:** [Debug Printing ({:?} and {:#?})](lessons/step_1_core_foundations/02_types_and_math/19_debug_printing.md) — *Printing complex data on screen for debugging*
@@ -157,7 +159,7 @@ Check off `[x]` as you complete each lesson!
 
 ## 🚀 Beyond 80 Lessons: The Production & Career Roadmap
 
-Congratulations on finishing the core language! Once you master the 80 lessons, you are ready to transition from a student to a production-ready software engineer.
+After practising the 80 lessons, use the following outline to choose further study and projects. Steps 2–4 are planned outlines; their complete lessons and task packages have not been written yet.
 
 ### 🗺️ The 4-Stage Journey Beyond Core Rust
 ```text
@@ -179,10 +181,10 @@ Congratulations on finishing the core language! Once you master the 80 lessons, 
 ---
 
 ### 📦 Stage 1: The 3 "Universal" Crates (crates.io)
-Every real-world Rust project uses external packages called **crates**. These 3 are mandatory in almost every company:
+Many Rust projects use external packages called **crates**. These are common choices for the needs listed below; a small program can use only Rust's standard library:
 
 - [ ] **`serde` & `serde_json`:** Serialization & Deserialization. Automatically converts JSON from web APIs into Rust structs and back in a single line.
-- [ ] **`tokio`:** The industry-standard asynchronous runtime. Powers `async`/`await` so a single server can handle 100,000+ simultaneous connections with low memory.
+- [ ] **`tokio`:** An asynchronous runtime often used for network services. Learn `async`/`await` and task scheduling; actual capacity depends on the workload and available resources.
 - [ ] **`anyhow` & `thiserror`:** Idiomatic production error handling for application development and reusable libraries.
 
 ---
@@ -232,7 +234,7 @@ To prove your skills to employers and the open-source community, build and publi
 
 - [ ] **`cargo clippy`:** Run Rust's automated linter on all projects to enforce idiomatic style.
 - [ ] **`cargo fmt`:** Auto-format all code to official community standards.
-- [ ] **Unit & Integration Testing:** Write automated tests using `#[cfg(test)]` and `#[test]` to guarantee zero regressions.
+- [ ] **Unit & Integration Testing:** Write automated tests using `#[cfg(test)]` and `#[test]` to catch regressions in the cases you cover. No test suite guarantees that every bug is caught.
 - [ ] **GitHub Actions (CI/CD):** Create a `.github/workflows/ci.yml` that automatically runs `cargo check`, `cargo test`, and `cargo clippy` on every git push.
 
 ---

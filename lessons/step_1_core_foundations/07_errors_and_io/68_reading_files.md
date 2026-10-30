@@ -1,6 +1,6 @@
 # Lesson 68: Reading Files from Disk (`std::fs::read_to_string`)
 
-When your computer shuts down, everything in RAM (variables, vectors, integers) disappears forever.  
+Ordinary program memory is not persistent storage; save data to files if it must survive a program exit or reboot.  
 To build software that survives reboots, we must read and write data to the **Hard Drive / SSD**! 💾
 
 In Rust, reading files from disk is handled by the **`std::fs` (File System)** module.  
@@ -54,7 +54,7 @@ fn main() {
 
 ## 3. Reading Line-by-Line with `.lines()`
 
-Once you have read the file contents into a `String`, you can iterate through it line by line:
+Once you have read the whole file into a `String`, `.lines()` iterates over that in-memory text; it is not streaming file I/O. The fallback below is demonstration data, used only when explicitly appropriate:
 
 ```rust
 use std::fs;
@@ -84,7 +84,7 @@ Server #3: 10.0.0.5
 ## 4. Reading Raw Binary Files: `fs::read`
 
 What if you are reading an image (`.png`), an audio file (`.mp3`), or an executable binary rather than plain text?  
-Plain text requires UTF-8 formatting. For raw binary files, use **`fs::read()`**:
+Rust `String` requires valid UTF-8; text files can use other encodings, and `read_to_string` returns an error for them. For raw binary files, use **`fs::read()`**:
 * `fs::read("image.png") -> Result<Vec<u8>, std::io::Error>`
 * Returns a vector of raw bytes (`Vec<u8>`)!
 
@@ -98,6 +98,19 @@ Plain text requires UTF-8 formatting. For raw binary files, use **`fs::read()`**
 
 ---
 
+
+## Symbols and Practical Boundaries
+
+A filing clerk can read a folder only after it was successfully created. Do not report a new report if saving the sample failed.
+
+| Symbol or term | Meaning |
+|---|---|
+| `fs::read_to_string` | load UTF-8 file |
+| `.lines()` | in-memory line iterator |
+| `.split_whitespace()` | word-like tokens |
+
+**Common pitfall:** The mission text has 3 lines and 8 whitespace-separated words. A trailing newline does not add a lines() item. Error wording differs by OS; relative paths use the process working directory.
+
 ## 🎯 Next Steps
-* Ready to practice? Complete [`tasks/07_errors_and_io/task_68_reading_files/TASK.md`](file:///d:/rust-learning/tasks/07_errors_and_io/task_68_reading_files/TASK.md).
-* Next lesson: [Lesson 69: Writing Data to Files (`std::fs::write`)](file:///d:/rust-learning/lessons/07_errors_and_io/69_writing_files.md).
+* Ready to practice? Complete [`tasks/step_1_core_foundations/07_errors_and_io/task_68_reading_files/TASK.md`](../../../tasks/step_1_core_foundations/07_errors_and_io/task_68_reading_files/TASK.md).
+* Next lesson: [Lesson 69: Writing Data to Files (`std::fs::write`)](69_writing_files.md).

@@ -15,9 +15,9 @@ Imagine you have a kitchen blender.
 * If you give it **Mangoes**, it makes **Mango Juice**.
 
 The blender machine is the **Function**.  
-The fruits you drop inside the blender are called **Parameters** (or **Arguments**).
+The named slots on the recipe are **parameters**; the actual fruits you supply are **arguments**.
 
-> **A Parameter** is an input you pass into a function so it can work with different data!
+> **A parameter** names an input in a function definition; an **argument** is a value supplied when calling it.
 
 ---
 
@@ -56,7 +56,7 @@ Look closely at the parentheses: `fn greet_user(name: &str)`
 |---|---|
 | `name` | The name of the input variable inside the function. |
 | `:` (Colon) | Tells Rust: *"Here is the type of data this input must be."* |
-| `&str` | Pronounced **"string slice"**. In Rust, this means: **Text**. |
+| `&str` | Pronounced **"string slice"**. It is a borrowed view of UTF-8 text; string literals such as `"Rahim"` can be passed here. |
 
 In Rust, you **must always tell the function what type of data to expect**. 
 If a function expects text, you cannot give it a number by mistake. Rust guards against bugs before your code even runs!
@@ -96,7 +96,7 @@ Player: Sarah	Score: 250 points
 show_player_score("Rahim", "one hundred"); // Error! Expected a number (i32), got text!
 ```
 * **What Rust says:** `error: mismatched types: expected 'i32', found '&str'`.
-* **Why this is awesome:** In other languages (like Python or JavaScript), passing the wrong type might crash the program while running in front of a real customer. In Rust, the compiler catches it instantly before you run it!
+* Rust checks this parameter type before running. A type-correct call can still contain a logic mistake, such as passing the wrong score.
 
 ---
 
@@ -111,7 +111,7 @@ show_player_score("Rahim", "one hundred"); // Error! Expected a number (i32), go
 
 ## 🛠️ Ready for Practice!
 
-👉 Open **[`tasks/01_baby_steps/task_06_function_inputs/TASK.md`](file:///d:/rust-learning/tasks/01_baby_steps/task_06_function_inputs/TASK.md)**.
+👉 Open **[`tasks/step_1_core_foundations/01_baby_steps/task_06_function_inputs/TASK.md`](../../../tasks/step_1_core_foundations/01_baby_steps/task_06_function_inputs/TASK.md)**.
 1. Read the task requirements.
 2. Build a product receipt printer function that takes item name, quantity, and price.
 3. Run `cargo run` and test with different products!

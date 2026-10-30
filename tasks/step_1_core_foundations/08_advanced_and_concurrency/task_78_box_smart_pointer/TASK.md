@@ -33,17 +33,35 @@ Constructed Linked List: Cons(10, Cons(20, Cons(30, Nil)))
 
 ## 🛠️ How to Do This (Step-by-Step):
 
-1. Open [`src/main.rs`](file:///d:/rust-learning/tasks/08_advanced_and_concurrency/task_78_box_smart_pointer/src/main.rs).
+1. Open [`src/main.rs`](src/main.rs).
 2. Wrap nested `List` instances in `Box::new(...)`.
 3. Run:
    ```bash
-   cd tasks/08_advanced_and_concurrency/task_78_box_smart_pointer
+   cd tasks/step_1_core_foundations/08_advanced_and_concurrency/task_78_box_smart_pointer
    cargo run
    ```
 
 ---
 
 ## 🔒 Solution & Explanations
-* Working Code: [`solution/solution.rs`](file:///d:/rust-learning/tasks/08_advanced_and_concurrency/task_78_box_smart_pointer/solution/solution.rs)
-* Line-by-Line Breakdown: [`solution/explain.md`](file:///d:/rust-learning/tasks/08_advanced_and_concurrency/task_78_box_smart_pointer/solution/explain.md)
+* Working Code: [`solution/solution.rs`](solution/solution.rs)
+* Line-by-Line Breakdown: [`solution/explain.md`](solution/explain.md)
 
+
+## Hints (Open One at a Time)
+
+<details>
+<summary>Hint 1: Choose the approach</summary>
+
+Define List with Box<List> for the recursive tail, not a direct List field.
+
+</details>
+
+<details>
+<summary>Hint 2: Connect the pieces</summary>
+
+Build from the final Nil outward, wrapping each tail in Box::new; dereference the independent boxed integer to print its value.
+
+</details>
+
+**Before running:** Do not add field widths and assume the enum is 12 bytes. Tags, alignment, padding, target, and layout choices affect size. Sized Box handles are pointer-sized; unsized boxes also carry metadata.

@@ -49,3 +49,32 @@ fn main() {
    * Pairs each element with its sequential index starting at `0`.
    * Adding `1` (`idx + 1`) gives user-friendly 1-based numbering!
 
+## Everyday picture and symbols
+
+Think of a cashier reading prices, applying a discount, then numbering the receipt. The code turns that picture into explicit values and operations.
+
+| Symbol or syntax | Meaning |
+|---|---|
+| `&prices` | Shared borrow for reading |
+| `&mut prices` | Exclusive borrow for editing |
+| `*price` | Value behind a reference |
+| `.enumerate()` | Pair each item with a zero-based index |
+
+## Common pitfall
+
+Multiplying by 0.90 keeps 90% of the price, a 10% discount. f64 models prices for practice; real accounting needs exact units and an explicit rounding policy.
+
+## Expected output
+
+```text
+=== INVOICE & DISCOUNT ENGINE ===
+Original Total: $187.49
+
+Applying 10% holiday discount to all items...
+=== DISCOUNTED RECEIPT ===
+Item #1: $10.80
+Item #2: $40.95
+Item #3: $8.99
+Item #4: $108.00
+=================================
+```

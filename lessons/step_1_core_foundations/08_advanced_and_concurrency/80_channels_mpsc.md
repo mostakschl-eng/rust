@@ -6,9 +6,9 @@ In Lesson 79, we spawned independent threads.
 Now comes the ultimate multi-threading challenge:  
 > **How do multiple threads safely talk to each other and pass data back and forth?**
 
-In languages like C++ or Java, threads communicate by modifying shared memory with locks (`mutex`). This frequently leads to deadlocks, race conditions, and corrupted data.
+Rust, C++, and Java all support shared-state synchronization and message passing. Channels make ownership transfer convenient; mutexes are useful when shared state is the better fit.
 
-The Go programming language coined a famous philosophy that Rust adopts with mathematical perfection:
+A useful message-passing philosophy is:
 > *"Do not communicate by sharing memory; instead, share memory by communicating."*
 
 In Rust, this is achieved using **Channels (`mpsc`)**! 📡📬
@@ -110,7 +110,7 @@ fn main() {
 }
 ```
 
-### 📋 Expected Terminal Output:
+### 📋 One Possible Terminal Output:
 ```text
 === TELEMETRY CONCENTRATOR ===
 Received: Data from Sensor A
@@ -129,13 +129,29 @@ Reflect on how far you have traveled:
 * **Level 4:** You mastered tuples, arrays, growable vectors, string slices, and hash maps.
 * **Level 5:** You designed custom architectures with structs, enums, methods, and match expressions.
 * **Level 6:** You conquered Rust's most revered core: the Stack, Heap, Move semantics, Borrowing, and Lifetimes!
-* **Level 7:** You eliminated null with `Option`, errors with `Result`, `?`, and built real file systems and modules.
-* **Level 8:** You mastered Generics, Traits, Closures, Functional Iterators, Smart Pointers, and Multi-Threaded Concurrency!
+* **Level 7:** You represented missing values with `Option`, handled errors with `Result` and `?`, and practiced file I/O and modules.
+* **Level 8:** You practiced Generics, Traits, Closures, Iterators, Smart Pointers, and Concurrency. These foundations grow stronger with projects and review.
 
 **You are now a true Rustacean! 🦀 Welcome to the elite world of systems engineering!**
 
 ---
 
+
+## Symbols and Practical Boundaries
+
+Several sensor stations post parcels into one mailbox. The recipient finishes only when every sender is gone and all queued parcels have been read.
+
+| Symbol or term | Meaning |
+|---|---|
+| `mpsc` | multiple producers, single consumer |
+| `tx.clone()` | another sender for the same channel |
+| `.send()` | transfer message |
+| `for msg in rx` | receive until disconnected |
+
+**Common pitfall:** The iterator ends after all senders drop AND queued messages drain. send fails if the receiver is gone; recv fails when disconnected and empty. Keeping a sender alive can block forever; ordering across producers varies.
+
 ## 🎯 Next Steps
-* Complete the final milestone task: [`tasks/08_advanced_and_concurrency/task_80_channels_mpsc/TASK.md`](file:///d:/rust-learning/tasks/08_advanced_and_concurrency/task_80_channels_mpsc/TASK.md).
-* Review [`ROADMAP.md`](file:///d:/rust-learning/ROADMAP.md) and [`progress/log.md`](file:///d:/rust-learning/progress/log.md) to celebrate your 80-lesson graduation!
+* Complete the final milestone task: [`tasks/step_1_core_foundations/08_advanced_and_concurrency/task_80_channels_mpsc/TASK.md`](../../../tasks/step_1_core_foundations/08_advanced_and_concurrency/task_80_channels_mpsc/TASK.md).
+* Review [`ROADMAP.md`](../../../ROADMAP.md) and [`progress/log.md`](../../../progress/log.md) to celebrate your 80-lesson graduation!
+
+Further reading: [Channel documentation](https://doc.rust-lang.org/std/sync/mpsc/index.html).

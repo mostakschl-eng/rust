@@ -7,7 +7,7 @@ Welcome to your personal learning diary! Whenever you finish a lesson or task, y
 ## 📌 Current State Snapshot (Quick View)
 * **Current Level:** `Level 1: Absolute Baby Steps`
 * **Current Lesson:** `Lesson 01: What is Code & Instructions`
-* **Active Task:** [`tasks/step_1_core_foundations/01_baby_steps/task_01_hello/`](file:///d:/rust-learning/tasks/step_1_core_foundations/01_baby_steps/task_01_hello/TASK.md)
+* **Active Task:** [`tasks/step_1_core_foundations/01_baby_steps/task_01_hello/`](../tasks/step_1_core_foundations/01_baby_steps/task_01_hello/TASK.md)
 * **Status:** 🟢 In Progress
 
 ---

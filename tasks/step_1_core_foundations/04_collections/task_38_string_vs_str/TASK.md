@@ -24,18 +24,40 @@ Write a Rust program demonstrating the conversion and passing of text between `&
 
 ## 🛠️ How to Do This (Step-by-Step):
 
-1. Open [`src/main.rs`](file:///d:/rust-learning/tasks/04_collections/task_38_string_vs_str/src/main.rs).
+1. Open [`src/main.rs`](src/main.rs).
 2. Implement `print_badge(role: &str, code: &str)`.
 3. In `main()`, create the `&str` and owned `String`, mutate the `String`, and pass `&badge_code`.
 4. Test:
    ```bash
-   cd tasks/04_collections/task_38_string_vs_str
+   cd tasks/step_1_core_foundations/04_collections/task_38_string_vs_str
    cargo run
    ```
 
 ---
 
-## 🔒 Solution & Explanations
-* Working Code: [`solution/solution.rs`](file:///d:/rust-learning/tasks/04_collections/task_38_string_vs_str/solution/solution.rs)
-* Line-by-Line Breakdown: [`solution/explain.md`](file:///d:/rust-learning/tasks/04_collections/task_38_string_vs_str/solution/explain.md)
+## 💡 Hints
 
+<details>
+<summary>Hint 1: choose the approach</summary>
+
+The helper only reads text, so its parameters can both be `&str`.
+
+</details>
+
+<details>
+<summary>Hint 2: connect the syntax</summary>
+
+Build the owned code with `push` and `push_str`, then pass `role_slice` and `&badge_code`.
+
+</details>
+
+## 🔒 Solution & Explanations
+* Working Code: [`solution/solution.rs`](solution/solution.rs)
+* Line-by-Line Breakdown: [`solution/explain.md`](solution/explain.md)
+
+
+## Watch out
+
+Borrowing a String as &str does not copy its bytes or transfer ownership. The owner must remain alive while the view is used.
+
+The starter intentionally does not produce the expected output yet. Complete its TODOs before comparing results.

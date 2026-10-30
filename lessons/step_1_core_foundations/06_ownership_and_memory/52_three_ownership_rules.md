@@ -1,8 +1,8 @@
 # Lesson 52: The Three Sacred Rules of Rust Ownership
 
-In Lesson 51, we learned that dynamic data like `String` lives on the **Heap**, while its controller lives on the **Stack**.
+A `String` owns a growable heap buffer through a fixed-size handle. A local handle often lives on the stack, but may also be stored elsewhere.
 
-How does Rust ensure that heap memory is freed at the exact right millisecond—**without a garbage collector and without crashes**?
+How does Rust decide who is responsible for cleanup without a tracing garbage collector?
 
 Everything in Rust boils down to **Three Sacred Rules of Ownership**. Memorize these three rules, and Rust will become your closest ally! 📜
 
@@ -21,7 +21,7 @@ Let's dissect each rule with simple everyday life examples!
 ## 2. Rule 1: Every Value Has an Owner
 
 In Rust, variables aren't just floating around randomly in the universe.  
-Every piece of data is strictly **owned** by a variable binding:
+An owner can be a variable, a struct field, or another container. Start with a variable binding:
 
 ```rust
 fn main() {
@@ -45,7 +45,7 @@ Imagine you own a physical paperback book:
   * You cannot open the pages and read it anymore because it is in Karim's backpack!
 
 In Rust:
-If you assign a heap-allocated variable to a new variable, ownership is **MOVED**:
+Assigning a value whose type does not implement `Copy` transfers ownership. Here the `String` moves:
 
 ```rust
 fn main() {
@@ -81,7 +81,7 @@ fn main() {
 
     // 💥 The moment the closing brace } is hit:
     // Rust automatically calls a special function called `drop`.
-    // The heap memory used by 'secret' is returned to the OS immediately!
+    // The buffer owned by secret is released to the allocator; it need not return to the OS immediately.
 
     // println!("{}", secret); 
     // ❌ COMPILER ERROR: cannot find value `secret` in this scope
@@ -94,7 +94,7 @@ Program started.
 Inside scope: SuperSecretPassword
 ```
 
-No memory leaks, no garbage collector pauses, no manual `free()` calls! Everything is deterministic.
+For this example, cleanup happens at a predictable scope boundary. Safe Rust still allows deliberate leaks, and destructors do not run on process abort or forced termination. Dropping text does not securely erase its old bytes.
 
 ---
 
@@ -111,14 +111,27 @@ No memory leaks, no garbage collector pauses, no manual `free()` calls! Everythi
 ---
 
 ## 6. Quick Recap Checklist
-- [x] **Rule 1:** Every value has a designated owner variable.
+- [x] **Rule 1:** Every value has an owner; owners include variables, fields, and containers.
 - [x] **Rule 2:** There is only ONE owner at any given time.
-- [x] **Rule 3:** When the owner's scope `{}` ends, Rust automatically deallocates the value with `drop`.
-- [x] Passing a heap value to another variable transfers ownership (a **Move**).
+- [x] **Rule 3:** An owned value is normally dropped when its owner leaves scope; cleanup depends on its type.
+- [x] Assigning or passing a non-`Copy` value by value transfers ownership (a **Move**).
 - [x] The moved-from variable becomes invalid and unusable.
 
 ---
 
+
+## Symbols and Practical Boundaries
+
+A relay trophy has one responsible holder at a time. A loan lets someone inspect it without becoming the holder.
+
+| Symbol or term | Meaning |
+|---|---|
+| `{ ... }` | block scope |
+| `let next = original` | move for non-Copy values |
+| `drop(value)` | consume and drop early |
+
+**Common pitfall:** A moved value is not an empty value. Drop releases a String buffer to its allocator, not necessarily to the OS, and does not erase secrets.
+
 ## 🎯 Next Steps
-* Ready to practice? Complete [`tasks/06_ownership_and_memory/task_52_three_ownership_rules/TASK.md`](file:///d:/rust-learning/tasks/06_ownership_and_memory/task_52_three_ownership_rules/TASK.md).
-* Next lesson: [Lesson 53: Variable Moves vs Primitive Copies](file:///d:/rust-learning/lessons/06_ownership_and_memory/53_move_vs_copy.md).
+* Ready to practice? Complete [`tasks/step_1_core_foundations/06_ownership_and_memory/task_52_three_ownership_rules/TASK.md`](../../../tasks/step_1_core_foundations/06_ownership_and_memory/task_52_three_ownership_rules/TASK.md).
+* Next lesson: [Lesson 53: Variable Moves vs Primitive Copies](53_move_vs_copy.md).

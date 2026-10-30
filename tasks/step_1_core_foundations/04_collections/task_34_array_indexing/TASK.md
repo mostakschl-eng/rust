@@ -27,18 +27,45 @@ Lookup [Index 9]: ⚠️ Status code at index 9 does not exist! (Safely handled,
 
 ## 🛠️ How to Do This (Step-by-Step):
 
-1. Open [`src/main.rs`](file:///d:/rust-learning/tasks/04_collections/task_34_array_indexing/src/main.rs).
+1. Open [`src/main.rs`](src/main.rs).
 2. Access index 1 and 3 using `codes[1]` and `codes[3]`.
 3. Use `match codes.get(2)` and `match codes.get(9)`.
 4. Test:
    ```bash
-   cd tasks/04_collections/task_34_array_indexing
+   cd tasks/step_1_core_foundations/04_collections/task_34_array_indexing
    cargo run
    ```
 
 ---
 
+## 💡 Hints
+
+<details>
+<summary>Hint 1: choose the approach</summary>
+
+Use direct indexing only for the known-valid positions 1 and 3.
+
+</details>
+
+<details>
+<summary>Hint 2: connect the syntax</summary>
+
+For each `.get(...)`, write a `match` with both `Some(code)` and `None` arms.
+
+</details>
+
 ## 🔒 Solution & Explanations
-* Working Code: [`solution/solution.rs`](file:///d:/rust-learning/tasks/04_collections/task_34_array_indexing/solution/solution.rs)
-* Line-by-Line Breakdown: [`solution/explain.md`](file:///d:/rust-learning/tasks/04_collections/task_34_array_indexing/solution/explain.md)
+* Working Code: [`solution/solution.rs`](solution/solution.rs)
+* Line-by-Line Breakdown: [`solution/explain.md`](solution/explain.md)
+
+
+## Watch out
+
+An empty collection has no last index. `.get()` handles invalid indices without indexing; it does not promise the whole application cannot crash.
+
+The starter intentionally does not produce the expected output yet. Complete its TODOs before comparing results.
+
+## Small prerequisite bridge: optional results and matching
+
+Think of `Option<T>` as a parcel that either contains a value (`Some(value)`) or is empty (`None`). Here `.get(i)` returns `Option<&T>`: it borrows an element instead of copying or moving it. `Some(value)` is a **pattern** that gives the borrowed element the local name `value`; it is not a new lookup. `match` chooses one arm and must handle both possibilities. `=>` separates a pattern from its action. Lessons 46–50 develop enums and matching fully.
 

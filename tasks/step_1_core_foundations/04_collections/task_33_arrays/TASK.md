@@ -25,18 +25,40 @@ Sensor Check: [1, 1, 1, 1, 1]
 
 ## 🛠️ How to Do This (Step-by-Step):
 
-1. Open [`src/main.rs`](file:///d:/rust-learning/tasks/04_collections/task_33_arrays/src/main.rs).
+1. Open [`src/main.rs`](src/main.rs).
 2. Declare the two arrays and the repeated array.
 3. Access index `0` and index `4`.
 4. Test:
    ```bash
-   cd tasks/04_collections/task_33_arrays
+   cd tasks/step_1_core_foundations/04_collections/task_33_arrays
    cargo run
    ```
 
 ---
 
-## 🔒 Solution & Explanations
-* Working Code: [`solution/solution.rs`](file:///d:/rust-learning/tasks/04_collections/task_33_arrays/solution/solution.rs)
-* Line-by-Line Breakdown: [`solution/explain.md`](file:///d:/rust-learning/tasks/04_collections/task_33_arrays/solution/explain.md)
+## 💡 Hints
 
+<details>
+<summary>Hint 1: choose the approach</summary>
+
+Each array has five elements, so both types include `; 5`.
+
+</details>
+
+<details>
+<summary>Hint 2: connect the syntax</summary>
+
+Monday is index 0 and Friday is index 4. `[1; 5]` repeats a value; `[1, 5]` has only two items.
+
+</details>
+
+## 🔒 Solution & Explanations
+* Working Code: [`solution/solution.rs`](solution/solution.rs)
+* Line-by-Line Breakdown: [`solution/explain.md`](solution/explain.md)
+
+
+## Watch out
+
+Array length is part of its type; it does not mean arrays must live on the stack.
+
+The starter intentionally does not produce the expected output yet. Complete its TODOs before comparing results.

@@ -6,10 +6,14 @@
    Adding `mut` satisfies error `E0384` (*cannot assign twice to immutable variable*).
 
 2. **`(prescription_count as f64) * price_per_pill;`:**
-   Explicit casting satisfies error `E0308` (*mismatched types: cannot multiply integer by float*).
+   Explicit casting satisfies the unsupported integer-by-float multiplication diagnostic (normally `E0277`).
 
 3. **`println!("Doctor Credentials: {:?}", doctor_badge);`:**
    Using debug formatting `{:?}` satisfies error `E0277` (*`(&str, i32)` cannot be formatted with the default formatter*).
 
 Congratulations on completing all 20 lessons and tasks across Level 1 and Level 2!
 
+
+## Precision note
+
+This is a small arithmetic/formatting exercise. Binary floats approximate many decimal amounts; display formatting does not make the stored number exact. Real money calculations need a defined rounding policy and an appropriate representation, such as integer minor units.

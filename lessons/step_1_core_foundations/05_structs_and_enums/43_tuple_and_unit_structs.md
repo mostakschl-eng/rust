@@ -87,7 +87,7 @@ fn main() {
     // calculate_orbit(mountain_height); // ❌ Caught at compile time!
 }
 ```
-This single Rust feature prevents multi-million dollar calculation blunders (like the famous NASA Mars Climate Orbiter crash)!
+Distinct types can catch unit mix-ups at compile time when functions require them; correct unit conversions still need to be implemented.
 
 ---
 
@@ -106,7 +106,7 @@ fn main() {
 ```
 
 ### Why would you ever want a struct with no data?
-Unit-like structs are used when you need to implement a **behavior (Trait)**, but you don't need to store any state! We will use them heavily in Level 8 when exploring Traits and Markers.
+Unit-like structs are used when you need to implement a **behavior (Trait)**, but you don't need to store any state! Traits are covered later; for now, a unit-like struct gives a name to a value with no fields.
 
 ---
 
@@ -128,6 +128,25 @@ Unit-like structs are used when you need to implement a **behavior (Trait)**, bu
 
 ---
 
+## Expected output of the first complete example
+
+```text
+Painting screen with RGB: (0, 0, 0)
+```
+
+## Pitfall: a type name is not automatic validation
+
+`Meters(f64)` keeps meters separate from feet, but it still accepts negative or non-finite numbers unless you add rules. Likewise, constructing a marker named `SecurityKey` does not authenticate anybody. Its value has size zero; references and containers holding it can still take space.
+
+## Symbol reading guide
+
+| Symbol or syntax | Meaning |
+|---|---|
+| `struct Color(u8, u8, u8);` | Define a tuple struct |
+| `Color(...)` | Construct that named type |
+| `let Point3D(x, y, z)` | Destructure its fields |
+| `struct SecurityKey;` | Define a fieldless marker |
+
 ## 🎯 Next Steps
-* Ready to practice? Complete [`tasks/05_structs_and_enums/task_43_tuple_and_unit_structs/TASK.md`](file:///d:/rust-learning/tasks/05_structs_and_enums/task_43_tuple_and_unit_structs/TASK.md).
-* Next lesson: [Lesson 44: Methods: Attaching Functions to Structs (`impl`, `&self`)](file:///d:/rust-learning/lessons/05_structs_and_enums/44_struct_methods.md).
+* Ready to practice? Complete [`tasks/step_1_core_foundations/05_structs_and_enums/task_43_tuple_and_unit_structs/TASK.md`](../../../tasks/step_1_core_foundations/05_structs_and_enums/task_43_tuple_and_unit_structs/TASK.md).
+* Next lesson: [Lesson 44: Methods: Attaching Functions to Structs (`impl`, `&self`)](44_struct_methods.md).

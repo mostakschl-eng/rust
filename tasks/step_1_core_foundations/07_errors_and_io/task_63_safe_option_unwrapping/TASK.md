@@ -34,17 +34,35 @@ Security Cert:     CERT_SHA256_ROOT_OK (Verified via expect)
 
 ## 🛠️ How to Do This (Step-by-Step):
 
-1. Open [`src/main.rs`](file:///d:/rust-learning/tasks/07_errors_and_io/task_63_safe_option_unwrapping/src/main.rs).
+1. Open [`src/main.rs`](src/main.rs).
 2. Use `.unwrap_or()`, `.unwrap_or_else()`, and `.expect()`.
 3. Test:
    ```bash
-   cd tasks/07_errors_and_io/task_63_safe_option_unwrapping
+   cd tasks/step_1_core_foundations/07_errors_and_io/task_63_safe_option_unwrapping
    cargo run
    ```
 
 ---
 
 ## 🔒 Solution & Explanations
-* Working Code: [`solution/solution.rs`](file:///d:/rust-learning/tasks/07_errors_and_io/task_63_safe_option_unwrapping/solution/solution.rs)
-* Line-by-Line Breakdown: [`solution/explain.md`](file:///d:/rust-learning/tasks/07_errors_and_io/task_63_safe_option_unwrapping/solution/explain.md)
+* Working Code: [`solution/solution.rs`](solution/solution.rs)
+* Line-by-Line Breakdown: [`solution/explain.md`](solution/explain.md)
 
+
+## Hints (Open One at a Time)
+
+<details>
+<summary>Hint 1: Choose the approach</summary>
+
+Use an eager theme value and a zero-argument closure for the lazy port value.
+
+</details>
+
+<details>
+<summary>Hint 2: Connect the pieces</summary>
+
+Apply expect only to the supplied invariant Some certificate, and explain that None would panic.
+
+</details>
+
+**Before running:** expect is a presence assertion, not certificate verification. This exercise uses a fixed Some value; real external certificate errors need deliberate error handling.

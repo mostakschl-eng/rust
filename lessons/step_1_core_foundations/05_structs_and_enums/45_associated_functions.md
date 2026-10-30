@@ -22,7 +22,7 @@ Think about buying a new car:
   * The factory constructs and hands you a brand-new car!
 
 In Rust:
-> An **Associated Function** is a function defined inside an `impl` block that does **NOT** take `self`.  
+> An **associated function** belongs to a type (or trait). A function with a `self` receiver is also an associated function, specifically a **method**. Here we compare methods with associated functions that do **not** take `self`.  
 > Because it has no `self`, it is associated with the **Type itself**, not a specific instance!
 
 ---
@@ -125,7 +125,7 @@ Square:    Rectangle { width: 25, height: 25 }
 Remember back in Lesson 35 and 38 when we wrote:
 ```rust
 let s = String::from("hello");
-let v = Vec::new();
+let v: Vec<i32> = Vec::new();
 ```
 Now you know what they actually are!
 * `String::from` is an **associated function** on the `String` type!
@@ -138,7 +138,7 @@ Now you know what they actually are!
 
 | Feature | Method | Associated Function |
 |---|---|---|
-| **First Parameter** | `&self`, `&mut self`, or `self` | None |
+| **Receiver** | `&self`, `&mut self`, or `self` | No `self` receiver; ordinary parameters are allowed |
 | **How to Call** | `instance.method()` | `Type::function()` |
 | **Needs an Object?** | Yes, runs on existing instance | No, runs on the type itself |
 | **Typical Purpose** | Reading or modifying state | Creating new objects (`new`, `from`, `default`) |
@@ -153,6 +153,19 @@ Now you know what they actually are!
 
 ---
 
+## Pitfall: `new` has no built-in magic
+
+`new` is an ordinary name chosen by convention; you write its body and validation yourself. Associated functions may have several parameters. `Self` names the type inside its implementation; lowercase `self` is the current receiver. Methods can also be called with type syntax, for example `Player::display_status(&player1)`.
+
+## Symbol reading guide
+
+| Symbol or syntax | Meaning |
+|---|---|
+| `Self` | The type being implemented |
+| `self` | A specific receiver value |
+| `Server::new(...)` | Call a function without a receiver |
+| `server.url()` | Call a method on a receiver |
+
 ## 🎯 Next Steps
-* Ready to practice? Complete [`tasks/05_structs_and_enums/task_45_associated_functions/TASK.md`](file:///d:/rust-learning/tasks/05_structs_and_enums/task_45_associated_functions/TASK.md).
-* Next lesson: [Lesson 46: Enums: Representing Fixed Choices](file:///d:/rust-learning/lessons/05_structs_and_enums/46_enums_basics.md).
+* Ready to practice? Complete [`tasks/step_1_core_foundations/05_structs_and_enums/task_45_associated_functions/TASK.md`](../../../tasks/step_1_core_foundations/05_structs_and_enums/task_45_associated_functions/TASK.md).
+* Next lesson: [Lesson 46: Enums: Representing Fixed Choices](46_enums_basics.md).

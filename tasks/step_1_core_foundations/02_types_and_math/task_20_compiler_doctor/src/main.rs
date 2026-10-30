@@ -10,15 +10,15 @@
 fn main() {
     println!("=== COMPILER DOCTOR: PATIENT CURED ===");
 
-    // BUG 1: Fix mutability here:
-    let mut prescription_count = 1;
+    // TODO: BUG 1: Fix mutability here:
+    let prescription_count = 1;
     println!("Initial Prescription: {}", prescription_count);
     prescription_count = 3;
 
     let price_per_pill: f64 = 1.50;
 
-    // BUG 2: Fix type multiplication with `as f64`:
-    let total_cost = (prescription_count as f64) * price_per_pill;
+    // TODO: BUG 2: Fix type multiplication with `as f64`:
+    let total_cost = prescription_count * price_per_pill;
 
     let doctor_badge = ("Dr. Rahim", 101);
 
@@ -26,8 +26,8 @@ fn main() {
     println!("Price Per Pill:     ${:.2}", price_per_pill);
     println!("Total Medicine:     ${:.2}", total_cost);
 
-    // BUG 3: Fix tuple printing with `{:?}`:
-    println!("Doctor Credentials: {:?}", doctor_badge);
+    // TODO: BUG 3: Fix tuple printing with `{:?}`:
+    println!("Doctor Credentials: {}", doctor_badge);
     println!("Status:             Healthy & Compiling!");
     println!("======================================");
 }

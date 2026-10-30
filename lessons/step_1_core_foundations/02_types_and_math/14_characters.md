@@ -3,7 +3,7 @@
 Welcome to Lesson 14! 
 
 In Lesson 01, we saw full sentences like `"Hello, World!"` wrapped in double quotes.
-In Rust, there is a special, ultra-fast primitive type dedicated to holding **exactly one single character**: the **`char`** type.
+In Rust, there is a primitive type dedicated to holding **exactly one Unicode scalar value**: the **`char`** type.
 
 ---
 
@@ -11,7 +11,7 @@ In Rust, there is a special, ultra-fast primitive type dedicated to holding **ex
 
 This is the rule every programmer must memorize:
 
-* **Single Quotes `'A'`:** Only for a **single `char`** (one single letter, digit, or emoji).
+* **Single Quotes `'A'`:** Only for a **single `char`** (for example, a letter, digit, or a single-scalar emoji such as `🦀`).
 * **Double Quotes `"Hello"`:** For **Strings** (words, sentences, multiple characters).
 
 If you put two letters in single quotes `'AB'`, Rust will immediately throw a compiler error!
@@ -20,11 +20,10 @@ If you put two letters in single quotes `'AB'`, Rust will immediately throw a co
 
 ## 2. Rust's `char` is 4 Bytes (Full Unicode Support)
 
-In older programming languages (like C), a character was only 1 byte (ASCII), which could only hold English letters.
-Rust was built for the modern global internet!
+A Rust `char` stores one Unicode scalar value. This is different from a byte and from a complete symbol as a reader sees it.
 
 > In Rust, every `char` is **4 bytes** in size (a Unicode Scalar Value).  
-> This means a Rust `char` can hold **any character in any language on Earth, plus emojis**!
+> Some visible letters and emojis contain multiple scalar values. For example, `"❤️"` and `"🇧🇩"` need strings; they cannot each fit into one `char`.
 
 Look at this amazing code:
 
@@ -73,15 +72,24 @@ let letters: char = 'ABC'; // ❌ ERROR!
 ---
 
 ## 4. Summary Checklist
-- [x] `char` holds exactly one single character.
+- [x] `char` holds exactly one Unicode scalar value, not necessarily a complete visible character.
 - [x] Always use single quotes `' '` for `char`.
-- [x] Rust's `char` is 4 bytes and supports any global language and emojis!
+- [x] Rust's `char` is 4 bytes; strings hold sequences of scalar values encoded as UTF-8.
 
 ---
 
 ## 🛠️ Ready for Practice!
 
-👉 Open **[`tasks/02_types_and_math/task_14_char_and_emojis/TASK.md`](file:///d:/rust-learning/tasks/02_types_and_math/task_14_char_and_emojis/TASK.md)**.
+👉 Open **[`tasks/step_1_core_foundations/02_types_and_math/task_14_char_and_emojis/TASK.md`](../../../tasks/step_1_core_foundations/02_types_and_math/task_14_char_and_emojis/TASK.md)**.
 1. Read the task requirements.
 2. Build an international greeting badge using single `char` variables and emojis.
 3. Run `cargo run` and see your Unicode badge!
+
+## Symbol reference
+
+| Symbol | Meaning |
+|---|---|
+| `'A'` | A char literal: one Unicode scalar |
+| `"A"` | A borrowed string literal |
+
+Reference: [Rust char representation](https://doc.rust-lang.org/std/primitive.char.html).

@@ -1,25 +1,27 @@
+use std::io;
+
 fn parse_terminal_input(raw: &str) -> (String, u32) {
     let clean = raw.trim();
-    let parts: Vec<&str> = clean.split_whitespace().collect();
-
-    let name = parts.get(0).copied().unwrap_or("Guest").to_string();
-    let age = parts.get(1).and_then(|s| s.parse::<u32>().ok()).unwrap_or(18);
-
+    let mut parts = clean.split_whitespace();
+    let name = parts.next().unwrap_or("Guest").to_string();
+    let age = parts.next().and_then(|s| s.parse::<u32>().ok()).unwrap_or(18);
     (name, age)
 }
 
-fn main() {
+fn main() -> io::Result<()> {
+    assert_eq!(parse_terminal_input("  Tanvir 22\r\n"), ("Tanvir".to_string(), 22));
+    assert_eq!(parse_terminal_input(""), ("Guest".to_string(), 18));
+    assert_eq!(parse_terminal_input("Maya invalid"), ("Maya".to_string(), 18));
+    assert_eq!(parse_terminal_input("Maya -1"), ("Maya".to_string(), 18));
+    assert_eq!(parse_terminal_input("Maya 4294967296"), ("Maya".to_string(), 18));
+
     println!("=== TERMINAL INPUT SANITIZER ===");
-
-    let raw_input = "  Tanvir 22\r\n";
-    println!("Raw Input:       {:?}", raw_input);
-
-    let (name, age) = parse_terminal_input(raw_input);
-
+    println!("Enter a name and age (for example: Tanvir 22):");
+    let mut raw_input = String::new();
+    io::stdin().read_line(&mut raw_input)?;
+    let (name, age) = parse_terminal_input(&raw_input);
     println!("Sanitized Name:  {}", name);
     println!("Parsed Age:      {} years old", age);
-    println!("Terminal reader initialized and verified! ⌨️");
-
     println!("================================");
+    Ok(())
 }
-

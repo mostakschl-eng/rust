@@ -72,14 +72,14 @@ let signal = "redd"; // Typo!
 let signal = "GREEN"; // Uppercase mismatch!
 let signal = "banana"; // Completely nonsensical state!
 ```
-The computer won't complain until your self-driving car crashes into an intersection!
+A plain string type accepts these spellings. Application code would need to validate them.
 
 ### The Rust Enum Guarantee:
 ```rust
 let signal = TrafficLight::Purple; 
 // ❌ COMPILER ERROR: no variant named `Purple` found in enum `TrafficLight`
 ```
-With enums, invalid states are **physically impossible to compile**! You get 100% compile-time safety.
+The compiler rejects variant names absent from the enum. It does not prove your transitions or traffic-control logic correct.
 
 ---
 
@@ -122,11 +122,29 @@ The light is Yellow: Prepare to stop safely.
 - [x] Enums define a type with a fixed set of named variants.
 - [x] Access variants using `EnumName::Variant`.
 - [x] An enum instance is only ever ONE variant at any time.
-- [x] Prevents typos, illegal states, and runtime bugs at compile time.
+- [x] Rejects undefined variant names at compile time; application logic still needs checks.
 - [x] Enums can have `impl` blocks with methods!
 
 ---
 
+## Reading the method example
+
+The `match self` expression selects advice for one of the three variants. Read `TrafficLight::Red => "Stop and wait."` as “for Red, produce this text.” All variants must be covered. Lesson 48 explains matching in depth. `#[derive(PartialEq)]` generates equality comparisons such as `==`; `#[derive(Debug)]` generates debug formatting.
+
+## Pitfall: a model is a choice
+
+The traffic light is a simplified model of one signal choice. Real traffic systems may have combined lights and other states; an enum only represents the states you define.
+
+## Symbol reading guide
+
+| Symbol or syntax | Meaning |
+|---|---|
+| `enum OrderStatus` | Define possible variants |
+| `OrderStatus::Pending` | Construct one variant |
+| `PartialEq` | Enable comparisons such as == |
+| `*self` | Look through a reference |
+| `\|\|` | Logical OR |
+
 ## 🎯 Next Steps
-* Ready to practice? Complete [`tasks/05_structs_and_enums/task_46_enums_basics/TASK.md`](file:///d:/rust-learning/tasks/05_structs_and_enums/task_46_enums_basics/TASK.md).
-* Next lesson: [Lesson 47: Enums Holding Data (`enum Message`)](file:///d:/rust-learning/lessons/05_structs_and_enums/47_enums_with_data.md).
+* Ready to practice? Complete [`tasks/step_1_core_foundations/05_structs_and_enums/task_46_enums_basics/TASK.md`](../../../tasks/step_1_core_foundations/05_structs_and_enums/task_46_enums_basics/TASK.md).
+* Next lesson: [Lesson 47: Enums Holding Data (`enum Message`)](47_enums_with_data.md).

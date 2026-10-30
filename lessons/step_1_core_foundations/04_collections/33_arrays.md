@@ -22,7 +22,7 @@ Think of a standard egg carton:
 
 In Rust:
 > An **Array** is a fixed-size list where **every single element must have the exact same data type**.  
-> In Rust, arrays are allocated directly on the fast **Stack** memory!
+> An array stores its elements inline, wherever the array itself is stored. A local array is commonly on the stack, but arrays can also be inside heap allocations.
 
 ---
 
@@ -156,6 +156,14 @@ let invalid = [10, "Twenty", 30]; // ❌ COMPILER ERROR: expected integer, found
 
 ---
 
+## Symbol reading guide
+
+| Symbol or syntax | Meaning |
+|---|---|
+| `[T; N]` | Array type with element type T and count N |
+| `[1; 5]` | Five copies of the integer 1 |
+| `[i]` | Read an element by zero-based index |
+
 ## 🎯 Next Steps
-* Ready to practice? Complete [`tasks/04_collections/task_33_arrays/TASK.md`](file:///d:/rust-learning/tasks/04_collections/task_33_arrays/TASK.md).
-* Next lesson: [Lesson 34: Accessing Array Elements & Index Bounds Checking](file:///d:/rust-learning/lessons/04_collections/34_array_indexing.md).
+* Ready to practice? Complete [`tasks/step_1_core_foundations/04_collections/task_33_arrays/TASK.md`](../../../tasks/step_1_core_foundations/04_collections/task_33_arrays/TASK.md).
+* Next lesson: [Lesson 34: Accessing Array Elements & Index Bounds Checking](34_array_indexing.md).

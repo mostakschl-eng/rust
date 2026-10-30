@@ -40,3 +40,25 @@ fn main() {
    * `.push('-')`: for individual single-byte or multi-byte `char` literals (`' '`).
    * `.push_str("9042")`: for string slices (`" "`).
 
+## Everyday picture and symbols
+
+Think of borrowing a view of a notebook instead of taking the notebook. The code turns that picture into explicit values and operations.
+
+| Symbol or syntax | Meaning |
+|---|---|
+| `String` | Owned growable UTF-8 text |
+| `&str` | Shared view of existing UTF-8 text |
+| `&badge_code` | Borrow the owned String |
+| `.push('-')` | Append one char |
+
+## Common pitfall
+
+Borrowing a String as &str does not copy its bytes or transfer ownership. The owner must remain alive while the view is used.
+
+## Expected output
+
+```text
+=== BADGE DISPATCH SYSTEM ===
+[BADGE] Role: SECURITY CHIEF | Code: SEC-9042
+=============================
+```

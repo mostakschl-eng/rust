@@ -71,7 +71,7 @@ fn process_username(raw_input: Option<String>) {
     };
 
     // 'name' is now a normal, unpacked String available for the rest of the function!
-    println!("Processing user: '{}' (Length: {} characters)", name, name.len());
+    println!("Processing user: '{}' (Length: {} bytes)", name, name.len());
 }
 
 fn main() {
@@ -82,7 +82,7 @@ fn main() {
 
 ### 📋 Expected Terminal Output:
 ```text
-Processing user: 'AdaLovelace' (Length: 11 characters)
+Processing user: 'AdaLovelace' (Length: 11 bytes)
 ⚠️ Error: No username provided. Aborting process.
 ```
 
@@ -96,7 +96,7 @@ Processing user: 'AdaLovelace' (Length: 11 characters)
 
 | Tool | When to Use It |
 |---|---|
-| **`match`** | When you have 3+ variants and want compiler-enforced exhaustiveness |
+| **`match`** | When you want to handle all possibilities explicitly, even for two variants |
 | **`if let`** | When you care about only ONE pattern and want to ignore the rest |
 | **`if let ... else`** | When you care about one pattern and have a simple fallback |
 | **`let else`** | When extracting data into the local scope and early-exiting on failure (flattening code!) |
@@ -111,6 +111,19 @@ Processing user: 'AdaLovelace' (Length: 11 characters)
 
 ---
 
+## Pitfall: presence is not validation
+
+`Some(name)` only means a String exists: it may still be empty or invalid for your application. A `let else` failure block must not continue into code that assumes the binding exists. In a function use `return`; inside a loop `break` or `continue` may be appropriate. The statement ends with `;`.
+
+## Symbol reading guide
+
+| Symbol or syntax | Meaning |
+|---|---|
+| `if let Some(x) = value` | Handle one successful pattern |
+| `let Some(x) = value else` | Bind x or leave on failure |
+| `return;` | Leave the current function |
+| `};` | Finish a let-else statement |
+
 ## 🎯 Next Steps
-* Ready to practice? Complete [`tasks/05_structs_and_enums/task_50_if_let_and_let_else/TASK.md`](file:///d:/rust-learning/tasks/05_structs_and_enums/task_50_if_let_and_let_else/TASK.md).
-* You've completed Level 5! Next up: [Level 6: Rust's Sacred Core — Ownership & Memory](file:///d:/rust-learning/lessons/06_ownership_and_memory/51_stack_vs_heap.md).
+* Ready to practice? Complete [`tasks/step_1_core_foundations/05_structs_and_enums/task_50_if_let_and_let_else/TASK.md`](../../../tasks/step_1_core_foundations/05_structs_and_enums/task_50_if_let_and_let_else/TASK.md).
+* You've completed Level 5! Next up: [Level 6: Rust's Sacred Core — Ownership & Memory](../06_ownership_and_memory/51_stack_vs_heap.md).

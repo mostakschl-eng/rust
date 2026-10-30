@@ -9,7 +9,7 @@ Now, what about operations that can **fail with a specific reason**?
 * Parsing a number from text: What if someone typed `"abc"` instead of `"123"`?
 
 In other languages, these throw runtime `Exceptions` (try/catch blocks) that can be easily forgotten.  
-In Rust, all recoverable errors are returned as a **`Result<T, E>`**! 🚦
+In Rust, fallible APIs commonly represent recoverable errors with **`Result<T, E>`**. 🚦
 
 ---
 
@@ -104,7 +104,7 @@ Just like `Option`, `Result` provides quick query and unwrapping methods:
 
 ```rust
 let input = "not a number";
-let number = input.parse::<i32>().unwrap_or(0); // Safely defaults to 0!
+let number = input.parse::<i32>().unwrap_or(0); // Deliberate fallback for this example only
 println!("Number: {}", number); // 0
 ```
 
@@ -124,12 +124,25 @@ println!("Number: {}", number); // 0
 ## 6. Quick Recap Checklist
 - [x] Recoverable errors in Rust return `Result<T, E>`.
 - [x] Two variants: `Ok(T)` for success, `Err(E)` for failure.
-- [x] No unhandled exceptions: compiler requires handling both outcomes.
+- [x] The return type exposes failure. Ignoring a `Result` normally produces a warning, not a compiler error.
 - [x] Use `match` to handle success and failure paths explicitly.
-- [x] Use `.unwrap_or(default)` to fall back gracefully on errors.
+- [x] Use `.unwrap_or(default)` only when losing the error and using a default is correct; otherwise report or propagate it.
 
 ---
 
+
+## Symbols and Practical Boundaries
+
+A delivery receipt says either delivered with a parcel or failed with a reason. An error is useful information, not a free successful delivery.
+
+| Symbol or term | Meaning |
+|---|---|
+| `Result<T, E>` | success or failure |
+| `Ok(value)` | success |
+| `Err(error)` | failure |
+
+**Common pitfall:** A fallback of zero demonstrates a method; it is not a correct payable share for a failed bill calculation. Real billing should report the error. The exercise assumes finite nonnegative amounts; f64 also has rounding limits.
+
 ## 🎯 Next Steps
-* Ready to practice? Complete [`tasks/07_errors_and_io/task_64_result_enum/TASK.md`](file:///d:/rust-learning/tasks/07_errors_and_io/task_64_result_enum/TASK.md).
-* Next lesson: [Lesson 65: Unrecoverable Errors: The `panic!` Macro](file:///d:/rust-learning/lessons/07_errors_and_io/65_panic_macro.md).
+* Ready to practice? Complete [`tasks/step_1_core_foundations/07_errors_and_io/task_64_result_enum/TASK.md`](../../../tasks/step_1_core_foundations/07_errors_and_io/task_64_result_enum/TASK.md).
+* Next lesson: [Lesson 65: Unrecoverable Errors: The `panic!` Macro](65_panic_macro.md).

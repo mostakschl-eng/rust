@@ -27,34 +27,34 @@ All engines online and ready.
 
 ## 🛠️ How to Do This (Step-by-Step):
 
-1. Open [`src/main.rs`](file:///d:/rust-learning/tasks/01_baby_steps/task_05_execution_flow/src/main.rs).
+1. Open [`src/main.rs`](src/main.rs).
 2. Define the three helper functions.
 3. Call them in the correct sequence.
 4. Test with:
    ```bash
-   cd tasks/01_baby_steps/task_05_execution_flow
+   cd tasks/step_1_core_foundations/01_baby_steps/task_05_execution_flow
    cargo run
    ```
 
 ---
 
-## 💡 Hints (Only open if you get stuck!)
+## 💡 Hints (open one at a time)
 
 <details>
-<summary><b>🔍 Hint: Function calling another function</b></summary>
+<summary>Hint 1: Start with the idea</summary>
 
-Inside `fn launch()`, simply type the other function names followed by `();`:
-```rust
-fn launch() {
-    check_fuel();
-    check_engines();
-}
-```
+Start tracing at main, then follow each call into its helper before returning to the next statement.
+</details>
+
+<details>
+<summary>Hint 2: Connect it to Rust</summary>
+
+Let launch print its opening message, call each check in order, and then print the final message.
 </details>
 
 ---
 
 ## 🔒 Solution & Explanations
-* Working Code: [`solution/solution.rs`](file:///d:/rust-learning/tasks/01_baby_steps/task_05_execution_flow/solution/solution.rs)
-* Line-by-Line Breakdown: [`solution/explain.md`](file:///d:/rust-learning/tasks/01_baby_steps/task_05_execution_flow/solution/explain.md)
+* Working Code: [`solution/solution.rs`](solution/solution.rs)
+* Line-by-Line Breakdown: [`solution/explain.md`](solution/explain.md)
 

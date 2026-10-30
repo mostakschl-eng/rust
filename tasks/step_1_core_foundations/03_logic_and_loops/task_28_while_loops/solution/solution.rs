@@ -10,6 +10,6 @@ fn main() {
         println!("Attempt {} of {}: Incorrect PIN! ❌", attempts_used, max_allowed);
     }
 
-    println!("SECURITY ALERT: Maximum attempts exceeded! Account Locked! 🔒");
+    println!("SECURITY ALERT: Maximum attempts reached! Account Locked! 🔒");
 }
 

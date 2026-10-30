@@ -77,7 +77,7 @@ Today is Friday and the temperature is 30 degrees.
 
 ---
 
-## 5. The Deep "Why": Why Semicolons `;` Are Mandatory
+## 5. The Deep "Why": Where Semicolons `;` Are Needed
 
 In English, if you write:
 > *I went to school I ate an apple I came home*
@@ -120,13 +120,13 @@ println!("I bought {} apples and {} bananas.", 3); // 2 slots, but only 1 value!
 ## 7. Summary Checklist
 - [x] `{}` is an empty placeholder slot in `println!`.
 - [x] Rust fills `{}` from left to right using the values provided after commas.
-- [x] Semicolons `;` are like full stops at the end of every command.
+- [x] Semicolons finish expression statements; block expressions and final value expressions have different rules (Lesson 07).
 
 ---
 
 ## 🛠️ Ready for Practice!
 
-👉 Open **[`tasks/01_baby_steps/task_02_screen_speaking/TASK.md`](file:///d:/rust-learning/tasks/01_baby_steps/task_02_screen_speaking/TASK.md)**.
+👉 Open **[`tasks/step_1_core_foundations/01_baby_steps/task_02_screen_speaking/TASK.md`](../../../tasks/step_1_core_foundations/01_baby_steps/task_02_screen_speaking/TASK.md)**.
 1. Read the task requirements.
 2. Open `src/main.rs` and write your code using `{}` placeholders.
 3. Run `cargo run` and see your dynamic message!

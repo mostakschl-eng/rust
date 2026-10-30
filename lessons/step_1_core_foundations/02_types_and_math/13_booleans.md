@@ -92,7 +92,18 @@ In Level 3, we will use booleans with `if` and `else` to teach our computer how 
 
 ## 🛠️ Ready for Practice!
 
-👉 Open **[`tasks/02_types_and_math/task_13_boolean_flags/TASK.md`](file:///d:/rust-learning/tasks/02_types_and_math/task_13_boolean_flags/TASK.md)**.
+👉 Open **[`tasks/step_1_core_foundations/02_types_and_math/task_13_boolean_flags/TASK.md`](../../../tasks/step_1_core_foundations/02_types_and_math/task_13_boolean_flags/TASK.md)**.
 1. Read the task requirements.
 2. Build an account security status checker using boolean flags and the `!` operator.
 3. Run `cargo run` and test your boolean flags!
+
+## Symbol reference
+
+| Symbol | Meaning |
+|---|---|
+| `bool` | The true-or-false type |
+| `!flag` | Opposite boolean value |
+
+## Common pitfalls and limits
+
+Write true and false without quotes: "true" is text. A derived bool is computed once; it does not stay automatically linked to its source.

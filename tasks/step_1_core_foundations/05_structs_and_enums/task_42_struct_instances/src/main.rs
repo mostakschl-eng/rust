@@ -1,36 +1,9 @@
-#[derive(Debug)]
-struct DeviceSpec {
-    model: String,
-    storage_gb: u32,
-    ram_gb: u32,
-    has_5g: bool,
-}
+// Task 42: Smartphone Hardware Configurator (Struct Update Syntax)
+// Complete the TODOs; the reference answer is kept separately in solution/.
 
 fn main() {
-    println!("=== PHONE HARDWARE CONFIGURATOR ===");
-
-    let phone_base = DeviceSpec {
-        model: String::from("Pixel Standard"),
-        storage_gb: 128,
-        ram_gb: 8,
-        has_5g: true,
-    };
-
-    println!("Base Model: {} ({}GB Storage, {}GB RAM, 5G: {})", 
-        phone_base.model, phone_base.storage_gb, phone_base.ram_gb, phone_base.has_5g);
-
-    let phone_pro = DeviceSpec {
-        model: String::from("Pixel Pro"),
-        storage_gb: 256,
-        ..phone_base
-    };
-
-    println!("\nPro Model (Upgraded Storage & Model via ..):");
-    println!("Model:      {}", phone_pro.model);
-    println!("Storage:    {} GB", phone_pro.storage_gb);
-    println!("RAM:        {} GB", phone_pro.ram_gb);
-    println!("5G Support: {}", phone_pro.has_5g);
-    println!("\nFull Debug:\n{:?}", phone_pro);
-
-    println!("===================================");
+    // TODO 1: Define DeviceSpec with model, storage_gb, ram_gb, has_5g; derive Debug.
+    // TODO 2: Create and debug-print phone_base using the specified values.
+    // TODO 3: Create phone_pro with a new model and storage, ending in ..phone_base.
+    // TODO 4: Debug-print the Pro model using the output layout in TASK.md.
 }

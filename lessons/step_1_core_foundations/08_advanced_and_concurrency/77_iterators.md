@@ -1,7 +1,7 @@
 # Lesson 77: Iterators: Transforming Data (`map`, `filter`, `collect`)
 
 In Lesson 29 and 37, we looped through collections using traditional `for` loops.  
-While `for` loops work, modern idiomatic Rust heavily favors functional data processing pipelines called **Iterators**! 🏭🔄
+While `for` loops work, Rust also offers **Iterators** for readable data pipelines. A clear `for` loop is equally idiomatic. 🏭🔄
 
 ---
 
@@ -15,7 +15,7 @@ Think of an automated soda bottling plant:
 
 In Rust:
 > An **Iterator** is responsible for producing a sequence of values lazily.  
-> We chain methods like `.map()` and `.filter()` to build elegant data pipelines with zero performance overhead!
+> We chain methods like `.map()` and `.filter()` to build elegant data pipelines without requiring a separately allocated intermediate collection at each stage. The callbacks and final collection still do work.
 
 ---
 
@@ -72,7 +72,7 @@ println!("Sum: {}", total); // 9
 |---|---|---|
 | `v.iter()` | Immutable references `&T` | Borrows elements; `v` remains intact |
 | `v.iter_mut()` | Mutable references `&mut T` | Borrows elements with write permissions |
-| `v.into_iter()` | Owned values `T` | Consumes and destroys `v` |
+| `v.into_iter()` for an owned `Vec<T>` | Owned values `T` | Moves `v` into the iterator; yielded elements remain valid |
 
 ---
 
@@ -94,10 +94,24 @@ println!("Sum: {}", total); // 9
 - [x] Transform streams using `.map()`, filter using `.filter()`.
 - [x] Turn iterator streams back into collections using `.collect()`.
 - [x] Choose between `.iter()`, `.iter_mut()`, and `.into_iter()`.
-- [x] Rust iterators are "zero-cost abstractions" — often faster than manual `for` loops due to compiler loop unrolling!
+- [x] Rust iterators are "zero-cost abstractions" — can optimize similarly to equivalent loops; neither style is always faster.
 
 ---
 
+
+## Symbols and Practical Boundaries
+
+A conveyor filters qualifying parcels, adds a sticker, and packs them. Building the conveyor description does not move parcels until it is driven.
+
+| Symbol or term | Meaning |
+|---|---|
+| `.iter()` | yield &T |
+| `.filter()` | predicate gets &Item |
+| `.map()` | transform Item |
+| `.collect()` | drive into collection |
+
+**Common pitfall:** With iter(), filter sees &&i32 while map sees &i32. into_iter on an owned Vec moves the vector, so it cannot be printed afterward. iterators can also be driven one item at a time by next().
+
 ## 🎯 Next Steps
-* Ready to practice? Complete [`tasks/08_advanced_and_concurrency/task_77_iterators/TASK.md`](file:///d:/rust-learning/tasks/08_advanced_and_concurrency/task_77_iterators/TASK.md).
-* Next lesson: [Lesson 78: Smart Pointers: Unique Heap Allocation (`Box<T>`)](file:///d:/rust-learning/lessons/08_advanced_and_concurrency/78_box_smart_pointer.md).
+* Ready to practice? Complete [`tasks/step_1_core_foundations/08_advanced_and_concurrency/task_77_iterators/TASK.md`](../../../tasks/step_1_core_foundations/08_advanced_and_concurrency/task_77_iterators/TASK.md).
+* Next lesson: [Lesson 78: Smart Pointers: Unique Heap Allocation (`Box<T>`)](78_box_smart_pointer.md).

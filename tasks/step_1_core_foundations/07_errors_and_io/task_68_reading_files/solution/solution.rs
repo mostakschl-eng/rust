@@ -10,7 +10,12 @@ fn main() {
     println!("[1. Reading Existing Mission Log]");
     let sample_file = "sample_mission.txt";
     let sample_text = "Mission: Alpha\nTarget: Mars Base 1\nStatus: Active\n";
-    let _ = fs::write(sample_file, sample_text);
+    if let Err(e) = fs::write(sample_file, sample_text) {
+        eprintln!("Error creating sample file: {}", e);
+        return;
+    }
+    assert_eq!(count_file_stats(sample_text), (3, 8));
+    assert_eq!(count_file_stats(""), (0, 0));
 
     match fs::read_to_string(sample_file) {
         Ok(contents) => {

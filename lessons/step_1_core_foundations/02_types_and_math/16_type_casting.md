@@ -24,7 +24,7 @@ In Rust, the **`as`** keyword is your official conversion booth!
 ## 2. Converting an Integer to a Float (`as f64`)
 
 Imagine 3 students take an exam and their total score is `280` points.
-You want to calculate the exact average score with decimals:
+You want to calculate an approximate average score with decimals:
 
 ```rust
 fn main() {
@@ -37,7 +37,7 @@ fn main() {
 
     println!("Total Points:  {}", total_score);
     println!("Student Count: {}", student_count);
-    println!("Exact Average: {:.2}", average); // 93.33!
+    println!("Average (2 dp): {:.2}", average); // 93.33!
 }
 ```
 
@@ -45,7 +45,7 @@ fn main() {
 ```text
 Total Points:  280
 Student Count: 3
-Exact Average: 93.33
+Average (2 dp): 93.33
 ```
 
 Notice: `total_score as f64` converts the whole number `280` into the decimal `280.0`. Now float division works smoothly!
@@ -94,13 +94,26 @@ println!("{}", tiny_box); // Prints 44, NOT 300!
 - [x] Use `value as NewType` to explicitly convert data.
 - [x] `integer as f64` turns a whole number into a decimal.
 - [x] `float as i32` chops off the decimal fraction.
-- [x] Rust makes conversions explicit so there are never silent rounding surprises.
+- [x] `as` makes a cast explicit, but it can still silently discard information. Check the source and destination ranges.
 
 ---
 
 ## 🛠️ Ready for Practice!
 
-👉 Open **[`tasks/02_types_and_math/task_16_type_casting/TASK.md`](file:///d:/rust-learning/tasks/02_types_and_math/task_16_type_casting/TASK.md)**.
+👉 Open **[`tasks/step_1_core_foundations/02_types_and_math/task_16_type_casting/TASK.md`](../../../tasks/step_1_core_foundations/02_types_and_math/task_16_type_casting/TASK.md)**.
 1. Read the task requirements.
 2. Build an exam average score calculator that converts integers to `f64` using `as f64`.
 3. Run `cargo run` and test your type casting!
+
+## Symbol reference
+
+| Symbol | Meaning |
+|---|---|
+| `as` | Explicit numeric cast; may lose information |
+| `f64` | 64-bit binary floating-point type |
+
+## Common pitfalls and limits
+
+Casting is not validation. Narrow integer casts can discard bits, and large integers may lose precision as floats. Float-to-integer casts truncate toward zero, clamp out-of-range values to the target limits, and map NaN to zero. Checked conversion is a later topic.
+
+The currency-booth analogy only means changing a representation. A numeric cast does not apply a currency exchange rate. See the [Rust Reference on numeric casts](https://doc.rust-lang.org/reference/expressions/operator-expr.html#type-cast-expressions).

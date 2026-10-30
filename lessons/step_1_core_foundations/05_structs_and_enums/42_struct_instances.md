@@ -20,7 +20,7 @@ Imagine you work in an office:
 * You photocopy Alice's document, but write **Bob's name and email** on the first line!
 
 In Rust:
-> The **Struct Update Syntax (`..existing_instance`)** copies all the remaining unspecified fields from an existing struct into your new instance!
+> The **Struct Update Syntax (`..existing_instance`)** copies or moves all the remaining unspecified fields from an existing struct into your new instance!
 
 ---
 
@@ -100,7 +100,7 @@ let bad_cfg = ServerConfig {
 
 This is an important detail:
 * If the fields being copied implement the **`Copy`** trait (like numbers `u16`, `u32`, and booleans `bool`), the data is duplicated safely.
-* But if a heap-allocated **`String`** is copied via `..old_instance`, ownership of that string is **moved** into the new struct!
+* But if a non-`Copy` field such as **`String`** is supplied via `..old_instance`, ownership of that string is **moved** into the new struct!
 
 Look at what happens:
 ```rust
@@ -130,7 +130,7 @@ fn main() {
 
 ---
 
-## 5. Factory Helper Functions: The Builder Pattern
+## 5. Factory Helper Functions
 
 It is common practice in Rust to write small helper functions that return configured structs:
 
@@ -151,11 +151,23 @@ fn create_default_server(host: String) -> ServerConfig {
 ## 6. Quick Recap Checklist
 - [x] Use `..instance` at the bottom of a struct literal to copy remaining fields.
 - [x] The `..` syntax must always come last.
-- [x] Primitive types (numbers, booleans) are copied; heap types (`String`) move ownership unless explicitly overridden.
+- [x] `Copy` fields (such as numbers and booleans) are copied; non-`Copy` fields (such as `String`) are moved unless explicitly overridden. Storage location alone does not decide this.
 - [x] Struct update syntax eliminates repetitive boilerplate!
 
 ---
 
+## Pitfall: a partial move
+
+After `..p1` moves `p1.username`, that field and the complete `p1` value cannot be used. An unmoved field such as `p1.score` remains usable here. In the server example both String fields are explicitly replaced, so only `Copy` fields are taken and the original remains usable. The helper above is a factory function; a builder pattern usually has a separate builder value and stepwise configuration.
+
+## Symbol reading guide
+
+| Symbol or syntax | Meaning |
+|---|---|
+| `..phone_base` | Supply unspecified fields from the base |
+| `Copy` | Trait allowing implicit copies |
+| `String` | Owned text that moves unless explicitly replaced |
+
 ## 🎯 Next Steps
-* Ready to practice? Complete [`tasks/05_structs_and_enums/task_42_struct_instances/TASK.md`](file:///d:/rust-learning/tasks/05_structs_and_enums/task_42_struct_instances/TASK.md).
-* Next lesson: [Lesson 43: Tuple Structs & Unit-Like Structs](file:///d:/rust-learning/lessons/05_structs_and_enums/43_tuple_and_unit_structs.md).
+* Ready to practice? Complete [`tasks/step_1_core_foundations/05_structs_and_enums/task_42_struct_instances/TASK.md`](../../../tasks/step_1_core_foundations/05_structs_and_enums/task_42_struct_instances/TASK.md).
+* Next lesson: [Lesson 43: Tuple Structs & Unit-Like Structs](43_tuple_and_unit_structs.md).

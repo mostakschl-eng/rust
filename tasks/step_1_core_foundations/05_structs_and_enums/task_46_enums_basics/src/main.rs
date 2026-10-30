@@ -1,28 +1,10 @@
-#[derive(Debug, PartialEq)]
-#[allow(dead_code)]
-enum OrderStatus {
-    Pending,
-    Shipped,
-    Delivered,
-    Cancelled,
-}
-
-impl OrderStatus {
-    fn is_active(&self) -> bool {
-        *self == OrderStatus::Pending || *self == OrderStatus::Shipped
-    }
-}
+// Task 46: E-Commerce Order Lifecycle (Enums)
+// Complete the TODOs; the reference answer is kept separately in solution/.
+// Original starter (including the extra Cancelled example) was backed up before reset.
 
 fn main() {
-    println!("=== E-COMMERCE ORDER TRACKER ===");
-
-    let order_a = OrderStatus::Pending;
-    let order_b = OrderStatus::Delivered;
-    let order_c = OrderStatus::Cancelled;
-
-    println!("Order A status: {:?} (Active: {})", order_a, order_a.is_active());
-    println!("Order B status: {:?} (Active: {})", order_b, order_b.is_active());
-    println!("Order C status: {:?} (Active: {})", order_c, order_c.is_active());
-
-    println!("================================");
+    // TODO 1: Define OrderStatus and derive Debug, PartialEq.
+    // TODO 2: Implement is_active(&self) -> bool for Pending or Shipped.
+    // TODO 3: Create order_a Pending, order_b Delivered, and order_c Cancelled.
+    // TODO 4: Print each status and active flag in the TASK.md format.
 }

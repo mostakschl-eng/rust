@@ -49,19 +49,37 @@ Custom Audio:   AudioSettings { volume: 85, enable_surround: false, sample_rate:
 
 ## 🛠️ How to Do This (Step-by-Step):
 
-1. Open [`src/main.rs`](file:///d:/rust-learning/tasks/08_advanced_and_concurrency/task_75_standard_traits/src/main.rs).
+1. Open [`src/main.rs`](src/main.rs).
 2. Bring `std::fmt` into scope: `use std::fmt;`.
 3. Implement `fmt::Display for Money`.
 4. Derive `Debug, Default` on `AudioSettings`.
 5. Run your project:
    ```bash
-   cd tasks/08_advanced_and_concurrency/task_75_standard_traits
+   cd tasks/step_1_core_foundations/08_advanced_and_concurrency/task_75_standard_traits
    cargo run
    ```
 
 ---
 
 ## 🔒 Solution & Explanations
-* Working Code: [`solution/solution.rs`](file:///d:/rust-learning/tasks/08_advanced_and_concurrency/task_75_standard_traits/solution/solution.rs)
-* Line-by-Line Breakdown: [`solution/explain.md`](file:///d:/rust-learning/tasks/08_advanced_and_concurrency/task_75_standard_traits/solution/explain.md)
+* Working Code: [`solution/solution.rs`](solution/solution.rs)
+* Line-by-Line Breakdown: [`solution/explain.md`](solution/explain.md)
 
+
+## Hints (Open One at a Time)
+
+<details>
+<summary>Hint 1: Choose the approach</summary>
+
+Split integer cents using division and remainder by 100.
+
+</details>
+
+<details>
+<summary>Hint 2: Connect the pieces</summary>
+
+Return write!(f, ...) from fmt; derive Debug and Default for the settings, then override only volume with struct update syntax.
+
+</details>
+
+**Before running:** Derived Default uses each field type default; sample_rate = 0 need not be valid audio configuration. Clone behavior is type-specific and can share storage; standard Rust has no Display derive.

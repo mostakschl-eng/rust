@@ -3,7 +3,7 @@
 Welcome to Lesson 23! 
 
 In Lesson 21 and 22, we used symbols like `>=` to test numbers.
-Today, we examine the **full set of 6 Comparison Operators** that let your program compare any two values!
+Today, we examine the **full set of 6 Comparison Operators** that let your program compare values with compatible types and the required comparison support!
 
 ---
 
@@ -93,7 +93,11 @@ PIN Verified! Vault unlocked. 🔓
 
 ## 🛠️ Ready for Practice!
 
-👉 Open **[`tasks/03_logic_and_loops/task_23_comparison_operators/TASK.md`](file:///d:/rust-learning/tasks/03_logic_and_loops/task_23_comparison_operators/TASK.md)**.
+👉 Open **[`tasks/step_1_core_foundations/03_logic_and_loops/task_23_comparison_operators/TASK.md`](../../../tasks/step_1_core_foundations/03_logic_and_loops/task_23_comparison_operators/TASK.md)**.
 1. Read the task requirements.
 2. Build an automated login & security pin validator testing equality and threshold limits.
 3. Run `cargo run` and test all comparison operators!
+
+## Common pitfalls and limits
+
+Values must support the chosen comparison. Float equality can be surprising after approximate calculations, and NaN is not equal to itself.

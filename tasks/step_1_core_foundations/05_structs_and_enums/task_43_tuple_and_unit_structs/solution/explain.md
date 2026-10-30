@@ -47,3 +47,34 @@ fn main() {
    * `struct SecurityKey;` has no fields and consumes 0 bytes of RAM.
    * The prefix underscore `_token` silences unused variable warnings.
 
+## Everyday picture and symbols
+
+Think of different labeled boxes for colors and coordinates. The code turns that picture into explicit values and operations.
+
+| Symbol or syntax | Meaning |
+|---|---|
+| `struct Color(u8, u8, u8);` | Define a tuple struct |
+| `Color(...)` | Construct that named type |
+| `let Point3D(x, y, z)` | Destructure its fields |
+| `struct SecurityKey;` | Define a fieldless marker |
+
+## Common pitfall
+
+The marker has no authentication behavior. A printed validation message is pretend; anyone in this module can construct SecurityKey.
+
+## Expected output
+
+```text
+=== GRAPHICS CANVAS & TOKEN SYSTEM ===
+Sky Blue Color:
+  Red:   135
+  Green: 206
+  Blue:  235
+
+3D Cursor Position:
+  Coordinates: X=100, Y=250, Z=-50
+
+Security Token:
+  SecurityKey validated! (0-byte marker)
+======================================
+```

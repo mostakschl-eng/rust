@@ -38,3 +38,17 @@ fn main() {
    * `original_owner` became invalid.
    * Only `new_owner` is responsible for dropping the memory at the end of `main`.
 
+
+## Reading the Result Carefully
+
+A relay trophy has one responsible holder at a time. A loan lets someone inspect it without becoming the holder.
+
+| Symbol or term | Meaning |
+|---|---|
+| `{ ... }` | block scope |
+| `let next = original` | move for non-Copy values |
+| `drop(value)` | consume and drop early |
+
+A moved value is not an empty value. Drop releases a String buffer to its allocator, not necessarily to the OS, and does not erase secrets.
+
+The complete runnable program is in `solution.rs`; snippets above may focus on only one part. Compare its output with the example in TASK.md.

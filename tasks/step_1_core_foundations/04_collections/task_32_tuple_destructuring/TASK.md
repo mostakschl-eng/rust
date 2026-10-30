@@ -30,7 +30,7 @@ Batch 2 Top Score: 100
 
 ## 🛠️ How to Do This (Step-by-Step):
 
-1. Open [`src/main.rs`](file:///d:/rust-learning/tasks/04_collections/task_32_tuple_destructuring/src/main.rs).
+1. Open [`src/main.rs`](src/main.rs).
 2. Write function:
    ```rust
    fn calculate_stats(s1: i32, s2: i32, s3: i32) -> (i32, f64, i32) {
@@ -52,13 +52,39 @@ Batch 2 Top Score: 100
    ```
 5. Test:
    ```bash
-   cd tasks/04_collections/task_32_tuple_destructuring
+   cd tasks/step_1_core_foundations/04_collections/task_32_tuple_destructuring
    cargo run
    ```
 
 ---
 
-## 🔒 Solution & Explanations
-* Working Code: [`solution/solution.rs`](file:///d:/rust-learning/tasks/04_collections/task_32_tuple_destructuring/solution/solution.rs)
-* Line-by-Line Breakdown: [`solution/explain.md`](file:///d:/rust-learning/tasks/04_collections/task_32_tuple_destructuring/solution/explain.md)
+## 💡 Hints
 
+<details>
+<summary>Hint 1: choose the approach</summary>
+
+Compute the three statistics first; the function returns one tuple.
+
+</details>
+
+<details>
+<summary>Hint 2: connect the syntax</summary>
+
+Destructure the first result by name; in the second pattern use `_` in positions zero and one.
+
+</details>
+
+## 🔒 Solution & Explanations
+* Working Code: [`solution/solution.rs`](solution/solution.rs)
+* Line-by-Line Breakdown: [`solution/explain.md`](solution/explain.md)
+
+
+## Watch out
+
+Divide a floating-point sum by `3.0`; integer division would lose the fraction. Scores in this exercise are 0–100, so their sum fits in i32.
+
+The starter intentionally does not produce the expected output yet. Complete its TODOs before comparing results.
+
+## Input range
+
+Use exam scores from 0 to 100. Their total fits in i32. The helper is not intended to sum arbitrary extreme i32 values.

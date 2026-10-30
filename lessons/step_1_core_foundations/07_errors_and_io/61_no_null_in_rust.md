@@ -7,12 +7,10 @@ Decades later, at an international software conference, he took the stage and ap
 
 > *"I call it my billion-dollar mistake. It has led to innumerable errors, vulnerabilities, and system crashes, which have probably caused a billion dollars of pain and damage in the last forty years."* — Sir Tony Hoare
 
-In languages like C, C++, Java, and Python:
-* Any variable can secretly be `null` or `None`.
-* If you write `user.name` and `user` happens to be null, your program crashes instantly with a dreaded `NullPointerException` or `Segmentation Fault`!
+Many languages permit absent object references. Their details differ: Java primitives are not nullable, Python uses `None`, and C/C++ distinguish pointers from values. Access through a missing reference may raise an exception or, in C/C++, cause undefined behavior.
 
 **Rust has NO `null` keyword.**  
-Today, we learn why and how Rust solves this problem permanently! 🚫🕳️
+Today, we learn why and how Rust makes optional values explicit in ordinary safe APIs. 🚫🕳️
 
 ---
 
@@ -90,8 +88,8 @@ Last name:  Ahmed
    When looking at a function signature:
    * `fn get_user(id: u32) -> User`: You are 100% guaranteed to receive a `User`. No need to check if it's null!
    * `fn find_user(email: &str) -> Option<User>`: You know immediately from the type that the user might not exist, and the compiler **forces** you to handle both cases!
-2. **Zero Runtime Crashes:**  
-   You can never accidentally forget to check for a missing value. The Rust compiler will refuse to compile your code until you handle `None`!
+2. **Explicit Optionality:**  
+   `Option<User>` cannot be used directly as `User`. You must choose what absence means. Calling `.unwrap()` on `None` still panics, and a returned `Option` may simply be ignored.
 
 ---
 
@@ -100,10 +98,24 @@ Last name:  Ahmed
 - [x] Rust has no `null`, `nil`, or `undefined` keyword.
 - [x] Standard types (`String`, `i32`, `bool`) are guaranteed to always hold valid data.
 - [x] Missing or optional values are explicitly represented using the `Option<T>` enum.
-- [x] You can never crash from an unexpected missing value.
+- [x] An explicit `Option` makes absence visible, but `.unwrap()` and `.expect()` can still panic on `None`.
 
 ---
 
+
+## Symbols and Practical Boundaries
+
+An optional profile field is a labeled envelope: either a value is inside, or it explicitly says absent.
+
+| Symbol or term | Meaning |
+|---|---|
+| `Option<T>` | possible absence |
+| `Some(value)` | present |
+| `None` | absent |
+| `match` | handle variants |
+
+**Common pitfall:** Safe references cannot be null, but raw pointers can be null. Option does not prevent panics if you choose unwrap on None.
+
 ## 🎯 Next Steps
-* Ready to practice? Complete [`tasks/07_errors_and_io/task_61_no_null_in_rust/TASK.md`](file:///d:/rust-learning/tasks/07_errors_and_io/task_61_no_null_in_rust/TASK.md).
-* Next lesson: [Lesson 62: The `Option<T>` Enum (`Some` vs `None`)](file:///d:/rust-learning/lessons/07_errors_and_io/62_option_enum.md).
+* Ready to practice? Complete [`tasks/step_1_core_foundations/07_errors_and_io/task_61_no_null_in_rust/TASK.md`](../../../tasks/step_1_core_foundations/07_errors_and_io/task_61_no_null_in_rust/TASK.md).
+* Next lesson: [Lesson 62: The `Option<T>` Enum (`Some` vs `None`)](62_option_enum.md).

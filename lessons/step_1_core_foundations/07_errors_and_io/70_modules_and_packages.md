@@ -25,8 +25,7 @@ Think of a sit-down restaurant:
   * Customers cannot walk into the kitchen and touch the stove!
 
 In Rust:
-> **Everything in Rust is PRIVATE by default!**  
-> If you want an outside file or function to see an item, you must explicitly mark it with the **`pub` (public)** keyword!
+> **Module items are private by default.** They can be accessed by their defining module and its descendants. `pub` exposes an item through accessible module paths; files themselves do not define privacy boundaries. Public enum variants and trait items follow special visibility rules.
 
 ---
 
@@ -37,7 +36,7 @@ You can define nested modules directly inside your file using the `mod` keyword:
 ```rust
 // A module grouping kitchen operations:
 mod kitchen {
-    // Private by default: only functions inside `kitchen` can see this!
+    // Private by default: accessible inside kitchen and its descendant modules
     fn wash_vegetables() {
         println!("Washing fresh carrots and lettuce...");
     }
@@ -141,13 +140,27 @@ fn main() {
 
 ## 6. Quick Recap Checklist
 - [x] Modules group code and manage encapsulation boundaries using `mod`.
-- [x] All items are **private by default** in Rust.
+- [x] Module items are private by default, accessible within their module and descendants.
 - [x] Use `pub` to make functions, structs, or modules public.
 - [x] Use `use path::item;` to create local shortcuts.
-- [x] Declare multi-file modules using `mod filename;`.
+- [x] Declare file-backed modules using `mod filename;`. A package has a Cargo manifest and may contain multiple crates; a crate is one compilation unit.
 
 ---
 
+
+## Symbols and Practical Boundaries
+
+A restaurant exposes its order counter while keeping recipes in the kitchen. Visibility is an API boundary, not cryptographic protection.
+
+| Symbol or term | Meaning |
+|---|---|
+| `mod` | module |
+| `pub` | public visibility |
+| `use` | local name import |
+| `::` | path separator |
+
+**Common pitfall:** The toy hash_token only prefixes text and is not a password hash or secure authentication. Public Sensor fields are still part of its API, so changing them can break callers.
+
 ## 🎯 Next Steps
-* Ready to practice? Complete [`tasks/07_errors_and_io/task_70_modules_and_packages/TASK.md`](file:///d:/rust-learning/tasks/07_errors_and_io/task_70_modules_and_packages/TASK.md).
-* You've completed Level 7! Next up: [Level 8: Advanced Mastery & Concurrency](file:///d:/rust-learning/lessons/08_advanced_and_concurrency/71_generics_functions.md).
+* Ready to practice? Complete [`tasks/step_1_core_foundations/07_errors_and_io/task_70_modules_and_packages/TASK.md`](../../../tasks/step_1_core_foundations/07_errors_and_io/task_70_modules_and_packages/TASK.md).
+* You've completed Level 7! Next up: [Level 8: Advanced Mastery & Concurrency](../08_advanced_and_concurrency/71_generics_functions.md).

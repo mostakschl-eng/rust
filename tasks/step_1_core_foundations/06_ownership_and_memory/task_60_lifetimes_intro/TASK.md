@@ -32,18 +32,36 @@ Security Banner: SAFE SYSTEMS WITH ZERO DANGLING POINTERS ('static)
 
 ## 🛠️ How to Do This (Step-by-Step):
 
-1. Open [`src/main.rs`](file:///d:/rust-learning/tasks/06_ownership_and_memory/task_60_lifetimes_intro/src/main.rs).
+1. Open [`src/main.rs`](src/main.rs).
 2. Declare generic lifetime `<'a>` in function signature.
 3. Compare string slice lengths and return the longer reference.
 4. Test:
    ```bash
-   cd tasks/06_ownership_and_memory/task_60_lifetimes_intro
+   cd tasks/step_1_core_foundations/06_ownership_and_memory/task_60_lifetimes_intro
    cargo run
    ```
 
 ---
 
 ## 🔒 Solution & Explanations
-* Working Code: [`solution/solution.rs`](file:///d:/rust-learning/tasks/06_ownership_and_memory/task_60_lifetimes_intro/solution/solution.rs)
-* Line-by-Line Breakdown: [`solution/explain.md`](file:///d:/rust-learning/tasks/06_ownership_and_memory/task_60_lifetimes_intro/solution/explain.md)
+* Working Code: [`solution/solution.rs`](solution/solution.rs)
+* Line-by-Line Breakdown: [`solution/explain.md`](solution/explain.md)
 
+
+## Hints (Open One at a Time)
+
+<details>
+<summary>Hint 1: Choose the approach</summary>
+
+Put the same named lifetime on both inputs and on the returned reference.
+
+</details>
+
+<details>
+<summary>Hint 2: Connect the pieces</summary>
+
+Return one input unchanged; keep both input owners alive while result is used. Do not create a local String and return a reference to it.
+
+</details>
+
+**Before running:** Annotations describe relationships, not runtime extensions. .len() compares bytes here, and a static literal does not make the other input static.

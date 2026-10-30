@@ -1,7 +1,6 @@
 # Lesson 47: Enums Holding Data (`enum Message`)
 
-In most programming languages (C, C++, C#, Java), an `enum` is just a glorified list of numbers: `Red = 0`, `Yellow = 1`, `Green = 2`.  
-They cannot hold extra data.
+Some languages use enums mainly as named integer constants. Rust enums can also attach a different payload to each variant.
 
 In Rust, Enums are a superpower known in computer science as **Algebraic Data Types**:
 > **In Rust, each individual enum variant can hold its own unique types and quantities of data!** 🚀
@@ -36,7 +35,7 @@ enum WebEvent {
     // 2. Variant with named fields (like a struct):
     Click { x: i64, y: i64 },
 
-    // 3. Variant with a String payload (like a tuple struct):
+    // 3. Variant with a char payload (like a tuple struct):
     KeyPress(char),
 
     // 4. Variant with multiple numbers:
@@ -71,7 +70,7 @@ Resize(1920, 1080)
 Every computer on the internet connects via an IP address.  
 There are two major standards:
 * **IPv4:** Four 8-bit numbers (e.g. `127.0.0.1`)
-* **IPv6:** A long hexadecimal string (e.g. `"::1"`)
+* **IPv6:** A 128-bit address, commonly written in hexadecimal text (e.g. `"::1"`)
 
 Look at how cleanly Rust expresses this reality:
 
@@ -100,10 +99,9 @@ fn main() {
 
 You might wonder: *"If one variant is a tiny boolean and another is a large 64-byte payload, how does Rust allocate memory?"*
 
-Rust uses a **Tagged Union**:
-* Size of the enum = **Size of the largest variant + a tiny 1-byte discriminant tag**.
-* The tag tells Rust which variant is currently active.
-* This gives you total type safety with optimal memory efficiency!
+Think of an enum as space for a payload plus information identifying its active variant. Its exact layout is **not** generally “largest payload plus one byte”: alignment, padding, tag size, and compiler optimizations affect the result. Sometimes unused bit patterns encode the variant without a separate tag. Do not rely on a fixed formula.
+
+[Official type-layout reference](https://doc.rust-lang.org/reference/type-layout.html)
 
 ---
 
@@ -115,6 +113,19 @@ Rust uses a **Tagged Union**:
 
 ---
 
+## Pitfall: payloads need their own rules
+
+`IpAddr::V6(String::from("not an address"))` still type-checks in this teaching model. A `String` does not validate an IPv6 address. Real programs can use `std::net::IpAddr` and parsing. Creating one variant requires exactly that variant’s fields, not fields from all variants.
+
+## Symbol reading guide
+
+| Symbol or syntax | Meaning |
+|---|---|
+| `Login(String)` | Tuple-like variant carrying text |
+| `Click { x, y }` | Variant carrying named fields |
+| `Logout` | Variant without a payload |
+| `{:?}` | Debug formatting |
+
 ## 🎯 Next Steps
-* Ready to practice? Complete [`tasks/05_structs_and_enums/task_47_enums_with_data/TASK.md`](file:///d:/rust-learning/tasks/05_structs_and_enums/task_47_enums_with_data/TASK.md).
-* Next lesson: [Lesson 48: The `match` Expression: Exhaustive Matching](file:///d:/rust-learning/lessons/05_structs_and_enums/48_match_exhaustive.md).
+* Ready to practice? Complete [`tasks/step_1_core_foundations/05_structs_and_enums/task_47_enums_with_data/TASK.md`](../../../tasks/step_1_core_foundations/05_structs_and_enums/task_47_enums_with_data/TASK.md).
+* Next lesson: [Lesson 48: The `match` Expression: Exhaustive Matching](48_match_exhaustive.md).

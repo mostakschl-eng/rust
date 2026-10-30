@@ -72,12 +72,12 @@ Let's watch the computer's exact steps, second by second:
 | 4 | `println!("--- Morning routine starting ---");` | Prints starting banner. |
 | 5 | `brush_teeth();` | **JUMP AGAIN!** Computer pauses `morning_routine` and jumps into `brush_teeth`. |
 | 6 | `println!("Step 1: Brushing teeth cleanly...");` | Prints teeth brushing text. |
-| 7 | `}` (end of `brush_teeth`) | **RETURN!** Jumps back to `morning_routine` at line 14. |
+| 7 | `}` (end of `brush_teeth`) | **RETURN!** Jumps back to `morning_routine` after the `brush_teeth()` call. |
 | 8 | `eat_breakfast();` | **JUMP!** Jumps into `eat_breakfast`. |
 | 9 | `println!("Step 2: Eating breakfast...");` | Prints breakfast text. |
-| 10 | `}` (end of `eat_breakfast`) | **RETURN!** Jumps back to `morning_routine` at line 15. |
+| 10 | `}` (end of `eat_breakfast`) | **RETURN!** Jumps back to `morning_routine` after the `eat_breakfast()` call. |
 | 11 | `println!("--- Morning routine complete ---");` | Prints routine finished banner. |
-| 12 | `}` (end of `morning_routine`) | **RETURN!** Jumps all the way back to `main` at line 20. |
+| 12 | `}` (end of `morning_routine`) | **RETURN!** Jumps all the way back to `main` after the `morning_routine()` call. |
 | 13 | `println!("Leaving house for school or work!");` | Prints final departure line. |
 | 14 | `}` (end of `main`) | Entire program exits. Done! |
 
@@ -86,7 +86,7 @@ Let's watch the computer's exact steps, second by second:
 ## 4. Why This Architecture Matters
 
 This is how large games and operating systems work!
-Instead of one giant 5,000-line messy file, programmers break work down into small, neat, 5-line functions that call each other logically.
+Instead of one giant 5,000-line messy file, programmers break work down into small, focused functions that call each other logically.
 
 ---
 
@@ -99,7 +99,11 @@ Instead of one giant 5,000-line messy file, programmers break work down into sma
 
 ## 🛠️ Ready for Practice!
 
-👉 Open **[`tasks/01_baby_steps/task_05_execution_flow/TASK.md`](file:///d:/rust-learning/tasks/01_baby_steps/task_05_execution_flow/TASK.md)**.
+👉 Open **[`tasks/step_1_core_foundations/01_baby_steps/task_05_execution_flow/TASK.md`](../../../tasks/step_1_core_foundations/01_baby_steps/task_05_execution_flow/TASK.md)**.
 1. Read the task requirements.
 2. Build a three-stage Rocket Launch countdown program using nested functions.
 3. Run `cargo run` and watch the execution flow in action!
+
+## Common pitfalls and limits
+
+Defining functions above main does not run them first. Follow calls, and resume at the statement after each completed call.

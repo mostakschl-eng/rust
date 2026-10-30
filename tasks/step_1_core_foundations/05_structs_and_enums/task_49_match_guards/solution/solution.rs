@@ -8,7 +8,7 @@ enum QuestReward {
 fn evaluate_reward(reward: QuestReward, is_double_xp: bool) {
     match reward {
         QuestReward::XP(xp) if is_double_xp => {
-            println!("⚡ Double XP Event Active! Awarded {} XP!", xp * 2);
+            println!("⚡ Double XP Event Active! Awarded {} XP!", u64::from(xp) * 2);
         }
         QuestReward::XP(xp) if xp >= 1000 => {
             println!("🏆 Epic Quest Milestone! Awarded {} XP!", xp);

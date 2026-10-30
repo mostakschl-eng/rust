@@ -27,38 +27,34 @@ Rust is safe!
 
 ## 🛠️ How to Do This (Step-by-Step):
 
-1. Open [`src/main.rs`](file:///d:/rust-learning/tasks/01_baby_steps/task_04_first_function/src/main.rs).
+1. Open [`src/main.rs`](src/main.rs).
 2. Create your `fn cheer() { ... }` function outside of `main`.
 3. Inside `main()`, call `cheer();` three times.
 4. Test it in the terminal:
    ```bash
-   cd tasks/01_baby_steps/task_04_first_function
+   cd tasks/step_1_core_foundations/01_baby_steps/task_04_first_function
    cargo run
    ```
 
 ---
 
-## 💡 Hints (Only open if you get stuck!)
+## 💡 Hints (open one at a time)
 
 <details>
-<summary><b>🔍 Hint: Function structure</b></summary>
+<summary>Hint 1: Start with the idea</summary>
 
-You write the function definition above or below `main()`:
-```rust
-fn cheer() {
-    println!("Rust is fast!");
-    println!("Rust is safe!");
-}
+Defining a function stores the recipe; it does not run the recipe. Put the two cheer messages in that body.
+</details>
 
-fn main() {
-    cheer();
-}
-```
+<details>
+<summary>Hint 2: Connect it to Rust</summary>
+
+Call the same named function three times from main, with an introductory message before each call.
 </details>
 
 ---
 
 ## 🔒 Solution & Explanations
-* Working Code: [`solution/solution.rs`](file:///d:/rust-learning/tasks/01_baby_steps/task_04_first_function/solution/solution.rs)
-* Line-by-Line Breakdown: [`solution/explain.md`](file:///d:/rust-learning/tasks/01_baby_steps/task_04_first_function/solution/explain.md)
+* Working Code: [`solution/solution.rs`](solution/solution.rs)
+* Line-by-Line Breakdown: [`solution/explain.md`](solution/explain.md)
 

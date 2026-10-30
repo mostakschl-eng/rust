@@ -23,8 +23,7 @@ Think of a book manuscript:
 * If you spill coffee on Book 2, Book 1 stays completely clean!
 
 In Rust:
-> **`.clone()`** performs a **Deep Copy**.  
-> It requests a brand-new chunk of memory on the Heap, copies every single byte into it, and returns a new owner!
+> **`.clone()`** calls the type's `Clone` implementation. For a `String`, this duplicates its text buffer, producing independent text. It is not universally a deep copy: cloning a reference copies the reference, and cloning an `Rc` or `Arc` shares the same allocation.
 
 ---
 
@@ -71,7 +70,7 @@ Because they have different pointers, modifying one will never affect the other:
 
 ```rust
 fn main() {
-    let mut s1 = String::from("Hello");
+    let s1 = String::from("Hello");
     let mut s2 = s1.clone();
 
     s2.push_str(" World!");
@@ -87,11 +86,11 @@ fn main() {
 
 ### When to Use `.clone()`:
 * When you genuinely need two separate, independent owners modifying their own data.
-* When working with multithreaded programs where each thread needs its own owned copy.
+* When each thread truly needs independent owned data; later, `Arc` can share ownership without duplicating the payload.
 * When prototyping and you want to get code compiling quickly before optimizing.
 
 ### When to Avoid `.clone()`:
-* **Performance warning:** Allocating heap memory is relatively slow. Calling `.clone()` inside a loop that runs 1,000,000 times will severely hurt performance.
+* **Performance warning:** Cloning can allocate and copy substantial data. Its actual cost depends on the type, data size, and workload; measure performance before optimizing.
 * If you only need to **read or inspect** data, **do not clone it**! Instead, **Borrow it (`&`)** as explained in the next lesson!
 
 ---
@@ -123,14 +122,29 @@ fn main() {
 ---
 
 ## 6. Quick Recap Checklist
-- [x] `.clone()` performs a deep copy of heap memory.
-- [x] Both the original and cloned variables remain fully valid and independent.
-- [x] Cloning involves heap allocation and has a performance cost.
+- [x] For String, `.clone()` duplicates its text into an independent buffer; Clone in general is type-defined.
+- [x] Both String values here remain valid and own independent text buffers.
+- [x] Clone cost depends on the type; it may allocate, copy a small value, or share existing data.
 - [x] Use `#[derive(Clone)]` on structs to automatically enable cloning.
 - [x] If you only need to read data, prefer Borrowing (`&`) over `.clone()`.
 
 ---
 
+
+## Symbols and Practical Boundaries
+
+Photocopying a document makes independent paper. Cloning a shared-library card instead gives another card for the same resource.
+
+| Symbol or term | Meaning |
+|---|---|
+| `.clone()` | type-defined duplication |
+| `#[derive(Clone)]` | clone each field |
+| `mut` | permit editing |
+
+**Common pitfall:** String clones own separate text. References and Rc/Arc clones share their referent; Clone is not a universal deep-copy guarantee.
+
 ## 🎯 Next Steps
-* Ready to practice? Complete [`tasks/06_ownership_and_memory/task_54_clone_deep_copy/TASK.md`](file:///d:/rust-learning/tasks/06_ownership_and_memory/task_54_clone_deep_copy/TASK.md).
-* Next lesson: [Lesson 55: Borrowing: Shared References (`&T`)](file:///d:/rust-learning/lessons/06_ownership_and_memory/55_borrowing_shared.md).
+* Ready to practice? Complete [`tasks/step_1_core_foundations/06_ownership_and_memory/task_54_clone_deep_copy/TASK.md`](../../../tasks/step_1_core_foundations/06_ownership_and_memory/task_54_clone_deep_copy/TASK.md).
+* Next lesson: [Lesson 55: Borrowing: Shared References (`&T`)](55_borrowing_shared.md).
+
+Further reading: [Clone documentation](https://doc.rust-lang.org/std/clone/trait.Clone.html).

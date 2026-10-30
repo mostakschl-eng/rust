@@ -35,32 +35,35 @@ Exact Average:  86.25%
 
 ## 🛠️ How to Do This (Step-by-Step):
 
-1. Open [`src/main.rs`](file:///d:/rust-learning/tasks/02_types_and_math/task_16_type_casting/src/main.rs).
+1. Open [`src/main.rs`](src/main.rs).
 2. Calculate the sum of the integer scores.
 3. Cast to `as f64` before dividing.
 4. Print the report.
 5. Test with:
    ```bash
-   cd tasks/02_types_and_math/task_16_type_casting
+   cd tasks/step_1_core_foundations/02_types_and_math/task_16_type_casting
    cargo run
    ```
 
 ---
 
-## 💡 Hints (Only open if you get stuck!)
+## 💡 Hints (open one at a time)
 
 <details>
-<summary><b>🔍 Hint: Explicit casting</b></summary>
+<summary>Hint 1: Start with the idea</summary>
 
-```rust
-let total_score = math + science + history + english;
-let average = (total_score as f64) / 4.0;
-```
+Add the four integer scores first. Casting after integer division would leave the fraction already lost.
+</details>
+
+<details>
+<summary>Hint 2: Connect it to Rust</summary>
+
+Convert both the total and subject count to the same float type before dividing; print the result with the other report fields.
 </details>
 
 ---
 
 ## 🔒 Solution & Explanations
-* Working Code: [`solution/solution.rs`](file:///d:/rust-learning/tasks/02_types_and_math/task_16_type_casting/solution/solution.rs)
-* Line-by-Line Breakdown: [`solution/explain.md`](file:///d:/rust-learning/tasks/02_types_and_math/task_16_type_casting/solution/explain.md)
+* Working Code: [`solution/solution.rs`](solution/solution.rs)
+* Line-by-Line Breakdown: [`solution/explain.md`](solution/explain.md)
 

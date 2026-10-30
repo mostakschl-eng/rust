@@ -6,8 +6,12 @@ Each task folder is a complete, self-contained Cargo package:
 * `TASK.md`: Instructions, expected output, and step-by-step guidance.
 * `src/main.rs`: Starter code with `// TODO` markers for you to solve.
 * `solution/`: Anti-spoiler subfolder containing:
-  - `solution/solution.rs`: Complete working code.
-  - `solution/explain.md`: Line-by-line explanation of the solution.
+  - `solution.rs`: Complete working code.
+  - `explain.md`: Explanation of the solution.
+
+Run your own work with `cargo run` from the task folder. When you choose to check the answer, run `cargo run --example solution`; this does not overwrite `src/main.rs`.
+
+Most starters compile but are intentionally unfinished. Task 20 instead contains three intentional compiler errors: use `cargo check` to inspect them, repair them, and then run your answer. Exact diagnostic wording can vary with the Rust version. Printed data must match the requirements; thread ordering and operating-system error messages may vary where noted.
 
 ---
 

@@ -20,7 +20,7 @@ struct SocialPost {
 
 impl Summarizable for SocialPost {
     fn summarize(&self) -> String {
-        format!("@{}: (Likes: {})", self.handle, self.likes)
+        format!("@{} (Likes: {})", self.handle, self.likes)
     }
 }
 

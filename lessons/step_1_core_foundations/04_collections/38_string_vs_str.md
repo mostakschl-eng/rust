@@ -29,7 +29,7 @@ Today, we solve this mystery once and for all with a crystal-clear real-life ana
 | Feature | `&str` (String Slice) | `String` (Owned String) |
 |---|---|---|
 | **What is it?** | A view / reference to existing text | An owned, growable container of text |
-| **Memory Location** | Embedded in compiled binary or borrowed from heap | Stored on the **Heap** |
+| **Memory Location** | A borrowed view of UTF-8 text in a literal, String, or other valid storage | UTF-8 bytes on the heap; controller stored with its owner |
 | **Growable?** | ❌ No (Fixed size) | ✅ Yes (Can expand with `push_str`) |
 | **How to create** | Double quotes: `"Hello"` | `String::from("Hello")` or `"Hello".to_string()` |
 | **Analogy** | Looking at a billboard | Writing in your own notebook |
@@ -71,7 +71,7 @@ View:  Hello, Rustacean! 🦀
 
 ## 4. Why Does Rust Do This? (Zero-Cost Safety!)
 
-In Python or JavaScript, strings are secretly allocating memory on the heap all the time, which can make programs slow and consume tons of RAM.
+Borrowing a view lets Rust inspect existing text without copying its bytes. Other languages have their own string representations; allocation costs depend on the operation.
 
 In Rust:
 1. If you write `"Ready"`, Rust embeds `"Ready"` directly into the compiled executable file. Reading it costs **zero memory allocation**!
@@ -81,7 +81,7 @@ In Rust:
 
 ## 5. Which One Should You Use in Function Parameters?
 
-When writing a function that accepts text, **always prefer `&str`**:
+When writing a function that accepts text, **prefer `&str` when the function only needs to read text**:
 
 ```rust
 // ✅ Best practice: Can accept BOTH &str literals AND &String!
@@ -99,7 +99,7 @@ fn main() {
 ```
 
 > [!TIP]
-> If your function takes `&str`, callers can pass either string literals `"text"` OR references to owned strings `&my_string`. It's the most flexible choice!
+> If your function takes `&str`, callers can pass either string literals `"text"` OR references to owned strings `&my_string`. Use `&mut String` to edit an existing owned string, or `String` to take ownership when that is the function’s purpose.
 
 ---
 
@@ -126,6 +126,19 @@ message.push_str(" World"); // ✅ Works!
 
 ---
 
+## Scope of the analogy
+
+A `&str` is a view, not necessarily permanent text. It may borrow part of a local `String` and cannot outlive its owner. `let mut view: &str` lets you point the variable at different text; it does not make the borrowed text editable through that shared reference. Both string types hold valid UTF-8. Safe string slicing uses byte positions at UTF-8 boundaries; `s[0]` is not supported.
+
+## Symbol reading guide
+
+| Symbol or syntax | Meaning |
+|---|---|
+| `String` | Owned growable UTF-8 text |
+| `&str` | Shared view of existing UTF-8 text |
+| `&badge_code` | Borrow the owned String |
+| `.push('-')` | Append one char |
+
 ## 🎯 Next Steps
-* Ready to practice? Complete [`tasks/04_collections/task_38_string_vs_str/TASK.md`](file:///d:/rust-learning/tasks/04_collections/task_38_string_vs_str/TASK.md).
-* Next lesson: [Lesson 39: String Methods & Manipulation](file:///d:/rust-learning/lessons/04_collections/39_string_methods.md).
+* Ready to practice? Complete [`tasks/step_1_core_foundations/04_collections/task_38_string_vs_str/TASK.md`](../../../tasks/step_1_core_foundations/04_collections/task_38_string_vs_str/TASK.md).
+* Next lesson: [Lesson 39: String Methods & Manipulation](39_string_methods.md).

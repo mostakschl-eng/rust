@@ -39,3 +39,18 @@ fn main() {
 2. **Borrowing inside match (`&user.middle_name`):**
    * Using `&user.middle_name` borrows the inner string reference without moving ownership out of the struct.
 
+
+## Reading the Result Carefully
+
+An optional profile field is a labeled envelope: either a value is inside, or it explicitly says absent.
+
+| Symbol or term | Meaning |
+|---|---|
+| `Option<T>` | possible absence |
+| `Some(value)` | present |
+| `None` | absent |
+| `match` | handle variants |
+
+Safe references cannot be null, but raw pointers can be null. Option does not prevent panics if you choose unwrap on None.
+
+The complete runnable program is in `solution.rs`; snippets above may focus on only one part. Compare its output with the example in TASK.md.

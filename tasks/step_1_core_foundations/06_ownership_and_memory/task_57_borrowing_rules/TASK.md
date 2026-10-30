@@ -39,17 +39,35 @@ Final Log State: [Entry 1: System Boot] -> [Entry 2: Backup Verified]
 
 ## 🛠️ How to Do This (Step-by-Step):
 
-1. Open [`src/main.rs`](file:///d:/rust-learning/tasks/06_ownership_and_memory/task_57_borrowing_rules/src/main.rs).
+1. Open [`src/main.rs`](src/main.rs).
 2. Schedule readers first, followed by the writer, followed by the final reader.
 3. Test:
    ```bash
-   cd tasks/06_ownership_and_memory/task_57_borrowing_rules
+   cd tasks/step_1_core_foundations/06_ownership_and_memory/task_57_borrowing_rules
    cargo run
    ```
 
 ---
 
 ## 🔒 Solution & Explanations
-* Working Code: [`solution/solution.rs`](file:///d:/rust-learning/tasks/06_ownership_and_memory/task_57_borrowing_rules/solution/solution.rs)
-* Line-by-Line Breakdown: [`solution/explain.md`](file:///d:/rust-learning/tasks/06_ownership_and_memory/task_57_borrowing_rules/solution/explain.md)
+* Working Code: [`solution/solution.rs`](solution/solution.rs)
+* Line-by-Line Breakdown: [`solution/explain.md`](solution/explain.md)
 
+
+## Hints (Open One at a Time)
+
+<details>
+<summary>Hint 1: Choose the approach</summary>
+
+Print both inspectors before creating the writer.
+
+</details>
+
+<details>
+<summary>Hint 2: Connect the pieces</summary>
+
+Use the writer for its append and print, then stop using it before creating the final reader.
+
+</details>
+
+**Before running:** The rule concerns overlapping active access to the same data, not one reference per whole function. Disjoint fields may be borrowed independently.

@@ -1,84 +1,104 @@
-# Rust Learning Workspace: Master Setup & Architecture Blueprint (`SETUP.md`)
+# Rust Learning Workspace: Setup and Structure
 
-Welcome to the **Rust Learning Workspace**. This document is the single source of truth for how this workspace is structured, how to recreate it on any new machine, and the rules for maintaining it over time.
+This workspace teaches Rust as a first programming language. Step 1 has 80 lessons across eight levels. Steps 2–4 contain outlines for later study.
 
----
+## Install Rust first
 
-## 1. Workspace Purpose
-
-This repository is an isolated, modular learning environment for an absolute beginner learning Rust as their first programming language. It is designed to:
-* Guide a student from "child level" (zero coding background) to "adult level" (production-ready Rust developer) across **80 granular lessons**.
-* Keep lessons, tasks, and solutions strictly separated.
-* Prevent accidental spoiler exposure (solutions live in separate subfolders).
-* Enable any AI assistant (Antigravity, ChatGPT, Claude) to tutor seamlessly by reading `TUTOR.md`.
-* Track progress live in `TUTOR.md` and `progress/log.md`.
-
----
-
-## 2. Complete Directory Structure
+1. Open the [official Rust installer page](https://rust-lang.org/tools/install/).
+2. On Windows, download and run `rustup-init.exe`. Follow its prompts to install the stable toolchain. If it asks for Visual Studio C++ build tools, install the required MSVC tools and Windows SDK. These supply the linker that joins the compiled program into an executable.
+3. Close and reopen your terminal after installation. On macOS or Linux, follow the commands on that same official page; you may also need the platform's C compiler/linker.
+4. Check the installation in a terminal:
 
 ```text
-d:\rust-learning\
-│
-├── SETUP.md                     # [THIS FILE] Master blueprint & setup guide
-├── TUTOR.md                     # Master AI tutor brief, student profile & live tracker
-├── ROADMAP.md                   # 80-Lesson syllabus with interactive checkboxes
-│
-├── guides/                      # Quick reference materials for the student
-│   ├── cargo_cheatsheet.md      # Common Cargo commands explained simply
-│   └── compiler_errors.md       # Rust compiler error messages explained in plain English
-│
-├── lessons/                     # 80 Granular Lessons across 8 Levels (Child to Adult)
-│   ├── 01_baby_steps/           # Lessons 01 – 10 (Code basics, functions, variables)
-│   ├── 02_types_and_math/       # Lessons 11 – 20 (Numbers, booleans, arithmetic, scope)
-│   ├── 03_logic_and_loops/      # Lessons 21 – 30 (If/else, while, loop, for ranges)
-│   ├── 04_collections/          # Lessons 31 – 40 (Tuples, arrays, vectors, strings, maps)
-│   ├── 05_structs_and_enums/    # Lessons 41 – 50 (Structs, methods, enums, match)
-│   ├── 06_ownership_and_memory/ # Lessons 51 – 60 (Stack/heap, ownership, borrowing, lifetimes)
-│   ├── 07_errors_and_io/        # Lessons 61 – 70 (Option, Result, ?, stdin, files, modules)
-│   └── 08_advanced_and_concurrency/ # Lessons 71 – 80 (Generics, traits, closures, threads)
-│
-├── tasks/                       # Hands-on practice tasks (each is an isolated Cargo package)
-│   ├── 01_baby_steps/
-│   │   ├── task_01_hello/
-│   │   │   ├── Cargo.toml       # Cargo package configuration
-│   │   │   ├── TASK.md          # Task objective, instructions & hidden progressive hints
-│   │   │   ├── src/
-│   │   │   │   └── main.rs      # Starter code where the student writes and runs code
-│   │   │   └── solution/        # Dedicated anti-spoiler subfolder
-│   │   │       ├── solution.rs  # Working reference solution
-│   │   │       └── explain.md   # Line-by-line breakdown and beginner tips
-│   │   └── ...
-│   └── ...
-│
-└── progress/
-    └── log.md                   # Chronological diary of completed milestones with copy-paste template
+rustc --version
+cargo --version
 ```
 
----
+Both commands should print a version number. The exact numbers change as Rust is updated. If either command is unknown, restart the terminal and follow the [official installation troubleshooting](https://doc.rust-lang.org/book/ch01-01-installation.html#troubleshooting).
 
-## 3. Role of Each Core File
+`rustc` is the Rust compiler: it translates Rust code. `cargo` manages the package and asks the compiler to build it. A terminal is the window where you type commands. An editor is where you edit files.
 
-| File / Folder | Role | Who Edits It? |
-|---|---|---|
-| `SETUP.md` | Blueprint of the entire workspace layout and reproduction steps. | AI Tutor / Developer whenever structure updates. |
-| `TUTOR.md` | Guide for AI tutors (student profile, rules, live progress status). | AI Tutor after each completed lesson/task. |
-| `ROADMAP.md` | Complete 80-lesson syllabus with completion checkboxes. | AI Tutor checks off items as the student finishes. |
-| `guides/` | Helpful reference cheat-sheets for beginner Rust concepts and errors. | Static reference (expanded as new questions arise). |
-| `lessons/` | 80 deep, conversational explanations of programming concepts. | Read by the student; authored by AI tutor. |
-| `tasks/` | Standalone Cargo projects where the student types and tests code. | Student writes code in `src/main.rs`. |
-| `solution/` | Isolated subfolder inside each task containing working code & notes. | Reference only; accessed when the student gets stuck or completes the task. |
-| `progress/log.md` | Personal learning journal with reusable template and milestones. | Updated collaboratively after completing tasks. |
+| Item | Plain meaning |
+|---|---|
+| `cd folder` | Change the terminal's current folder |
+| `Cargo.toml` | The package's name and build settings |
+| `src/main.rs` | Your program and unfinished exercise |
+| `cargo check` | Check the program's types and syntax without running it |
+| `cargo run` | Compile and run your own program |
+| `cargo run --example solution` | Run the separate reference answer when you choose to check it |
 
----
+## Run your first task
 
-## 4. Maintenance Protocol (Golden Rules)
+Open this repository in your editor. In Windows PowerShell, start at its actual location (change the first path if yours is different):
 
-1. **Always Update `SETUP.md` When Structure Changes:**
-   If a new folder, guide, or organizational convention is introduced, update the directory tree and file table in this document immediately.
-2. **Never Put Solutions in the Same File as the Task:**
-   To protect the student's learning experience, every task MUST have its solution isolated inside a `solution/` subfolder.
-3. **Keep Every Task an Independent Cargo Package:**
-   Running `cargo run` inside `tasks/.../task_name/` must work cleanly without interfering with other tasks.
-4. **Keep `TUTOR.md` and `progress/log.md` Updated Live:**
-   The "Where am I now?" section in `TUTOR.md` and the snapshot in `progress/log.md` must always reflect the current active lesson and task.
+```powershell
+cd D:/rust-learning
+cd tasks/step_1_core_foundations/01_baby_steps/task_01_hello
+cargo run
+```
+
+The starter currently prints `Hello, World!`. Read `TASK.md`, write your own answer in `src/main.rs`, and run it again. The requested answer has two lines. A successful compile alone does not finish the exercise.
+
+If Cargo says it cannot find `Cargo.toml`, the terminal is in the wrong folder. Open the terminal in the task folder, or return to the repository root before using a full `cd tasks/...` command. Do not run `cargo new` inside an existing task.
+
+## Learn, try, then check
+
+1. Read the matching lesson under `lessons/step_1_core_foundations/`.
+2. Read `TASK.md` and try the `// TODO` work in `src/main.rs`.
+3. Use `cargo check` while writing and `cargo run` to inspect the result.
+4. If stuck, reveal Hint 1 before Hint 2. Explain what each hint means before continuing.
+5. After trying, compare with `solution/solution.rs` and read `solution/explain.md`. `cargo run --example solution` runs that answer without overwriting your code. For interactive exercises, type the sample input when asked.
+6. Explain the idea in your own words, then update the existing progress tracker when you have actually completed the task.
+
+Task 20 intentionally starts with compiler errors. Its purpose is to read and repair those errors. All other starter packages should compile, but their unfinished code is not expected to match the completed output yet.
+
+## Directory structure
+
+```text
+rust-learning/
+├── README.md
+├── SETUP.md
+├── ROADMAP.md
+├── TUTOR.md
+├── AGENTS.md
+├── guides/
+│   ├── cargo_cheatsheet.md
+│   └── compiler_errors.md
+├── lessons/
+│   ├── step_1_core_foundations/
+│   │   ├── 01_baby_steps/
+│   │   ├── 02_types_and_math/
+│   │   ├── 03_logic_and_loops/
+│   │   ├── 04_collections/
+│   │   ├── 05_structs_and_enums/
+│   │   ├── 06_ownership_and_memory/
+│   │   ├── 07_errors_and_io/
+│   │   └── 08_advanced_and_concurrency/
+│   ├── step_2_universal_crates/           # Outline
+│   ├── step_3_specialization_tracks/      # Outline
+│   └── step_4_production_and_projects/    # Outline
+├── tasks/
+│   ├── step_1_core_foundations/           # Same eight level folders
+│   │   └── 01_baby_steps/
+│   │       └── task_01_hello/
+│   │           ├── Cargo.toml
+│   │           ├── Cargo.lock
+│   │           ├── TASK.md
+│   │           ├── src/main.rs
+│   │           └── solution/
+│   │               ├── solution.rs
+│   │               └── explain.md
+│   ├── step_2_universal_crates/           # Outline
+│   ├── step_3_specialization_tracks/      # Outline
+│   └── step_4_production_and_projects/    # Outline
+├── docs/superpowers/                     # Design and maintenance plans
+└── progress/log.md
+```
+
+## Maintaining the workspace
+
+Keep the lesson order, independent task packages, and separate solutions. Every lesson needs simple explanations, an analogy, a symbol table, code, expected output, and common mistakes. Every task needs instructions, expected output, progressive hints, a TODO starter, a complete reference solution, and an explanation.
+
+Use relative Markdown links so the workspace works in another folder and on GitHub. Commands that start with `cd tasks/...` assume the terminal starts at the repository root. Each manifest exposes `solution/solution.rs` as the example named `solution`; the normal `cargo run` still runs the student's `src/main.rs`.
+
+Verify student work before updating `TUTOR.md`, `ROADMAP.md`, or `progress/log.md`. Maintenance edits do not count as lessons completed. The student manages Git; agents must follow [AGENTS.md](AGENTS.md).

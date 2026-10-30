@@ -40,3 +40,17 @@ fn main() {
 2. **Never Overlap Readers and Writers:**
    * If you tried to print `r1` AFTER `writer.push_str(...)`, compilation would instantly fail with `error[E0502]`.
 
+
+## Reading the Result Carefully
+
+A blackboard has an inspection period, an editing period, then a final inspection. Finish each access before starting the conflicting one.
+
+| Symbol or term | Meaning |
+|---|---|
+| `&T` | shared access |
+| `&mut T` | exclusive access |
+| `last use` | helps determine borrow end |
+
+The rule concerns overlapping active access to the same data, not one reference per whole function. Disjoint fields may be borrowed independently.
+
+The complete runnable program is in `solution.rs`; snippets above may focus on only one part. Compare its output with the example in TASK.md.

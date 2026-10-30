@@ -4,8 +4,7 @@ Welcome to Lesson 29!
 
 In Lesson 26 and 28, we looked at `loop` and `while`. But notice how in both of them, we had to remember to write `count += 1;` manually. If you forgot that one line, your program would freeze!
 
-In professional Rust code, **90% of all loops are `for` loops**!  
-A `for` loop is safe, clean, and impossible to accidentally freeze.
+A `for` loop is useful for stepping through an iterator. A finite range removes the need to update a counter manually; its body can still hang, panic, or contain another nonterminating loop.
 
 ---
 
@@ -121,7 +120,7 @@ fn main() {
 ---
 
 ## 5. Summary Checklist
-- [x] `for item in range { ... }` is Rust's safest and most popular loop.
+- [x] `for item in range { ... }` is a useful way to iterate over a range or collection.
 - [x] `1..5` counts 1, 2, 3, 4 (excludes 5).
 - [x] `1..=5` counts 1, 2, 3, 4, 5 (includes 5).
 - [x] `(1..=5).rev()` counts in reverse order.
@@ -130,7 +129,20 @@ fn main() {
 
 ## 🛠️ Ready for Practice!
 
-👉 Open **[`tasks/03_logic_and_loops/task_29_for_loops_and_ranges/TASK.md`](file:///d:/rust-learning/tasks/03_logic_and_loops/task_29_for_loops_and_ranges/TASK.md)**.
+👉 Open **[`tasks/step_1_core_foundations/03_logic_and_loops/task_29_for_loops_and_ranges/TASK.md`](../../../tasks/step_1_core_foundations/03_logic_and_loops/task_29_for_loops_and_ranges/TASK.md)**.
 1. Read the task requirements.
 2. Build an automated workout gym rep counter that counts reps 1 to 10 and announces sets.
 3. Run `cargo run` and test your for loop!
+
+## Symbol reference
+
+| Symbol | Meaning |
+|---|---|
+| `for ... in` | Visit each iterator item |
+| `..` | Range excluding the end |
+| `..=` | Range including the end |
+| `.rev()` | Reverse a double-ended iterator |
+
+## Common pitfalls and limits
+
+A descending range such as 5..1 is empty; reverse an ascending range with rev(). A finite range does not protect against a body that hangs or never returns.

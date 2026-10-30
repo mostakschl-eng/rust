@@ -5,7 +5,7 @@
 ```rust
 fn main() {
     println!("Hello, my name is {} and I live in {}.", "Rahim", "Dhaka");
-    println!("My lucky number is {} and my favorite language is {}.", 7, "Rust");
+    println!("My lucky number is {} and my favorite language is {}!", 7, "Rust");
 }
 ```
 
@@ -14,7 +14,7 @@ fn main() {
   - Second `{}` matches the second value after the comma: `"Dhaka"`.
   - Notice the comma `,` separating the string from `"Rahim"`, and the comma separating `"Rahim"` from `"Dhaka"`.
 
-* **Line 2 (`println!("My lucky number is {} and my favorite language is {}.", 7, "Rust");`):**
+* **Line 2 (`println!("My lucky number is {} and my favorite language is {}!", 7, "Rust");`):**
   - First `{}` matches the number `7`. Numbers do not need quotation marks.
   - Second `{}` matches `"Rust"`.
 

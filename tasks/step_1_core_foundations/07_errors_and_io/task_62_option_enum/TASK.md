@@ -28,17 +28,35 @@ Player 999: No record found.
 
 ## 🛠️ How to Do This (Step-by-Step):
 
-1. Open [`src/main.rs`](file:///d:/rust-learning/tasks/07_errors_and_io/task_62_option_enum/src/main.rs).
+1. Open [`src/main.rs`](src/main.rs).
 2. Implement `find_player_score`.
 3. Test:
    ```bash
-   cd tasks/07_errors_and_io/task_62_option_enum
+   cd tasks/step_1_core_foundations/07_errors_and_io/task_62_option_enum
    cargo run
    ```
 
 ---
 
 ## 🔒 Solution & Explanations
-* Working Code: [`solution/solution.rs`](file:///d:/rust-learning/tasks/07_errors_and_io/task_62_option_enum/solution/solution.rs)
-* Line-by-Line Breakdown: [`solution/explain.md`](file:///d:/rust-learning/tasks/07_errors_and_io/task_62_option_enum/solution/explain.md)
+* Working Code: [`solution/solution.rs`](solution/solution.rs)
+* Line-by-Line Breakdown: [`solution/explain.md`](solution/explain.md)
 
+
+## Hints (Open One at a Time)
+
+<details>
+<summary>Hint 1: Choose the approach</summary>
+
+Match the player ID and return Some for each known ID.
+
+</details>
+
+<details>
+<summary>Hint 2: Connect the pieces</summary>
+
+Use a wildcard arm returning None for all unknown IDs, then match each lookup result separately.
+
+</details>
+
+**Before running:** Testing is_some does not extract the number. Use match to bind the inner value; an unknown player should not become a zero score.

@@ -19,5 +19,5 @@ fn main() {
         break;
     }
 
-    println!("SECURITY ALERT: Maximum attempts exceeded! Account Locked! 🔒");
+    println!("SECURITY ALERT: Maximum attempts reached! Account Locked! 🔒");
 }

@@ -26,7 +26,7 @@ Raw Parcel:   (10482, "Tokyo", 4.75, false)
 
 ## 🛠️ How to Do This (Step-by-Step):
 
-1. Open [`src/main.rs`](file:///d:/rust-learning/tasks/04_collections/task_31_tuples/src/main.rs).
+1. Open [`src/main.rs`](src/main.rs).
 2. Create the tuple:
    ```rust
    let parcel = (10482, "Tokyo", 4.75, false);
@@ -35,29 +35,35 @@ Raw Parcel:   (10482, "Tokyo", 4.75, false)
 4. Print the entire tuple with `{:?}`.
 5. Test your code:
    ```bash
-   cd tasks/04_collections/task_31_tuples
+   cd tasks/step_1_core_foundations/04_collections/task_31_tuples
    cargo run
    ```
 
 ---
 
-## 💡 Hints (Only open if you get stuck!)
+## 💡 Hints
 
 <details>
-<summary><b>🔍 Hint: Tuple Indexing</b></summary>
+<summary>Hint 1: choose the approach</summary>
 
-```rust
-println!("Tracking ID:  #{}", parcel.0);
-println!("Destination:  {}", parcel.1);
-println!("Weight:       {} kg", parcel.2);
-println!("Delivered?    {}", parcel.3);
-println!("Raw Parcel:   {:?}", parcel);
-```
+Start by identifying which parcel value occupies each position.
+
 </details>
 
----
+<details>
+<summary>Hint 2: connect the syntax</summary>
+
+Use `.0` for the ID and `{:?}` to print the entire tuple.
+
+</details>
 
 ## 🔒 Solution & Explanations
-* Working Code: [`solution/solution.rs`](file:///d:/rust-learning/tasks/04_collections/task_31_tuples/solution/solution.rs)
-* Line-by-Line Breakdown: [`solution/explain.md`](file:///d:/rust-learning/tasks/04_collections/task_31_tuples/solution/explain.md)
+* Working Code: [`solution/solution.rs`](solution/solution.rs)
+* Line-by-Line Breakdown: [`solution/explain.md`](solution/explain.md)
 
+
+## Watch out
+
+Tuple field indices are literal numbers, not runtime variables.
+
+The starter intentionally does not produce the expected output yet. Complete its TODOs before comparing results.

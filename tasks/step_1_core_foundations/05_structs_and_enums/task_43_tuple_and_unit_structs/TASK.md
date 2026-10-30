@@ -35,18 +35,44 @@ Security Token:
 
 ## 🛠️ How to Do This (Step-by-Step):
 
-1. Open [`src/main.rs`](file:///d:/rust-learning/tasks/05_structs_and_enums/task_43_tuple_and_unit_structs/src/main.rs).
+1. Open [`src/main.rs`](src/main.rs).
 2. Declare tuple structs with `(Type, Type, ...);` ending with `;`.
 3. Declare `struct SecurityKey;`.
 4. Test:
    ```bash
-   cd tasks/05_structs_and_enums/task_43_tuple_and_unit_structs
+   cd tasks/step_1_core_foundations/05_structs_and_enums/task_43_tuple_and_unit_structs
    cargo run
    ```
 
 ---
 
-## 🔒 Solution & Explanations
-* Working Code: [`solution/solution.rs`](file:///d:/rust-learning/tasks/05_structs_and_enums/task_43_tuple_and_unit_structs/solution/solution.rs)
-* Line-by-Line Breakdown: [`solution/explain.md`](file:///d:/rust-learning/tasks/05_structs_and_enums/task_43_tuple_and_unit_structs/solution/explain.md)
+## 💡 Hints
 
+<details>
+<summary>Hint 1: choose the approach</summary>
+
+Use a different tuple struct name for each domain, even when fields have similar types.
+
+</details>
+
+<details>
+<summary>Hint 2: connect the syntax</summary>
+
+Access Color channels with `.0`–`.2`, destructure Point3D with its type name, and create a fieldless SecurityKey value.
+
+</details>
+
+## 🔒 Solution & Explanations
+* Working Code: [`solution/solution.rs`](solution/solution.rs)
+* Line-by-Line Breakdown: [`solution/explain.md`](solution/explain.md)
+
+
+## Watch out
+
+The marker has no authentication behavior. A printed validation message is pretend; anyone in this module can construct SecurityKey.
+
+The starter intentionally does not produce the expected output yet. Complete its TODOs before comparing results.
+
+## Marker scope
+
+The SecurityKey message is a demonstration. Constructing a zero-sized marker performs no real security validation.

@@ -4,8 +4,8 @@
 Write a Rust program simulating a **Gourmet Coffee Shop Receipt Table** using advanced formatting.
 
 Format requirements:
-1. Column 1 (Item Name): Left-aligned in 15 spaces (`{:<15}`)
-2. Column 2 (Price): Right-aligned in 8 spaces, rounded to exactly 2 decimals (`{:>8.2}`)
+1. Column 1 (Item Name): Left-aligned in 16 character positions (`{:<16}`)
+2. Column 2 (Price): Right-aligned in 7 character positions after a dollar sign, with exactly 2 decimals (`{:>7.2}`)
 3. Print these 3 menu items:
    - `"Espresso"`, `2.75`
    - `"Caramel Latte"`, `4.899` (Rounds to `4.90`)
@@ -33,29 +33,33 @@ TOTAL DUE:      $  11.72
 
 ## 🛠️ How to Do This (Step-by-Step):
 
-1. Open [`src/main.rs`](file:///d:/rust-learning/tasks/02_types_and_math/task_18_number_formatting/src/main.rs).
-2. Use format specifiers like `{:<15}` and `{:>7.2}`.
+1. Open [`src/main.rs`](src/main.rs).
+2. Use format specifiers like `{:<16}` and `{:>7.2}`.
 3. Test with:
    ```bash
-   cd tasks/02_types_and_math/task_18_number_formatting
+   cd tasks/step_1_core_foundations/02_types_and_math/task_18_number_formatting
    cargo run
    ```
 
 ---
 
-## 💡 Hints (Only open if you get stuck!)
+## 💡 Hints (open one at a time)
 
 <details>
-<summary><b>🔍 Hint: Aligning currency and decimals</b></summary>
+<summary>Hint 1: Start with the idea</summary>
 
-```rust
-println!("{:<15} $ {:>6.2}", "Espresso", 2.75);
-```
+Column widths are minimum widths. Give item text a left-aligned field and amounts a right-aligned field with two decimal places.
+</details>
+
+<details>
+<summary>Hint 2: Connect it to Rust</summary>
+
+The solution uses 16 positions for labels, then a dollar sign and a 7-position amount field. Compute subtotal and tax from the unformatted values.
 </details>
 
 ---
 
 ## 🔒 Solution & Explanations
-* Working Code: [`solution/solution.rs`](file:///d:/rust-learning/tasks/02_types_and_math/task_18_number_formatting/solution/solution.rs)
-* Line-by-Line Breakdown: [`solution/explain.md`](file:///d:/rust-learning/tasks/02_types_and_math/task_18_number_formatting/solution/explain.md)
+* Working Code: [`solution/solution.rs`](solution/solution.rs)
+* Line-by-Line Breakdown: [`solution/explain.md`](solution/explain.md)
 

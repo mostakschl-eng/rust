@@ -1,27 +1,9 @@
+// Task 39: Security Broadcast Sanitizer (String Methods)
+// Complete the TODOs; the reference answer is kept separately in solution/.
+
 fn main() {
-    println!("=== SECURITY BROADCAST SANITIZER ===");
-
-    let raw_input = "   ALERT: critical system warning!   ";
-    println!("Raw Length:     {} bytes", raw_input.len());
-
-    // TODO 1: Trim leading and trailing spaces
-    let clean = raw_input.trim();
-    println!("Trimmed:        '{}'", clean);
-    println!("Trimmed Length: {} bytes", clean.len());
-
-    // TODO 2: Check if message contains "critical"
-    let is_critical = clean.contains("critical");
-    println!("Has 'critical'? {}", is_critical);
-
-    // TODO 3: Replace "warning" with "EMERGENCY 🚨"
-    let replaced = clean.replace("warning", "EMERGENCY 🚨");
-    println!("Replaced:       '{}'", replaced);
-
-    // TODO 4: Format final uppercase announcement using format! macro
-    let upper = clean.to_uppercase();
-    let final_notice = format!("BROADCAST: {}", upper);
-    println!("Final Notice:   {}", final_notice);
-
-    println!("====================================");
+    // TODO 1: Start with raw_input = "   ALERT: critical system warning!   ".
+    // TODO 2: Print its byte length; trim and print the view and its byte length.
+    // TODO 3: Check for critical and create a replacement String for warning.
+    // TODO 4: Uppercase the trimmed original and build final_notice with format!.
 }
-

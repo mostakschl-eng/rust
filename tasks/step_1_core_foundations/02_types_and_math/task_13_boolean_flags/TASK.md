@@ -27,32 +27,35 @@ Can Make Purchases:    true
 
 ## 🛠️ How to Do This (Step-by-Step):
 
-1. Open [`src/main.rs`](file:///d:/rust-learning/tasks/02_types_and_math/task_13_boolean_flags/src/main.rs).
+1. Open [`src/main.rs`](src/main.rs).
 2. Declare each boolean variable.
 3. Use `!is_account_suspended` to set `can_make_purchases`.
 4. Print each flag.
 5. Test with:
    ```bash
-   cd tasks/02_types_and_math/task_13_boolean_flags
+   cd tasks/step_1_core_foundations/02_types_and_math/task_13_boolean_flags
    cargo run
    ```
 
 ---
 
-## 💡 Hints (Only open if you get stuck!)
+## 💡 Hints (open one at a time)
 
 <details>
-<summary><b>🔍 Hint: Boolean flip</b></summary>
+<summary>Hint 1: Start with the idea</summary>
 
-```rust
-let is_account_suspended: bool = false;
-let can_make_purchases: bool = !is_account_suspended;
-```
+Boolean literals are lowercase true and false, without quotes.
+</details>
+
+<details>
+<summary>Hint 2: Connect it to Rust</summary>
+
+The NOT operator goes before the suspended flag. Think through the opposite of false before printing the result.
 </details>
 
 ---
 
 ## 🔒 Solution & Explanations
-* Working Code: [`solution/solution.rs`](file:///d:/rust-learning/tasks/02_types_and_math/task_13_boolean_flags/solution/solution.rs)
-* Line-by-Line Breakdown: [`solution/explain.md`](file:///d:/rust-learning/tasks/02_types_and_math/task_13_boolean_flags/solution/explain.md)
+* Working Code: [`solution/solution.rs`](solution/solution.rs)
+* Line-by-Line Breakdown: [`solution/explain.md`](solution/explain.md)
 

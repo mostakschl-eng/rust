@@ -22,11 +22,11 @@ My lucky number is 7 and my favorite language is Rust!
 
 ## 🛠️ How to Do This (Step-by-Step):
 
-1. Open the code file: [`src/main.rs`](file:///d:/rust-learning/tasks/01_baby_steps/task_02_screen_speaking/src/main.rs).
+1. Open the code file: [`src/main.rs`](src/main.rs).
 2. Inside `fn main() { ... }`, write your two `println!` statements using `{}` slots.
 3. Open your terminal in this folder and test it:
    ```bash
-   cd tasks/01_baby_steps/task_02_screen_speaking
+   cd tasks/step_1_core_foundations/01_baby_steps/task_02_screen_speaking
    cargo run
    ```
 
@@ -57,6 +57,6 @@ println!("My lucky number is {} and my language is {}.", 7, "Rust");
 ---
 
 ## 🔒 Solution & Explanations
-* Working Code: [`solution/solution.rs`](file:///d:/rust-learning/tasks/01_baby_steps/task_02_screen_speaking/solution/solution.rs)
-* Line-by-Line Breakdown: [`solution/explain.md`](file:///d:/rust-learning/tasks/01_baby_steps/task_02_screen_speaking/solution/explain.md)
+* Working Code: [`solution/solution.rs`](solution/solution.rs)
+* Line-by-Line Breakdown: [`solution/explain.md`](solution/explain.md)
 

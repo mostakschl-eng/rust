@@ -44,7 +44,7 @@ fn main() {
 ```rust
 for col in 1..=4 {
 ```
-* This runs 4 times for **every single** row iteration.
+* This would run 4 times per row if nothing exited early. The labeled break shortens the third row.
 * When `row = 1`, `col` goes `1, 2, 3, 4`.
 * When `row = 2`, `col` goes `1, 2, 3, 4`.
 * When `row = 3`, `col = 1` then `col = 2`.

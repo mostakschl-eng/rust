@@ -43,10 +43,10 @@ Rust lets you choose how big of a box you need:
 | `u8` | 8 bits (1 byte) | `0` to `255` | RGB color values, tiny counters |
 | `i8` | 8 bits (1 byte) | `-128` to `127` | Small positive/negative offsets |
 | `u16` / `i16` | 16 bits (2 bytes) | `0` to `65,535` / `-32,768` to `32,767` | Port numbers, game sprite IDs |
-| **`i32`** | 32 bits (4 bytes) | **-2 Billion to +2 Billion** | **The Rust Default!** Fast & covers 95% of normal numbers |
-| `u32` | 32 bits (4 bytes) | `0` to `4.2 Billion` | Positive counts, phone numbers |
+| **`i32`** | 32 bits (4 bytes) | **-2 Billion to +2 Billion** | **The Rust Default!** Default for otherwise unconstrained integer literals |
+| `u32` | 32 bits (4 bytes) | `0` to `4.2 Billion` | Nonnegative counts; store phone numbers as text to preserve leading zeros and `+` |
 | `i64` / `u64` | 64 bits (8 bytes) | Huge astronomical numbers | World population, bank account balances in cents |
-| `usize` | Pointer size | 64-bit on modern computers | Indexing lists and counting memory elements |
+| `usize` | Pointer size | Target-dependent, commonly 32 or 64 bits | Indexing lists and counting memory elements |
 
 ---
 
@@ -100,7 +100,7 @@ let age: u8 = -10; // ❌ ERROR!
 
 ## 🛠️ Ready for Practice!
 
-👉 Open **[`tasks/02_types_and_math/task_11_integer_sizes/TASK.md`](file:///d:/rust-learning/tasks/02_types_and_math/task_11_integer_sizes/TASK.md)**.
+👉 Open **[`tasks/step_1_core_foundations/02_types_and_math/task_11_integer_sizes/TASK.md`](../../../tasks/step_1_core_foundations/02_types_and_math/task_11_integer_sizes/TASK.md)**.
 1. Read the task requirements.
 2. Select the perfect integer types (`i8`, `u8`, `u32`, `i64`) for real-world stats.
 3. Run `cargo run` and test your integer knowledge!

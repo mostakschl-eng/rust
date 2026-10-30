@@ -8,7 +8,7 @@ What if you want to:
 * Process thousands of images in parallel across all CPU cores?
 * Run background music while an interactive game loop renders graphics?
 
-In Rust, running tasks in parallel is called **Concurrency**, and the foundation is **`std::thread::spawn`**! 🧵⚡
+**Concurrency** means tasks make progress during overlapping periods. **Parallelism** means work actually runs at the same instant. OS threads can provide either, depending on scheduling and available cores. Start with **`std::thread::spawn`**. 🧵⚡
 
 ---
 
@@ -18,7 +18,7 @@ In Rust, running tasks in parallel is called **Concurrency**, and the foundation
 * **Multi-Threaded:**
   * **Chef 1 (Main Thread):** Bakes the bread.
   * **Chef 2 (Spawned Thread):** Simmers the soup.
-  * Both chefs are working on the stove at the **exact same physical second**!
+  * Two chefs may work simultaneously with enough resources. With one stove, they may instead take turns. Both arrangements allow overlapping tasks.
 
 In Rust:
 > `std::thread::spawn` creates a real **Operating System thread**.  
@@ -56,7 +56,7 @@ fn main() {
 }
 ```
 
-### 📋 Expected Terminal Output:
+### 📋 One Possible Terminal Output:
 ```text
 [Main Thread] Supervising step #1
    [Background Thread] Working on item #1
@@ -69,7 +69,7 @@ fn main() {
 All threads finished cleanly! 🏁
 ```
 
-Notice how the outputs are interleaved: both threads are executing simultaneously!
+The lines can interleave differently on each run. Interleaving alone does not prove parallel execution. Sleeping is not synchronization, and the final line appears after the worker completes because of `join()`.
 
 ---
 
@@ -89,9 +89,7 @@ To prevent this:
 
 What if a background thread needs data from the `main` thread?
 
-Rust's borrow checker strictly forbids background threads from borrowing references (`&`) from other threads because the main thread might exit first, leaving a dangling reference!
-
-You must use the **`move`** keyword to transfer **complete ownership** of the data into the thread:
+`thread::spawn` requires its closure and return value to be `Send + 'static`: they cannot contain short-lived borrowed data. A reference to suitably shareable static data is allowed. `thread::scope` allows borrowing local data because scoped threads are joined before the scope returns. For this ordinary spawn, use **`move`** to transfer the owned vector:
 
 ```rust
 use std::thread;
@@ -116,10 +114,26 @@ Rust's type system guarantees **Fearless Concurrency**: data races are caught at
 - [x] `thread::spawn(|| { ... })` spawns a native OS thread.
 - [x] Use `handle.join().unwrap()` to wait for a thread to finish before exiting.
 - [x] Use `move ||` to transfer ownership of variables into spawned threads safely.
-- [x] Rust's compiler stops data races and thread crashes before runtime!
+- [x] Safe Rust prevents data races through borrowing and thread-safety traits. Threads can still panic, deadlock, or contain ordering bugs; `join()` reports a worker panic as `Err`.
 
 ---
 
+
+## Symbols and Practical Boundaries
+
+A kitchen dispatches a job to another chef, then waits for the returned tray before serving the result.
+
+| Symbol or term | Meaning |
+|---|---|
+| `thread::spawn` | start OS thread |
+| `move ||` | capture by value |
+| `.join()` | wait and get Result |
+| `Send` | transferable between threads |
+
+**Common pitfall:** Sleep does not guarantee output order or actual parallelism. join().unwrap() panics if the worker panicked. Static references or scoped threads can borrow safely; ordinary spawn cannot capture a short-lived reference.
+
 ## 🎯 Next Steps
-* Ready to practice? Complete [`tasks/08_advanced_and_concurrency/task_79_threads_spawn/TASK.md`](file:///d:/rust-learning/tasks/08_advanced_and_concurrency/task_79_threads_spawn/TASK.md).
-* Next lesson: [Lesson 80: Thread Communication: Message Passing with Channels (`mpsc`)](file:///d:/rust-learning/lessons/08_advanced_and_concurrency/80_channels_mpsc.md).
+* Ready to practice? Complete [`tasks/step_1_core_foundations/08_advanced_and_concurrency/task_79_threads_spawn/TASK.md`](../../../tasks/step_1_core_foundations/08_advanced_and_concurrency/task_79_threads_spawn/TASK.md).
+* Next lesson: [Lesson 80: Thread Communication: Message Passing with Channels (`mpsc`)](80_channels_mpsc.md).
+
+Further reading: [Scoped threads](https://doc.rust-lang.org/std/thread/fn.scope.html).

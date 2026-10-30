@@ -24,9 +24,9 @@ In Rust:
 Rust is very strict about **ownership and borrowing** (which we will explore deeply in Level 6).  
 When looping through a vector, you have three options:
 
-1. **Read-Only Borrow (`for item in &v`)**: You just want to look at or print the elements without modifying or destroying the vector.
+1. **Read-Only Borrow (`for item in &v`)**: You just want to look at or print the elements without modifying or consuming the vector.
 2. **Mutable Borrow (`for item in &mut v`)**: You want to change the values inside the vector in place.
-3. **Taking Ownership (`for item in v`)**: You want to consume and destroy the vector, moving each item out.
+3. **Taking Ownership (`for item in v`)**: You want to move the vector into an iterator, which yields owned elements. Those elements can be stored elsewhere; consuming does not mean immediately destroying every value.
 
 Let's see the two most common ones in action!
 
@@ -72,7 +72,7 @@ fn main() {
     let mut prices = vec![10, 20, 30, 40];
     println!("Original prices: {:?}", prices);
 
-    // Apply a 50% inflation / doubling:
+    // Double each price (a 100% increase):
     for price in &mut prices {
         *price *= 2; // Notice the asterisk (*) to update the value behind the reference!
     }
@@ -124,7 +124,7 @@ for x in v { // Moves ownership of v!
 }
 println!("{}", v.len()); // ❌ COMPILER ERROR: borrow of moved value `v`
 ```
-**Fix:** Always put `&` in front of the collection name (`for x in &v`) unless you deliberately want to destroy it!
+**Fix:** Always put `&` in front of the collection name (`for x in &v`) unless you deliberately want to consume it and move its elements!
 
 ---
 
@@ -132,10 +132,23 @@ println!("{}", v.len()); // ❌ COMPILER ERROR: borrow of moved value `v`
 - [x] Use `for item in &v` to safely read items without consuming the vector.
 - [x] Use `for item in &mut v` with `*item` to modify values in place.
 - [x] Use `.iter().enumerate()` to get both the index and the item together.
-- [x] Never omit `&` unless you want the vector destroyed after the loop finishes.
+- [x] Never omit `&` unless you intend to consume the vector. The original binding is then unavailable.
 
 ---
 
+## Borrowing bridge
+
+`&v` lends shared access; `&mut v` lends exclusive access so elements may change. During an active mutable borrow, overlapping shared or mutable access is forbidden. This prevents invalid references even in one thread; a data race specifically involves unsynchronized conflicting access across threads. Do not `push` while holding an element reference that you still need: growth might move the buffer. `*price` means “the value behind this reference.”
+
+## Symbol reading guide
+
+| Symbol or syntax | Meaning |
+|---|---|
+| `&prices` | Shared borrow for reading |
+| `&mut prices` | Exclusive borrow for editing |
+| `*price` | Value behind a reference |
+| `.enumerate()` | Pair each item with a zero-based index |
+
 ## 🎯 Next Steps
-* Ready to practice? Complete [`tasks/04_collections/task_37_vector_iteration/TASK.md`](file:///d:/rust-learning/tasks/04_collections/task_37_vector_iteration/TASK.md).
-* Next lesson: [Lesson 38: Text in Memory: `String` vs `&str`](file:///d:/rust-learning/lessons/04_collections/38_string_vs_str.md).
+* Ready to practice? Complete [`tasks/step_1_core_foundations/04_collections/task_37_vector_iteration/TASK.md`](../../../tasks/step_1_core_foundations/04_collections/task_37_vector_iteration/TASK.md).
+* Next lesson: [Lesson 38: Text in Memory: `String` vs `&str`](38_string_vs_str.md).

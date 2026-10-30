@@ -22,3 +22,18 @@ let format_bill = |raw_price: f64| {
 * Closures can even call other closures!
 * The final expression `apply_tax(discounted)` has no semicolon, returning the final `f64` value.
 
+
+## Reading the Result Carefully
+
+A cashier note can remember the current discount and tax rates, so each price need not carry a separate copy of those instructions.
+
+| Symbol or term | Meaning |
+|---|---|
+| `|x| body` | closure |
+| `||` | no parameters |
+| `move` | capture by value |
+| `final expression` | returned value |
+
+Fn, FnMut, and FnOnce overlap. move chooses capture mode, not a one-call limit. Floating-point prices here teach closures, not exact accounting.
+
+The complete runnable program is in `solution.rs`; snippets above may focus on only one part. Compare its output with the example in TASK.md.

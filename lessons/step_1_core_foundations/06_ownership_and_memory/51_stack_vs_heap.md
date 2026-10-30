@@ -3,10 +3,9 @@
 Welcome to **Level 6: Rust's Sacred Core — Ownership & Memory**! 🧠⚡
 
 This is the most famous, powerful, and unique part of Rust.  
-In languages like Python, Java, or JavaScript, a mysterious background program called a **Garbage Collector** constantly pauses your software to clean up memory.  
-In languages like C or C++, the programmer must manually allocate and free memory, leading to crashes, security hacks, and memory leaks.
+Languages use different memory-management strategies. Java and JavaScript use tracing garbage collectors. CPython mainly uses reference counting with a cycle collector. C supports manual allocation; C++ also provides automatic resource management through RAII and smart pointers.
 
-Rust does something revolutionary: **It manages memory with 100% mathematical safety, zero crashes, and ZERO garbage collection speed penalty!**
+Rust uses ownership and borrowing to prevent many memory errors in safe code without a required tracing garbage collector. Programs can still panic, leak memory, run out of memory, or contain logic bugs. Allocation and cleanup still have runtime costs.
 
 To understand how, we must first understand how computer memory works: **The Stack vs The Heap**.
 
@@ -59,12 +58,21 @@ fn main() {
 
 ---
 
+The example prints:
+
+```text
+Stack values: 28, 99.5, true
+Heap string:  Hello, World!
+```
+
+The comments picture unoptimized local storage. A value's type alone does not force a physical stack location.
+
 ## 3. What Does a `String` Look Like in Memory?
 
 When you create `let s = String::from("Rust");`, Rust stores it in two halves:
 
 ```text
-THE STACK (Fast, fixed size: 24 bytes)           THE HEAP (Dynamic storage)
+LOCAL STRING HANDLE (typically 24 bytes on 64-bit targets)           THE HEAP (Dynamic storage)
 +--------------+----------+                      +---+---+---+---+
 | Field        | Value    |                      | R | u | s | t |
 +--------------+----------+                      +---+---+---+---+
@@ -74,7 +82,7 @@ THE STACK (Fast, fixed size: 24 bytes)           THE HEAP (Dynamic storage)
 +--------------+----------+
 ```
 
-* **On the Stack:** Rust keeps a tiny controller (Pointer + Length + Capacity). On a 64-bit machine, this is only **24 bytes**!
+* **The handle:** A `String` contains a pointer, byte length, and capacity. It commonly occupies 24 bytes on a 64-bit target. The handle can itself be inside another heap allocation; optimization may keep locals in registers.
 * **On the Heap:** The actual letters `'R', 'u', 's', 't'` live on the heap.
 
 ---
@@ -83,22 +91,22 @@ THE STACK (Fast, fixed size: 24 bytes)           THE HEAP (Dynamic storage)
 
 | Feature | The Stack 📚 | The Heap 📦 |
 |---|---|---|
-| **Speed** | Blazingly fast (CPU just moves stack pointer) | Slower (requires searching for free memory) |
+| **Speed** | Usually cheap allocation for local frames | Allocator cost and access cost depend on the workload |
 | **Size Requirement** | Must be fixed and known at compile time | Can grow or shrink dynamically at runtime |
-| **Organization** | Strictly ordered: Last In, First Out (LIFO) | Scattered wherever the OS finds free space |
-| **Examples** | `i32`, `f64`, `bool`, `char`, fixed arrays `[i32; 4]` | `String`, `Vec<T>`, `HashMap<K, V>`, `Box<T>` |
-| **Deallocation** | Automatic when the function `{}` ends | Handled by Rust's Ownership rules! |
+| **Organization** | Strictly ordered: Last In, First Out (LIFO) | Managed by an allocator; allocations need not be adjacent |
+| **Examples** | Local numbers and arrays are common examples; these types can also live on the heap | Buffers owned by `String`, `Vec<T>`, `HashMap<K, V>`, and nonzero-sized boxed values |
+| **Deallocation** | Local storage is reclaimed as execution leaves its frame | Handled by Rust's Ownership rules! |
 
 ---
 
 ## 5. The Core Dilemma: When Does the Heap Memory Get Freed?
 
-On the stack, memory management is trivial: when a function finishes, all its variables pop off the stack instantly.
+Local values are normally dropped when their scopes end. Their machine storage and cleanup are implementation details; not every variable has a physical stack slot.
 
 **But what about the heap?**
-* In C/C++, you must write `free(ptr)`. If you forget, your computer runs out of RAM (Memory Leak). If you free it twice, your program crashes (Double Free).
-* In Java/Python, a Garbage Collector continuously inspects everything, wasting battery and CPU.
-* **Rust's Solution:** The **Ownership System**! The moment the stack controller goes out of scope, Rust frees the heap memory automatically!
+* A manually managed allocation must be released correctly. C++ RAII and Rust ownership automate much of this responsibility.
+* Garbage collection trades runtime tracking and reclamation work for a different programming model.
+* In this `String` example, its normal drop releases the buffer to the allocator. The allocator may retain that space for reuse rather than return it to the OS.
 
 We will discover the sacred rules of Ownership in Lesson 52!
 
@@ -107,11 +115,27 @@ We will discover the sacred rules of Ownership in Lesson 52!
 ## 6. Quick Recap Checklist
 - [x] The Stack stores fixed-size data in Last-In-First-Out order with near-instant speed.
 - [x] The Heap stores dynamic, resizable data; finding space requires an allocator.
-- [x] `String` and `Vec<T>` keep a 24-byte controller on the stack pointing to their payload on the heap.
-- [x] Rust cleans up heap data automatically without any garbage collection!
+- [x] `String` and `Vec<T>` have fixed-size handles and growable buffers; handle size depends on the target, and handles need not live on the stack.
+- [x] Owned buffers are normally released by drop, without a required tracing garbage collector.
 
 ---
 
+
+## Symbols and Practical Boundaries
+
+The local handle is a warehouse receipt; the buffer is the stored goods. Moving the receipt need not move all the goods.
+
+| Symbol or term | Meaning |
+|---|---|
+| `String` | owned UTF-8 text |
+| `Vec<T>` | growable sequence |
+| `.len()` | used length |
+| `.capacity()` | reserved space |
+
+**Common pitfall:** A type is not inherently a stack type or heap type. Local storage may be optimized into registers, and a fixed-size array can be boxed.
+
 ## 🎯 Next Steps
-* Ready to practice? Complete [`tasks/06_ownership_and_memory/task_51_stack_vs_heap/TASK.md`](file:///d:/rust-learning/tasks/06_ownership_and_memory/task_51_stack_vs_heap/TASK.md).
-* Next lesson: [Lesson 52: The Three Sacred Rules of Rust Ownership](file:///d:/rust-learning/lessons/06_ownership_and_memory/52_three_ownership_rules.md).
+* Ready to practice? Complete [`tasks/step_1_core_foundations/06_ownership_and_memory/task_51_stack_vs_heap/TASK.md`](../../../tasks/step_1_core_foundations/06_ownership_and_memory/task_51_stack_vs_heap/TASK.md).
+* Next lesson: [Lesson 52: The Three Sacred Rules of Rust Ownership](52_three_ownership_rules.md).
+
+Further reading: [Rust Book: ownership](https://doc.rust-lang.org/book/ch04-01-what-is-ownership.html).

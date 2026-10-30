@@ -31,17 +31,39 @@ Final Notice:   BROADCAST: ALERT: CRITICAL SYSTEM WARNING!
 
 ## 🛠️ How to Do This (Step-by-Step):
 
-1. Open [`src/main.rs`](file:///d:/rust-learning/tasks/04_collections/task_39_string_methods/src/main.rs).
+1. Open [`src/main.rs`](src/main.rs).
 2. Use `.trim()`, `.len()`, `.contains()`, `.replace()`, `.to_uppercase()`, and `format!()`.
 3. Test:
    ```bash
-   cd tasks/04_collections/task_39_string_methods
+   cd tasks/step_1_core_foundations/04_collections/task_39_string_methods
    cargo run
    ```
 
 ---
 
-## 🔒 Solution & Explanations
-* Working Code: [`solution/solution.rs`](file:///d:/rust-learning/tasks/04_collections/task_39_string_methods/solution/solution.rs)
-* Line-by-Line Breakdown: [`solution/explain.md`](file:///d:/rust-learning/tasks/04_collections/task_39_string_methods/solution/explain.md)
+## 💡 Hints
 
+<details>
+<summary>Hint 1: choose the approach</summary>
+
+Keep the trimmed view, replacement result, and uppercase result as separate values.
+
+</details>
+
+<details>
+<summary>Hint 2: connect the syntax</summary>
+
+The final notice uppercases `clean`, not `replaced`; replacing text returns a new String and leaves `clean` unchanged.
+
+</details>
+
+## 🔒 Solution & Explanations
+* Working Code: [`solution/solution.rs`](solution/solution.rs)
+* Line-by-Line Breakdown: [`solution/explain.md`](solution/explain.md)
+
+
+## Watch out
+
+Trimming and replacing text is not security sanitization for HTML, SQL, or shell commands. This example only demonstrates string methods.
+
+The starter intentionally does not produce the expected output yet. Complete its TODOs before comparing results.

@@ -53,7 +53,7 @@ Tax on $200: $30.00
 
 Here is the biggest difference between a regular `fn` and a closure:
 > **Closures can capture and read variables from their surrounding environment!**  
-> Regular functions `fn` can NEVER access variables from outside their body.
+> Regular `fn` items cannot capture local variables from an enclosing function. They can access items such as constants, statics, and other functions.
 
 Look at this code:
 
@@ -76,15 +76,19 @@ Try doing that with a regular `fn`—it's impossible!
 
 Rust automatically infers how a closure captures variables based on what it does:
 
-1. **`Fn` (Shared Borrow):** Captures variables by immutable reference `&T`. Can be called multiple times without modifying anything.
-2. **`FnMut` (Mutable Borrow):** Captures variables by mutable reference `&mut T`. Modifies outer variables.
-3. **`FnOnce` (Takes Ownership):** Takes ownership of captured variables. Can only be called **once** because it consumes the data!
+1. **`FnOnce`:** Every closure supports being consumed for a call. A closure that moves a captured non-`Copy` value out of its body may support only this trait.
+2. **`FnMut`:** Also supports repeated calls through mutable access, provided the body does not move captured values out. It may change captured state.
+3. **`Fn`:** Also supports calls through shared access, when the body neither mutates captured state in a way requiring exclusive access nor moves it out.
+
+These traits overlap: `Fn` implies `FnMut` and `FnOnce`; `FnMut` implies `FnOnce`. Capture mode and call capability are different questions. A `move` closure can own a `String` and still be called repeatedly if it only reads it.
 
 ### Example of `move` Closures:
 If you pass a closure to a new background thread, use the **`move`** keyword to force the closure to take ownership of the environment:
 ```rust
 let text = String::from("thread message");
-let worker = move || println!("{}", text); // text is moved into worker!
+let worker = move || println!("{}", text); // text is moved into worker
+worker();
+worker(); // Still valid: the body only borrows its owned String for printing
 ```
 
 ---
@@ -93,11 +97,27 @@ let worker = move || println!("{}", text); // text is moved into worker!
 - [x] Closures are anonymous inline functions defined with `|param| body`.
 - [x] Type annotations are optional when the compiler can infer them.
 - [x] Closures can capture variables from the surrounding environment.
-- [x] Automatically classified into `Fn`, `FnMut`, or `FnOnce`.
-- [x] Use `move ||` to transfer ownership of captured variables.
+- [x] Closures implement one or more call traits according to what their bodies do.
+- [x] Use `move ||` to capture by value: non-`Copy` values move and `Copy` values copy. Moving a reference does not extend the lifetime of its referent.
 
 ---
 
+
+## Symbols and Practical Boundaries
+
+A cashier note can remember the current discount and tax rates, so each price need not carry a separate copy of those instructions.
+
+| Symbol or term | Meaning |
+|---|---|
+| `|x| body` | closure |
+| `||` | no parameters |
+| `move` | capture by value |
+| `final expression` | returned value |
+
+**Common pitfall:** Fn, FnMut, and FnOnce overlap. move chooses capture mode, not a one-call limit. Floating-point prices here teach closures, not exact accounting.
+
 ## 🎯 Next Steps
-* Ready to practice? Complete [`tasks/08_advanced_and_concurrency/task_76_closures/TASK.md`](file:///d:/rust-learning/tasks/08_advanced_and_concurrency/task_76_closures/TASK.md).
-* Next lesson: [Lesson 77: Iterators: Transforming Data (`map`, `filter`, `collect`)](file:///d:/rust-learning/lessons/08_advanced_and_concurrency/77_iterators.md).
+* Ready to practice? Complete [`tasks/step_1_core_foundations/08_advanced_and_concurrency/task_76_closures/TASK.md`](../../../tasks/step_1_core_foundations/08_advanced_and_concurrency/task_76_closures/TASK.md).
+* Next lesson: [Lesson 77: Iterators: Transforming Data (`map`, `filter`, `collect`)](77_iterators.md).
+
+Further reading: [Rust Book: closures](https://doc.rust-lang.org/book/ch13-01-closures.html).

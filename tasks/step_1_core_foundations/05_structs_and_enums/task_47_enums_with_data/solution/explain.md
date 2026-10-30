@@ -48,3 +48,28 @@ fn main() {
 2. **Algebraic Data Types (Sum Types):**
    * Instead of creating complex class hierarchies with inheritance and pointers, Rust lets you bundle all possibilities cleanly inside one enum.
 
+## Everyday picture and symbols
+
+Think of different delivery envelopes carrying different cargo. The code turns that picture into explicit values and operations.
+
+| Symbol or syntax | Meaning |
+|---|---|
+| `Login(String)` | Tuple-like variant carrying text |
+| `Click { x, y }` | Variant carrying named fields |
+| `Logout` | Variant without a payload |
+| `{:?}` | Debug formatting |
+
+## Common pitfall
+
+A variant is a member of UserActivity, not a separate struct type. Its payload is accessed through a matching pattern when needed.
+
+## Expected output
+
+```text
+=== USER SESSION EVENT LOG ===
+Event 1: Login("Zubair99")
+Event 2: Click { x: 340, y: 720 }
+Event 3: Purchase { item: "Wireless Headphones", amount: 89.99 }
+Event 4: Logout
+==============================
+```

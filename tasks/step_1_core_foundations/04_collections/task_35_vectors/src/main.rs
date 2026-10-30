@@ -1,26 +1,8 @@
+// Task 35: Dynamic Leaderboard & Favorites (Vectors)
+// Complete the TODOs; the reference answer is kept separately in solution/.
+
 fn main() {
-    println!("=== ARCADE LEADERBOARD ===");
-
-    // TODO 1: Create mutable high_scores vector with Vec::new()
-    let mut high_scores: Vec<i32> = Vec::new();
-
-    // TODO 2: Push scores 1250, 3400, 2950
-    high_scores.push(1250);
-    high_scores.push(3400);
-    high_scores.push(2950);
-
-    println!("Total scores recorded: {}", high_scores.len());
-    println!("Top score: {} pts", high_scores[0]);
-    println!("All scores: {:?}", high_scores);
-
-    println!("\n=== PROGRAMMING LANGUAGES ===");
-
-    // TODO 3: Create languages vector with vec!["Rust", "Python", "TypeScript"]
-    let languages = vec!["Rust", "Python", "TypeScript"];
-
-    println!("Favorite language: {}", languages[0]);
-    println!("All languages: {:?}", languages);
-
-    println!("=============================");
+    // TODO 1: Create mutable high_scores: Vec<i32> using Vec::new().
+    // TODO 2: Push 1250, 3400, and 2950; print the count, first score, and whole vector.
+    // TODO 3: Create languages with vec![] and print the first and all languages.
 }
-

@@ -1,6 +1,6 @@
 # Solution Explanation: Task 39 (String Methods)
 
-Let's dissect how Rust provides zero-overhead, Unicode-safe text manipulation methods!
+Let's dissect how Rust provides UTF-8 text manipulation methods; some borrow existing bytes and others allocate a new String!
 
 ---
 
@@ -37,9 +37,36 @@ fn main() {
 
 1. **`.trim()`:**
    * Returns a sub-slice `&str` pointing inside the original text without allocating any new heap memory!
-   * The start pointer is moved past leading whitespace, and the end pointer is moved before trailing whitespace.
+   * The start pointer is moved past leading whitespace, and the slice length is shortened to exclude trailing whitespace.
 2. **`.replace()`:**
    * Allocates and returns a brand-new `String` where matching occurrences are substituted.
 3. **`format!(...)`:**
    * Behaves like `println!`, but instead of dumping bytes to stdout, builds a newly allocated, owned `String`.
 
+## Everyday picture and symbols
+
+Think of a word processor that returns edited text while retaining the original. The code turns that picture into explicit values and operations.
+
+| Symbol or syntax | Meaning |
+|---|---|
+| `.trim()` | Borrow text without surrounding whitespace |
+| `.len()` | UTF-8 byte length |
+| `.replace(a, b)` | Build a new String |
+| `format!(...)` | Build formatted owned text |
+
+## Common pitfall
+
+Trimming and replacing text is not security sanitization for HTML, SQL, or shell commands. This example only demonstrates string methods.
+
+## Expected output
+
+```text
+=== SECURITY BROADCAST SANITIZER ===
+Raw Length:     37 bytes
+Trimmed:        'ALERT: critical system warning!'
+Trimmed Length: 31 bytes
+Has 'critical'? true
+Replaced:       'ALERT: critical system EMERGENCY 🚨!'
+Final Notice:   BROADCAST: ALERT: CRITICAL SYSTEM WARNING!
+====================================
+```

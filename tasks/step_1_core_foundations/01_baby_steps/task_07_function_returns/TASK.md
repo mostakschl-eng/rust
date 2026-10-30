@@ -25,32 +25,34 @@ Total Perimeter: 30 meters
 
 ## 🛠️ How to Do This (Step-by-Step):
 
-1. Open [`src/main.rs`](file:///d:/rust-learning/tasks/01_baby_steps/task_07_function_returns/src/main.rs).
+1. Open [`src/main.rs`](src/main.rs).
 2. Define the two functions using `-> i32` and leave off the semicolon on the math expression.
 3. Call the functions in `main()` and store the results in variables.
 4. Test with:
    ```bash
-   cd tasks/01_baby_steps/task_07_function_returns
+   cd tasks/step_1_core_foundations/01_baby_steps/task_07_function_returns
    cargo run
    ```
 
 ---
 
-## 💡 Hints (Only open if you get stuck!)
+## 💡 Hints (open one at a time)
 
 <details>
-<summary><b>🔍 Hint: Return without semicolon</b></summary>
+<summary>Hint 1: Start with the idea</summary>
 
-```rust
-fn calculate_area(width: i32, height: i32) -> i32 {
-    width * height // No semicolon!
-}
-```
+Treat area and perimeter as separate recipes: multiplication for area, twice the sum for perimeter.
+</details>
+
+<details>
+<summary>Hint 2: Connect it to Rust</summary>
+
+Each recipe promises an i32 answer. Leave its final arithmetic expression without a semicolon, then store or print each returned value.
 </details>
 
 ---
 
 ## 🔒 Solution & Explanations
-* Working Code: [`solution/solution.rs`](file:///d:/rust-learning/tasks/01_baby_steps/task_07_function_returns/solution/solution.rs)
-* Line-by-Line Breakdown: [`solution/explain.md`](file:///d:/rust-learning/tasks/01_baby_steps/task_07_function_returns/solution/explain.md)
+* Working Code: [`solution/solution.rs`](solution/solution.rs)
+* Line-by-Line Breakdown: [`solution/explain.md`](solution/explain.md)
 

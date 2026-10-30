@@ -26,33 +26,33 @@ ATM: Thank you for banking with us.
 
 ## 🛠️ How to Do This (Step-by-Step):
 
-1. Open [`src/main.rs`](file:///d:/rust-learning/tasks/03_logic_and_loops/task_21_if_statement/src/main.rs).
+1. Open [`src/main.rs`](src/main.rs).
 2. Write the `if account_balance >= withdraw_amount { ... }` block.
 3. Test with:
    ```bash
-   cd tasks/03_logic_and_loops/task_21_if_statement
+   cd tasks/step_1_core_foundations/03_logic_and_loops/task_21_if_statement
    cargo run
    ```
 
 ---
 
-## 💡 Hints (Only open if you get stuck!)
+## 💡 Hints (open one at a time)
 
 <details>
-<summary><b>🔍 Hint: If condition</b></summary>
+<summary>Hint 1: Start with the idea</summary>
 
-```rust
-if account_balance >= withdraw_amount {
-    let remaining = account_balance - withdraw_amount;
-    println!("Success! Dispensing ${} cash...", withdraw_amount);
-    println!("Remaining balance: ${}", remaining);
-}
-```
+Compare the requested amount to the balance. The success messages belong inside the conditional block.
+</details>
+
+<details>
+<summary>Hint 2: Connect it to Rust</summary>
+
+Calculate remaining balance only on the successful path. The final thank-you message belongs after the block so it prints either way.
 </details>
 
 ---
 
 ## 🔒 Solution & Explanations
-* Working Code: [`solution/solution.rs`](file:///d:/rust-learning/tasks/03_logic_and_loops/task_21_if_statement/solution/solution.rs)
-* Line-by-Line Breakdown: [`solution/explain.md`](file:///d:/rust-learning/tasks/03_logic_and_loops/task_21_if_statement/solution/explain.md)
+* Working Code: [`solution/solution.rs`](solution/solution.rs)
+* Line-by-Line Breakdown: [`solution/explain.md`](solution/explain.md)
 

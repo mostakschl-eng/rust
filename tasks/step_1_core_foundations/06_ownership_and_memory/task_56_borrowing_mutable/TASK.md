@@ -32,19 +32,37 @@ Updated Voltage:  275.00 V
 
 ## 🛠️ How to Do This (Step-by-Step):
 
-1. Open [`src/main.rs`](file:///d:/rust-learning/tasks/06_ownership_and_memory/task_56_borrowing_mutable/src/main.rs).
+1. Open [`src/main.rs`](src/main.rs).
 2. Use `&mut String` for text modification.
 3. Use `*voltage *= multiplier;` to dereference and modify primitive floats.
 4. Pass `&mut system_status` and `&mut grid_voltage`.
 5. Test:
    ```bash
-   cd tasks/06_ownership_and_memory/task_56_borrowing_mutable
+   cd tasks/step_1_core_foundations/06_ownership_and_memory/task_56_borrowing_mutable
    cargo run
    ```
 
 ---
 
 ## 🔒 Solution & Explanations
-* Working Code: [`solution/solution.rs`](file:///d:/rust-learning/tasks/06_ownership_and_memory/task_56_borrowing_mutable/solution/solution.rs)
-* Line-by-Line Breakdown: [`solution/explain.md`](file:///d:/rust-learning/tasks/06_ownership_and_memory/task_56_borrowing_mutable/solution/explain.md)
+* Working Code: [`solution/solution.rs`](solution/solution.rs)
+* Line-by-Line Breakdown: [`solution/explain.md`](solution/explain.md)
 
+
+## Hints (Open One at a Time)
+
+<details>
+<summary>Hint 1: Choose the approach</summary>
+
+The String helper should borrow mutably and append the exact badge.
+
+</details>
+
+<details>
+<summary>Hint 2: Connect the pieces</summary>
+
+Pass &mut for both owned locals; dereference voltage before applying the multiplier.
+
+</details>
+
+**Before running:** A mutable reference can read as well as write. A shared reborrow or exclusive reborrow may temporarily restrict access through the original reference.

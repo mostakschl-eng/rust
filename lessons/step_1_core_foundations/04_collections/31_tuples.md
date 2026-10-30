@@ -68,7 +68,7 @@ Active:     true
 | `()` | Empty tuple ("Unit Type") | Returned by functions that don't return anything! |
 
 > [!NOTE]
-> In programming, we always start counting from **0**, not 1!  
+> Rust tuple fields and array indices start at **0**.  
 > The 1st item is at index `.0`, the 2nd item is at `.1`, the 3rd is at `.2`, and so on.
 
 ---
@@ -138,6 +138,14 @@ You cannot add a 4th item. (For lists that can grow, we use **Vectors** in Lesso
 
 ---
 
+## Symbol reading guide
+
+| Symbol or syntax | Meaning |
+|---|---|
+| `(a, b)` | Bundle values into a tuple |
+| `parcel.0` | Read the first field |
+| `{:?}` | Debug formatting |
+
 ## 🎯 Next Steps
-* Ready to practice? Complete [`tasks/04_collections/task_31_tuples/TASK.md`](file:///d:/rust-learning/tasks/04_collections/task_31_tuples/TASK.md).
-* Next lesson: [Lesson 32: Unpacking Tuples (Destructuring)](file:///d:/rust-learning/lessons/04_collections/32_tuple_destructuring.md).
+* Ready to practice? Complete [`tasks/step_1_core_foundations/04_collections/task_31_tuples/TASK.md`](../../../tasks/step_1_core_foundations/04_collections/task_31_tuples/TASK.md).
+* Next lesson: [Lesson 32: Unpacking Tuples (Destructuring)](32_tuple_destructuring.md).

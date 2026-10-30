@@ -5,3 +5,6 @@ edition = "2021"
 
 [dependencies]
 
+[[example]]
+name = "solution"
+path = "solution/solution.rs"

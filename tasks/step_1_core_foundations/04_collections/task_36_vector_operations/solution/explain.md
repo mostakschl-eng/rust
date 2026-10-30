@@ -48,3 +48,30 @@ fn main() {
 3. **`clear()` vs reallocating:**
    * `clear()` drops all elements, setting `len` to 0, but retains the allocated memory capacity for future pushes without reallocating!
 
+## Everyday picture and symbols
+
+Think of a cafeteria dispenser where the last tray added is removed first. The code turns that picture into explicit values and operations.
+
+| Symbol or syntax | Meaning |
+|---|---|
+| `.push(x)` | Append at the end |
+| `.pop()` | Remove last element as Option<T> |
+| `.clear()` | Drop all elements but retain capacity |
+| `.is_empty()` | Check whether length is zero |
+
+## Common pitfall
+
+`pop()` removes an owned value; `get()` only borrows. Clearing does not necessarily release the allocation.
+
+## Expected output
+
+```text
+=== GROCERY CART MANAGER ===
+Added items! Cart count: 3
+Popped item from cart: Milk
+Remaining items: ["Apples", "Bread"]
+Clearing all items...
+Cart is empty? true
+Cart successfully cleared! 🛒
+============================
+```

@@ -1,51 +1,7 @@
-pub trait Summarizable {
-    fn summarize(&self) -> String;
-}
-
-struct NewsArticle {
-    headline: String,
-    journalist: String,
-}
-
-impl Summarizable for NewsArticle {
-    fn summarize(&self) -> String {
-        format!("'{}' by {}", self.headline, self.journalist)
-    }
-}
-
-struct SocialPost {
-    handle: String,
-    likes: u32,
-}
-
-impl Summarizable for SocialPost {
-    fn summarize(&self) -> String {
-        format!("@{}: (Likes: {})", self.handle, self.likes)
-    }
-}
-
-// TODO 1: Implement publish_summary(item: &impl Summarizable)
-fn publish_summary(item: &impl Summarizable) {
-    println!("[FEED DISPATCH] {}", item.summarize());
-}
+// Starter: complete the TODOs to match TASK.md.
+// The reference answer is kept separately in solution/solution.rs.
 
 fn main() {
-    println!("=== MEDIA FEED AGGREGATOR ===");
-
-    // TODO 2: Create article and post, then call publish_summary
-    let article = NewsArticle {
-        headline: String::from("Rust Conquers Systems Programming"),
-        journalist: String::from("Maya Chen"),
-    };
-
-    let post = SocialPost {
-        handle: String::from("rustacean_daily"),
-        likes: 1250,
-    };
-
-    publish_summary(&article);
-    publish_summary(&post);
-
-    println!("=============================");
+    // TODO 1: Define the contract once, then implement summarize separately for each media struct.
+    // TODO 2: Borrow each item in publish_summary and call summarize; do not duplicate output logic in main.
 }
-

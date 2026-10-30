@@ -1,6 +1,6 @@
 # Solution Explanation: Task 63 (Safe Option Unwrapping)
 
-Let's dissect how safe unwrapping methods prevent unexpected crashes!
+Let's dissect how safe unwrapping methods make missing-value policies explicit!
 
 ---
 
@@ -28,5 +28,19 @@ fn main() {
 2. **`.unwrap_or_else()`:**
    * The fallback closure `|| 8080` is only evaluated if `cached_port` is `None`. Ideal for expensive computations.
 3. **`.expect()`:**
-   * Unwraps `Some` safely. If it had been `None`, it would produce a detailed panic log with the exact error message specified.
+   * Extracts the value from the fixed `Some` in this example. If it had been `None`, it would produce a detailed panic log with the exact error message specified.
 
+
+## Reading the Result Carefully
+
+A missing paint color can use the shop default. A missing identity document cannot be replaced with a made-up identity.
+
+| Symbol or term | Meaning |
+|---|---|
+| `.unwrap_or(v)` | eager fallback |
+| `.unwrap_or_else(f)` | lazy fallback |
+| `.expect(msg)` | panic if absent |
+
+expect is a presence assertion, not certificate verification. This exercise uses a fixed Some value; real external certificate errors need deliberate error handling.
+
+The complete runnable program is in `solution.rs`; snippets above may focus on only one part. Compare its output with the example in TASK.md.

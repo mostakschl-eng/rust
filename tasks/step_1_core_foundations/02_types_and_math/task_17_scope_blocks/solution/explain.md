@@ -1,8 +1,8 @@
 # Task 17: Solution Breakdown & Scope Boundaries
 
 ## 1. Line-by-Line Breakdown
-* When execution enters `{`, a new local stack frame is created.
-* `dungeon_chest` and the inner `gold` (600) exist only between lines 10 and 13.
-* When the closing `}` is reached on line 14, the inner `gold` is deallocated.
-* Line 16 prints the outer `gold`, which remained untouched at `100`. This proves how Rust guarantees data isolation inside scopes!
+* Entering `{` creates a lexical scope; it does not necessarily allocate a new stack frame.
+* `dungeon_chest` and the inner `gold` (600) are usable only inside the inner block.
+* After the inner block ends, its local names cannot be used from the outer block. No heap allocation is involved in these integer values.
+* The final gold message prints the outer `gold`, which remained untouched at `100`. This proves how Rust guarantees data isolation inside scopes!
 

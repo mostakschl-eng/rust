@@ -36,19 +36,25 @@ Today we uncover the difference between **Move Semantics** and **Copy Semantics*
 
 ## 2. The `Copy` Trait
 
-In Rust, types that have a **known, fixed size** and reside entirely on the fast **Stack** implement a special marker called the **`Copy` trait**:
+The **`Copy` trait** permits implicit duplication when a value is assigned or passed by value. Storage location does not decide this: a stack-only struct is not automatically `Copy`, and a number inside a `Box` is still an `i32`.
 
 ```rust
 fn main() {
     let a: i32 = 100;
-    let b = a; // Copied byte-for-byte on the stack!
+    let b = a; // Copies the integer value; a remains usable.
 
     println!("a: {}, b: {}", a, b); // Perfectly valid!
 }
 ```
 
+Expected output:
+
+```text
+a: 100, b: 100
+```
+
 ### Which Types Implement `Copy`?
-All primitive stack types implement `Copy`:
+Common `Copy` types include:
 * All integers (`i8`, `i16`, `i32`, `i64`, `u8`, `u32`, `usize`, etc.)
 * All floating-point numbers (`f32`, `f64`)
 * Booleans (`bool`)
@@ -58,8 +64,8 @@ All primitive stack types implement `Copy`:
 
 ---
 
-## 3. Which Types Implement `Move`?
-Any type that manages external resources or dynamically allocated **Heap memory** implements `Move` instead of `Copy`:
+## 3. Which Values Move?
+There is **no standard `Move` trait**. Moving is the default behavior for values whose type does not implement `Copy`, including:
 * `String`
 * `Vec<T>`
 * `HashMap<K, V>`
@@ -70,7 +76,7 @@ Any type that manages external resources or dynamically allocated **Heap memory*
 ## 4. Moves in Function Calls: Giving Away Ownership
 
 Ownership transfer doesn't just happen with `let y = x`.  
-It happens whenever you **pass a variable into a function as an argument**!
+A by-value parameter moves a non-`Copy` argument or copies a `Copy` argument. Passing `&value` instead borrows it.
 
 Look at this code carefully:
 
@@ -81,7 +87,7 @@ fn take_ownership(text: String) {
 
 fn make_copy(number: i32) {
     println!("Function received number: {}", number);
-} // number goes out of scope (stack pops)
+} // The parameter goes out of scope; the caller still has its own copy.
 
 fn main() {
     let my_string = String::from("Rust Rules!");
@@ -97,7 +103,7 @@ fn main() {
 ```
 
 When you called `take_ownership(my_string)`, `my_string` handed its keys over to the function's parameter `text`.  
-When the function ended, `text` was dropped, and the heap memory was wiped clean. `my_string` back in `main` is now empty and illegal to use!
+When the function returns, `text` is dropped and its buffer is released to the allocator. The moved-from `my_string` cannot be used; it is not an empty `String`. Cleanup does not promise secure erasure.
 
 ---
 
@@ -124,14 +130,29 @@ fn main() {
 ---
 
 ## 6. Quick Recap Checklist
-- [x] Primitive stack types (`i32`, `f64`, `bool`, `char`) implement `Copy`.
-- [x] Heap-allocated types (`String`, `Vec<T>`) implement `Move`.
+- [x] Primitive types such as `i32`, `f64`, `bool`, and `char` implement `Copy`.
+- [x] Types such as `String` and `Vec<T>` do not implement `Copy`, so by-value assignment moves them.
 - [x] When a value moves, the original variable becomes invalid immediately.
-- [x] Passing a variable to a function moves heap data or copies stack data.
+- [x] Passing a value to a function follows its type: `Copy` duplicates it; otherwise it moves.
 - [x] Functions can return ownership back via return values.
 
 ---
 
+
+## Symbols and Practical Boundaries
+
+Copying a written number makes two notes; handing over a suitcase transfers responsibility for one suitcase.
+
+| Symbol or term | Meaning |
+|---|---|
+| `Copy` | implicit duplication permission |
+| `String` parameter | ownership transfer |
+| `&String` | shared borrowing |
+
+**Common pitfall:** No standard Move trait exists. A non-Copy struct can contain only numbers and still move; location does not decide Copy.
+
 ## 🎯 Next Steps
-* Ready to practice? Complete [`tasks/06_ownership_and_memory/task_53_move_vs_copy/TASK.md`](file:///d:/rust-learning/tasks/06_ownership_and_memory/task_53_move_vs_copy/TASK.md).
-* Next lesson: [Lesson 54: Deep Copying with `.clone()`](file:///d:/rust-learning/lessons/06_ownership_and_memory/54_clone_deep_copy.md).
+* Ready to practice? Complete [`tasks/step_1_core_foundations/06_ownership_and_memory/task_53_move_vs_copy/TASK.md`](../../../tasks/step_1_core_foundations/06_ownership_and_memory/task_53_move_vs_copy/TASK.md).
+* Next lesson: [Lesson 54: Deep Copying with `.clone()`](54_clone_deep_copy.md).
+
+Further reading: [Copy documentation](https://doc.rust-lang.org/std/marker/trait.Copy.html).

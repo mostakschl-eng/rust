@@ -75,7 +75,7 @@ Rust is famous for speed, and it is smart about logic:
 1. **In `A && B`:** If `A` is `false`, Rust doesn't even bother looking at `B`. It immediately knows the whole thing is `false`!
 2. **In `A || B`:** If `A` is `true`, Rust doesn't evaluate `B`. It already knows the answer is `true`!
 
-This saves CPU cycles and protects against errors!
+The right-hand expression is skipped entirely, including any side effects. Order can matter for correctness, such as checking a divisor is nonzero before division.
 
 ---
 
@@ -89,7 +89,25 @@ This saves CPU cycles and protects against errors!
 
 ## 🛠️ Ready for Practice!
 
-👉 Open **[`tasks/03_logic_and_loops/task_24_logical_operators/TASK.md`](file:///d:/rust-learning/tasks/03_logic_and_loops/task_24_logical_operators/TASK.md)**.
+👉 Open **[`tasks/step_1_core_foundations/03_logic_and_loops/task_24_logical_operators/TASK.md`](../../../tasks/step_1_core_foundations/03_logic_and_loops/task_24_logical_operators/TASK.md)**.
 1. Read the task requirements.
 2. Build an airport boarding gate verification check using both `&&` and `||`.
 3. Run `cargo run` and test your compound logic!
+
+## Common pitfalls and limits
+
+OR includes the case where both inputs are true. Parentheses control grouping, but evaluation still begins at the left and may skip a group entirely.
+
+## Expected output of the two examples
+
+The AND example prints:
+
+```text
+You can drive safely! 🚗
+```
+
+The OR example prints:
+
+```text
+Payment accepted! ☕
+```

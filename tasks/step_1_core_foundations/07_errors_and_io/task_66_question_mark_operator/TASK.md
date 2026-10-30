@@ -11,7 +11,7 @@ Write a Rust program to calculate the volume of a 3D cargo container from text i
 2. In `main()`:
    - Calculate valid container: `"10"`, `"20"`, `"5"`.
    - Calculate invalid container: `"10"`, `"invalid_height"`, `"5"`.
-   - Print both results using `{:?}`.
+   - Match both results; format a successful volume with its cm³ unit and the parse error using `{:?}`.
 
 ---
 
@@ -30,17 +30,35 @@ Result: Err(ParseIntError { kind: InvalidDigit })
 
 ## 🛠️ How to Do This (Step-by-Step):
 
-1. Open [`src/main.rs`](file:///d:/rust-learning/tasks/07_errors_and_io/task_66_question_mark_operator/src/main.rs).
+1. Open [`src/main.rs`](src/main.rs).
 2. Write `calculate_volume` using `?` for early error propagation.
 3. Test:
    ```bash
-   cd tasks/07_errors_and_io/task_66_question_mark_operator
+   cd tasks/step_1_core_foundations/07_errors_and_io/task_66_question_mark_operator
    cargo run
    ```
 
 ---
 
 ## 🔒 Solution & Explanations
-* Working Code: [`solution/solution.rs`](file:///d:/rust-learning/tasks/07_errors_and_io/task_66_question_mark_operator/solution/solution.rs)
-* Line-by-Line Breakdown: [`solution/explain.md`](file:///d:/rust-learning/tasks/07_errors_and_io/task_66_question_mark_operator/solution/explain.md)
+* Working Code: [`solution/solution.rs`](solution/solution.rs)
+* Line-by-Line Breakdown: [`solution/explain.md`](solution/explain.md)
 
+
+## Hints (Open One at a Time)
+
+<details>
+<summary>Hint 1: Choose the approach</summary>
+
+Parse each of the three strings separately with ?.
+
+</details>
+
+<details>
+<summary>Hint 2: Connect the pieces</summary>
+
+Keep one final Ok around the product; the first invalid parse returns before later statements run.
+
+</details>
+
+**Before running:** The ? operator does not catch overflow or validate positive dimensions. This introductory calculator assumes small inputs whose product fits i32; real dimensions need validation and checked multiplication.

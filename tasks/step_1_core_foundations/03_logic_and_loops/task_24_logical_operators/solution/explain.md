@@ -1,7 +1,7 @@
 # Task 24: Solution Breakdown & Logical Grouping
 
 ## 1. Line-by-Line Breakdown
-* Parentheses `(has_passport || has_national_id)` are evaluated first: `false || true` produces `true` (having either one is acceptable).
-* Next, `has_ticket && true`: `true && true` evaluates to `true`.
-* Without the parentheses, operator precedence rules might evaluate `has_ticket && has_passport` first (`false`), which would lock out the passenger even with a valid national ID! Always group `||` inside parentheses when combining with `&&`!
+* Evaluation starts on the left: `has_ticket` is `true`, so Rust evaluates the grouped ID condition. `false || true` is `true`, allowing boarding.
+* `&&` binds more tightly than `||`. Without parentheses, `has_ticket && has_passport || has_national_id` would allow anyone with a national ID even if `has_ticket` were `false`.
+* Parentheses express the rule that a ticket is required with either kind of ID.
 

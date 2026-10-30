@@ -1,55 +1,10 @@
-struct BankAccount {
-    owner: String,
-    balance: f64,
-}
-
-// TODO 1: Implement methods in impl BankAccount
-impl BankAccount {
-    fn display(&self) {
-        println!("Account Holder: {} | Balance: ${:.2}", self.owner, self.balance);
-    }
-
-    fn deposit(&mut self, amount: f64) {
-        self.balance += amount;
-        println!("Deposited ${:.2} successfully.", amount);
-    }
-
-    fn withdraw(&mut self, amount: f64) -> bool {
-        if self.balance >= amount {
-            self.balance -= amount;
-            true
-        } else {
-            false
-        }
-    }
-}
+// Task 44: Smart ATM & Bank Account (Struct Methods)
+// Complete the TODOs; the reference answer is kept separately in solution/.
 
 fn main() {
-    println!("=== SMART ATM BANKING SYSTEM ===");
-
-    let mut account = BankAccount {
-        owner: String::from("Tariq Ali"),
-        balance: 200.00,
-    };
-
-    account.display();
-
-    account.deposit(150.00);
-
-    if account.withdraw(50.00) {
-        println!("Withdrew $50.00 successfully.");
-    } else {
-        println!("⚠️ Overdraft Alert: Insufficient funds for $50.00!");
-    }
-
-    if account.withdraw(500.00) {
-        println!("Withdrew $500.00 successfully.");
-    } else {
-        println!("⚠️ Overdraft Alert: Insufficient funds for $500.00!");
-    }
-
-    account.display();
-
-    println!("================================");
+    // TODO 1: Define BankAccount with owner: String and balance: f64.
+    // TODO 2: Implement display(&self), deposit(&mut self, amount: f64), and withdraw(&mut self, amount: f64) -> bool.
+    // TODO 3: Reject non-positive and non-finite amounts; also reject a non-finite deposit result.
+    // TODO 4: Check sufficient funds before withdrawing and return success/failure.
+    // TODO 5: Use the specified account and transactions; print the required confirmation lines.
 }
-

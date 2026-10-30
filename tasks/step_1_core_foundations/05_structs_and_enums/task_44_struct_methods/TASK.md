@@ -34,17 +34,42 @@ Account Holder: Tariq Ali | Balance: $300.00
 
 ## 🛠️ How to Do This (Step-by-Step):
 
-1. Open [`src/main.rs`](file:///d:/rust-learning/tasks/05_structs_and_enums/task_44_struct_methods/src/main.rs).
+1. Open [`src/main.rs`](src/main.rs).
 2. Implement methods using `&self` for reading and `&mut self` for modifications.
 3. Test:
    ```bash
-   cd tasks/05_structs_and_enums/task_44_struct_methods
+   cd tasks/step_1_core_foundations/05_structs_and_enums/task_44_struct_methods
    cargo run
    ```
 
 ---
 
-## 🔒 Solution & Explanations
-* Working Code: [`solution/solution.rs`](file:///d:/rust-learning/tasks/05_structs_and_enums/task_44_struct_methods/solution/solution.rs)
-* Line-by-Line Breakdown: [`solution/explain.md`](file:///d:/rust-learning/tasks/05_structs_and_enums/task_44_struct_methods/solution/explain.md)
+## 💡 Hints
 
+<details>
+<summary>Hint 1: choose the approach</summary>
+
+Read methods use `&self`; transaction methods need `&mut self`.
+
+</details>
+
+<details>
+<summary>Hint 2: connect the syntax</summary>
+
+Reject non-positive/non-finite amounts before updating. On a valid withdrawal, check funds first, subtract, and return true; otherwise return false.
+
+</details>
+
+## 🔒 Solution & Explanations
+* Working Code: [`solution/solution.rs`](solution/solution.rs)
+* Line-by-Line Breakdown: [`solution/explain.md`](solution/explain.md)
+
+## Input rules
+
+Accept only positive finite transaction amounts. A rejected withdrawal returns `false` and changes nothing. A rejected deposit prints a rejection and returns without changing the balance. Also reject a deposit if the resulting balance is not finite. This is a learning model using `f64`; production money needs exact units such as integer cents.
+
+## Watch out
+
+Without amount validation, withdrawing a negative number would increase the balance. Methods do not automatically hide fields from code in the same module.
+
+The starter intentionally does not produce the expected output yet. Complete its TODOs before comparing results.

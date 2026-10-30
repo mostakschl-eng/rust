@@ -19,7 +19,7 @@ Implement multi-producer, single-consumer message passing across parallel thread
        println!("   [HUB RECEIVE] {}", msg);
    }
    ```
-6. Print banner lines and completion status!
+6. Keep each worker JoinHandle. After receiving, join all three workers and assert that three messages arrived before printing completion status. Print banner lines and completion status!
 
 ---
 
@@ -39,18 +39,36 @@ Implement multi-producer, single-consumer message passing across parallel thread
 
 ## 🛠️ How to Do This (Step-by-Step):
 
-1. Open [`src/main.rs`](file:///d:/rust-learning/tasks/08_advanced_and_concurrency/task_80_channels_mpsc/src/main.rs).
+1. Open [`src/main.rs`](src/main.rs).
 2. Clone `tx` for each thread before moving it into `thread::spawn(move || { ... })`.
 3. Drop the remaining original `tx` handle before reading from `rx`.
 4. Run:
    ```bash
-   cd tasks/08_advanced_and_concurrency/task_80_channels_mpsc
+   cd tasks/step_1_core_foundations/08_advanced_and_concurrency/task_80_channels_mpsc
    cargo run
    ```
 
 ---
 
 ## 🔒 Solution & Explanations
-* Working Code: [`solution/solution.rs`](file:///d:/rust-learning/tasks/08_advanced_and_concurrency/task_80_channels_mpsc/solution/solution.rs)
-* Line-by-Line Breakdown: [`solution/explain.md`](file:///d:/rust-learning/tasks/08_advanced_and_concurrency/task_80_channels_mpsc/solution/explain.md)
+* Working Code: [`solution/solution.rs`](solution/solution.rs)
+* Line-by-Line Breakdown: [`solution/explain.md`](solution/explain.md)
 
+
+## Hints (Open One at a Time)
+
+<details>
+<summary>Hint 1: Choose the approach</summary>
+
+Create one channel and clone its sender before moving one sender into each worker.
+
+</details>
+
+<details>
+<summary>Hint 2: Connect the pieces</summary>
+
+Drop the main sender before iterating rx. For full worker-success reporting, keep join handles and check each join after receiving.
+
+</details>
+
+**Before running:** The iterator ends after all senders drop AND queued messages drain. send fails if the receiver is gone; recv fails when disconnected and empty. Keeping a sender alive can block forever; ordering across producers varies.

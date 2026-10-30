@@ -37,3 +37,17 @@ fn main() {
    * `&readings[2..5]` borrows elements at index 2, 3, and 4 (3 elements).
    * `sum_slice(data: &[i32])` can accept fixed arrays, vectors, or sub-slices without changing a single line of code!
 
+
+## Reading the Result Carefully
+
+A window reveals part of a wall without cutting out bricks. A slice similarly views part of existing storage.
+
+| Symbol or term | Meaning |
+|---|---|
+| `&[T]` | borrowed element slice |
+| `&str` | borrowed UTF-8 text |
+| `a..b` | includes a, excludes b |
+
+String ranges are byte ranges and must land on UTF-8 character boundaries. For example, &"é"[0..1] panics. Out-of-bounds and reversed ranges also panic; .get(range) returns Option instead.
+
+The complete runnable program is in `solution.rs`; snippets above may focus on only one part. Compare its output with the example in TASK.md.

@@ -145,6 +145,19 @@ fn print_summary(item: &impl Summarizable) {
 
 ---
 
+
+## Symbols and Practical Boundaries
+
+A press office asks every source for a summary. An article and a social post provide different wording through the same promised method.
+
+| Symbol or term | Meaning |
+|---|---|
+| `trait` | behavior contract |
+| `impl Trait for Type` | fulfill it |
+| `&impl Trait` | borrow any one suitable concrete type |
+
+**Common pitfall:** A trait implementation must match the declared method signature. Standard method-call syntax may require importing the trait when it lives in another module.
+
 ## 🎯 Next Steps
-* Ready to practice? Complete [`tasks/08_advanced_and_concurrency/task_73_traits_basics/TASK.md`](file:///d:/rust-learning/tasks/08_advanced_and_concurrency/task_73_traits_basics/TASK.md).
-* Next lesson: [Lesson 74: Implementing Traits for Custom Types](file:///d:/rust-learning/lessons/08_advanced_and_concurrency/74_implementing_traits.md).
+* Ready to practice? Complete [`tasks/step_1_core_foundations/08_advanced_and_concurrency/task_73_traits_basics/TASK.md`](../../../tasks/step_1_core_foundations/08_advanced_and_concurrency/task_73_traits_basics/TASK.md).
+* Next lesson: [Lesson 74: Implementing Traits for Custom Types](74_implementing_traits.md).

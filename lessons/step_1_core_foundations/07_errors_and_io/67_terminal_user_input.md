@@ -52,6 +52,14 @@ fn main() {
 
 ---
 
+For the greeting program, type `Alice` and press Enter. The program prints the following lines (your terminal may also show the name you typed):
+
+```text
+=== TERMINAL GREETING APP ===
+Please enter your name:
+Welcome to Rust programming, Alice! 🦀
+```
+
 ## 3. The Crucial `.trim()` Step ⚠️
 
 When a user types `"Alice"` and hits **Enter** on their keyboard:
@@ -67,7 +75,7 @@ let name = user_input.trim(); // Strips away '\r' and '\n'!
 
 ## 4. Reading and Parsing Numbers from User Input
 
-Because `read_line()` always reads raw text (`String`), if you want a **number**, you must parse it:
+Because `read_line()` appends UTF-8 text to a `String` buffer, if you want a **number**, you must parse it:
 
 ```rust
 use std::io;
@@ -80,7 +88,7 @@ fn main() {
 
     // Trim the whitespace and parse as u32:
     match input.trim().parse::<u32>() {
-        Ok(age) => println!("Next year you will be {} years old!", age + 1),
+        Ok(age) => println!("Next year you will be {} years old!", u64::from(age) + 1),
         Err(_) => println!("⚠️ That was not a valid whole number!"),
     }
 }
@@ -103,11 +111,24 @@ fn main() {
 ## 6. Quick Recap Checklist
 - [x] Read input using `std::io::stdin().read_line(&mut buffer)`.
 - [x] Must pass a mutable reference to an existing `String` buffer.
-- [x] Always call `.trim()` on the result to remove the trailing Enter newline (`\n`).
+- [x] Use `.trim()` when surrounding whitespace is irrelevant. It returns a borrowed view; it does not edit the buffer.
 - [x] Convert numerical input using `.trim().parse::<Type>()`.
 
 ---
 
+
+## Symbols and Practical Boundaries
+
+A microphone records into a reusable tape. read_line appends to an existing buffer, so clear it before reusing it for a fresh line.
+
+| Symbol or term | Meaning |
+|---|---|
+| `io::stdin()` | input handle |
+| `.read_line(&mut buf)` | append one UTF-8 line |
+| `.trim()` | borrowed whitespace-trimmed view |
+
+**Common pitfall:** read_line returns a byte count; zero means EOF. trim removes all surrounding whitespace, not just Enter. This exercise permits one-word names and demo defaults, not identity or age verification.
+
 ## 🎯 Next Steps
-* Ready to practice? Complete [`tasks/07_errors_and_io/task_67_terminal_user_input/TASK.md`](file:///d:/rust-learning/tasks/07_errors_and_io/task_67_terminal_user_input/TASK.md).
-* Next lesson: [Lesson 68: Reading Files from Hard Drive (`std::fs::read_to_string`)](file:///d:/rust-learning/lessons/07_errors_and_io/68_reading_files.md).
+* Ready to practice? Complete [`tasks/step_1_core_foundations/07_errors_and_io/task_67_terminal_user_input/TASK.md`](../../../tasks/step_1_core_foundations/07_errors_and_io/task_67_terminal_user_input/TASK.md).
+* Next lesson: [Lesson 68: Reading Files from Hard Drive (`std::fs::read_to_string`)](68_reading_files.md).

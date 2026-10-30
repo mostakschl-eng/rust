@@ -33,3 +33,28 @@ impl OrderStatus {
 3. **Methods on Enums:**
    * Enums can have `impl` blocks just like structs!
 
+## Everyday picture and symbols
+
+Think of an order label with one status selected at a time. The code turns that picture into explicit values and operations.
+
+| Symbol or syntax | Meaning |
+|---|---|
+| `enum OrderStatus` | Define possible variants |
+| `OrderStatus::Pending` | Construct one variant |
+| `PartialEq` | Enable comparisons such as == |
+| `*self` | Look through a reference |
+| `\|\|` | Logical OR |
+
+## Common pitfall
+
+The equality operator borrows its operands, so `*self == ...` does not move this enum out of the borrowed receiver. Enums restrict choices, not legal transitions.
+
+## Expected output
+
+```text
+=== E-COMMERCE ORDER TRACKER ===
+Order A status: Pending (Active: true)
+Order B status: Delivered (Active: false)
+Order C status: Cancelled (Active: false)
+================================
+```

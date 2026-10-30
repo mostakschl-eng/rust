@@ -32,18 +32,36 @@ Skills:  [85, 90, 95, 99] (Count: 4)
 
 ## 🛠️ How to Do This (Step-by-Step):
 
-1. Open [`src/main.rs`](file:///d:/rust-learning/tasks/06_ownership_and_memory/task_51_stack_vs_heap/src/main.rs).
+1. Open [`src/main.rs`](src/main.rs).
 2. Declare stack primitives and heap objects.
 3. Mutate heap objects using `.push_str()` and `.push()`.
 4. Test:
    ```bash
-   cd tasks/06_ownership_and_memory/task_51_stack_vs_heap
+   cd tasks/step_1_core_foundations/06_ownership_and_memory/task_51_stack_vs_heap
    cargo run
    ```
 
 ---
 
 ## 🔒 Solution & Explanations
-* Working Code: [`solution/solution.rs`](file:///d:/rust-learning/tasks/06_ownership_and_memory/task_51_stack_vs_heap/solution/solution.rs)
-* Line-by-Line Breakdown: [`solution/explain.md`](file:///d:/rust-learning/tasks/06_ownership_and_memory/task_51_stack_vs_heap/solution/explain.md)
+* Working Code: [`solution/solution.rs`](solution/solution.rs)
+* Line-by-Line Breakdown: [`solution/explain.md`](solution/explain.md)
 
+
+## Hints (Open One at a Time)
+
+<details>
+<summary>Hint 1: Choose the approach</summary>
+
+Separate fixed-size bindings from growable buffers before printing.
+
+</details>
+
+<details>
+<summary>Hint 2: Connect the pieces</summary>
+
+Use `mut` for each container you grow; `.push_str()` adds text and `.push()` adds one vector element.
+
+</details>
+
+**Before running:** A type is not inherently a stack type or heap type. Local storage may be optimized into registers, and a fixed-size array can be boxed.

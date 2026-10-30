@@ -30,31 +30,33 @@ Gate Open: Welcome aboard flight 707! ✈️
 
 ## 🛠️ How to Do This (Step-by-Step):
 
-1. Open [`src/main.rs`](file:///d:/rust-learning/tasks/03_logic_and_loops/task_24_logical_operators/src/main.rs).
+1. Open [`src/main.rs`](src/main.rs).
 2. Write the combined logic: `has_ticket && (has_passport || has_national_id)`.
 3. Test with:
    ```bash
-   cd tasks/03_logic_and_loops/task_24_logical_operators
+   cd tasks/step_1_core_foundations/03_logic_and_loops/task_24_logical_operators
    cargo run
    ```
 
 ---
 
-## 💡 Hints (Only open if you get stuck!)
+## 💡 Hints (open one at a time)
 
 <details>
-<summary><b>🔍 Hint: Parentheses with && and ||</b></summary>
+<summary>Hint 1: Start with the idea</summary>
 
-```rust
-if has_ticket && (has_passport || has_national_id) {
-    println!("Gate Open: Welcome aboard flight 707! ✈️");
-}
-```
+A ticket is mandatory, while either of the two ID flags is sufficient. Group the alternatives together.
+</details>
+
+<details>
+<summary>Hint 2: Connect it to Rust</summary>
+
+Use AND between the ticket rule and the grouped OR rule. Test a missing ticket with a valid national ID: boarding must fail.
 </details>
 
 ---
 
 ## 🔒 Solution & Explanations
-* Working Code: [`solution/solution.rs`](file:///d:/rust-learning/tasks/03_logic_and_loops/task_24_logical_operators/solution/solution.rs)
-* Line-by-Line Breakdown: [`solution/explain.md`](file:///d:/rust-learning/tasks/03_logic_and_loops/task_24_logical_operators/solution/explain.md)
+* Working Code: [`solution/solution.rs`](solution/solution.rs)
+* Line-by-Line Breakdown: [`solution/explain.md`](solution/explain.md)
 

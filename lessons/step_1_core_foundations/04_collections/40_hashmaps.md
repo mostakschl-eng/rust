@@ -118,7 +118,7 @@ fn main() {
 ```
 
 > [!NOTE]
-> HashMaps do **not** keep items in any guaranteed order! When you iterate, items may print in a random order. If you need strict numerical order, use an Array or Vector.
+> HashMaps do **not** keep items in any guaranteed order! When you iterate, items may print in a random order. For a chosen order, explicitly sort collected entries before printing; an array or vector preserves the order you put into it.
 
 ---
 
@@ -140,10 +140,10 @@ fn main() {
 ### Trap: Forgetting `&` in `.get()`
 The `.get()` method expects a reference to the key:
 ```rust
-let price = fruit_prices.get("Apple"); // &"Apple" coerced
+let price = fruit_prices.get("Apple"); // "Apple" already has type &str
 // If key is a String:
 let key = String::from("Apple");
-let price = fruit_prices.get(&key); // ✅ Need &key, not key!
+let price = fruit_prices.get(key.as_str()); // borrow String text as &str
 ```
 
 ---
@@ -157,6 +157,19 @@ let price = fruit_prices.get(&key); // ✅ Need &key, not key!
 
 ---
 
+## Borrowed text keys
+
+This example stores `&str` keys. A string literal such as `"Apple"` is already a reference, so `.get("Apple")` needs no extra `&`. For a numeric-key map you usually write `.get(&number)`. Inserting an existing key replaces its old value; it does not create a duplicate key.
+
+## Symbol reading guide
+
+| Symbol or syntax | Meaning |
+|---|---|
+| `HashMap<K, V>` | Map from keys to values |
+| `.get(key)` | Optional borrowed value |
+| `.entry(key).or_insert(v)` | Insert only when missing |
+| `::` | Separate path components |
+
 ## 🎯 Next Steps
-* Ready to practice? Complete [`tasks/04_collections/task_40_hashmaps/TASK.md`](file:///d:/rust-learning/tasks/04_collections/task_40_hashmaps/TASK.md).
-* You've completed Level 4! Next up: [Level 5: Structs, Enums & Pattern Matching](file:///d:/rust-learning/lessons/05_structs_and_enums/41_named_structs.md).
+* Ready to practice? Complete [`tasks/step_1_core_foundations/04_collections/task_40_hashmaps/TASK.md`](../../../tasks/step_1_core_foundations/04_collections/task_40_hashmaps/TASK.md).
+* You've completed Level 4! Next up: [Level 5: Structs, Enums & Pattern Matching](../05_structs_and_enums/41_named_structs.md).

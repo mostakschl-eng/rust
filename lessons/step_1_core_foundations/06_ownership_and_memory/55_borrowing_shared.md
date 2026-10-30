@@ -1,8 +1,8 @@
 # Lesson 55: Borrowing: Shared References (`&T` - Read Only)
 
 In Lesson 53 and 54, we faced a major dilemma:
-* If we pass a `String` into a function, it **moves ownership**, destroying the variable in `main`.
-* If we call `.clone()`, it wastes CPU and RAM making expensive duplicates on the heap.
+* If we pass a `String` into a function, it **moves ownership**, making that binding unavailable in `main`.
+* If we call `.clone()`, it duplicates its text, using additional memory and work.
 
 What if you just want to let a function **look at your data without taking ownership and without copying anything**?
 
@@ -31,8 +31,8 @@ In Rust:
 Look at how elegant this makes function calls:
 
 ```rust
-// This function BORROWS a String reference (&String) instead of taking ownership:
-fn calculate_length(text: &String) -> usize {
+// This function borrows text as &str instead of taking ownership:
+fn calculate_length(text: &str) -> usize {
     text.len() // We can read its length!
 } // 'text' goes out of scope here, but because it is a reference, NOTHING IS DROPPED!
 
@@ -43,18 +43,18 @@ fn main() {
     let length = calculate_length(&message);
 
     // 'message' is STILL completely alive and usable!
-    println!("The length of '{}' is {} characters.", message, length);
+    println!("The length of '{}' is {} bytes.", message, length);
 }
 ```
 
 ### 📋 Expected Terminal Output:
 ```text
-The length of 'Rustacean' is 9 characters.
+The length of 'Rustacean' is 9 bytes.
 ```
 
 Notice:
 1. `&message` creates a reference pointing to `message`.
-2. `calculate_length` takes `&String`.
+2. `calculate_length` takes `&str`; Rust converts the borrowed `String` to a string slice.
 3. `message` was never moved, cloned, or destroyed!
 
 ---
@@ -74,8 +74,7 @@ THE STACK
 +--------------------+----------------+
 ```
 
-A reference is just a tiny 8-byte pointer on the stack pointing directly to the original data.  
-Borrowing costs virtually **zero performance overhead**!
+A reference to a sized type is pointer-sized (commonly 8 bytes on 64-bit targets). A string slice `&str` also carries a length. References need not be stored on the stack. Borrowing avoids duplicating the underlying text.
 
 ---
 
@@ -87,7 +86,7 @@ You are looking at the library book; you are **not** allowed to take out a marke
 ```rust
 fn try_to_modify(s: &String) {
     // s.push_str(" World"); 
-    // ❌ COMPILER ERROR: `s` is a `&` reference, so the data it refers to cannot be borrowed as mutable!
+    // ❌ COMPILER ERROR: `s` is a `&` reference, so the String cannot be borrowed as mutable through this shared reference!
 }
 ```
 
@@ -97,7 +96,7 @@ If you need to change borrowed data, you need an **Exclusive Mutable Reference (
 
 ## 5. Multiple Readers: Unlimited Shared References! 👥
 
-Because shared references are strictly read-only, there is zero risk of data corruption.  
+For ordinary `String` data, a shared reference does not permit mutation. Types with interior mutability, such as `Cell` or `Mutex`, provide controlled exceptions.  
 Therefore, Rust lets you have **as many shared references as you want** at the same time:
 
 ```rust
@@ -128,6 +127,20 @@ Ten people can read the same billboard at the same time without any conflict!
 
 ---
 
+
+## Symbols and Practical Boundaries
+
+Several library visitors can read one displayed page without taking ownership of the library book.
+
+| Symbol or term | Meaning |
+|---|---|
+| `&` | shared borrow |
+| `&str` | borrowed UTF-8 text |
+| `usize` | length/count type |
+| `(a, b)` | tuple |
+
+**Common pitfall:** String length counts bytes, not letters. The manifesto contains 64 ASCII bytes and 9 whitespace-separated words.
+
 ## 🎯 Next Steps
-* Ready to practice? Complete [`tasks/06_ownership_and_memory/task_55_borrowing_shared/TASK.md`](file:///d:/rust-learning/tasks/06_ownership_and_memory/task_55_borrowing_shared/TASK.md).
-* Next lesson: [Lesson 56: Mutable Borrowing: Exclusive References (`&mut T`)](file:///d:/rust-learning/lessons/06_ownership_and_memory/56_borrowing_mutable.md).
+* Ready to practice? Complete [`tasks/step_1_core_foundations/06_ownership_and_memory/task_55_borrowing_shared/TASK.md`](../../../tasks/step_1_core_foundations/06_ownership_and_memory/task_55_borrowing_shared/TASK.md).
+* Next lesson: [Lesson 56: Mutable Borrowing: Exclusive References (`&mut T`)](56_borrowing_mutable.md).

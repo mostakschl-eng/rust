@@ -1,17 +1,7 @@
-// TODO 1: Implement generic inspect_cargo<T: std::fmt::Debug>(category: &str, item: T)
-fn inspect_cargo<T: std::fmt::Debug>(category: &str, item: T) {
-    println!("[CARGO SCANNER: {}] Item Details: {:?}", category, item);
-}
+// Starter: complete the TODOs to match TASK.md.
+// The reference answer is kept separately in solution/solution.rs.
 
 fn main() {
-    println!("=== UNIVERSAL CARGO SCANNER ===");
-
-    // TODO 2: Call inspect_cargo with integer, float, string slice, and boolean
-    inspect_cargo("Hardware ID", 1048);
-    inspect_cargo("Core Temperature", 98.6);
-    inspect_cargo("Mission Codename", "APOLLO-11");
-    inspect_cargo("Safety Clearance", true);
-
-    println!("===============================");
+    // TODO 1: Declare T on inspect_cargo and require Debug.
+    // TODO 2: Use {:?} for item and {} for category; call the same helper with the four requested concrete types.
 }
-

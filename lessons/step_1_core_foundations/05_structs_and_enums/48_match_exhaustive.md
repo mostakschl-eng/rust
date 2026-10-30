@@ -44,7 +44,7 @@ Rust compiler halts you:
 ```text
 error[E0004]: non-exhaustive patterns: `Direction::East` and `Direction::West` not covered
 ```
-Think about how many production crashes in other languages happen because a developer added a new feature and forgot to update one `switch` statement. In Rust, the compiler makes this bug **physically impossible**!
+Think about how many production crashes in other languages happen because a developer added a new feature and forgot to update one `switch` statement. An explicit arm for every enum variant forces review after a variant is added. A wildcard arm can also cover future variants, so it does not force such a review.
 
 ---
 
@@ -146,6 +146,19 @@ fn get_status_code(status: Status) -> u16 {
 
 ---
 
+## Pitfall: exhaustive does not mean correct
+
+`_` covers all remaining values and can silently hide a newly added enum variant. Prefer explicit enum arms when every choice needs its own action. Match arm results must have compatible types when used as a value; one arm cannot return an integer while another returns a string.
+
+## Symbol reading guide
+
+| Symbol or syntax | Meaning |
+|---|---|
+| `match method` | Inspect a value |
+| `Pattern => action` | One match arm |
+| `CreditCard(num)` | Extract a carried value |
+| `{ wallet, coin }` | Destructure named fields |
+
 ## 🎯 Next Steps
-* Ready to practice? Complete [`tasks/05_structs_and_enums/task_48_match_exhaustive/TASK.md`](file:///d:/rust-learning/tasks/05_structs_and_enums/task_48_match_exhaustive/TASK.md).
-* Next lesson: [Lesson 49: Match Guards (Adding `if` inside match arms)](file:///d:/rust-learning/lessons/05_structs_and_enums/49_match_guards.md).
+* Ready to practice? Complete [`tasks/step_1_core_foundations/05_structs_and_enums/task_48_match_exhaustive/TASK.md`](../../../tasks/step_1_core_foundations/05_structs_and_enums/task_48_match_exhaustive/TASK.md).
+* Next lesson: [Lesson 49: Match Guards (Adding `if` inside match arms)](49_match_guards.md).

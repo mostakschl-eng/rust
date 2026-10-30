@@ -20,7 +20,7 @@ Imagine your automatic washing machine doing a spin cycle:
 
 > In Rust:  
 > `while condition { ... }` runs the code inside **as long as the condition remains `true`**.  
-> The moment the condition becomes `false`, the loop stops automatically!
+> When the condition is checked again and evaluates to `false`, the loop stops; it is not continuously monitored during the body.
 
 ---
 
@@ -82,13 +82,17 @@ println!("Plane cannot take off without fuel!");
 ## 5. Summary Checklist
 - [x] `while condition { ... }` checks before every single lap.
 - [x] The loop runs as long as the condition evaluates to `true`.
-- [x] Always make sure the variable inside the condition changes, otherwise the loop will never end!
+- [x] For these counter loops, update the counter toward the limit. A loop can also stop with `break` or `return`; a condition alone does not guarantee termination.
 
 ---
 
 ## 🛠️ Ready for Practice!
 
-👉 Open **[`tasks/03_logic_and_loops/task_28_while_loops/TASK.md`](file:///d:/rust-learning/tasks/03_logic_and_loops/task_28_while_loops/TASK.md)**.
+👉 Open **[`tasks/step_1_core_foundations/03_logic_and_loops/task_28_while_loops/TASK.md`](../../../tasks/step_1_core_foundations/03_logic_and_loops/task_28_while_loops/TASK.md)**.
 1. Read the task requirements.
 2. Build an ATM PIN brute-force lockout simulator that counts 3 failed attempts using a `while` loop.
 3. Run `cargo run` and test your while loop!
+
+## Common pitfalls and limits
+
+The condition is checked between iterations, not continuously. A false initial condition means zero iterations; a body that never finishes prevents the next check.

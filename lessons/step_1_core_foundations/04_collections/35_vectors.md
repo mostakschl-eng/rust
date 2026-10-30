@@ -1,6 +1,6 @@
 # Lesson 35: Dynamic Lists: Vectors (`Vec<T>`, `vec![]`)
 
-In Lesson 33, we learned about **Arrays**. Arrays are super fast, but they have one massive limitation:
+In Lesson 33, we learned about **Arrays**. Arrays have a fixed number of elements:
 > **Arrays have a fixed size that can NEVER change.**
 
 If you create an array of 3 elements, you can never add a 4th element.  
@@ -60,7 +60,7 @@ fn main() {
 ## 3. How Vectors Work Under the Hood 🧠
 
 Vectors consist of two parts:
-1. **A tiny controller on the Stack:**
+1. **A small controller (often on the stack for a local variable):**
    * A **pointer** (the memory address where the data lives).
    * **Length (`len`)**: How many items are currently in the vector.
    * **Capacity (`capacity`)**: How many items the vector can hold before needing to reallocate more memory on the heap.
@@ -78,9 +78,10 @@ STACK (Fast Controller)            HEAP (Flexible Storage)
 ```
 
 When the vector runs out of capacity, Rust automatically:
-1. Finds a larger chunk of memory on the heap.
-2. Copies the existing elements over.
-3. Frees the old memory.
+1. Requests more storage from the allocator.
+2. May relocate the existing elements to a larger allocation. This moves storage; it does not call `.clone()` on the elements.
+3. Releases the old allocation if it moved.
+The allocator may also grow storage in place. Do not rely on a particular growth factor.
 All of this happens completely automatically without you having to do anything!
 
 ---
@@ -119,8 +120,8 @@ Found: Mars
 | Feature | Array `[T; N]` | Vector `Vec<T>` |
 |---|---|---|
 | **Size** | Fixed at compile time | Dynamic & growable at runtime |
-| **Memory** | Stored on Stack | Data stored on Heap |
-| **Speed** | Blazing fast, zero heap overhead | Fast, small allocation overhead |
+| **Memory** | Elements inline with the array | Element buffer on the heap; controller stored with its owner |
+| **Allocation** | No separate allocation for its elements | May allocate or reallocate when growing |
 | **Best For** | Coordinates `[x, y]`, days of week, RGB colors `[r, g, b]` | User lists, database results, file lines, shopping carts |
 
 ---
@@ -135,7 +136,7 @@ numbers.push(1); // ❌ COMPILER ERROR: cannot borrow immutable local variable `
 ```
 Fix: Add `mut`!
 ```rust
-let mut numbers = Vec::new(); // ✅
+let mut numbers: Vec<i32> = Vec::new(); // ✅ explicit type for an empty vector
 ```
 
 ---
@@ -149,6 +150,15 @@ let mut numbers = Vec::new(); // ✅
 
 ---
 
+## Symbol reading guide
+
+| Symbol or syntax | Meaning |
+|---|---|
+| `Vec<i32>` | Vector containing i32 elements |
+| `Vec::new()` | Create an empty vector |
+| `vec![...]` | Create a vector with initial elements |
+| `.push(x)` | Append an element |
+
 ## 🎯 Next Steps
-* Ready to practice? Complete [`tasks/04_collections/task_35_vectors/TASK.md`](file:///d:/rust-learning/tasks/04_collections/task_35_vectors/TASK.md).
-* Next lesson: [Lesson 36: Modifying Vectors (`push`, `pop`, `len`)](file:///d:/rust-learning/lessons/04_collections/36_vector_operations.md).
+* Ready to practice? Complete [`tasks/step_1_core_foundations/04_collections/task_35_vectors/TASK.md`](../../../tasks/step_1_core_foundations/04_collections/task_35_vectors/TASK.md).
+* Next lesson: [Lesson 36: Modifying Vectors (`push`, `pop`, `len`)](36_vector_operations.md).

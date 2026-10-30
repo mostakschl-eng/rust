@@ -67,7 +67,7 @@ Slice 2: 'Beautiful'
 
 ## 4. Array Slices: `&[T]`
 
-Slices don't just work on text; they work on **any collection** (arrays, vectors)!
+Slices don't just work on text; they work on contiguous collections such as arrays and vectors. Hash maps do not expose one contiguous slice of entries.
 
 ```rust
 fn main() {
@@ -100,7 +100,7 @@ Notice:
 Look at this pro-level Rust tip:
 ```rust
 // ❌ Clunky: Only accepts a Vector of i32
-fn sum_vector(v: &Vec<i32>) -> i32 { ... }
+// fn sum_vector(v: &Vec<i32>) -> i32; // Illustrative signature only
 
 // ✅ Idiomatic Rust: Accepts Slices (&[i32])!
 // Can accept a Vector (&vec[..]), a fixed Array (&array[..]), OR a sub-slice!
@@ -133,6 +133,19 @@ fn main() {
 
 ---
 
+
+## Symbols and Practical Boundaries
+
+A window reveals part of a wall without cutting out bricks. A slice similarly views part of existing storage.
+
+| Symbol or term | Meaning |
+|---|---|
+| `&[T]` | borrowed element slice |
+| `&str` | borrowed UTF-8 text |
+| `a..b` | includes a, excludes b |
+
+**Common pitfall:** String ranges are byte ranges and must land on UTF-8 character boundaries. For example, &"é"[0..1] panics. Out-of-bounds and reversed ranges also panic; .get(range) returns Option instead.
+
 ## 🎯 Next Steps
-* Ready to practice? Complete [`tasks/06_ownership_and_memory/task_59_slices_deep_dive/TASK.md`](file:///d:/rust-learning/tasks/06_ownership_and_memory/task_59_slices_deep_dive/TASK.md).
-* Next lesson: [Lesson 60: Introduction to Lifetimes (`'a` annotations)](file:///d:/rust-learning/lessons/06_ownership_and_memory/60_lifetimes_intro.md).
+* Ready to practice? Complete [`tasks/step_1_core_foundations/06_ownership_and_memory/task_59_slices_deep_dive/TASK.md`](../../../tasks/step_1_core_foundations/06_ownership_and_memory/task_59_slices_deep_dive/TASK.md).
+* Next lesson: [Lesson 60: Introduction to Lifetimes (`'a` annotations)](60_lifetimes_intro.md).

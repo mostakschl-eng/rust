@@ -29,8 +29,7 @@ In almost every programming language:
 * The outer loop continues spinning!
 * What if you find what you are looking for and want to **break out of BOTH loops immediately**?
 
-In C or Python, you have to create messy boolean flags (`found = true`) and break multiple times.
-In Rust, the creators invented a genius solution: **Loop Labels**!
+One Rust solution is a **loop label**, which names the enclosing loop you want to exit.
 
 ---
 
@@ -106,7 +105,19 @@ Notice: Row 3 was never even started! `break 'outer_grid;` instantly shut down b
 
 ## 🛠️ Ready for Practice!
 
-👉 Open **[`tasks/03_logic_and_loops/task_30_loop_labels/TASK.md`](file:///d:/rust-learning/tasks/03_logic_and_loops/task_30_loop_labels/TASK.md)**.
+👉 Open **[`tasks/step_1_core_foundations/03_logic_and_loops/task_30_loop_labels/TASK.md`](../../../tasks/step_1_core_foundations/03_logic_and_loops/task_30_loop_labels/TASK.md)**.
 1. Read the task requirements.
 2. Build a grid treasure scanner using nested `for` loops and a labeled `'scanner` loop break.
 3. Run `cargo run` and celebrate completing Level 3!
+
+## Symbol reference
+
+| Symbol | Meaning |
+|---|---|
+| `'outer:` | Give an enclosing loop a label |
+| `break 'outer;` | Exit that labeled loop |
+| `continue 'outer;` | Begin its next iteration |
+
+## Common pitfalls and limits
+
+A plain break exits only the innermost loop. Labels begin with an apostrophe but have no closing apostrophe; they are not char literals.

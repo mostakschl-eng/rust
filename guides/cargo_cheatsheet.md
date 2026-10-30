@@ -46,8 +46,22 @@ cargo build
 ## Tip for Running Tasks
 Always open your terminal inside the specific task folder before running Cargo:
 ```bash
-# Example: Navigating to Task 01
-cd tasks/01_baby_steps/task_01_hello
+# From the repository root, navigate to Task 01:
+cd tasks/step_1_core_foundations/01_baby_steps/task_01_hello
 cargo run
 ```
+
+If your terminal is already inside that task, run only `cargo run`. An unfinished starter can compile without completing the requirements. Task 20 deliberately contains compiler errors for practice.
+
+## Checking the Separate Solution
+
+Try the task and its hints first. When you choose to check the reference answer, run this from the task folder:
+
+```text
+cargo run --example solution
+```
+
+This runs `solution/solution.rs` without replacing your own `src/main.rs`. Read `solution/explain.md` to understand why it works. `cargo check --example solution` checks the reference code without running it.
+
+The task's expected-output block shows output from the program. Cargo also prints build messages, and the compiler may print warnings about unfinished or demonstration code. Those messages are separate from your program's output. A warning does not prevent compilation; an error does. Task 19 also uses `dbg!`, whose diagnostic goes to the separate standard-error stream.
 

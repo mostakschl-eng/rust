@@ -37,18 +37,36 @@ Final Bill:      $145.80
 
 ## 🛠️ How to Do This (Step-by-Step):
 
-1. Open [`src/main.rs`](file:///d:/rust-learning/tasks/08_advanced_and_concurrency/task_76_closures/src/main.rs).
+1. Open [`src/main.rs`](src/main.rs).
 2. Write the closure signatures using vertical pipes `|price: f64|`.
 3. Capture outer variables directly inside the closure body.
 4. Run:
    ```bash
-   cd tasks/08_advanced_and_concurrency/task_76_closures
+   cd tasks/step_1_core_foundations/08_advanced_and_concurrency/task_76_closures
    cargo run
    ```
 
 ---
 
 ## 🔒 Solution & Explanations
-* Working Code: [`solution/solution.rs`](file:///d:/rust-learning/tasks/08_advanced_and_concurrency/task_76_closures/solution/solution.rs)
-* Line-by-Line Breakdown: [`solution/explain.md`](file:///d:/rust-learning/tasks/08_advanced_and_concurrency/task_76_closures/solution/explain.md)
+* Working Code: [`solution/solution.rs`](solution/solution.rs)
+* Line-by-Line Breakdown: [`solution/explain.md`](solution/explain.md)
 
+
+## Hints (Open One at a Time)
+
+<details>
+<summary>Hint 1: Choose the approach</summary>
+
+Capture each rate in its corresponding single-line closure.
+
+</details>
+
+<details>
+<summary>Hint 2: Connect the pieces</summary>
+
+Inside format_bill, apply the discount first and tax second; return the final expression without a semicolon.
+
+</details>
+
+**Before running:** Fn, FnMut, and FnOnce overlap. move chooses capture mode, not a one-call limit. Floating-point prices here teach closures, not exact accounting.

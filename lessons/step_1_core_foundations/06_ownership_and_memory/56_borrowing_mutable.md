@@ -88,7 +88,7 @@ Doubled score:  100
 
 ## 4. The Golden Rule of Mutable References: Exclusivity! 🛑
 
-You can only have **ONE mutable reference** to a particular piece of data in a particular scope:
+You cannot have overlapping active mutable borrows of the same data. Sequential mutable borrows in one scope are allowed:
 
 ```rust
 fn main() {
@@ -102,21 +102,34 @@ fn main() {
 ```
 
 ### Why is Rust so strict about this?
-To prevent **Data Races**!  
-A data race happens when two pointers try to access the exact same memory at the same time, at least one is writing, and there's no synchronization.  
-In languages like C, C++, or Go, data races cause bizarre, hard-to-reproduce bugs in production. Rust stops data races at compile time!
+The example has only one thread. It violates **exclusive access**: both references would claim permission to change the same value while both are still needed. This is an aliasing problem, even without threads.
+
+These rules also help prevent data races. A data race involves conflicting accesses to the same memory from different threads, at least one write, without the required synchronization. Safe Rust prevents data races, but programs can still have other logic and timing bugs.
 
 ---
 
 ## 5. Quick Recap Checklist
 - [x] Use `&mut variable` to borrow data with write permissions.
-- [x] The original variable must be declared with `let mut`.
+- [x] A directly owned local must be mutable to borrow it mutably. A function can also receive exclusive access through an existing `&mut T`.
 - [x] Use `*ref` (dereferencing) to update primitive values behind the reference.
 - [x] You can only have **ONE mutable reference** to a value at any time.
-- [x] Exclusivity guarantees zero data races and zero memory corruption!
+- [x] Exclusive borrowing prevents conflicting accesses in safe Rust; it does not prevent logic errors, panics, or bugs in unsafe dependencies.
 
 ---
 
+
+## Symbols and Practical Boundaries
+
+One editing pen grants exclusive temporary access to a document; returning the pen leaves the owner with the edited document.
+
+| Symbol or term | Meaning |
+|---|---|
+| `&mut T` | exclusive borrowed access |
+| `*reference` | access referent |
+| `*=` | multiply and assign |
+
+**Common pitfall:** A mutable reference can read as well as write. A shared reborrow or exclusive reborrow may temporarily restrict access through the original reference.
+
 ## 🎯 Next Steps
-* Ready to practice? Complete [`tasks/06_ownership_and_memory/task_56_borrowing_mutable/TASK.md`](file:///d:/rust-learning/tasks/06_ownership_and_memory/task_56_borrowing_mutable/TASK.md).
-* Next lesson: [Lesson 57: The Golden Borrowing Rule: Many Readers OR One Writer](file:///d:/rust-learning/lessons/06_ownership_and_memory/57_borrowing_rules.md).
+* Ready to practice? Complete [`tasks/step_1_core_foundations/06_ownership_and_memory/task_56_borrowing_mutable/TASK.md`](../../../tasks/step_1_core_foundations/06_ownership_and_memory/task_56_borrowing_mutable/TASK.md).
+* Next lesson: [Lesson 57: The Golden Borrowing Rule: Many Readers OR One Writer](57_borrowing_rules.md).

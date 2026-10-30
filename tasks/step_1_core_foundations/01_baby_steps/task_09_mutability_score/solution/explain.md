@@ -15,10 +15,10 @@ score = score + 150;
   ```rust
   score += 150;
   ```
-  Both `score = score + 150;` and `score += 150;` are identical in Rust!
+  For this integer score, both forms calculate the same new value.
 
 ---
 
 ## 2. Why Immutability Matters
-Because Rust forces you to write `mut` explicitly, whenever you read someone else's Rust code, you immediately know which variables are guaranteed never to change, and which ones will be modified. This makes debugging 10x easier!
+Because Rust forces you to write `mut` explicitly, whenever you read someone else's Rust code, you immediately know which variables are guaranteed never to change, and which ones will be modified. This makes intended reassignment easier to see; `mut` permits changes but does not require them.
 

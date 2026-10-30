@@ -9,12 +9,16 @@ impl BankAccount {
     }
 
     fn deposit(&mut self, amount: f64) {
+        if !amount.is_finite() || amount <= 0.0 || !(self.balance + amount).is_finite() {
+            println!("Deposit rejected: amount must be positive and keep balance finite.");
+            return;
+        }
         self.balance += amount;
         println!("Deposited ${:.2} successfully.", amount);
     }
 
     fn withdraw(&mut self, amount: f64) -> bool {
-        if self.balance >= amount {
+        if amount.is_finite() && amount > 0.0 && self.balance >= amount {
             self.balance -= amount;
             true
         } else {

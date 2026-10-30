@@ -14,9 +14,9 @@ Imagine you stand in front of a soda vending machine:
 * The machine makes a decision and **drops the drink directly into your hands**!
 * You take that drink and place it into your backpack (`let drink = ...`).
 
-In Rust, instead of declaring a mutable variable and assigning it inside curly braces:
+Rust also allows delayed initialization of an immutable binding, provided every path initializes it before use:
 ```rust
-// ❌ The old, clumsy way:
+// Valid alternative: initialize once on each branch.
 let status;
 if age >= 18 {
     status = "Adult";
@@ -67,7 +67,7 @@ Notice:
 
 Because Rust is strictly typed, the variable box being created has a fixed type.
 Therefore:
-> **The `if` branch and the `else` branch MUST return the exact same data type!**
+> **For these value-producing examples, both branches must produce compatible types so the full expression has one type. Advanced coercions and branches that never return are covered later.**
 
 ```rust
 let number = if is_sunny {
@@ -85,13 +85,24 @@ let number = if is_sunny {
 - [x] In Rust, `if` is an expression that returns a value.
 - [x] Assign directly: `let result = if condition { A } else { B };`.
 - [x] Semicolon goes at the end of `};`.
-- [x] Both `if` and `else` branches must return the exact same data type.
+- [x] The branch values must have compatible types.
 
 ---
 
 ## 🛠️ Ready for Practice!
 
-👉 Open **[`tasks/03_logic_and_loops/task_25_if_expressions/TASK.md`](file:///d:/rust-learning/tasks/03_logic_and_loops/task_25_if_expressions/TASK.md)**.
+👉 Open **[`tasks/step_1_core_foundations/03_logic_and_loops/task_25_if_expressions/TASK.md`](../../../tasks/step_1_core_foundations/03_logic_and_loops/task_25_if_expressions/TASK.md)**.
 1. Read the task requirements.
 2. Build an e-commerce shipping cost calculator assigning shipping fees directly via an `if` expression.
 3. Run `cargo run` and test your expression assignments!
+
+## Symbol reference
+
+| Symbol | Meaning |
+|---|---|
+| `if ... else ...` | Expression choosing one value |
+| `};` | Close the block, then finish the let statement |
+
+## Common pitfalls and limits
+
+The no-semicolon branch expression supplies the chosen value. Adding a semicolon discards that value and usually changes the branch result to (). The earlier delayed-initialization form is valid too.

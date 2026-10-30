@@ -42,7 +42,7 @@ fn main() {
 }
 ```
 
-If Rust allowed this, `r` would be pointing to dead memory (a **Dangling Pointer**), which is the #1 cause of security exploits in software history. Rust catches this at compile time!
+The example currently compiles because the final `println!` is commented out and the reference is never read after `x` is dropped. Uncomment that line to observe Rust rejecting the use: `x` does not live long enough. Reading through a reference after its data is gone would be a dangling-reference bug.
 
 ---
 
@@ -50,7 +50,7 @@ If Rust allowed this, `r` would be pointing to dead memory (a **Dangling Pointer
 
 Most of the time, the compiler figures out lifetimes automatically behind the scenes (this is called **Lifetime Elision**).
 
-You only need to help the compiler when a function takes **two references** and returns **one of them**:
+A common case requiring annotations is a function that takes two references and returns one. Annotations also appear in structs holding references and other APIs whose borrowing relationships cannot be elided:
 
 ```rust
 // Which reference does this function return? 'x' or 'y'?
@@ -76,7 +76,7 @@ fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {
 
 ### What does `fn longest<'a>(x: &'a str, y: &'a str) -> &'a str` actually tell Rust?
 It tells the compiler:
-> *"The returned reference will live as long as the **shorter** of the lifetimes of `x` and `y`!"*
+> *"The returned reference may be used within a lifetime for which both inputs are valid. The caller must keep both candidate sources valid for that use."*
 
 Rust doesn't change how long any variable lives. It just connects the relationships so it can verify safety!
 
@@ -128,11 +128,25 @@ All string literals (`"hello"`) have the `'static` lifetime because they are bak
 - [x] Lifetimes ensure references never point to destroyed data (dangling pointers).
 - [x] Lifetimes start with an apostrophe: `'a`, `'b`, `'static`.
 - [x] Lifetime annotations describe relationships between reference lifespans; they do not alter runtime behavior.
-- [x] `'static` references live for the entire life of the program (e.g. string literals).
-- [x] The borrow checker uses lifetime annotations to verify 100% memory safety.
+- [x] Data behind an `&'static T` reference can remain valid for the entire program; the local reference binding can still have a short scope.
+- [x] The borrow checker uses lifetime relationships to reject references that could outlive their data.
 
 ---
 
+
+## Symbols and Practical Boundaries
+
+A guest pass cannot remain valid after the underlying room lease ends. A lifetime annotation records that relationship without extending the lease.
+
+| Symbol or term | Meaning |
+|---|---|
+| `'a` | named lifetime |
+| `<'a>` | declares it |
+| `&'a str` | borrowed text valid for a |
+| `'static` | program-long referent validity |
+
+**Common pitfall:** Annotations describe relationships, not runtime extensions. .len() compares bytes here, and a static literal does not make the other input static.
+
 ## 🎯 Next Steps
-* Ready to practice? Complete [`tasks/06_ownership_and_memory/task_60_lifetimes_intro/TASK.md`](file:///d:/rust-learning/tasks/06_ownership_and_memory/task_60_lifetimes_intro/TASK.md).
-* You've completed Level 6! Next up: [Level 7: Robustness, Error Handling & System I/O](file:///d:/rust-learning/lessons/07_errors_and_io/61_no_null_in_rust.md).
+* Ready to practice? Complete [`tasks/step_1_core_foundations/06_ownership_and_memory/task_60_lifetimes_intro/TASK.md`](../../../tasks/step_1_core_foundations/06_ownership_and_memory/task_60_lifetimes_intro/TASK.md).
+* You've completed Level 6! Next up: [Level 7: Robustness, Error Handling & System I/O](../07_errors_and_io/61_no_null_in_rust.md).

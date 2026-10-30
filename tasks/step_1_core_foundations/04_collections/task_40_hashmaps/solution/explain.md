@@ -54,3 +54,30 @@ fn main() {
 4. **`prices.entry(key).or_insert(default)`:**
    * Inspects if `key` already exists. If yes, leaves it alone; if absent, inserts `default` in a single efficient operation!
 
+## Everyday picture and symbols
+
+Think of a price catalog where labels identify values. The code turns that picture into explicit values and operations.
+
+| Symbol or syntax | Meaning |
+|---|---|
+| `HashMap<K, V>` | Map from keys to values |
+| `.get(key)` | Optional borrowed value |
+| `.entry(key).or_insert(v)` | Insert only when missing |
+| `::` | Separate path components |
+
+## Common pitfall
+
+HashMap iteration order is unspecified. This task prints explicit lookups and counts so its output is stable.
+
+## Expected output
+
+```text
+=== FRESH MARKET PRICE CATALOG ===
+Initial catalog items: 3
+Has 'Banana'? true
+Lookup [Mango]: Price of Mango: $3.75
+Lookup [Dragonfruit]: Sorry, Dragonfruit is not in stock!
+Adding Orange via entry API...
+Updated catalog count: 4
+==================================
+```

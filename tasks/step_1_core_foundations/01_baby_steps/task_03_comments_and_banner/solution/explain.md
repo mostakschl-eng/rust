@@ -19,7 +19,7 @@ fn main() {
 }
 ```
 
-* Lines starting with `//` are completely skipped by the Rust compiler. They don't slow down the program or add to the file size.
+* Lines starting with `//` are completely skipped by the Rust compiler. They do not execute; they remain part of the source file.
 * Alignment: Notice how `Student Name: `, `Goal:         `, and `Status:       ` are padded with spaces so the colon `:` and the text line up neatly like a table!
 
 ---

@@ -113,21 +113,34 @@ Because `r1` and `r2` were never used after line 6, Rust's smart compiler knows 
 
 | Reference Mix | Allowed in Rust? | Reason |
 |---|:---:|---|
-| Multiple `&T` | ✅ **YES** | Read-only; no data can change |
+| Multiple `&T` | ✅ **YES** | Shared access; ordinary data cannot be mutated through `&T` |
 | Single `&mut T` | ✅ **YES** | Exclusive; complete safe write control |
 | `&T` + `&mut T` simultaneously | ❌ **FORBIDDEN** | Reader might observe corrupted / mutating data |
-| Multiple `&mut T` simultaneously | ❌ **FORBIDDEN** | Two writers could overwrite each other (Data Race) |
+| Multiple `&mut T` simultaneously | ❌ **FORBIDDEN** | Conflicting exclusive access is forbidden, even within one thread |
 
 ---
 
 ## 6. Quick Recap Checklist
 - [x] You can have unlimited readers (`&T`) OR exactly one writer (`&mut T`).
 - [x] You can never mix readers and writers at the exact same moment.
-- [x] Readers guarantee data will remain frozen and unchanged while they are reading.
+- [x] Shared references prevent ordinary mutation; interior-mutability types permit controlled mutation through their APIs.
 - [x] Once readers finish their last read, writers can step in safely.
 
 ---
 
+
+## Symbols and Practical Boundaries
+
+A blackboard has an inspection period, an editing period, then a final inspection. Finish each access before starting the conflicting one.
+
+| Symbol or term | Meaning |
+|---|---|
+| `&T` | shared access |
+| `&mut T` | exclusive access |
+| `last use` | helps determine borrow end |
+
+**Common pitfall:** The rule concerns overlapping active access to the same data, not one reference per whole function. Disjoint fields may be borrowed independently.
+
 ## 🎯 Next Steps
-* Ready to practice? Complete [`tasks/06_ownership_and_memory/task_57_borrowing_rules/TASK.md`](file:///d:/rust-learning/tasks/06_ownership_and_memory/task_57_borrowing_rules/TASK.md).
-* Next lesson: [Lesson 58: Non-Lexical Lifetimes (NLL) & The Borrow Checker](file:///d:/rust-learning/lessons/06_ownership_and_memory/58_borrow_checker_nll.md).
+* Ready to practice? Complete [`tasks/step_1_core_foundations/06_ownership_and_memory/task_57_borrowing_rules/TASK.md`](../../../tasks/step_1_core_foundations/06_ownership_and_memory/task_57_borrowing_rules/TASK.md).
+* Next lesson: [Lesson 58: Non-Lexical Lifetimes (NLL) & The Borrow Checker](58_borrow_checker_nll.md).

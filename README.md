@@ -1,19 +1,18 @@
 # 🦀 Rust Zero-to-Hero: Child to Adult Developer Curriculum
 
-> **A complete, modular, beginner-to-advanced Rust learning workspace.**  
-> Designed for anyone starting from **absolute zero** (no prior coding experience) all the way to **building production-ready, concurrent, multi-threaded software**.
+> **A Rust learning workspace for someone starting from zero.**  
+> Step 1 contains 80 lessons and matching exercises across eight levels. Steps 2–4 are outlines for future study; completing Step 1 is a foundation for building projects, not a guarantee of production experience.
 
 [![GitHub Repo](https://img.shields.io/badge/GitHub-mostakschl--eng%2Frust-blue?logo=github)](https://github.com/mostakschl-eng/rust)
-[![Rust Version](https://img.shields.io/badge/Rust-1.80%2B-orange?logo=rust)](https://www.rust-lang.org/)
-[![Lessons](https://img.shields.io/badge/Lessons-80%20Complete-brightgreen)](#-step-1-core-rust-foundations-80-lessons)
-[![Tasks](https://img.shields.io/badge/Practice%20Tasks-80%20Verified-success)](#-the-anti-spoiler-task-system)
-[![License](https://img.shields.io/badge/License-MIT-lightgrey.svg)](LICENSE)
+[![Rust Version](https://img.shields.io/badge/Rust-stable-orange?logo=rust)](https://www.rust-lang.org/)
+[![Lessons](https://img.shields.io/badge/Lessons-80-brightgreen)](ROADMAP.md)
+[![Tasks](https://img.shields.io/badge/Practice%20Tasks-80-success)](tasks/step_1_core_foundations/README.md)
 
 ---
 
 ## 🗺️ The 4-Stage Learning Roadmap
 
-This repository is structured around a complete 4-stage engineering progression:
+The roadmap has four stages. Only Step 1 currently contains full lesson and task packages:
 
 ```text
 rust-learning/
@@ -87,14 +86,14 @@ d:\rust-learning/
 
 ## 🔒 The Anti-Spoiler Task System
 
-Every single task in `tasks/` is an independent, runnable Cargo project configured to protect you from accidentally seeing the solution before trying it yourself:
+Each Step 1 task is an independent Cargo project. Write your answer in `src/main.rs`; use the separate solution only when you need help or want to compare your finished work:
 
 ```text
 task_01_hello/
-├── Cargo.toml               # Standalone manifest
+├── Cargo.toml               # Standalone manifest; solution is a separate example target
 ├── TASK.md                  # Instructions, requirements & expected terminal output
 ├── src/
-│   └── main.rs              # Starter code with // TODO guidance (compiles cleanly)
+│   └── main.rs              # TODO starter (Task 20 has intentional compiler errors)
 └── solution/                # Anti-Spoiler Subfolder
     ├── solution.rs          # Verified complete solution code
     └── explain.md           # Step-by-step line-by-line explanation
@@ -105,26 +104,27 @@ task_01_hello/
 ## 🚦 How to Start Learning
 
 1. **Clone or Open Workspace:**
-   Open the folder in your favorite editor (VS Code, Antigravity, Cursor, etc.).
+   Follow [SETUP.md](SETUP.md) to install Rust, then open this folder in your editor.
 2. **Open Lesson 01:**
-   Read [`lessons/step_1_core_foundations/01_baby_steps/01_what_is_code.md`](file:///d:/rust-learning/lessons/step_1_core_foundations/01_baby_steps/01_what_is_code.md).
+   Read [`lessons/step_1_core_foundations/01_baby_steps/01_what_is_code.md`](lessons/step_1_core_foundations/01_baby_steps/01_what_is_code.md).
 3. **Open Practice Task 01:**
-   Read [`tasks/step_1_core_foundations/01_baby_steps/task_01_hello/TASK.md`](file:///d:/rust-learning/tasks/step_1_core_foundations/01_baby_steps/task_01_hello/TASK.md).
+   Read [`tasks/step_1_core_foundations/01_baby_steps/task_01_hello/TASK.md`](tasks/step_1_core_foundations/01_baby_steps/task_01_hello/TASK.md).
 4. **Write Code in `src/main.rs` & Run:**
    ```bash
    cd tasks/step_1_core_foundations/01_baby_steps/task_01_hello
    cargo run
    ```
 5. **Check Solution (Only if Stuck):**
-   Compare your work with [`solution/solution.rs`](file:///d:/rust-learning/tasks/step_1_core_foundations/01_baby_steps/task_01_hello/solution/solution.rs).
+   Compare your work with [`solution/solution.rs`](tasks/step_1_core_foundations/01_baby_steps/task_01_hello/solution/solution.rs).
+   From the task folder, `cargo run --example solution` runs the reference answer without replacing your own code. Try the task and its hints before opening it.
 6. **Mark Progress:**
-   Check off `[x]` in [`ROADMAP.md`](file:///d:/rust-learning/ROADMAP.md) and record notes in [`progress/log.md`](file:///d:/rust-learning/progress/log.md).
+   Check off `[x]` in [`ROADMAP.md`](ROADMAP.md) and record notes in [`progress/log.md`](progress/log.md).
 
 ---
 
 ## 🤖 AI Tutor Protocol (`TUTOR.md`)
 
-This workspace includes an AI Teaching Protocol. Any AI assistant reading [`TUTOR.md`](file:///d:/rust-learning/TUTOR.md) will:
+This workspace includes an AI Teaching Protocol. Any AI assistant reading [`TUTOR.md`](TUTOR.md) will:
 * Teach in simple English with real-life analogies.
 * Never spoil answers upfront (offers Hints first).
 * Keep track of your progress and guide you lesson-by-lesson.
@@ -145,5 +145,5 @@ git push -u origin master
 
 ---
 
-## 📜 License
-This learning curriculum is released under the **MIT License**. Free for all learners worldwide! 🌟
+## Content status
+Step 1 contains the core lessons and practice exercises. Later-stage folders describe planned topics. A license file has not been supplied in this repository.

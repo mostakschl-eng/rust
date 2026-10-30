@@ -2,9 +2,7 @@
 
 fn main() {
     // Section 1: Print top decorative header
-    println!("========================================");
-    println!("       WELCOME TO MY RUST JOURNEY       ");
-    println!("========================================");
+    println!("========================================\n       WELCOME TO MY RUST JOURNEY       \n========================================");
 
     // Section 2: Print student details and goals
     println!("Student Name:  Rahim");

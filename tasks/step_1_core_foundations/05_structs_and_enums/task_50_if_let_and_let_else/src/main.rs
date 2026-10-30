@@ -1,33 +1,8 @@
-// TODO 1: Implement verify_clearance with let else
-fn verify_clearance(badge_id: Option<u32>) {
-    let Some(id) = badge_id else {
-        println!("⛔ Access Denied: No badge detected. Incident logged.");
-        return;
-    };
-
-    println!("🔑 Access Approved for Officer #{}!", id);
-}
+// Task 50: Security Terminal & Prize Scanner (if let & let else)
+// Complete the TODOs; the reference answer is kept separately in solution/.
 
 fn main() {
-    println!("=== CONCISE MATCHING TERMINAL ===");
-
-    // TODO 2: Test if let with prize
-    let prize: Option<&str> = Some("Diamond Trophy 💎");
-
-    if let Some(trophy) = prize {
-        println!("🎉 Winner Claimed: {}", trophy);
-    } else {
-        println!("No prize awarded.");
-    }
-
-    println!("\n=== SECURITY CLEARANCE CHECKPOINT ===");
-
-    println!("Attempt 1 (Valid Badge):");
-    verify_clearance(Some(9042));
-
-    println!("\nAttempt 2 (Missing Badge):");
-    verify_clearance(None);
-
-    println!("=====================================");
+    // TODO 1: Write verify_clearance(badge_id: Option<u32>) using let else with an early return.
+    // TODO 2: In main use if let with the Diamond Trophy prize and an else branch.
+    // TODO 3: Call verify_clearance with Some(9042) and None; print the required headings.
 }
-

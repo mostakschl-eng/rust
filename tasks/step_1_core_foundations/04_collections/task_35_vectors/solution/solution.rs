@@ -7,7 +7,7 @@ fn main() {
     high_scores.push(2950);
 
     println!("Total scores recorded: {}", high_scores.len());
-    println!("Top score: {} pts", high_scores[0]);
+    println!("First recorded score: {} pts", high_scores[0]);
     println!("All scores: {:?}", high_scores);
 
     println!("\n=== PROGRAMMING LANGUAGES ===");

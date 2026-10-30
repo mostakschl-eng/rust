@@ -30,32 +30,35 @@ Leftover Eggs:        10 loose eggs
 
 ## 🛠️ How to Do This (Step-by-Step):
 
-1. Open [`src/main.rs`](file:///d:/rust-learning/tasks/02_types_and_math/task_15_math_operations/src/main.rs).
+1. Open [`src/main.rs`](src/main.rs).
 2. Declare `total_eggs = 58` and `carton_size = 12`.
 3. Use `/` for `full_cartons` and `%` for `leftover_eggs`.
 4. Print the report.
 5. Test with:
    ```bash
-   cd tasks/02_types_and_math/task_15_math_operations
+   cd tasks/step_1_core_foundations/02_types_and_math/task_15_math_operations
    cargo run
    ```
 
 ---
 
-## 💡 Hints (Only open if you get stuck!)
+## 💡 Hints (open one at a time)
 
 <details>
-<summary><b>🔍 Hint: Math operators</b></summary>
+<summary>Hint 1: Start with the idea</summary>
 
-```rust
-let full_cartons = total_eggs / carton_size;
-let leftover_eggs = total_eggs % carton_size;
-```
+Integer division answers how many full cartons fit; remainder answers how many eggs remain.
+</details>
+
+<details>
+<summary>Hint 2: Connect it to Rust</summary>
+
+Check your result by multiplying cartons by carton size and adding the leftovers; the total should be 58.
 </details>
 
 ---
 
 ## 🔒 Solution & Explanations
-* Working Code: [`solution/solution.rs`](file:///d:/rust-learning/tasks/02_types_and_math/task_15_math_operations/solution/solution.rs)
-* Line-by-Line Breakdown: [`solution/explain.md`](file:///d:/rust-learning/tasks/02_types_and_math/task_15_math_operations/solution/explain.md)
+* Working Code: [`solution/solution.rs`](solution/solution.rs)
+* Line-by-Line Breakdown: [`solution/explain.md`](solution/explain.md)
 

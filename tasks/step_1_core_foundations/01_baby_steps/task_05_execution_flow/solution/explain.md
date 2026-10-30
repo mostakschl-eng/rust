@@ -19,5 +19,5 @@ main()
         ├── calls check_fuel() (runs & returns)
         └── calls check_engines() (runs & returns)
 ```
-Each function does its focused job, making your entire application modular and bug-free!
+Each function does its focused job, making your entire application easier to organize and inspect. Functions alone do not guarantee bug-free code!
 

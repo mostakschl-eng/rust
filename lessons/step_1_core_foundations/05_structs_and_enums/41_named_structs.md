@@ -9,7 +9,7 @@ let user = ("Rahim", "rahim@example.com", 28, true);
 While tuples bundle data together, they have a big problem:
 * What is `user.0`?
 * What is `user.2`? Is it an age? An ID? A score?
-* If someone swaps the order by accident, the compiler won't notice!
+* If someone swaps fields of the **same type**, the compiler cannot infer their intended meanings.
 
 To write clean, enterprise-grade software, we need **self-documenting custom data types**.  
 In Rust, we create these using **Structs**!
@@ -49,6 +49,13 @@ struct User {
 To create a concrete user, state the struct name and supply values for every field:
 
 ```rust
+struct User {
+    username: String,
+    email: String,
+    sign_in_count: u64,
+    is_active: bool,
+}
+
 fn main() {
     let user1 = User {
         username: String::from("rahim99"),
@@ -99,6 +106,13 @@ fn build_user(email: String, username: String) -> User {
 In Rust, mutability is applied to the **entire instance**, not to individual fields:
 
 ```rust
+struct User {
+    username: String,
+    email: String,
+    sign_in_count: u64,
+    is_active: bool,
+}
+
 fn main() {
     let mut user1 = User {
         username: String::from("alice_dev"),
@@ -182,7 +196,7 @@ User {
 ## 7. Common Beginner Traps ⚠️
 
 ### Trap: Missing a Field During Creation
-When instantiating a struct, you **must supply every single field**. Rust does not have `undefined` or default `null` values:
+When instantiating a struct, you **must supply every single field**. Fields are not implicitly left uninitialized. Later you can deliberately obtain defaults with `Default` and update syntax:
 ```rust
 let u = User {
     username: String::from("bob"),
@@ -201,6 +215,15 @@ let u = User {
 
 ---
 
+## Symbol reading guide
+
+| Symbol or syntax | Meaning |
+|---|---|
+| `struct Student { ... }` | Define named fields |
+| `Student { ... }` | Construct a value |
+| `student1.gpa` | Access one field |
+| `#[derive(Debug)]` | Generate debug formatting |
+
 ## 🎯 Next Steps
-* Ready to practice? Complete [`tasks/05_structs_and_enums/task_41_named_structs/TASK.md`](file:///d:/rust-learning/tasks/05_structs_and_enums/task_41_named_structs/TASK.md).
-* Next lesson: [Lesson 42: Creating & Updating Struct Instances (`..` syntax)](file:///d:/rust-learning/lessons/05_structs_and_enums/42_struct_instances.md).
+* Ready to practice? Complete [`tasks/step_1_core_foundations/05_structs_and_enums/task_41_named_structs/TASK.md`](../../../tasks/step_1_core_foundations/05_structs_and_enums/task_41_named_structs/TASK.md).
+* Next lesson: [Lesson 42: Creating & Updating Struct Instances (`..` syntax)](42_struct_instances.md).

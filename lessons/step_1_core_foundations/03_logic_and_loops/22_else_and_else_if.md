@@ -90,7 +90,7 @@ if score >= 70 {
     println!("Grade: A"); // Never reached!
 }
 ```
-* **Lesson:** Always arrange multi-step conditions in logical order (highest to lowest)!
+* **Lesson:** Arrange conditions so earlier branches do not accidentally capture later cases. Descending thresholds suit this grading example; ascending thresholds suit other rules.
 
 ---
 
@@ -103,7 +103,18 @@ if score >= 70 {
 
 ## 🛠️ Ready for Practice!
 
-👉 Open **[`tasks/03_logic_and_loops/task_22_else_and_else_if/TASK.md`](file:///d:/rust-learning/tasks/03_logic_and_loops/task_22_else_and_else_if/TASK.md)**.
+👉 Open **[`tasks/step_1_core_foundations/03_logic_and_loops/task_22_else_and_else_if/TASK.md`](../../../tasks/step_1_core_foundations/03_logic_and_loops/task_22_else_and_else_if/TASK.md)**.
 1. Read the task requirements.
 2. Build a movie theater ticket pricing system based on customer age (Child, Adult, Senior).
 3. Run `cargo run` and test with different ages!
+
+## Symbol reference
+
+| Symbol | Meaning |
+|---|---|
+| `else if` | Next condition if earlier conditions were false |
+| `else` | Fallback branch |
+
+## Common pitfalls and limits
+
+Only the first true branch runs. Choose the branch order to match the rule; higher-to-lower is not a universal requirement.

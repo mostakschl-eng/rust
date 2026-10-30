@@ -33,34 +33,33 @@ COACH: Set Complete! Great work! Take a 30-second rest. 🏆
 
 ## 🛠️ How to Do This (Step-by-Step):
 
-1. Open [`src/main.rs`](file:///d:/rust-learning/tasks/03_logic_and_loops/task_29_for_loops_and_ranges/src/main.rs).
+1. Open [`src/main.rs`](src/main.rs).
 2. Write the `for rep in 1..=10 { ... }` loop.
 3. Test with:
    ```bash
-   cd tasks/03_logic_and_loops/task_29_for_loops_and_ranges
+   cd tasks/step_1_core_foundations/03_logic_and_loops/task_29_for_loops_and_ranges
    cargo run
    ```
 
 ---
 
-## 💡 Hints (Only open if you get stuck!)
+## 💡 Hints (open one at a time)
 
 <details>
-<summary><b>🔍 Hint: For loop with condition</b></summary>
+<summary>Hint 1: Start with the idea</summary>
 
-```rust
-for rep in 1..=10 {
-    println!("Rep {}: Good form!", rep);
-    if rep == 5 {
-        println!("Halfway there! Keep pushing! 🔥");
-    }
-}
-```
+The ending value must be included, so choose the inclusive range syntax.
+</details>
+
+<details>
+<summary>Hint 2: Connect it to Rust</summary>
+
+Print each repetition, then check whether the current number is five. Place the completion message after the loop.
 </details>
 
 ---
 
 ## 🔒 Solution & Explanations
-* Working Code: [`solution/solution.rs`](file:///d:/rust-learning/tasks/03_logic_and_loops/task_29_for_loops_and_ranges/solution/solution.rs)
-* Line-by-Line Breakdown: [`solution/explain.md`](file:///d:/rust-learning/tasks/03_logic_and_loops/task_29_for_loops_and_ranges/solution/explain.md)
+* Working Code: [`solution/solution.rs`](solution/solution.rs)
+* Line-by-Line Breakdown: [`solution/explain.md`](solution/explain.md)
 

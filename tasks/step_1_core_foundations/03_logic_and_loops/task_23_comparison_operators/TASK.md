@@ -1,7 +1,7 @@
 # Task 23: Digital Security Vault PIN Validator (Comparison Operators)
 
 ## 🎯 What is Your Task?
-Write a Rust program simulating a **Digital Vault Keypad Validator** using comparison operators (`==`, `!=`, `<`, `>=`).
+Write a Rust program simulating a **Digital Vault Keypad Validator** using comparison operators (`==`, `!=`, `<=`).
 
 Setup:
 1. `correct_pin: &str` = `"9876"`
@@ -14,8 +14,8 @@ Conditions to test:
    - If true: print `"Vault Access Granted! Door opening... 🔓"`
 2. Check if attempts are within limits:
    - Compare `attempt_count <= max_attempts`
-3. Compare if attempts have reached warning threshold:
-   - Check if `attempt_count != max_attempts`
+3. Check whether the current attempt is not exactly the limit:
+   - Compare `attempt_count != max_attempts`. This is not the same question as being within the limit.
 
 ---
 
@@ -24,7 +24,8 @@ Conditions to test:
 === DIGITAL SECURITY VAULT ===
 Checking PIN:          Validating...
 PIN Match Result:      true
-Attempts Remaining:    true
+Within Attempt Limit:  true
+Not At Attempt Limit:  true
 Vault Access Granted! Door opening... 🔓
 ==============================
 ```
@@ -33,30 +34,33 @@ Vault Access Granted! Door opening... 🔓
 
 ## 🛠️ How to Do This (Step-by-Step):
 
-1. Open [`src/main.rs`](file:///d:/rust-learning/tasks/03_logic_and_loops/task_23_comparison_operators/src/main.rs).
+1. Open [`src/main.rs`](src/main.rs).
 2. Write comparisons using `==`, `<=`, and `!=`.
 3. Test with:
    ```bash
-   cd tasks/03_logic_and_loops/task_23_comparison_operators
+   cd tasks/step_1_core_foundations/03_logic_and_loops/task_23_comparison_operators
    cargo run
    ```
 
 ---
 
-## 💡 Hints (Only open if you get stuck!)
+## 💡 Hints (open one at a time)
 
 <details>
-<summary><b>🔍 Hint: Equality comparison</b></summary>
+<summary>Hint 1: Start with the idea</summary>
 
-```rust
-let is_match = entered_pin == correct_pin;
-let has_attempts = attempt_count <= max_attempts;
-```
+Equality uses two equals signs. Each comparison produces a bool that can be printed.
+</details>
+
+<details>
+<summary>Hint 2: Connect it to Rust</summary>
+
+Compare the current attempt with the maximum using <= for within the limit and != for not exactly at the limit; print both checks.
 </details>
 
 ---
 
 ## 🔒 Solution & Explanations
-* Working Code: [`solution/solution.rs`](file:///d:/rust-learning/tasks/03_logic_and_loops/task_23_comparison_operators/solution/solution.rs)
-* Line-by-Line Breakdown: [`solution/explain.md`](file:///d:/rust-learning/tasks/03_logic_and_loops/task_23_comparison_operators/solution/explain.md)
+* Working Code: [`solution/solution.rs`](solution/solution.rs)
+* Line-by-Line Breakdown: [`solution/explain.md`](solution/explain.md)
 

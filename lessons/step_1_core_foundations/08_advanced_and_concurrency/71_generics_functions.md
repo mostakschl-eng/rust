@@ -100,11 +100,11 @@ fn main() {
 
 Beginners often worry: *"Does using generics make my program slower at runtime?"*
 
-**The answer is NO! Generics have ZERO runtime cost in Rust!**  
+Generics normally use static dispatch: no runtime search is needed to choose which concrete implementation to call. The function body still has its normal costs.  
 Rust uses a process called **Monomorphization**:
 1. When you compile your code, `rustc` inspects all the concrete types you used (`i32`, `f64`, `&str`).
-2. It generates optimized, dedicated machine code for each type behind the scenes!
-3. The resulting binary is as fast as if you had written each function by hand!
+2. It specializes generic code for concrete types as needed; optimization can inline, merge, or remove code.
+3. This can perform like hand-written specialized code. More specializations can increase compile time and binary size; benchmark performance-sensitive code.
 
 ---
 
@@ -116,6 +116,19 @@ Rust uses a process called **Monomorphization**:
 
 ---
 
+
+## Symbols and Practical Boundaries
+
+One scanner procedure can inspect different parcel types, provided each type supplies the required readable label.
+
+| Symbol or term | Meaning |
+|---|---|
+| `<T>` | generic type parameter |
+| `T: Debug` | required formatting capability |
+| `{:?}` | Debug output |
+
+**Common pitfall:** A generic body may use only capabilities established by its bounds. Any T does not automatically support printing or arithmetic. Passing an owned non-Copy item by value still moves it.
+
 ## 🎯 Next Steps
-* Ready to practice? Complete [`tasks/08_advanced_and_concurrency/task_71_generics_functions/TASK.md`](file:///d:/rust-learning/tasks/08_advanced_and_concurrency/task_71_generics_functions/TASK.md).
-* Next lesson: [Lesson 72: Generic Structs & Implementation Blocks](file:///d:/rust-learning/lessons/08_advanced_and_concurrency/72_generic_structs.md).
+* Ready to practice? Complete [`tasks/step_1_core_foundations/08_advanced_and_concurrency/task_71_generics_functions/TASK.md`](../../../tasks/step_1_core_foundations/08_advanced_and_concurrency/task_71_generics_functions/TASK.md).
+* Next lesson: [Lesson 72: Generic Structs & Implementation Blocks](72_generic_structs.md).

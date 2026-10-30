@@ -32,3 +32,18 @@ impl<T, U> Coordinate<T, U> {
 2. **Getter References (`&T`, `&U`):**
    * Returning references prevents moving fields out of the struct when callers inspect them.
 
+
+## Reading the Result Carefully
+
+A two-slot organizer can hold two kinds of item, but each individual organizer has fixed slot types once constructed.
+
+| Symbol or term | Meaning |
+|---|---|
+| `Coordinate<T, U>` | two field types |
+| `impl<T, U>` | generic implementation |
+| `Self` | current concrete type |
+| `&T` | borrow field |
+
+T and U may be the same or different types. One generic instance does not change its field types at runtime; a borrowed getter cannot outlive the container.
+
+The complete runnable program is in `solution.rs`; snippets above may focus on only one part. Compare its output with the example in TASK.md.

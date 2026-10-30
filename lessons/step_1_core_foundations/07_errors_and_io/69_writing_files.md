@@ -1,12 +1,12 @@
 # Lesson 69: Writing Data to Files (`std::fs::write`)
 
 In Lesson 68, we read existing files from the hard drive.  
-Now, how do we **save data permanently to disk**?
+Now, how do we **save data to a file**?
 * Saving user game progress.
 * Writing application logs.
 * Exporting reports or invoices.
 
-In Rust, the simplest, fastest way to write or overwrite a file is **`std::fs::write()`**! ✍️💾
+In Rust, the simple one-call way to write or overwrite a file is **`std::fs::write()`**! ✍️💾
 
 ---
 
@@ -48,7 +48,7 @@ fn main() {
 Successfully saved data to 'output_report.txt'!
 ```
 
-A file named `output_report.txt` is now permanently written to your disk!
+After success, the file contains these bytes. This is not a promise of durability after power loss; advanced durable writing needs additional synchronization and recovery design.
 
 ---
 
@@ -61,7 +61,7 @@ Use **`std::fs::OpenOptions`**:
 
 ```rust
 use std::fs::OpenOptions;
-use std::io::Write; // Required for write_all!
+use std::io::Write; // Brings file-writing trait methods into scope
 
 fn append_log_entry(file_path: &str, entry: &str) -> std::io::Result<()> {
     let mut file = OpenOptions::new()
@@ -90,7 +90,7 @@ fn main() -> std::io::Result<()> {
 |---|---|---|
 | `fs::write("file", data)` | Quick one-shot write | Overwrites entire file |
 | `OpenOptions::new().append(true)` | Continuous logging | Appends to the bottom |
-| `writeln!(file, "format", ...)` | Formatted file printing | Appends formatted line |
+| `writeln!(file, "format", ...)` | Writes a formatted line | Writes at the current position, or at the end when opened for append |
 
 ---
 
@@ -103,6 +103,20 @@ fn main() -> std::io::Result<()> {
 
 ---
 
+
+## Symbols and Practical Boundaries
+
+Replacing a report discards the previous pages; appending a log adds a new page without erasing the old entries.
+
+| Symbol or term | Meaning |
+|---|---|
+| `fs::write` | create or truncate file |
+| `.append(true)` | append writes |
+| `writeln!` | formatted write plus newline |
+| `?` | propagate failure |
+
+**Common pitfall:** fs::write overwrites existing contents and is not an atomic backup or durable transaction. It creates the file, not missing parent directories. Each run of this demo resets its named log.
+
 ## 🎯 Next Steps
-* Ready to practice? Complete [`tasks/07_errors_and_io/task_69_writing_files/TASK.md`](file:///d:/rust-learning/tasks/07_errors_and_io/task_69_writing_files/TASK.md).
-* Next lesson: [Lesson 70: Organizing Code with Modules (`mod`, `pub`, `use`)](file:///d:/rust-learning/lessons/07_errors_and_io/70_modules_and_packages.md).
+* Ready to practice? Complete [`tasks/step_1_core_foundations/07_errors_and_io/task_69_writing_files/TASK.md`](../../../tasks/step_1_core_foundations/07_errors_and_io/task_69_writing_files/TASK.md).
+* Next lesson: [Lesson 70: Organizing Code with Modules (`mod`, `pub`, `use`)](70_modules_and_packages.md).

@@ -2,6 +2,8 @@
 
 Up until now, our structs were passive bags of data.  
 If we wanted to calculate something with a struct, we had to write an independent standalone function:
+This introductory fragment assumes the `Rectangle` definition shown in the complete example below.
+
 ```rust
 fn calculate_area(rect: &Rectangle) -> u32 {
     rect.width * rect.height
@@ -91,7 +93,7 @@ Rust gives you three ways to take `self`:
 |---|---|---|
 | `&self` | Borrows the instance immutably (read-only) | When you just need to inspect fields (e.g. `area()`) |
 | `&mut self` | Borrows the instance mutably (can change fields) | When the method updates fields (e.g. `deposit()`, `resize()`) |
-| `self` | Takes full ownership (consumes & destroys instance) | When transforming the instance into something else |
+| `self` | Takes the receiver by value (moves a non-Copy instance; may transform or return it) | When transforming the instance into something else |
 
 ### Example of `&mut self` in Action:
 ```rust
@@ -130,7 +132,7 @@ In languages like C or C++, if you have a pointer to an object, you have to writ
 
 Rust is much smarter!  
 When you call `rect.area()`, Rust automatically inserts `&`, `&mut`, or `*` to match the signature of the method.  
-You **always** just write `instance.method()`.
+For these ordinary method calls, write `instance.method()`. A mutable receiver still needs mutable access; automatic borrowing cannot bypass ownership rules.
 
 ---
 
@@ -153,13 +155,26 @@ impl Rectangle {
 
 ## 6. Quick Recap Checklist
 - [x] Methods are defined inside `impl StructName { ... }`.
-- [x] The first parameter is always `&self`, `&mut self`, or `self`.
+- [x] A method has a `self` receiver; the common forms here are `&self`, `&mut self`, and `self`.
 - [x] Call methods using dot notation: `instance.method_name()`.
 - [x] Use `&self` to read fields, `&mut self` to modify fields.
 - [x] Rust handles referencing/dereferencing automatically.
 
 ---
 
+## Pitfalls and limits
+
+`can_hold` here requires a strict fit (`>` on both dimensions), keeps orientation fixed, and does not allow rotation. `area()` uses `u32` arithmetic; these small inputs fit, but large dimensions may overflow. The account is a teaching model: real money needs exact units such as integer cents, validation, and access rules. A method does not stop code in the same module from editing fields directly.
+
+## Symbol reading guide
+
+| Symbol or syntax | Meaning |
+|---|---|
+| `impl BankAccount` | Define associated behavior |
+| `&self` | Borrow to inspect |
+| `&mut self` | Borrow exclusively to modify |
+| `-> bool` | Return success or failure |
+
 ## 🎯 Next Steps
-* Ready to practice? Complete [`tasks/05_structs_and_enums/task_44_struct_methods/TASK.md`](file:///d:/rust-learning/tasks/05_structs_and_enums/task_44_struct_methods/TASK.md).
-* Next lesson: [Lesson 45: Associated Functions & Constructors (`Self::new`)](file:///d:/rust-learning/lessons/05_structs_and_enums/45_associated_functions.md).
+* Ready to practice? Complete [`tasks/step_1_core_foundations/05_structs_and_enums/task_44_struct_methods/TASK.md`](../../../tasks/step_1_core_foundations/05_structs_and_enums/task_44_struct_methods/TASK.md).
+* Next lesson: [Lesson 45: Associated Functions & Constructors (`Self::new`)](45_associated_functions.md).

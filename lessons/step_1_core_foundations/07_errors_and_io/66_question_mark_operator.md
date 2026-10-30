@@ -1,7 +1,7 @@
 # Lesson 66: Propagating Errors: The `?` (Question Mark) Operator
 
 In Lesson 64, we learned how to return `Result<T, E>`.  
-When writing real software with 5 or 6 steps (open file, read line, parse number, validate range, save record), writing a full `match` statement for every single step creates messy, deeply nested code:
+When writing real software with 5 or 6 steps (open file, read line, parse number, validate range, save record), writing a full `match` statement for every single step creates messy, repeated early-return code:
 
 ```rust
 // ❌ The Messy Way: Matching every single step manually!
@@ -13,7 +13,7 @@ let line = match read_line(file) {
     Ok(l) => l,
     Err(e) => return Err(e),
 };
-// ... nested nightmare!
+// These matches are sequential; ? makes the same early returns shorter.
 ```
 
 Rust has one of the most loved features in modern programming to eliminate this boilerplate completely:  
@@ -74,8 +74,8 @@ That single `?` replaced an entire 6-line `match` block!
 
 ## 3. The One Golden Rule of `?`: Return Type Compatibility! ⚠️
 
-You can only use `?` inside a function whose **return type matches the error being returned**:
-* Inside a function returning `Result<T, E>`, `?` can unwrap a `Result`.
+You can only use `?` inside a function whose **return type can represent the propagated failure**:
+* Inside a function returning `Result<T, E>`, `?` extracts `Ok` or converts a compatible error into `E` and returns `Err`.
 * Inside a function returning `Option<T>`, `?` can unwrap an `Option`.
 * If you try to use `?` inside a function that returns nothing (`()`), the compiler will halt you:
 
@@ -110,12 +110,25 @@ If anything fails, `main` returns the error and terminates with a non-zero exit 
 
 ## 5. Quick Recap Checklist
 - [x] The `?` operator automatically unwraps `Ok` or early-returns `Err`.
-- [x] Eliminates deeply nested `match` error handling boilerplate.
+- [x] Shortens repeated `match` blocks used only to return errors early.
 - [x] Can only be used inside functions that return a compatible `Result` or `Option`.
 - [x] `fn main() -> Result<(), E>` allows using `?` at the top level.
 
 ---
 
+
+## Symbols and Practical Boundaries
+
+A clerk forwards the first failed form to the caller and stops processing later forms; successful forms continue down the desk.
+
+| Symbol or term | Meaning |
+|---|---|
+| `?` | extract success or return failure |
+| `Ok(...)` | wrap final success |
+| `ParseIntError` | parse failure type |
+
+**Common pitfall:** The ? operator does not catch overflow or validate positive dimensions. This introductory calculator assumes small inputs whose product fits i32; real dimensions need validation and checked multiplication.
+
 ## 🎯 Next Steps
-* Ready to practice? Complete [`tasks/07_errors_and_io/task_66_question_mark_operator/TASK.md`](file:///d:/rust-learning/tasks/07_errors_and_io/task_66_question_mark_operator/TASK.md).
-* Next lesson: [Lesson 67: Reading Keyboard Input from Terminal (`std::io::stdin`)](file:///d:/rust-learning/lessons/07_errors_and_io/67_terminal_user_input.md).
+* Ready to practice? Complete [`tasks/step_1_core_foundations/07_errors_and_io/task_66_question_mark_operator/TASK.md`](../../../tasks/step_1_core_foundations/07_errors_and_io/task_66_question_mark_operator/TASK.md).
+* Next lesson: [Lesson 67: Reading Keyboard Input from Terminal (`std::io::stdin`)](67_terminal_user_input.md).

@@ -14,7 +14,7 @@ Think of the USB-C standard:
   * A **4K Monitor**
   * A **Smart Phone**
   * An **External Hard Drive**
-* As long as the device fulfills the **USB-C Electrical Specification (The Trait)**, the laptop can talk to it seamlessly!
+* As long as the device fulfills the **USB-C Electrical Specification (The Trait)**, the laptop can use the capabilities both sides actually support. A connector shape alone does not guarantee every USB feature; similarly, a trait promises only its declared behavior.
 
 ---
 
@@ -34,9 +34,17 @@ fn print_area_info<T: Area>(shape: &T) {
 }
 ```
 
-Let's implement `Area` for two completely different geometry structs:
+The next program combines the trait, helper, and both implementations into one runnable example:
 
 ```rust
+pub trait Area {
+    fn area(&self) -> f64;
+}
+
+fn print_area_info<T: Area>(shape: &T) {
+    println!("Shape calculation: Area = {:.2} sq units", shape.area());
+}
+
 struct Circle {
     radius: f64,
 }
@@ -123,6 +131,20 @@ where
 
 ---
 
+
+## Symbols and Practical Boundaries
+
+A surveyor compares circles and rectangles by asking each for area, without requiring both plots to have the same shape.
+
+| Symbol or term | Meaning |
+|---|---|
+| `T: Area` | T supports area |
+| `U: Area` | independent type |
+| `where` | list bounds |
+| `+` | require multiple traits |
+
+**Common pitfall:** The generic comparator should label inputs A and B, not assume their concrete shapes. This exercise uses finite nonnegative sample dimensions; production geometry must validate inputs.
+
 ## 🎯 Next Steps
-* Ready to practice? Complete [`tasks/08_advanced_and_concurrency/task_74_implementing_traits/TASK.md`](file:///d:/rust-learning/tasks/08_advanced_and_concurrency/task_74_implementing_traits/TASK.md).
-* Next lesson: [Lesson 75: Essential Standard Library Traits (`Display`, `Debug`, `Clone`)](file:///d:/rust-learning/lessons/08_advanced_and_concurrency/75_standard_traits.md).
+* Ready to practice? Complete [`tasks/step_1_core_foundations/08_advanced_and_concurrency/task_74_implementing_traits/TASK.md`](../../../tasks/step_1_core_foundations/08_advanced_and_concurrency/task_74_implementing_traits/TASK.md).
+* Next lesson: [Lesson 75: Essential Standard Library Traits (`Display`, `Debug`, `Clone`)](75_standard_traits.md).

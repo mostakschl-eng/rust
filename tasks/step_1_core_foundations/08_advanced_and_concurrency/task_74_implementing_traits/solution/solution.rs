@@ -35,8 +35,8 @@ where
     let area_a = shape_a.area();
     let area_b = shape_b.area();
 
-    println!("Shape A (Circle):    {:.2} sq units", area_a);
-    println!("Shape B (Rectangle): {:.2} sq units", area_b);
+    println!("Shape A Area: {:.2} sq units", area_a);
+    println!("Shape B Area: {:.2} sq units", area_b);
 
     if area_a > area_b {
         println!("Result: Shape A is larger! 📐");

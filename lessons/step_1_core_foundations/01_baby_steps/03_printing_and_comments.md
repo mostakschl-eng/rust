@@ -20,14 +20,14 @@ In programming:
 * You write code for the **computer** to execute.
 * You write **comments** for **humans** (yourself tomorrow, or your teammate) to understand *why* you wrote the code.
 
-> **Rule:** Rust completely ignores all comments when compiling and running your code.
+> **Rule:** Ordinary comments do not execute. Documentation comments such as `///` can also become generated documentation.
 
 ---
 
 ## 2. Two Ways to Write Comments in Rust
 
 ### Style 1: Single-Line Comment (`//`)
-Put two slashes `//` anywhere. Rust ignores everything on that line after `//`:
+Outside a string literal, `//` begins a comment that continues to the end of that line:
 
 ```rust
 fn main() {
@@ -60,7 +60,7 @@ You can use **Escape Sequences** inside your double quotes:
 | Symbol | What is it called? | What does it do? |
 |---|---|---|
 | `\n` | Newline character | Hits the "Enter" key on your keyboard and starts a new line. |
-| `\t` | Tab character | Hits the "Tab" key to create neat spacing (like table columns). |
+| `\t` | Tab character | Advances to a terminal tab stop; spacing depends on the terminal. |
 | `\"` | Escaped quote | Prints an actual quotation mark `"` on screen without confusing Rust. |
 
 ### Code Example:
@@ -89,13 +89,17 @@ He said: "Rust is amazing!"
 - [x] `//` writes a single-line comment.
 - [x] `/* ... */` writes a multi-line comment block.
 - [x] `\n` jumps down to a brand new line.
-- [x] `\t` inserts a tab space to align columns.
+- [x] `\t` inserts a tab; its visible width depends on terminal tab stops.
 
 ---
 
 ## 🛠️ Ready for Practice!
 
-👉 Open **[`tasks/01_baby_steps/task_03_comments_and_banner/TASK.md`](file:///d:/rust-learning/tasks/01_baby_steps/task_03_comments_and_banner/TASK.md)**.
+👉 Open **[`tasks/step_1_core_foundations/01_baby_steps/task_03_comments_and_banner/TASK.md`](../../../tasks/step_1_core_foundations/01_baby_steps/task_03_comments_and_banner/TASK.md)**.
 1. Read the task requirements.
 2. Build a decorative terminal banner with clean comments explaining your code.
 3. Run `cargo run` and admire your formatted banner!
+
+## Common pitfalls and limits
+
+A comment marker inside a quoted string is text, not a comment. Tabs do not guarantee equally wide columns in every terminal; use formatting widths when alignment matters.

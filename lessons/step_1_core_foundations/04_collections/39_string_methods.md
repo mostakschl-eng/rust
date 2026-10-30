@@ -7,7 +7,7 @@ Now that you understand the difference between `String` and `&str`, let's explor
 ## 1. The Real-Life Analogy: The Word Processor Toolbox 🧰
 
 Imagine using Microsoft Word or Google Docs:
-* You want to see the **character count** at the bottom of the window (`.len()`).
+* You want to see the **byte length** of stored text (`.len()`), which differs from a word processor’s visible-character count.
 * You want to **Find and Replace** words (`.replace()`).
 * You want to **check if a document contains** a specific word (`.contains()`).
 * You want to **strip away unwanted white spaces** at the start and end of a line (`.trim()`).
@@ -22,7 +22,7 @@ Look at this complete demonstration:
 
 ```rust
 fn main() {
-    let mut message = String::from("  Hello, Rust World!  ");
+    let message = String::from("  Hello, Rust World!  ");
 
     // 1. .trim(): Remove leading and trailing spaces
     let clean = message.trim();
@@ -109,7 +109,7 @@ println!("Emoji len:   {}", emoji.len());   // 4 bytes!
 
 > [!WARNING]
 > `.len()` returns the number of **bytes**, not letters!  
-> If you want to count actual characters:
+> To count Unicode scalar values (Rust `char` values):
 > ```rust
 > let crab = "🦀";
 > println!("Character count: {}", crab.chars().count()); // 1
@@ -146,10 +146,26 @@ Mixing them up will cause a compiler error!
 - [x] `.contains("word")` searches for text.
 - [x] `.replace("from", "to")` creates a new string with swapped words.
 - [x] Use `format!("{}-{}", a, b)` to cleanly glue variables into a string.
-- [x] `.len()` measures bytes; `.chars().count()` measures visible characters.
+- [x] `.len()` measures bytes; `.chars().count()` counts Unicode scalar values, which may differ from visible characters.
 
 ---
 
+## Unicode pitfall: letters and visible characters
+
+A `char` is a Unicode scalar value, not necessarily a whole visible character. For example, `"e\u{301}"` combines `e` and a separate accent: `.len()` is 3 bytes, `.chars().count()` is 2, yet it usually appears as one accented letter. Some emoji also combine several scalars. Counting user-perceived characters requires grapheme segmentation, beyond this lesson. `trim()` borrows a view without changing the original string; `replace()` and case conversions produce new strings.
+
+[Official string documentation](https://doc.rust-lang.org/std/primitive.str.html#method.chars)
+
+
+## Symbol reading guide
+
+| Symbol or syntax | Meaning |
+|---|---|
+| `.trim()` | Borrow text without surrounding whitespace |
+| `.len()` | UTF-8 byte length |
+| `.replace(a, b)` | Build a new String |
+| `format!(...)` | Build formatted owned text |
+
 ## 🎯 Next Steps
-* Ready to practice? Complete [`tasks/04_collections/task_39_string_methods/TASK.md`](file:///d:/rust-learning/tasks/04_collections/task_39_string_methods/TASK.md).
-* Next lesson: [Lesson 40: Key-Value Stores: HashMaps](file:///d:/rust-learning/lessons/04_collections/40_hashmaps.md).
+* Ready to practice? Complete [`tasks/step_1_core_foundations/04_collections/task_39_string_methods/TASK.md`](../../../tasks/step_1_core_foundations/04_collections/task_39_string_methods/TASK.md).
+* Next lesson: [Lesson 40: Key-Value Stores: HashMaps](40_hashmaps.md).

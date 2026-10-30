@@ -91,11 +91,15 @@ Imagine your app prints a beautiful header bar on 10 different screens.
 
 ### ❌ Trap 1: Forgetting the Parentheses `()` When Calling
 ```rust
+fn make_coffee() {
+    println!("Coffee ready!");
+}
+
 fn main() {
     make_coffee; // <-- Forgot ()!
 }
 ```
-* **Why this fails:** In Rust, typing just the name without `()` does nothing. Rust will say: *"warning: unused value"*. You must write `make_coffee();` to tell Rust to run it.
+* **What happens:** With `make_coffee` defined as above, this refers to the function without calling it; the compiler may warn that the path statement has no effect. Use `make_coffee();` to run its body.
 
 ---
 
@@ -109,7 +113,7 @@ fn main() {
 
 ## 🛠️ Ready for Practice!
 
-👉 Open **[`tasks/01_baby_steps/task_04_first_function/TASK.md`](file:///d:/rust-learning/tasks/01_baby_steps/task_04_first_function/TASK.md)**.
+👉 Open **[`tasks/step_1_core_foundations/01_baby_steps/task_04_first_function/TASK.md`](../../../tasks/step_1_core_foundations/01_baby_steps/task_04_first_function/TASK.md)**.
 1. Read the task requirements.
 2. Define your own custom reusable greeting function and call it multiple times.
 3. Run `cargo run` to see your function in action!

@@ -3,7 +3,7 @@
 Welcome to Lesson 27! 
 
 Did you know that in Rust, a `loop` can **compute an answer and hand it directly back to you**?
-In almost all other languages (like Python or C++), you have to declare a mutable variable outside the loop.
+This is one way Rust lets a search loop produce a value directly.
 In Rust, you can write: **`break value;`**!
 
 ---
@@ -69,7 +69,18 @@ Imagine your app is trying to connect to a server:
 
 ## 🛠️ Ready for Practice!
 
-👉 Open **[`tasks/03_logic_and_loops/task_27_break_with_value/TASK.md`](file:///d:/rust-learning/tasks/03_logic_and_loops/task_27_break_with_value/TASK.md)**.
+👉 Open **[`tasks/step_1_core_foundations/03_logic_and_loops/task_27_break_with_value/TASK.md`](../../../tasks/step_1_core_foundations/03_logic_and_loops/task_27_break_with_value/TASK.md)**.
 1. Read the task requirements.
-2. Build an interest compounding calculator that loops until a savings account crosses $1,000, then returns the total years taken with `break years;`.
+2. Build an annual-deposit calculator that loops until a savings account reaches or exceeds $1,000, then returns the total years taken with `break years;`.
 3. Run `cargo run` and test returning values from loops!
+
+## Symbol reference
+
+| Symbol | Meaning |
+|---|---|
+| `break value;` | Exit a loop and supply its value |
+| `let result = loop { ... };` | Bind the value produced by the loop |
+
+## Common pitfalls and limits
+
+Value-carrying break is used with loop, not for or while. Every break that supplies a value for the same loop must have a compatible type. Ensure the goal can actually be reached.

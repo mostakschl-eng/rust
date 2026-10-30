@@ -21,7 +21,7 @@ Imagine you are attending a workshop at a hotel conference room:
 
 > In Rust:  
 > Curly braces `{` and `}` create a **Scope** (a room).  
-> Variables created inside a room **die immediately** when the closing `}` is reached!
+> Local names stop being accessible outside their block. Values may be copied, moved, or returned elsewhere; scope is not a promise that every byte vanishes then!
 
 ---
 
@@ -87,11 +87,9 @@ Outer score after block: 10
 
 ## 4. Why Does Rust Care So Much About Scope?
 
-In other languages (like C or C++), if a programmer forgets to delete variables when a room closes, the computer's RAM fills up with junk until the computer freezes. This is called a **Memory Leak**.
+When an owned value reaches the end of its lifetime, Rust normally runs its cleanup automatically. A block does not necessarily create a new stack frame, and cleanup does not promise to return memory immediately to the operating system.
 
-In Rust:
-> The moment a variable reaches its closing `}`, Rust **instantly and automatically frees that memory back to the operating system**!  
-> No garbage collector. No memory leaks. Fast and clean!
+C++ also has automatic scope-based cleanup. Rust does not require a tracing garbage collector, but memory leaks are still possible. Ownership is covered in Level 6.
 
 ---
 
@@ -99,13 +97,24 @@ In Rust:
 - [x] A scope is created by curly braces `{ ... }`.
 - [x] Variables live only inside the scope where they were born.
 - [x] Inner scopes can access outer variables, but outer scopes cannot access inner variables.
-- [x] Rust automatically cleans up memory the exact moment a scope ends.
+- [x] Owned local values normally receive automatic cleanup; values can also move out of a block.
 
 ---
 
 ## 🛠️ Ready for Practice!
 
-👉 Open **[`tasks/02_types_and_math/task_17_scope_blocks/TASK.md`](file:///d:/rust-learning/tasks/02_types_and_math/task_17_scope_blocks/TASK.md)**.
+👉 Open **[`tasks/step_1_core_foundations/02_types_and_math/task_17_scope_blocks/TASK.md`](../../../tasks/step_1_core_foundations/02_types_and_math/task_17_scope_blocks/TASK.md)**.
 1. Read the task requirements.
 2. Experiment with inner and outer scopes, temporary bonus multipliers, and variable lifetimes.
 3. Run `cargo run` and watch scopes in action!
+
+## Symbol reference
+
+| Symbol | Meaning |
+|---|---|
+| `{ ... }` | Inner lexical scope |
+| `let` | Introduce a binding in the current scope |
+
+## Common pitfalls and limits
+
+Scope describes where a name can be used. It is not a security boundary or a guarantee that bytes are erased, and an inner block does not itself imply a new function call stack frame.

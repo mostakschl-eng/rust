@@ -3,13 +3,13 @@
 Welcome to Lesson 20! 
 
 This is the graduation lesson for **Level 2: Basic Types & Arithmetic**!
-Today, we are going to give you a superpower that turns beginners into confident developers: **Understanding how to diagnose and cure any Rust compiler error!**
+Today, we are going to give you a superpower that turns beginners into confident developers: **Learning a method for reading and fixing common Rust compiler errors!**
 
 ---
 
 ## 1. The Mindset: The Compiler is Your Friend, Not Your Enemy
 
-In many old programming languages, when code fails, you get cryptic errors like `Segmentation Fault (core dumped)` with zero explanation.
+Compiler messages describe compile-time checks. A runtime failure is a different kind of problem.
 
 In Rust, the creators spent thousands of hours making compiler error messages as friendly, human, and helpful as possible.
 
@@ -22,7 +22,7 @@ Think of the Rust compiler as a **strict, loving flight instructor**:
 
 ## 2. Anatomy of a Rust Error Message
 
-Whenever an error happens, Rust prints 4 clear parts:
+A diagnostic often has these parts (this is an illustrative excerpt; wording and locations vary):
 
 ```text
 error[E0308]: mismatched types
@@ -32,14 +32,13 @@ error[E0308]: mismatched types
    |              --   ^^^^^^^^ expected `u8`, found `&str`
    |              |
    |              expected due to this
-help: a character literal may also be used here: `'twenty'`
 ```
 
 Look at the 4 pieces:
 1. **Error Code (`[E0308]`):** The official disease code. You can type `rustc --explain E0308` in your terminal to see a full textbook explanation with examples!
 2. **File & Line (`src/main.rs:3:20`):** File `src/main.rs`, Line `3`, Character `20`. Click or open that exact line!
 3. **The Finger Arrow (`^^^^^^^^`):** Points directly to the exact word causing the problem (`"twenty"`).
-4. **The `help:` Line:** Tells you how to fix it!
+4. **An optional `help:` Line:** May suggest a change. Read it critically: not every error has an automatic fix.
 
 ---
 
@@ -47,7 +46,7 @@ Look at the 4 pieces:
 
 | Error Code | Official Title | What It Means in Plain English | How to Cure It |
 |---|---|---|---|
-| **E0308** | `mismatched types` | You promised an integer or boolean, but gave text (or vice versa). | Match the value with the declared type, or use `as f64`. |
+| **E0308** | `mismatched types` | You promised an integer or boolean, but gave text (or vice versa). | Match the value with the declared type; numeric casts do not parse text. |
 | **E0384** | `cannot assign twice to immutable variable` | You tried to update a variable, but forgot to unlock it! | Add `mut` where you declared the variable: `let mut x = ...`. |
 | **E0425** | `cannot find value in this scope` | Typo in a variable name, or the variable was born in another room `{ }` that already closed! | Check spelling, or move declaration outside the inner block. |
 | **E0277** | `cannot be formatted with the default formatter` | You tried to print a compound type (like a tuple) with `{}`. | Switch from `{}` to Debug format `{:?}`. |
@@ -72,7 +71,30 @@ Look at the 4 pieces:
 
 ## 🛠️ Ready for Practice!
 
-👉 Open **[`tasks/02_types_and_math/task_20_compiler_doctor/TASK.md`](file:///d:/rust-learning/tasks/02_types_and_math/task_20_compiler_doctor/TASK.md)**.
+👉 Open **[`tasks/step_1_core_foundations/02_types_and_math/task_20_compiler_doctor/TASK.md`](../../../tasks/step_1_core_foundations/02_types_and_math/task_20_compiler_doctor/TASK.md)**.
 1. Read the task requirements.
 2. In this task, you are given a program with **3 intentional beginner compiler errors**. Your mission as the Compiler Doctor is to fix all three and make it run!
 3. Run `cargo run` and celebrate graduating Level 2!
+
+## Common pitfalls and limits
+
+Do not copy a suggested fix blindly. Compiler output varies by version and one early error can hide later errors. Fix one issue, then run cargo check again.
+
+## A small repaired program
+
+The earlier diagnostic showed text placed in a numeric binding. To repair this example, provide a numeric literal of the required type:
+
+```rust
+fn main() {
+    let age: u8 = 20;
+    println!("Age: {}", age);
+}
+```
+
+Expected output:
+
+```text
+Age: 20
+```
+
+This repair changes the value to match the promised type. It does not convert arbitrary words into a number.

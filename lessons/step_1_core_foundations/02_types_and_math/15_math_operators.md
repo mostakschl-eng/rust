@@ -2,7 +2,7 @@
 
 Welcome to Lesson 15! 
 
-Computers are the fastest calculators in the universe. Today, we will learn how to perform all standard arithmetic in Rust, including the secret weapon of programmers: the **Modulus `%` (Remainder) operator**!
+Computers are the fastest calculators in the universe. Today, we will learn how to perform all standard arithmetic in Rust, including the secret weapon of programmers: the **Remainder `%` (Remainder) operator**!
 
 ---
 
@@ -14,11 +14,11 @@ Computers are the fastest calculators in the universe. Today, we will learn how 
 | `-` | Subtraction | `10 - 5` | `5` | Subtracts the right number from the left |
 | `*` | Multiplication | `10 * 5` | `50` | Multiplies two numbers |
 | `/` | Division | `10 / 5` | `2` | Divides left by right |
-| **`%`** | **Modulus (Remainder)** | `10 % 3` | **`1`** | **Gives the leftover remainder after division!** |
+| **`%`** | **Remainder (Remainder)** | `10 % 3` | **`1`** | **Gives the leftover remainder after division!** |
 
 ---
 
-## 2. The Superpower of the Modulus `%` (Remainder)
+## 2. The Superpower of the Remainder `%` (Remainder)
 
 Many beginners ask: *"Why do we need `%`?"*
 
@@ -40,7 +40,7 @@ Imagine you have **10 chocolate cookies** and you want to share them equally amo
 
 Just like school mathematics, Rust evaluates math in this exact priority:
 1. **Parentheses `( )`** come first!
-2. **Multiplication `*`, Division `/`, and Modulus `%`** come next.
+2. **Multiplication `*`, Division `/`, and Remainder `%`** come next.
 3. **Addition `+` and Subtraction `-`** come last.
 
 ```rust
@@ -92,7 +92,11 @@ Remainder:      20 % 6 = 2
 
 ## 🛠️ Ready for Practice!
 
-👉 Open **[`tasks/02_types_and_math/task_15_math_operations/TASK.md`](file:///d:/rust-learning/tasks/02_types_and_math/task_15_math_operations/TASK.md)**.
+👉 Open **[`tasks/step_1_core_foundations/02_types_and_math/task_15_math_operations/TASK.md`](../../../tasks/step_1_core_foundations/02_types_and_math/task_15_math_operations/TASK.md)**.
 1. Read the task requirements.
 2. Build an egg packaging calculator (total dozens of eggs and leftover single eggs using `/` and `%`).
 3. Run `cargo run` and test your math!
+
+## Common pitfalls and limits
+
+Integer division truncates toward zero: -5 / 2 is -2, and -5 % 2 is -1. Integer division or remainder by zero panics at runtime (constant cases may be rejected earlier). Arithmetic can also overflow the chosen type.

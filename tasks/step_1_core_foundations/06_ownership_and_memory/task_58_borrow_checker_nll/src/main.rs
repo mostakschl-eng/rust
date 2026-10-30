@@ -1,19 +1,7 @@
+// Starter: complete the TODOs to match TASK.md.
+// The reference answer is kept separately in solution/solution.rs.
+
 fn main() {
-    println!("=== ALCHEMIST POTION SHELF ===");
-
-    let mut shelf = vec!["Health Potion", "Mana Potion"];
-
-    // TODO 1: Borrow shelf[0] into active_potion and print it
-    let active_potion = &shelf[0];
-    println!("Currently inspecting: {}", active_potion);
-    // Under NLL, active_potion is now expired!
-
-    println!("Adding new rare potion to shelf...");
-    // TODO 2: Push "Elixir of Life" to shelf
-    shelf.push("Elixir of Life");
-
-    println!("Shelf Inventory: {:?}", shelf);
-
-    println!("==============================");
+    // TODO 1: Borrow and print the first potion before changing the shelf.
+    // TODO 2: Keep the last use of active_potion above shelf.push; then print the updated whole vector.
 }
-

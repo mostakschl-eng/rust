@@ -24,6 +24,8 @@ Once you have that `30`, you can do whatever you want with it:
 
 ---
 
+**Quick preview of `let`:** `let result = add_numbers(10, 20);` binds the returned value to the name `result`, like writing an answer on a labeled card. `=` initializes it and `;` finishes the declaration. Lesson 08 explores variables in detail.
+
 ## 2. Returning Values in Rust: The Arrow `->`
 
 Look at this simple, elegant Rust function:
@@ -66,13 +68,13 @@ The `-> i32` is a promise to Rust:
 This is one of Rust's coolest features!
 
 In Rust, there is a difference between an **Action** and a **Value**:
-* **Statement (Action):** `println!("Hi");` ends with a `;`. It does an action and returns nothing.
-* **Expression (Value):** `a + b` has **NO semicolon**. It produces a value!
+* **Statement:** `println!("Hi");` evaluates a printing expression and discards its result. Printing itself produces the unit value `()`.
+* **Expression:** `a + b` produces a value. As the final expression of this function body, it becomes the return value.
 
 > **Rust Golden Rule:**  
-> The very last line of a function, without a semicolon, is automatically **returned as the answer**!
+> A function body's final expression, without a semicolon, supplies its return value; that value must match the declared return type!
 
-*(Note: You can also write `return a + b;` if you want, but experienced Rust developers almost always write `a + b` without a semicolon because it is cleaner and faster to read!)*
+You can also write `return a + b;`. A final expression is common at the end of a function; `return` is useful when leaving a function earlier.
 
 ---
 
@@ -128,7 +130,7 @@ fn add(a: i32, b: i32) -> i32 {
 
 ## 🛠️ Ready for Practice!
 
-👉 Open **[`tasks/01_baby_steps/task_07_function_returns/TASK.md`](file:///d:/rust-learning/tasks/01_baby_steps/task_07_function_returns/TASK.md)**.
+👉 Open **[`tasks/step_1_core_foundations/01_baby_steps/task_07_function_returns/TASK.md`](../../../tasks/step_1_core_foundations/01_baby_steps/task_07_function_returns/TASK.md)**.
 1. Read the task requirements.
 2. Build math calculator functions (Area of Rectangle and Perimeter).
 3. Run `cargo run` and verify the math calculations!

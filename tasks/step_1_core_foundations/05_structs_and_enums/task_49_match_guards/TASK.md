@@ -36,17 +36,39 @@ Write a Rust program to evaluate RPG quest rewards with conditional match guards
 
 ## 🛠️ How to Do This (Step-by-Step):
 
-1. Open [`src/main.rs`](file:///d:/rust-learning/tasks/05_structs_and_enums/task_49_match_guards/src/main.rs).
+1. Open [`src/main.rs`](src/main.rs).
 2. Use `Pattern if condition => { ... }` inside the `match` expression.
 3. Test:
    ```bash
-   cd tasks/05_structs_and_enums/task_49_match_guards
+   cd tasks/step_1_core_foundations/05_structs_and_enums/task_49_match_guards
    cargo run
    ```
 
 ---
 
-## 🔒 Solution & Explanations
-* Working Code: [`solution/solution.rs`](file:///d:/rust-learning/tasks/05_structs_and_enums/task_49_match_guards/solution/solution.rs)
-* Line-by-Line Breakdown: [`solution/explain.md`](file:///d:/rust-learning/tasks/05_structs_and_enums/task_49_match_guards/solution/explain.md)
+## 💡 Hints
 
+<details>
+<summary>Hint 1: choose the approach</summary>
+
+Check the double-XP event first, then the large-XP milestone.
+
+</details>
+
+<details>
+<summary>Hint 2: connect the syntax</summary>
+
+Include an unguarded XP fallback after the guarded XP arms. Widen xp to u64 before doubling so even a maximum u32 reward fits.
+
+</details>
+
+## 🔒 Solution & Explanations
+* Working Code: [`solution/solution.rs`](solution/solution.rs)
+* Line-by-Line Breakdown: [`solution/explain.md`](solution/explain.md)
+
+
+## Watch out
+
+Only one arm executes. During double XP, a 1200-point reward follows the first arm, not the milestone arm.
+
+The starter intentionally does not produce the expected output yet. Complete its TODOs before comparing results.

@@ -74,6 +74,8 @@ Pretty Debug:
 
 ---
 
+`Debug` output requires the type to implement `Debug`; custom types may need `#[derive(Debug)]` later. It is diagnostic text, not a stable file format.
+
 ## 3. The `dbg!` Macro (Fast Inline Debugging)
 
 Rust has an even faster trick when you are debugging: the **`dbg!`** macro!
@@ -91,7 +93,7 @@ fn main() {
 }
 ```
 
-### Output:
+### Example stderr output (path, line, and column depend on your file):
 ```text
 [src/main.rs:3:5] score = 200
 ```
@@ -108,7 +110,19 @@ fn main() {
 
 ## 🛠️ Ready for Practice!
 
-👉 Open **[`tasks/02_types_and_math/task_19_debug_printing/TASK.md`](file:///d:/rust-learning/tasks/02_types_and_math/task_19_debug_printing/TASK.md)**.
+👉 Open **[`tasks/step_1_core_foundations/02_types_and_math/task_19_debug_printing/TASK.md`](../../../tasks/step_1_core_foundations/02_types_and_math/task_19_debug_printing/TASK.md)**.
 1. Read the task requirements.
 2. Inspect complex tuples and values using `{:?}`, `{:#?}`, and `dbg!`.
 3. Run `cargo run` and see developer diagnostics in action!
+
+## Symbol reference
+
+| Symbol | Meaning |
+|---|---|
+| `{:?}` | Debug formatting |
+| `{:#?}` | Pretty Debug formatting |
+| `dbg!` | Inspect expression on stderr |
+
+## Common pitfalls and limits
+
+dbg! writes to stderr, while println! writes to stdout, so their combined order may vary. dbg! evaluates and returns its argument; for non-Copy values it may take ownership. Debug text is for inspection, not stable serialization.

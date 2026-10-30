@@ -20,7 +20,7 @@ I am starting my Rust developer journey!
 
 ## 🛠️ How to Do This (Step-by-Step):
 
-1. Open the file: [`src/main.rs`](file:///d:/rust-learning/tasks/01_baby_steps/task_01_hello/src/main.rs).
+1. Open the file: [`src/main.rs`](src/main.rs).
 2. You will see `// TODO: Write your two println! statements here`.
 3. Write your two `println!("...");` lines inside the `{` and `}` curly braces.
 4. Open your terminal in this folder and run:
@@ -45,7 +45,7 @@ Make sure your text is wrapped in double quotes `"..."`.
 <details>
 <summary><b>🔍 Hint 2: Semicolon reminder</b></summary>
 
-Every single instruction line in Rust must end with a semicolon `;`:
+Use semicolons after these printing statements. A final `println!` can omit one, but keeping it here is consistent:
 ```rust
 fn main() {
     println!("Line 1");
@@ -58,6 +58,6 @@ fn main() {
 
 ## 🔒 Solution (Only if you need to compare!)
 Once you finish your code (or if you are totally stuck), check:
-* Official Working Code: [`solution/solution.rs`](file:///d:/rust-learning/tasks/01_baby_steps/task_01_hello/solution/solution.rs)
-* Why it works & pitfalls: [`solution/explain.md`](file:///d:/rust-learning/tasks/01_baby_steps/task_01_hello/solution/explain.md)
+* Official Working Code: [`solution/solution.rs`](solution/solution.rs)
+* Why it works & pitfalls: [`solution/explain.md`](solution/explain.md)
 

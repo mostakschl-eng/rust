@@ -45,3 +45,18 @@ where
 * **The `where` Clause**:
   Moves type constraint bounds after the signature line, making long function signatures significantly cleaner and easier to read.
 
+
+## Reading the Result Carefully
+
+A surveyor compares circles and rectangles by asking each for area, without requiring both plots to have the same shape.
+
+| Symbol or term | Meaning |
+|---|---|
+| `T: Area` | T supports area |
+| `U: Area` | independent type |
+| `where` | list bounds |
+| `+` | require multiple traits |
+
+The generic comparator should label inputs A and B, not assume their concrete shapes. This exercise uses finite nonnegative sample dimensions; production geometry must validate inputs.
+
+The complete runnable program is in `solution.rs`; snippets above may focus on only one part. Compare its output with the example in TASK.md.

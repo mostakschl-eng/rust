@@ -36,18 +36,36 @@ Fallback calculation: $0.00
 
 ## 🛠️ How to Do This (Step-by-Step):
 
-1. Open [`src/main.rs`](file:///d:/rust-learning/tasks/07_errors_and_io/task_64_result_enum/src/main.rs).
+1. Open [`src/main.rs`](src/main.rs).
 2. Implement `split_bill` returning `Ok` or `Err`.
 3. Handle with `match` and `.unwrap_or()`.
 4. Test:
    ```bash
-   cd tasks/07_errors_and_io/task_64_result_enum
+   cd tasks/step_1_core_foundations/07_errors_and_io/task_64_result_enum
    cargo run
    ```
 
 ---
 
 ## 🔒 Solution & Explanations
-* Working Code: [`solution/solution.rs`](file:///d:/rust-learning/tasks/07_errors_and_io/task_64_result_enum/solution/solution.rs)
-* Line-by-Line Breakdown: [`solution/explain.md`](file:///d:/rust-learning/tasks/07_errors_and_io/task_64_result_enum/solution/explain.md)
+* Working Code: [`solution/solution.rs`](solution/solution.rs)
+* Line-by-Line Breakdown: [`solution/explain.md`](solution/explain.md)
 
+
+## Hints (Open One at a Time)
+
+<details>
+<summary>Hint 1: Choose the approach</summary>
+
+Reject zero diners before performing the division.
+
+</details>
+
+<details>
+<summary>Hint 2: Connect the pieces</summary>
+
+Wrap a valid quotient in Ok, put the reason in Err, and match both variants before demonstrating the explicitly limited fallback.
+
+</details>
+
+**Before running:** A fallback of zero demonstrates a method; it is not a correct payable share for a failed bill calculation. Real billing should report the error. The exercise assumes finite nonnegative amounts; f64 also has rounding limits.

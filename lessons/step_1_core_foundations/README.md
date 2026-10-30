@@ -1,6 +1,6 @@
 # Step 1: Core Rust Foundations (80 Lessons: Child to Adult)
 
-Welcome to **Step 1** of your Rust journey! This stage covers the entire core syntax, rules, and idioms of the Rust programming language across 8 levels.
+Welcome to **Step 1** of your Rust journey! This stage introduces core syntax, ownership, error handling, and concurrency across eight levels. It is a foundation; Rust has more language features and libraries to explore later.
 
 ---
 
@@ -23,3 +23,6 @@ Welcome to **Step 1** of your Rust journey! This stage covers the entire core sy
 1. Read the lesson markdown file.
 2. Open the matching practice task in `tasks/step_1_core_foundations/`.
 3. Complete the task in `src/main.rs` and verify with `cargo run`.
+4. If you are stuck, reveal one hint at a time. Compare with `solution/solution.rs` after trying. Run the answer with `cargo run --example solution` from that task folder.
+
+An unfinished starter is not a completed exercise even when it compiles. Task 20 is the deliberate exception: its starter contains compiler errors for you to repair. Reading a lesson does not automatically mark it complete; explain the idea in your own words and finish its task first.

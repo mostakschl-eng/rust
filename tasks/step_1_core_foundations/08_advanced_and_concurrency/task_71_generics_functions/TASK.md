@@ -29,18 +29,36 @@ Write a Rust program to inspect different types of cargo items using a single ge
 
 ## 🛠️ How to Do This (Step-by-Step):
 
-1. Open [`src/main.rs`](file:///d:/rust-learning/tasks/08_advanced_and_concurrency/task_71_generics_functions/src/main.rs).
+1. Open [`src/main.rs`](src/main.rs).
 2. Declare `<T: std::fmt::Debug>`.
 3. Call with integer, float, string slice, and boolean.
 4. Test:
    ```bash
-   cd tasks/08_advanced_and_concurrency/task_71_generics_functions
+   cd tasks/step_1_core_foundations/08_advanced_and_concurrency/task_71_generics_functions
    cargo run
    ```
 
 ---
 
 ## 🔒 Solution & Explanations
-* Working Code: [`solution/solution.rs`](file:///d:/rust-learning/tasks/08_advanced_and_concurrency/task_71_generics_functions/solution/solution.rs)
-* Line-by-Line Breakdown: [`solution/explain.md`](file:///d:/rust-learning/tasks/08_advanced_and_concurrency/task_71_generics_functions/solution/explain.md)
+* Working Code: [`solution/solution.rs`](solution/solution.rs)
+* Line-by-Line Breakdown: [`solution/explain.md`](solution/explain.md)
 
+
+## Hints (Open One at a Time)
+
+<details>
+<summary>Hint 1: Choose the approach</summary>
+
+Declare T on inspect_cargo and require Debug.
+
+</details>
+
+<details>
+<summary>Hint 2: Connect the pieces</summary>
+
+Use {:?} for item and {} for category; call the same helper with the four requested concrete types.
+
+</details>
+
+**Before running:** A generic body may use only capabilities established by its bounds. Any T does not automatically support printing or arithmetic. Passing an owned non-Copy item by value still moves it.

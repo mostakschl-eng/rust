@@ -32,3 +32,18 @@ let total_honors: i32 = honors_scores.iter().sum();
 * `.collect()` runs the pipeline and allocates elements into a `Vec<i32>`.
 * `.sum()` iterates through `honors_scores` and adds them all up.
 
+
+## Reading the Result Carefully
+
+A conveyor filters qualifying parcels, adds a sticker, and packs them. Building the conveyor description does not move parcels until it is driven.
+
+| Symbol or term | Meaning |
+|---|---|
+| `.iter()` | yield &T |
+| `.filter()` | predicate gets &Item |
+| `.map()` | transform Item |
+| `.collect()` | drive into collection |
+
+With iter(), filter sees &&i32 while map sees &i32. into_iter on an owned Vec moves the vector, so it cannot be printed afterward. iterators can also be driven one item at a time by next().
+
+The complete runnable program is in `solution.rs`; snippets above may focus on only one part. Compare its output with the example in TASK.md.

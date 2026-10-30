@@ -42,3 +42,18 @@ struct AudioSettings {
   ```
   Only the `volume` field is explicitly set; the remaining fields are filled from `Default::default()`.
 
+
+## Reading the Result Carefully
+
+A price tag uses customer-facing formatting; a technician label uses diagnostic detail. Factory defaults are starting values, not proof of valid configuration.
+
+| Symbol or term | Meaning |
+|---|---|
+| `{}` | Display |
+| `{:?}` | Debug |
+| `{:02}` | minimum two digits with zero padding |
+| `..Default::default()` | fill remaining fields |
+
+Derived Default uses each field type default; sample_rate = 0 need not be valid audio configuration. Clone behavior is type-specific and can share storage; standard Rust has no Display derive.
+
+The complete runnable program is in `solution.rs`; snippets above may focus on only one part. Compare its output with the example in TASK.md.

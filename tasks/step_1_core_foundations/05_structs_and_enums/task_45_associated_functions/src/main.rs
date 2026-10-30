@@ -1,38 +1,9 @@
-struct Server {
-    host: String,
-    port: u16,
-}
-
-impl Server {
-    // TODO 1: Associated function new(host: String, port: u16) -> Self
-    fn new(host: String, port: u16) -> Self {
-        Self { host, port }
-    }
-
-    // TODO 2: Associated function localhost(port: u16) -> Self
-    fn localhost(port: u16) -> Self {
-        Self {
-            host: String::from("127.0.0.1"),
-            port,
-        }
-    }
-
-    // TODO 3: Method url(&self) -> String
-    fn url(&self) -> String {
-        format!("http://{}:{}", self.host, self.port)
-    }
-}
+// Task 45: Web Server Endpoint Builder (Associated Functions)
+// Complete the TODOs; the reference answer is kept separately in solution/.
 
 fn main() {
-    println!("=== WEB SERVER ENDPOINT BUILDER ===");
-
-    // TODO 4: Call Server::new and Server::localhost
-    let api_server = Server::new(String::from("api.example.com"), 443);
-    let local_server = Server::localhost(8080);
-
-    println!("Production API Endpoint: {}", api_server.url());
-    println!("Local Development Server: {}", local_server.url());
-
-    println!("===================================");
+    // TODO 1: Define Server with host: String and port: u16.
+    // TODO 2: Implement new(host, port) -> Self and localhost(port) -> Self without self receivers.
+    // TODO 3: Implement url(&self) -> String with format!.
+    // TODO 4: Create api_server on port 443 and local_server on 8080 and print their demo URLs.
 }
-

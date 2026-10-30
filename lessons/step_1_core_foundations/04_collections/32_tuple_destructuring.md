@@ -82,8 +82,7 @@ Item: Laptop | Total: $1200
 
 ## 4. Superpower: Returning Multiple Values from Functions!
 
-In most older languages (like C or Java), a function can only return **one single thing**.  
-In Rust, because tuples exist, a function can easily return **2, 3, or more values** at once:
+A Rust function returns one value. That value can be a tuple containing **2, 3, or more pieces of data**:
 
 ```rust
 // A function that returns BOTH the minimum and maximum numbers:
@@ -155,6 +154,14 @@ let (x, y, _) = point; // ✅ Correct!
 
 ---
 
+## Symbol reading guide
+
+| Symbol or syntax | Meaning |
+|---|---|
+| `let (a, b) = pair` | Destructure by position |
+| `_` | Ignore this position |
+| `as f64` | Convert the sum before division |
+
 ## 🎯 Next Steps
-* Ready to practice? Complete [`tasks/04_collections/task_32_tuple_destructuring/TASK.md`](file:///d:/rust-learning/tasks/04_collections/task_32_tuple_destructuring/TASK.md).
-* Next lesson: [Lesson 33: Fixed-Size Lists: Arrays](file:///d:/rust-learning/lessons/04_collections/33_arrays.md).
+* Ready to practice? Complete [`tasks/step_1_core_foundations/04_collections/task_32_tuple_destructuring/TASK.md`](../../../tasks/step_1_core_foundations/04_collections/task_32_tuple_destructuring/TASK.md).
+* Next lesson: [Lesson 33: Fixed-Size Lists: Arrays](33_arrays.md).
