@@ -1,37 +1,101 @@
-# Lesson 03: Multi-line Printing & Comments
+# Lesson 03: Multi-Line Printing & Leaving Notes with Comments
 
-> **Level:** Level 1: Absolute Baby Steps  
-> **Topic:** Writing comments with // and printing multiple formatted lines
+Welcome to Lesson 03! 
 
----
-
-## 1. Real-Life Analogy (Child-Friendly Explanation)
-*Coming up in this lesson: Writing comments with // and printing multiple formatted lines*
-
-Think of this concept like everyday life:
-- In the real world, we take things one step at a time.
-- Computers need simple, unambiguous rules.
+In this lesson, we will discover two essential coding superpowers:
+1. **Comments:** Leaving secret sticky notes inside your code that computers ignore, but humans love.
+2. **Special Characters (`\n`, `\t`):** Formatting text into neat tables, banners, and multi-line paragraphs.
 
 ---
 
-## 2. Key Rust Concepts to Master
-- What this concept means in plain English.
-- How to write it in Rust syntax.
-- What common mistakes beginners make.
+## 1. What Are Comments & Why Do We Need Them?
+
+Imagine you are fixing an electric circuit or packing boxes in your attic. 
+You write on a piece of masking tape:
+> *"Important: Red wire connects to generator"* or *"Box 3: Winter clothes"*.
+
+The boxes don't care about the tape. The tape is for **you and other humans** so nobody makes a mistake later.
+
+In programming:
+* You write code for the **computer** to execute.
+* You write **comments** for **humans** (yourself tomorrow, or your teammate) to understand *why* you wrote the code.
+
+> **Rule:** Rust completely ignores all comments when compiling and running your code.
 
 ---
 
-## 3. Code Example & Breakdown
+## 2. Two Ways to Write Comments in Rust
+
+### Style 1: Single-Line Comment (`//`)
+Put two slashes `//` anywhere. Rust ignores everything on that line after `//`:
 
 ```rust
-// Lesson 3: Multi-line Printing & Comments
 fn main() {
-    // We will practice Multi-line Printing & Comments step-by-step
-    println!("Learning Lesson 3: Multi-line Printing & Comments");
+    // This is a note: Greeting the user
+    println!("Hello, Rahim!"); // You can also put comments at the end of a line!
+}
+```
+
+### Style 2: Multi-Line Block Comment (`/* ... */`)
+If you have a long story or paragraph to write, start with `/*` and finish with `*/`:
+
+```rust
+/*
+  This is a big comment block.
+  I can write 10 lines here.
+  Rust ignores all of it!
+*/
+fn main() {
+    println!("Comments are awesome!");
 }
 ```
 
 ---
 
-## 4. Next Practice Task
-When you finish reading this concept with your AI tutor, you will practice the hands-on task!
+## 3. Formatting Tricks: Newlines (`\n`) and Tabs (`\t`)
+
+What if you want to print 3 lines without writing 3 separate `println!` statements?
+You can use **Escape Sequences** inside your double quotes:
+
+| Symbol | What is it called? | What does it do? |
+|---|---|---|
+| `\n` | Newline character | Hits the "Enter" key on your keyboard and starts a new line. |
+| `\t` | Tab character | Hits the "Tab" key to create neat spacing (like table columns). |
+| `\"` | Escaped quote | Prints an actual quotation mark `"` on screen without confusing Rust. |
+
+### Code Example:
+```rust
+fn main() {
+    println!("Line 1\nLine 2\nLine 3");
+    println!("Item:\tPrice:\nApple\t$1.00\nBanana\t$0.50");
+    println!("He said: \"Rust is amazing!\"");
+}
+```
+
+### The Output on Screen:
+```text
+Line 1
+Line 2
+Line 3
+Item:	Price:
+Apple	$1.00
+Banana	$0.50
+He said: "Rust is amazing!"
+```
+
+---
+
+## 4. Summary Checklist
+- [x] `//` writes a single-line comment.
+- [x] `/* ... */` writes a multi-line comment block.
+- [x] `\n` jumps down to a brand new line.
+- [x] `\t` inserts a tab space to align columns.
+
+---
+
+## 🛠️ Ready for Practice!
+
+👉 Open **[`tasks/01_baby_steps/task_03_comments_and_banner/TASK.md`](file:///d:/rust-learning/tasks/01_baby_steps/task_03_comments_and_banner/TASK.md)**.
+1. Read the task requirements.
+2. Build a decorative terminal banner with clean comments explaining your code.
+3. Run `cargo run` and admire your formatted banner!

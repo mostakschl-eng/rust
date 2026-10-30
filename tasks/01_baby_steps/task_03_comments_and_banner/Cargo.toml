@@ -1,0 +1,6 @@
+[package]
+name = "task_03_comments_and_banner"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
