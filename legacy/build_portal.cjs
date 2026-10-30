@@ -190,7 +190,7 @@ const data = {
 };
 
 const outputJs = `window.PORTAL_DATA = ${JSON.stringify(data)};\n`;
-const outputPath = path.join(rootDir, 'portal_data.js');
+const outputPath = path.join(rootDir, 'legacy', 'portal_data.js');
 fs.writeFileSync(outputPath, outputJs, 'utf8');
 
 console.log(`Generated portal_data.js successfully! Total entries: ${allLessons.length} (80 lessons + 8 milestone projects), data size: ${(outputJs.length / 1024).toFixed(1)} KB`);

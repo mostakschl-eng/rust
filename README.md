@@ -1,5 +1,18 @@
 # 🦀 Rust Zero-to-Hero: Child to Adult Developer Curriculum
 
+## Root web portal (Bun)
+
+Run from this repository root:
+
+```sh
+bun install --frozen-lockfile
+bun run dev
+```
+
+Check and build with `bun run typecheck` and `bun run build`. Deploy `dist/` with the build service rooted here. See [portal setup](docs/PORTAL.md).
+
+The only editable course sources remain `lessons/`, `tasks/`, `guides/`, and the root Markdown files. `src/generated/content.json`, `public/course/`, and `dist/` are generated copies. The original HTML portal is archived in `legacy/`.
+
 > **A Rust learning workspace for someone starting from zero.**  
 > Step 1 contains 80 lessons, matching exercises, and one Study Tracker growing through eight checkpoints. Steps 2–4 are outlines for future study; completing Step 1 is a foundation for building projects, not a guarantee of production experience.
 

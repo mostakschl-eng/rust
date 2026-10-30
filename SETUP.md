@@ -1,5 +1,18 @@
 # Rust Learning Workspace: Setup and Structure
 
+## Root web portal (Bun)
+
+Run from this repository root:
+
+```sh
+bun install --frozen-lockfile
+bun run dev
+```
+
+Check and build with `bun run typecheck` and `bun run build`. Deploy `dist/` with the build service rooted here. See [portal setup](docs/PORTAL.md).
+
+The only editable course sources remain `lessons/`, `tasks/`, `guides/`, and the root Markdown files. `src/generated/content.json`, `public/course/`, and `dist/` are generated copies. The original HTML portal is archived in `legacy/`.
+
 This workspace teaches Rust as a first programming language. Step 1 has 80 lessons across eight levels and one Study Tracker growing through eight checkpoint packages. Steps 2–4 contain outlines for later study.
 
 ## Install Rust first

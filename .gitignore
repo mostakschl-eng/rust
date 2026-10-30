@@ -10,3 +10,10 @@ Thumbs.db
 *.swp
 *.bak
 
+# Root React portal: generated files are not course sources
+node_modules/
+dist/
+src/generated/
+public/course/
+*.tsbuildinfo
+

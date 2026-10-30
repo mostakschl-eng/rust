@@ -1,0 +1,1560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rust Master Academy — From Zero to Hero</title>
+  <style>
+    :root {
+      --bg-page: #090d16;
+      --bg-sidebar: #0d121f;
+      --bg-card: #131b2e;
+      --bg-active: rgba(249, 115, 22, 0.12);
+      --border: #1e293b;
+      --border-light: #334155;
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+      --text-sub: #64748b;
+      --accent: #f97316;
+      --accent-hover: #ea580c;
+      --green: #10b981;
+      --blue: #38bdf8;
+      --code-bg: #070b12;
+      --font-ui: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      --font-code: "JetBrains Mono", "Fira Code", Consolas, Monaco, monospace;
+    }
+
+    [data-theme="light"] {
+      --bg-page: #f8fafc;
+      --bg-sidebar: #f1f5f9;
+      --bg-card: #ffffff;
+      --bg-active: rgba(249, 115, 22, 0.1);
+      --border: #e2e8f0;
+      --border-light: #cbd5e1;
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --text-sub: #94a3b8;
+      --accent: #ea580c;
+      --accent-hover: #c2410c;
+      --green: #059669;
+      --blue: #0284c7;
+      --code-bg: #0f172a;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* CUSTOM ULTRA-THIN SCROLLBAR (ELIMINATES THICK WHITE WINDOWS SCROLLBAR) */
+    ::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+    * {
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
+    }
+    [data-theme="light"] ::-webkit-scrollbar-thumb {
+      background: rgba(0, 0, 0, 0.18);
+    }
+    [data-theme="light"] * {
+      scrollbar-color: rgba(0, 0, 0, 0.18) transparent;
+    }
+
+    body {
+      font-family: var(--font-ui);
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      overflow: hidden;
+      font-size: 15px;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    svg {
+      display: inline-block;
+      vertical-align: middle;
+      flex-shrink: 0;
+    }
+
+    /* TOP HEADER */
+    header.portal-header {
+      height: 52px;
+      background: var(--bg-sidebar);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 16px;
+      flex-shrink: 0;
+      z-index: 30;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn-hamburger {
+      display: none;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--text-main);
+      text-decoration: none;
+    }
+
+    .brand-tag {
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.65rem;
+      padding: 1px 6px;
+      border-radius: 4px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .search-wrapper {
+      position: relative;
+      width: 320px;
+    }
+
+    .search-wrapper input {
+      width: 100%;
+      background: var(--bg-page);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      padding: 5px 10px 5px 28px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      outline: none;
+      transition: border 0.15s;
+    }
+
+    .search-wrapper input:focus {
+      border-color: var(--accent);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 8px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-sub);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .progress-tracker {
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--bg-card);
+      padding: 3px 8px;
+      border-radius: 5px;
+      border: 1px solid var(--border);
+    }
+
+    .progress-bar-shell {
+      width: 50px;
+      height: 5px;
+      background: var(--border);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      background: var(--green);
+      width: 0%;
+      transition: width 0.3s;
+    }
+
+    .btn-theme {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      width: 30px;
+      height: 30px;
+      border-radius: 5px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* MAIN LAYOUT */
+    .app-body {
+      display: flex;
+      flex: 1;
+      height: calc(100vh - 52px);
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* SIDEBAR (3-TIER TREE VIEW) */
+    aside.sidebar-tree {
+      width: 290px;
+      background: var(--bg-sidebar);
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+      height: 100%;
+      z-index: 25;
+    }
+
+    .sidebar-top {
+      padding: 8px 12px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-sub);
+    }
+
+    .tree-scroll {
+      flex: 1;
+      overflow-y: auto;
+      padding: 4px 0 20px 0;
+    }
+
+    /* STEP ACCORDION */
+    .step-node {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    .step-btn {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 8px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: var(--text-main);
+      font-weight: 700;
+      font-size: 0.8rem;
+      cursor: pointer;
+      text-align: left;
+      transition: background 0.15s;
+    }
+
+    .step-btn:hover {
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .step-chevron {
+      color: var(--text-sub);
+      transition: transform 0.2s;
+    }
+
+    .step-node.open .step-chevron {
+      transform: rotate(90deg);
+    }
+
+    .step-children {
+      display: none;
+      background: rgba(0, 0, 0, 0.12);
+    }
+
+    .step-node.open .step-children {
+      display: block;
+    }
+
+    /* LEVEL ACCORDION */
+    .level-node {
+      border-left: 2px solid transparent;
+    }
+
+    .level-btn {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 7px 12px 7px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: var(--text-muted);
+      font-weight: 600;
+      font-size: 0.76rem;
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.15s;
+    }
+
+    .level-btn:hover {
+      color: var(--text-main);
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .level-node.open > .level-btn {
+      color: var(--accent);
+    }
+
+    .level-chevron {
+      color: var(--text-sub);
+      transition: transform 0.2s;
+    }
+
+    .level-node.open .level-chevron {
+      transform: rotate(90deg);
+    }
+
+    .level-children {
+      display: none;
+    }
+
+    .level-node.open .level-children {
+      display: block;
+    }
+
+    /* LESSON LEAF ITEM */
+    .leaf-lesson {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 5px 12px 5px 28px;
+      color: var(--text-muted);
+      font-size: 0.76rem;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.15s;
+      border-left: 2px solid transparent;
+    }
+
+    .leaf-lesson:hover {
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--text-main);
+    }
+
+    .leaf-lesson.active {
+      background: var(--bg-active);
+      color: var(--accent);
+      font-weight: 600;
+      border-left-color: var(--accent);
+    }
+
+    .leaf-lesson.is-project {
+      color: #fbbf24;
+      font-weight: 600;
+      background: rgba(251, 191, 36, 0.04);
+    }
+
+    .leaf-num {
+      font-family: var(--font-code);
+      font-size: 0.68rem;
+      color: var(--text-sub);
+      min-width: 18px;
+    }
+
+    .leaf-title {
+      flex: 1;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .leaf-status {
+      font-size: 0.7rem;
+      color: var(--text-sub);
+    }
+
+    .leaf-status.done {
+      color: var(--green);
+      font-weight: 700;
+    }
+
+    /* BACKDROP FOR MOBILE DRAWER */
+    .sidebar-backdrop {
+      display: none;
+      position: fixed;
+      top: 52px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(2px);
+      z-index: 24;
+    }
+
+    /* MAIN VIEW CONTAINER */
+    main.main-viewport {
+      flex: 1;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      background: var(--bg-page);
+    }
+
+    /* MASTER TAB BAR */
+    .tab-bar-container {
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 16px;
+      flex-shrink: 0;
+      height: 44px;
+    }
+
+    .tabs-group {
+      display: flex;
+      gap: 2px;
+      height: 100%;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    .tabs-group::-webkit-scrollbar {
+      display: none;
+    }
+
+    .tab-btn {
+      height: 100%;
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      padding: 0 12px;
+      color: var(--text-muted);
+      font-weight: 600;
+      font-size: 0.78rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s;
+      white-space: nowrap;
+    }
+
+    .tab-btn:hover {
+      color: var(--text-main);
+    }
+
+    .tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    .complete-action-btn {
+      background: var(--bg-page);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      padding: 4px 10px;
+      border-radius: 5px;
+      font-size: 0.74rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      white-space: nowrap;
+      transition: all 0.15s;
+    }
+
+    .complete-action-btn:hover {
+      border-color: var(--text-muted);
+    }
+
+    .complete-action-btn.done {
+      background: rgba(16, 185, 129, 0.12);
+      border-color: var(--green);
+      color: var(--green);
+    }
+
+    /* SCROLLABLE CONTENT AREA */
+    .tab-content-area {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px 28px 60px 28px;
+    }
+
+    .content-container {
+      max-width: 820px;
+      margin: 0 auto;
+    }
+
+    /* HEADER BANNER */
+    .lesson-meta-bar {
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .meta-path {
+      font-size: 0.72rem;
+      color: var(--text-sub);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 2px;
+    }
+
+    .meta-heading {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--text-main);
+      line-height: 1.25;
+    }
+
+    /* MARKDOWN PROSE STYLES (CLEAN & TIGHT) */
+    .prose-body {
+      font-size: 14.5px;
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    .prose-body h1 {
+      font-size: 1.3rem;
+      margin: 18px 0 8px 0;
+      padding-bottom: 4px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .prose-body h2 {
+      font-size: 1.12rem;
+      margin: 16px 0 8px 0;
+      color: var(--accent);
+    }
+
+    .prose-body h3 {
+      font-size: 0.98rem;
+      margin: 12px 0 6px 0;
+      color: var(--text-main);
+    }
+
+    .prose-body p {
+      margin-bottom: 10px;
+    }
+
+    .prose-body ul, .prose-body ol {
+      margin-bottom: 12px;
+      padding-left: 20px;
+    }
+
+    .prose-body li {
+      margin-bottom: 4px;
+    }
+
+    .prose-body hr {
+      border: 0;
+      height: 1px;
+      background: var(--border);
+      margin: 14px 0;
+    }
+
+    /* TABLE STYLES (CLEAN GRID BORDERS, HEADER, NO EMPTY VOID) */
+    .table-wrap {
+      width: 100%;
+      overflow-x: auto;
+      margin: 14px 0;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: var(--bg-card);
+    }
+
+    .prose-body table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+      text-align: left;
+    }
+
+    .prose-body thead {
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .prose-body th {
+      padding: 8px 12px;
+      font-weight: 700;
+      color: var(--text-main);
+      text-transform: uppercase;
+      font-size: 0.7rem;
+      letter-spacing: 0.5px;
+      border-bottom: 2px solid var(--border);
+      border-right: 1px solid var(--border);
+      white-space: nowrap;
+    }
+
+    .prose-body th:last-child {
+      border-right: none;
+    }
+
+    .prose-body td {
+      padding: 8px 12px;
+      border-top: 1px solid var(--border);
+      border-right: 1px solid var(--border);
+      color: var(--text-muted);
+      vertical-align: middle;
+    }
+
+    .prose-body td:last-child {
+      border-right: none;
+    }
+
+    .prose-body tbody tr:nth-child(even) {
+      background: rgba(255, 255, 255, 0.015);
+    }
+
+    .prose-body tbody tr:hover {
+      background: rgba(255, 255, 255, 0.035);
+    }
+
+    .prose-body td code, .prose-body p code, .prose-body li code {
+      background: var(--code-bg);
+      border: 1px solid var(--border);
+      padding: 1px 5px;
+      border-radius: 4px;
+      font-family: var(--font-code);
+      font-size: 0.82em;
+      color: #f472b6;
+    }
+
+    /* CODE BOXES */
+    .code-panel {
+      background: var(--code-bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      margin: 12px 0;
+      overflow: hidden;
+    }
+
+    .code-panel-head {
+      background: rgba(255, 255, 255, 0.03);
+      padding: 5px 12px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: var(--font-code);
+      font-size: 0.68rem;
+      color: var(--text-sub);
+    }
+
+    .btn-copy {
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 2px 7px;
+      border-radius: 4px;
+      font-size: 0.68rem;
+      cursor: pointer;
+    }
+
+    .btn-copy:hover {
+      color: var(--text-main);
+      border-color: var(--text-muted);
+    }
+
+    .code-panel pre {
+      padding: 12px 14px;
+      overflow-x: auto;
+      font-family: var(--font-code);
+      font-size: 0.84rem;
+      line-height: 1.5;
+      color: #e2e8f0;
+    }
+
+    /* TERMINAL BOXES */
+    .terminal-panel {
+      background: #020617;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      margin: 12px 0;
+      overflow: hidden;
+    }
+
+    .terminal-panel-head {
+      background: rgba(255, 255, 255, 0.03);
+      padding: 5px 10px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .dot { width: 7px; height: 7px; border-radius: 50%; }
+    .dot-r { background: #ef4444; }
+    .dot-y { background: #f59e0b; }
+    .dot-g { background: #10b981; }
+
+    .terminal-panel pre {
+      padding: 12px 14px;
+      font-family: var(--font-code);
+      font-size: 0.82rem;
+      color: #4ade80;
+      overflow-x: auto;
+      line-height: 1.45;
+    }
+
+    /* CLEAN BLOCKQUOTE */
+    .prose-body blockquote {
+      border-left: 3px solid var(--accent);
+      background: rgba(255, 255, 255, 0.02);
+      padding: 8px 12px;
+      margin: 10px 0;
+      color: var(--text-main);
+      border-radius: 0 4px 4px 0;
+      font-size: 0.92rem;
+    }
+
+    [data-theme="light"] .prose-body blockquote {
+      background: rgba(0, 0, 0, 0.02);
+    }
+
+    .prose-body blockquote p {
+      margin-bottom: 4px;
+    }
+    .prose-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* TASK RUN STRIP */
+    .task-run-strip {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 12px;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .task-run-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.78rem;
+      overflow: hidden;
+    }
+
+    .task-tag {
+      background: var(--accent);
+      color: white;
+      font-size: 0.65rem;
+      font-weight: 700;
+      padding: 1px 5px;
+      border-radius: 3px;
+      text-transform: uppercase;
+      flex-shrink: 0;
+    }
+
+    .cmd-string {
+      font-family: var(--font-code);
+      color: var(--blue);
+      font-size: 0.78rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* SOLUTION SHIELD */
+    .solution-shield {
+      background: var(--bg-card);
+      border: 1px dashed var(--border-light);
+      border-radius: 6px;
+      padding: 20px;
+      text-align: center;
+      margin: 16px 0;
+    }
+
+    .btn-reveal {
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 7px 16px;
+      border-radius: 5px;
+      font-weight: 600;
+      font-size: 0.8rem;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .btn-reveal:hover {
+      background: var(--accent-hover);
+    }
+
+    /* BOTTOM PAGER */
+    .pager-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 26px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
+    }
+
+    .pager-btn {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      padding: 6px 12px;
+      border-radius: 5px;
+      font-weight: 600;
+      font-size: 0.78rem;
+      cursor: pointer;
+    }
+
+    .pager-btn:hover {
+      border-color: var(--text-muted);
+    }
+
+    .pager-btn.primary {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: white;
+    }
+
+    /* SYNTAX HIGHLIGHTING CLASSES */
+    .kw { color: #f472b6; font-weight: 600; }
+    .ty { color: #38bdf8; font-weight: 600; }
+    .str { color: #a3e635; }
+    .num { color: #fb923c; }
+    .macro { color: #c084fc; font-weight: 600; }
+    .cmnt { color: #64748b; font-style: italic; }
+
+    /* MOBILE RESPONSIVE MEDIA QUERIES */
+    @media (max-width: 860px) {
+      .search-wrapper {
+        display: none;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .btn-hamburger {
+        display: flex;
+      }
+      aside.sidebar-tree {
+        position: fixed;
+        top: 52px;
+        left: 0;
+        bottom: 0;
+        width: 270px;
+        transform: translateX(-100%);
+        transition: transform 0.2s ease-in-out;
+        box-shadow: 4px 0 20px rgba(0,0,0,0.5);
+      }
+      aside.sidebar-tree.mobile-open {
+        transform: translateX(0);
+      }
+      .sidebar-backdrop.active {
+        display: block;
+      }
+      .tab-content-area {
+        padding: 12px 12px 40px 12px;
+      }
+      .meta-heading {
+        font-size: 1.2rem;
+      }
+      .tab-bar-container {
+        padding: 0 10px;
+      }
+      .tab-btn {
+        padding: 0 8px;
+        font-size: 0.74rem;
+      }
+      .complete-action-btn {
+        padding: 3px 7px;
+        font-size: 0.7rem;
+      }
+    }
+  </style>
+</head>
+<body data-theme="dark">
+
+  <!-- TOP HEADER -->
+  <header class="portal-header">
+    <div class="header-left">
+      <button class="btn-hamburger" id="hamburgerBtn" onclick="toggleMobileSidebar()" aria-label="Toggle navigation">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+
+      <a href="#" class="brand" onclick="openLesson('lesson_01')">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent);">
+          <path d="m18 16 4-4-4-4M6 8l-4 4 4 4m8.5-12-5 16"/>
+        </svg>
+        <span>Rust Academy</span>
+        <span class="brand-tag">Zero to Hero</span>
+      </a>
+    </div>
+
+    <div class="search-wrapper">
+      <span class="search-icon">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+      </span>
+      <input type="text" id="filterInput" placeholder="Search 80 lessons, concepts (e.g. match, Vec)..." oninput="onSearchChange(this.value)">
+    </div>
+
+    <div class="header-actions">
+      <div class="progress-tracker">
+        <span id="progressSummary">0 / 80 Done</span>
+        <div class="progress-bar-shell">
+          <div class="progress-bar-fill" id="progressBar"></div>
+        </div>
+      </div>
+
+      <button class="btn-theme" id="themeBtn" title="Toggle Theme" onclick="toggleColorTheme()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- MOBILE BACKDROP -->
+  <div class="sidebar-backdrop" id="sidebarBackdrop" onclick="closeMobileSidebar()"></div>
+
+  <!-- APP WORKSPACE -->
+  <div class="app-body">
+    <!-- LEFT SIDEBAR: 4 STEPS -> 8 LEVELS -> 80 LESSONS + 8 MILESTONES -->
+    <aside class="sidebar-tree" id="sidebarTree">
+      <div class="sidebar-top">
+        <span>Curriculum Tree</span>
+        <span id="lessonCountBadge" style="font-family:var(--font-code);">88 Items</span>
+      </div>
+
+      <div class="tree-scroll" id="treeView">
+        <!-- Rendered by JS -->
+      </div>
+    </aside>
+
+    <!-- MAIN READING VIEW -->
+    <main class="main-viewport">
+      <!-- MASTER TAB BAR -->
+      <div class="tab-bar-container">
+        <div class="tabs-group">
+          <button class="tab-btn active" id="tabLessonBtn" onclick="switchTab('lesson')">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            <span>Lesson Theory</span>
+          </button>
+          <button class="tab-btn" id="tabTaskBtn" onclick="switchTab('task')">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+            <span>Task Brief</span>
+          </button>
+          <button class="tab-btn" id="tabStarterBtn" onclick="switchTab('starter')">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            <span>Starter (<span style="font-family:var(--font-code);font-size:0.7rem;">main.rs</span>)</span>
+          </button>
+          <button class="tab-btn" id="tabSolutionBtn" onclick="switchTab('solution')">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            <span>Solution & Explain</span>
+          </button>
+        </div>
+
+        <button class="complete-action-btn" id="markDoneBtn" onclick="toggleLessonDone()">
+          <span id="markIcon">○</span>
+          <span id="markLabel">Mark Done</span>
+        </button>
+      </div>
+
+      <!-- TAB CONTENT SCROLL AREA -->
+      <div class="tab-content-area" id="contentScroll">
+        <div class="content-container">
+
+          <!-- HEADER INFO -->
+          <div class="lesson-meta-bar">
+            <div class="meta-path" id="metaBreadcrumb">Step 1 • Level 1: Absolute Baby Steps</div>
+            <h1 class="meta-heading" id="metaTitle">What is Programming & Your First Rust Program</h1>
+          </div>
+
+          <!-- TAB 1: LESSON THEORY -->
+          <section id="panelLesson" class="tab-panel">
+            <article class="prose-body" id="proseLessonContent">
+              <!-- Rendered markdown -->
+            </article>
+          </section>
+
+          <!-- TAB 2: TASK BRIEF (TASK.MD) -->
+          <section id="panelTask" class="tab-panel" style="display: none;">
+            <div class="task-run-strip">
+              <div class="task-run-left">
+                <span class="task-tag">Terminal</span>
+                <span class="cmd-string" id="taskRunCmd">cd tasks/... && cargo run</span>
+              </div>
+              <button class="btn-copy" onclick="copyTaskRunCommand()">Copy</button>
+            </div>
+            <article class="prose-body" id="proseTaskContent">
+              <!-- Rendered TASK.md -->
+            </article>
+          </section>
+
+          <!-- TAB 3: STARTER CODE (SRC/MAIN.RS) -->
+          <section id="panelStarter" class="tab-panel" style="display: none;">
+            <div class="task-run-strip">
+              <div class="task-run-left">
+                <span class="task-tag">File</span>
+                <span class="cmd-string" id="starterFilePath">src/main.rs</span>
+              </div>
+              <button class="btn-copy" onclick="copyStarterCode()">Copy Code</button>
+            </div>
+            <div class="code-panel">
+              <div class="code-panel-head">
+                <span>src/main.rs (Starter Exercise with // TODO)</span>
+                <span>Rust 2021</span>
+              </div>
+              <pre><code id="starterCodeBlock"></code></pre>
+            </div>
+          </section>
+
+          <!-- TAB 4: SOLUTION & EXPLANATION -->
+          <section id="panelSolution" class="tab-panel" style="display: none;">
+            <div id="solutionShieldBox" class="solution-shield">
+              <h3 style="font-size:1.05rem;margin-bottom:4px;">🔒 Solution Protected</h3>
+              <p style="color:var(--text-muted);font-size:0.8rem;">
+                Try solving the exercise in your terminal first. Reveal the solution when you are ready to review!
+              </p>
+              <button class="btn-reveal" onclick="revealSolution()">Reveal Solution Code</button>
+            </div>
+
+            <div id="solutionContentBox" style="display: none;">
+              <div class="task-run-strip">
+                <div class="task-run-left">
+                  <span class="task-tag">Verified Solution</span>
+                  <span class="cmd-string">solution/solution.rs</span>
+                </div>
+                <button class="btn-copy" onclick="copySolutionCode()">Copy Solution</button>
+              </div>
+
+              <div class="code-panel">
+                <div class="code-panel-head">
+                  <span>solution/solution.rs</span>
+                  <span>Rust 2021</span>
+                </div>
+                <pre><code id="solutionCodeBlock"></code></pre>
+              </div>
+
+              <h2 style="font-size:1.15rem;margin:22px 0 8px 0;color:var(--accent);">
+                Detailed Line-by-Line Breakdown
+              </h2>
+              <article class="prose-body" id="proseExplainContent">
+                <!-- Rendered explain.md -->
+              </article>
+            </div>
+          </section>
+
+          <!-- FOOTER PAGER -->
+          <div class="pager-footer">
+            <button class="pager-btn" id="btnPrev" onclick="stepPrevious()">⬅️ Previous</button>
+            <button class="pager-btn primary" id="btnNext" onclick="stepNext()">Next Lesson ➡️</button>
+          </div>
+
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- LOAD STANDARDS-COMPLIANT MARKED.JS & COMPILED DATA -->
+  <script src="marked.min.js"></script>
+  <script src="portal_data.js"></script>
+
+  <!-- CONTROLLER SCRIPT -->
+  <script>
+    let activeId = 'lesson_01';
+    let currentTab = 'lesson';
+    let completedSet = new Set(JSON.parse(localStorage.getItem('rust_completed_lessons') || '[]'));
+    let openSteps = new Set(['step_1']);
+    let openLevels = new Set(['01_baby_steps']);
+    let revealedSolutions = new Set();
+    let query = '';
+
+    // CONFIGURE MARKED
+    if (window.marked) {
+      const renderer = new marked.Renderer();
+
+      renderer.code = function(token) {
+        const code = (typeof token === 'object' ? token.text : token) || '';
+        const rawLang = (typeof token === 'object' ? token.lang : arguments[1]) || '';
+        const lang = rawLang.toLowerCase();
+
+        if (lang === 'text' || lang === 'bash' || lang === 'sh' || lang === 'console') {
+          return `
+            <div class="terminal-panel">
+              <div class="terminal-panel-head">
+                <span class="dot dot-r"></span>
+                <span class="dot dot-y"></span>
+                <span class="dot dot-g"></span>
+              </div>
+              <pre>${escapeHtml(code.trim())}</pre>
+            </div>
+          `;
+        }
+        return `
+          <div class="code-panel">
+            <div class="code-panel-head">
+              <span>${lang.toUpperCase() || 'RUST'}</span>
+              <button class="btn-copy" onclick="copySnippet(this)">Copy</button>
+            </div>
+            <pre><code>${highlightCode(code.trim())}</code></pre>
+          </div>
+        `;
+      };
+
+      marked.setOptions({
+        renderer: renderer,
+        gfm: true,
+        breaks: false
+      });
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      // Restore theme
+      const savedTheme = localStorage.getItem('rust_theme') || 'dark';
+      document.body.setAttribute('data-theme', savedTheme);
+      updateThemeIcon(savedTheme);
+
+      // Restore last lesson
+      const savedLast = localStorage.getItem('rust_last_lesson');
+      if (savedLast && getLesson(savedLast)) {
+        activeId = savedLast;
+        const l = getLesson(savedLast);
+        if (l) {
+          openSteps.add(l.stepId);
+          openLevels.add(l.levelId);
+        }
+      }
+
+      renderTree();
+      openLesson(activeId);
+      refreshProgress();
+    });
+
+    // Mobile Sidebar Drawer
+    function toggleMobileSidebar() {
+      const sb = document.getElementById('sidebarTree');
+      const bd = document.getElementById('sidebarBackdrop');
+      const isOpen = sb.classList.contains('mobile-open');
+      if (isOpen) {
+        closeMobileSidebar();
+      } else {
+        sb.classList.add('mobile-open');
+        bd.classList.add('active');
+      }
+    }
+
+    function closeMobileSidebar() {
+      document.getElementById('sidebarTree').classList.remove('mobile-open');
+      document.getElementById('sidebarBackdrop').classList.remove('active');
+    }
+
+    // Theme Switch
+    function toggleColorTheme() {
+      const cur = document.body.getAttribute('data-theme');
+      const next = cur === 'dark' ? 'light' : 'dark';
+      document.body.setAttribute('data-theme', next);
+      localStorage.setItem('rust_theme', next);
+      updateThemeIcon(next);
+    }
+
+    function updateThemeIcon(theme) {
+      const btn = document.getElementById('themeBtn');
+      if (theme === 'dark') {
+        btn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>`;
+      } else {
+        btn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>`;
+      }
+    }
+
+    function refreshProgress() {
+      const total = 80; // Core 80 lessons
+      const done = Array.from(completedSet).filter(id => id.startsWith('lesson_')).length;
+      const pct = Math.round((done / total) * 100);
+      document.getElementById('progressSummary').innerText = `${done} / ${total} Done (${pct}%)`;
+      document.getElementById('progressBar').style.width = `${pct}%`;
+    }
+
+    function toggleLessonDone() {
+      if (completedSet.has(activeId)) {
+        completedSet.delete(activeId);
+      } else {
+        completedSet.add(activeId);
+      }
+      localStorage.setItem('rust_completed_lessons', JSON.stringify(Array.from(completedSet)));
+      refreshProgress();
+      updateDoneButton();
+      renderTree();
+    }
+
+    function updateDoneButton() {
+      const btn = document.getElementById('markDoneBtn');
+      const icon = document.getElementById('markIcon');
+      const label = document.getElementById('markLabel');
+
+      if (completedSet.has(activeId)) {
+        btn.classList.add('done');
+        icon.innerText = '✓';
+        label.innerText = 'Completed';
+      } else {
+        btn.classList.remove('done');
+        icon.innerText = '○';
+        label.innerText = 'Mark Done';
+      }
+    }
+
+    function switchTab(tab) {
+      currentTab = tab;
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(p => p.style.display = 'none');
+
+      if (tab === 'lesson') {
+        document.getElementById('tabLessonBtn').classList.add('active');
+        document.getElementById('panelLesson').style.display = 'block';
+      } else if (tab === 'task') {
+        document.getElementById('tabTaskBtn').classList.add('active');
+        document.getElementById('panelTask').style.display = 'block';
+      } else if (tab === 'starter') {
+        document.getElementById('tabStarterBtn').classList.add('active');
+        document.getElementById('panelStarter').style.display = 'block';
+      } else if (tab === 'solution') {
+        document.getElementById('tabSolutionBtn').classList.add('active');
+        document.getElementById('panelSolution').style.display = 'block';
+      }
+    }
+
+    function revealSolution() {
+      revealedSolutions.add(activeId);
+      document.getElementById('solutionShieldBox').style.display = 'none';
+      document.getElementById('solutionContentBox').style.display = 'block';
+    }
+
+    function onSearchChange(val) {
+      query = val.toLowerCase().trim();
+      renderTree();
+    }
+
+    function toggleStep(stepId) {
+      if (openSteps.has(stepId)) {
+        openSteps.delete(stepId);
+      } else {
+        openSteps.add(stepId);
+      }
+      renderTree();
+    }
+
+    function toggleLevel(levelId) {
+      if (openLevels.has(levelId)) {
+        openLevels.delete(levelId);
+      } else {
+        openLevels.add(levelId);
+      }
+      renderTree();
+    }
+
+    function renderTree() {
+      if (!window.PORTAL_DATA) return;
+      const container = document.getElementById('treeView');
+      container.innerHTML = '';
+
+      const steps = window.PORTAL_DATA.steps;
+
+      steps.forEach(st => {
+        const stepDiv = document.createElement('div');
+        stepDiv.className = `step-node ${openSteps.has(st.id) || query ? 'open' : ''}`;
+
+        const stepBtn = document.createElement('button');
+        stepBtn.className = 'step-btn';
+        stepBtn.onclick = () => toggleStep(st.id);
+        stepBtn.innerHTML = `
+          <span>${st.title}</span>
+          <svg class="step-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
+        `;
+        stepDiv.appendChild(stepBtn);
+
+        const stepChildrenDiv = document.createElement('div');
+        stepChildrenDiv.className = 'step-children';
+
+        if (st.levels) {
+          st.levels.forEach(lvl => {
+            let levelLessons = window.PORTAL_DATA.lessons.filter(l => l.levelId === lvl.id);
+
+            if (query) {
+              levelLessons = levelLessons.filter(l => 
+                l.title.toLowerCase().includes(query) ||
+                l.content.toLowerCase().includes(query) ||
+                l.padNum.toLowerCase().includes(query)
+              );
+              if (levelLessons.length === 0) return;
+            }
+
+            const levelDiv = document.createElement('div');
+            levelDiv.className = `level-node ${openLevels.has(lvl.id) || query ? 'open' : ''}`;
+
+            const levelBtn = document.createElement('button');
+            levelBtn.className = 'level-btn';
+            levelBtn.onclick = () => toggleLevel(lvl.id);
+            levelBtn.innerHTML = `
+              <span>${lvl.name}</span>
+              <svg class="level-chevron" width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
+            `;
+            levelDiv.appendChild(levelBtn);
+
+            const levelChildrenDiv = document.createElement('div');
+            levelChildrenDiv.className = 'level-children';
+
+            levelLessons.forEach(ls => {
+              const isActive = ls.id === activeId;
+              const isDone = completedSet.has(ls.id);
+
+              const leafA = document.createElement('a');
+              leafA.className = `leaf-lesson ${isActive ? 'active' : ''} ${ls.isProject ? 'is-project' : ''}`;
+              leafA.onclick = () => {
+                openLesson(ls.id);
+                if (window.innerWidth <= 768) closeMobileSidebar();
+              };
+              leafA.innerHTML = `
+                <span class="leaf-num">${ls.padNum}</span>
+                <span class="leaf-title" title="${ls.title}">${ls.title}</span>
+                <span class="leaf-status ${isDone ? 'done' : ''}">${isDone ? '✓' : '○'}</span>
+              `;
+              levelChildrenDiv.appendChild(leafA);
+            });
+
+            levelDiv.appendChild(levelChildrenDiv);
+            stepChildrenDiv.appendChild(levelDiv);
+          });
+        } else {
+          const leafA = document.createElement('a');
+          leafA.className = `leaf-lesson ${activeId === st.id ? 'active' : ''}`;
+          leafA.onclick = () => {
+            openExtraStep(st.id);
+            if (window.innerWidth <= 768) closeMobileSidebar();
+          };
+          leafA.innerHTML = `
+            <span class="leaf-num">▶</span>
+            <span class="leaf-title">${st.subtitle}</span>
+          `;
+          stepChildrenDiv.appendChild(leafA);
+        }
+
+        stepDiv.appendChild(stepChildrenDiv);
+        container.appendChild(stepDiv);
+      });
+    }
+
+    function getLesson(id) {
+      return window.PORTAL_DATA?.lessons?.find(l => l.id === id);
+    }
+
+    function openLesson(id) {
+      const lesson = getLesson(id);
+      if (!lesson) return;
+
+      activeId = id;
+      localStorage.setItem('rust_last_lesson', id);
+
+      openSteps.add('step_1');
+      openLevels.add(lesson.levelId);
+
+      document.getElementById('metaBreadcrumb').innerText = `Step 1 • ${lesson.levelName}`;
+      document.getElementById('metaTitle').innerText = lesson.isProject ? lesson.title : `Lesson ${lesson.padNum}: ${lesson.title}`;
+
+      // Tab 1: Render Lesson with standard marked.js
+      document.getElementById('proseLessonContent').innerHTML = renderContent(lesson.content);
+
+      // Tab 2: Render Task Brief
+      const cleanTaskCmd = `cd ${lesson.taskFolder.replace(/\//g, '\\')} && cargo run`;
+      document.getElementById('taskRunCmd').innerText = cleanTaskCmd;
+      document.getElementById('proseTaskContent').innerHTML = renderContent(lesson.taskBrief || 'No task brief available.');
+
+      // Tab 3: Starter Code
+      document.getElementById('starterFilePath').innerText = `${lesson.taskFolder}/src/main.rs`;
+      document.getElementById('starterCodeBlock').innerHTML = highlightCode(lesson.starterCode || '// Starter code not found');
+
+      // Tab 4: Solution Code & Explain
+      document.getElementById('solutionCodeBlock').innerHTML = highlightCode(lesson.solutionCode || '// Solution not found');
+      document.getElementById('proseExplainContent').innerHTML = renderContent(lesson.solutionExplain || 'No explanation available.');
+
+      // Solution Shield state
+      if (revealedSolutions.has(id)) {
+        document.getElementById('solutionShieldBox').style.display = 'none';
+        document.getElementById('solutionContentBox').style.display = 'block';
+      } else {
+        document.getElementById('solutionShieldBox').style.display = 'block';
+        document.getElementById('solutionContentBox').style.display = 'none';
+      }
+
+      // Show tabs
+      document.getElementById('tabTaskBtn').style.display = 'flex';
+      document.getElementById('tabStarterBtn').style.display = 'flex';
+      document.getElementById('tabSolutionBtn').style.display = 'flex';
+
+      switchTab(currentTab);
+      updateDoneButton();
+      updatePagerButtons();
+      renderTree();
+
+      document.getElementById('contentScroll').scrollTop = 0;
+    }
+
+    function openExtraStep(stepId) {
+      const extra = window.PORTAL_DATA?.extraSteps?.find(s => s.id === stepId);
+      if (!extra) return;
+
+      activeId = stepId;
+      openSteps.add(stepId);
+
+      document.getElementById('metaBreadcrumb').innerText = extra.title;
+      document.getElementById('metaTitle').innerText = extra.subtitle;
+
+      switchTab('lesson');
+      document.getElementById('tabTaskBtn').style.display = 'none';
+      document.getElementById('tabStarterBtn').style.display = 'none';
+      document.getElementById('tabSolutionBtn').style.display = 'none';
+
+      document.getElementById('proseLessonContent').innerHTML = renderContent(extra.guideContent);
+
+      document.getElementById('btnPrev').style.visibility = 'hidden';
+      document.getElementById('btnNext').style.visibility = 'hidden';
+      document.getElementById('markDoneBtn').style.visibility = 'hidden';
+
+      renderTree();
+      document.getElementById('contentScroll').scrollTop = 0;
+    }
+
+    function updatePagerButtons() {
+      const lessons = window.PORTAL_DATA.lessons;
+      const idx = lessons.findIndex(l => l.id === activeId);
+
+      const prev = document.getElementById('btnPrev');
+      const next = document.getElementById('btnNext');
+      document.getElementById('markDoneBtn').style.visibility = 'visible';
+
+      if (idx <= 0) {
+        prev.style.visibility = 'hidden';
+      } else {
+        prev.style.visibility = 'visible';
+        prev.innerText = `⬅️ ${lessons[idx - 1].padNum}`;
+      }
+
+      if (idx >= lessons.length - 1) {
+        next.style.visibility = 'hidden';
+      } else {
+        next.style.visibility = 'visible';
+        next.innerText = `${lessons[idx + 1].padNum} ➡️`;
+      }
+    }
+
+    function stepPrevious() {
+      const lessons = window.PORTAL_DATA.lessons;
+      const idx = lessons.findIndex(l => l.id === activeId);
+      if (idx > 0) openLesson(lessons[idx - 1].id);
+    }
+
+    function stepNext() {
+      const lessons = window.PORTAL_DATA.lessons;
+      const idx = lessons.findIndex(l => l.id === activeId);
+      if (idx < lessons.length - 1) openLesson(lessons[idx + 1].id);
+    }
+
+    function copyTaskRunCommand() {
+      const txt = document.getElementById('taskRunCmd').innerText;
+      navigator.clipboard.writeText(txt).then(() => alert('Command copied to clipboard!'));
+    }
+
+    function copyStarterCode() {
+      const lesson = getLesson(activeId);
+      if (lesson?.starterCode) {
+        navigator.clipboard.writeText(lesson.starterCode).then(() => alert('Starter code copied!'));
+      }
+    }
+
+    function copySolutionCode() {
+      const lesson = getLesson(activeId);
+      if (lesson?.solutionCode) {
+        navigator.clipboard.writeText(lesson.solutionCode).then(() => alert('Solution code copied!'));
+      }
+    }
+
+    function copySnippet(btn) {
+      const code = btn.closest('.code-panel').querySelector('pre').innerText;
+      navigator.clipboard.writeText(code).then(() => {
+        const old = btn.innerText;
+        btn.innerText = 'Copied!';
+        setTimeout(() => btn.innerText = old, 1500);
+      });
+    }
+
+    // HTML ESCAPING & TOKENIZED HIGHLIGHTER
+    function escapeHtml(str) {
+      return (str || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+
+    function highlightCode(code) {
+      if (!code) return '';
+      let h = escapeHtml(code);
+
+      const strings = [];
+      h = h.replace(/(&quot;[\s\S]*?&quot;|"[^"\\]*(\\.[^"\\]*)*")/g, (m) => {
+        strings.push(m);
+        return `___TOKEN_STR_${strings.length - 1}___`;
+      });
+
+      const comments = [];
+      h = h.replace(/(\/\/.*$)/gm, (m) => {
+        comments.push(m);
+        return `___TOKEN_CMNT_${comments.length - 1}___`;
+      });
+
+      h = h.replace(/\b(println!|print!|format!|vec!|panic!|assert_eq!|assert!|write!|writeln!)\b/g, '<span class="macro">$1</span>');
+      h = h.replace(/\b(fn|let|mut|struct|enum|impl|trait|match|pub|use|mod|const|static|return|if|else|loop|while|for|in|break|continue|as|where|move|dyn|type|ref)\b/g, '<span class="kw">$1</span>');
+      h = h.replace(/\b(i8|i16|i32|i64|i128|u8|u16|u32|u64|u128|f32|f64|bool|char|String|str|Vec|Box|Option|Some|None|Result|Ok|Err|Self|self)\b/g, '<span class="ty">$1</span>');
+      h = h.replace(/\b(\d+(\.\d+)?)\b/g, '<span class="num">$1</span>');
+
+      h = h.replace(/___TOKEN_CMNT_(\d+)___/g, (m, idx) => `<span class="cmnt">${comments[idx]}</span>`);
+      h = h.replace(/___TOKEN_STR_(\d+)___/g, (m, idx) => `<span class="str">${strings[idx]}</span>`);
+
+      return h;
+    }
+
+    function renderContent(md) {
+      if (!md) return '';
+      let text = md.replace(/^#\s+[^\r\n]+\r?\n/, '');
+
+      if (window.marked) {
+        let html = marked.parse(text);
+        html = html.replace(/<table>/g, '<div class="table-wrap"><table>').replace(/<\/table>/g, '</table></div>');
+        return html;
+      }
+      return escapeHtml(text);
+    }
+  </script>
+</body>
+</html>
