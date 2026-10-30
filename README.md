@@ -1,7 +1,7 @@
 # 🦀 Rust Zero-to-Hero: Child to Adult Developer Curriculum
 
 > **A Rust learning workspace for someone starting from zero.**  
-> Step 1 contains 80 lessons and matching exercises across eight levels. Steps 2–4 are outlines for future study; completing Step 1 is a foundation for building projects, not a guarantee of production experience.
+> Step 1 contains 80 lessons, matching exercises, and one Study Tracker growing through eight checkpoints. Steps 2–4 are outlines for future study; completing Step 1 is a foundation for building projects, not a guarantee of production experience.
 
 [![GitHub Repo](https://img.shields.io/badge/GitHub-mostakschl--eng%2Frust-blue?logo=github)](https://github.com/mostakschl-eng/rust)
 [![Rust Version](https://img.shields.io/badge/Rust-stable-orange?logo=rust)](https://www.rust-lang.org/)
@@ -17,13 +17,13 @@ The roadmap has four stages. Only Step 1 currently contains full lesson and task
 ```text
 rust-learning/
 │
-├── Step 1: Core Foundations (80 Lessons) ──► 8 Levels: Syntax, Memory, Ownership, Concurrency
+├── Step 1: Core Foundations ──► 80 lessons, 8 checkpoints, early checking
 │
-├── Step 2: Universal Production Crates   ──► serde (JSON), tokio (Async), anyhow (Errors)
+├── Step 2: Selected Libraries ──► Cargo dependencies, JSON, errors; async if needed
 │
-├── Step 3: Specialization Career Tracks  ──► Web APIs (axum), CLI (clap), Systems (Wasm/gRPC)
+├── Step 3: Choose One Specialization ──► CLI, web, or a specific systems/platform path
 │
-└── Step 4: Portfolio Projects & CI/CD    ──► 3 Full Apps, clippy, unit testing, GitHub Actions
+└── Step 4: Grow Projects ──► Small → medium → larger within your chosen track
 ```
 
 ---
@@ -45,6 +45,23 @@ rust-learning/
 
 ---
 
+## One Study Tracker, eight checkpoints
+
+After each ten-lesson level, build the next milestone. These independent code snapshots intentionally repeat earlier features. Keep earlier versions runnable and copyable; never overwrite an earlier answer to install a later one. Checkpoint 8 combines the saved app with a threaded report. This is a small local demonstration, not a server.
+
+| After lessons | Checkpoint | What grows |
+|---|---|---|
+| 10 | [Study Tracker — Profile Card](tasks/step_1_core_foundations/01_baby_steps/project_01_profile_card/TASK.md) | Print a profile, goal, header and footer |
+| 20 | [Study Tracker — Study Minutes](tasks/step_1_core_foundations/02_types_and_math/project_02_study_minutes/TASK.md) | Calculate minutes; begin assertion checks |
+| 30 | [Study Tracker — Goal Tracker](tasks/step_1_core_foundations/03_logic_and_loops/project_03_goal_tracker/TASK.md) | Repeat sessions and classify goal progress |
+| 40 | [Study Tracker — Session Collection](tasks/step_1_core_foundations/04_collections/project_04_session_collection/TASK.md) | Store sessions as a vector of tuples |
+| 50 | [Study Tracker — Session Models](tasks/step_1_core_foundations/05_structs_and_enums/project_05_session_models/TASK.md) | Use structs, an enum and methods |
+| 60 | [Study Tracker — Borrowed Report](tasks/step_1_core_foundations/06_ownership_and_memory/project_06_borrowed_report/TASK.md) | Borrow data for reports; handle empty data |
+| 70 | [Study Tracker — Saved Tracker](tasks/step_1_core_foundations/07_errors_and_io/project_07_saved_tracker/TASK.md) | Accept commands and save a validated log |
+| 80 | [Study Tracker — Threaded Tracker](tasks/step_1_core_foundations/08_advanced_and_concurrency/project_08_threaded_tracker/TASK.md) | Compute the saved app report in a worker |
+
+Read [Testing basics, Part 1](guides/testing_basics.md#part-1-after-lesson-20) after Lesson 20. After Lesson 70, return for [Part 2](guides/testing_basics.md#part-2-after-lesson-70-modules), when modules are familiar. Quality practice begins here; Step 4 deepens it.
+
 ## 📂 Repository File Structure
 
 ```text
@@ -65,18 +82,20 @@ d:\rust-learning/
 │   │   ├── 06_ownership_and_memory/          # Lessons 51 – 60 (Stack/Heap, Move, Borrow, Lifetimes)
 │   │   ├── 07_errors_and_io/                 # Lessons 61 – 70 (No NULL, Option, Result, ?, File I/O)
 │   │   └── 08_advanced_and_concurrency/      # Lessons 71 – 80 (Generics, Traits, Threads, Channels)
-│   ├── step_2_universal_crates/              # serde, tokio, anyhow lessons
+│   ├── step_2_universal_crates/              # Selected-library outline
 │   ├── step_3_specialization_tracks/         # axum (Web), clap (CLI), systems (Wasm)
-│   └── step_4_production_and_projects/       # Real apps & quality standards
+│   └── step_4_production_and_projects/       # Project-growth outline
 │
 ├── tasks/                                    # Hands-on practice projects (Cargo packages)
-│   ├── step_1_core_foundations/              # 80 Matching Task Folders
+│   ├── step_1_core_foundations/              # 80 tasks + 8 checkpoints
 │   │   ├── 01_baby_steps/                    # Tasks 01 – 10
 │   │   ├── ...                               # Tasks 11 – 70
 │   │   └── 08_advanced_and_concurrency/      # Tasks 71 – 80
 │   ├── step_2_universal_crates/              # Practice with external crates
 │   ├── step_3_specialization_tracks/         # Track practice packages
 │   └── step_4_production_and_projects/       # Standalone portfolio project repositories
+│
+├── guides/testing_basics.md                  # Assertions after 20; unit tests after 70
 │
 └── progress/
     └── log.md                                # Student personal learning diary & milestone log
@@ -110,6 +129,7 @@ task_01_hello/
 3. **Open Practice Task 01:**
    Read [`tasks/step_1_core_foundations/01_baby_steps/task_01_hello/TASK.md`](tasks/step_1_core_foundations/01_baby_steps/task_01_hello/TASK.md).
 4. **Write Code in `src/main.rs` & Run:**
+   Start these commands at the repository root.
    ```bash
    cd tasks/step_1_core_foundations/01_baby_steps/task_01_hello
    cargo run

@@ -98,3 +98,9 @@ Age: 20
 ```
 
 This repair changes the value to match the promised type. It does not convert arbitrary words into a number.
+
+## Continue Your Study Tracker
+
+After finishing this level's numbered tasks, build [checkpoint 2](../../../tasks/step_1_core_foundations/02_types_and_math/project_02_study_minutes/TASK.md). Bring forward your own previous checkpoint; keep its working version separate.
+
+First read [Testing basics, Part 1](../../../guides/testing_basics.md#part-1-after-lesson-20) to check your results with assertions.

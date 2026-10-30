@@ -24,3 +24,9 @@ Most starters compile but are intentionally unfinished. Task 20 instead contains
 * [`06_ownership_and_memory/`](06_ownership_and_memory/) — Tasks 51 to 60
 * [`07_errors_and_io/`](07_errors_and_io/) — Tasks 61 to 70
 * [`08_advanced_and_concurrency/`](08_advanced_and_concurrency/) — Tasks 71 to 80
+
+## Connected milestones and checking
+
+Build one Study Tracker through eight milestones, one after each level. See the [checkpoint map](../../README.md#one-study-tracker-eight-checkpoints). These independent snapshots keep earlier answers runnable and copyable. The final checkpoint combines earlier features with a threaded report.
+
+Read [Testing basics, Part 1](../../guides/testing_basics.md#part-1-after-lesson-20) after Lesson 20 for runtime assertions. After Lesson 70, read [Part 2](../../guides/testing_basics.md#part-2-after-lesson-70-modules) for unit-test syntax. Start checking results during Step 1.

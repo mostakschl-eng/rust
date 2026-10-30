@@ -126,3 +126,7 @@ Constants require a constant expression, not arbitrary runtime input. Uppercase 
 Hours in a day: 24
 Pi: 3.14159
 ```
+
+## Continue Your Study Tracker
+
+After finishing this level's numbered tasks, build [checkpoint 1](../../../tasks/step_1_core_foundations/01_baby_steps/project_01_profile_card/TASK.md). Bring forward your own previous checkpoint; keep its working version separate.

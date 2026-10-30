@@ -1,6 +1,5 @@
-# Tasks — Step 3: Specialization Career Tracks
+# Tasks — Step 3: Choose one specialization
 
-Hands-on projects for your chosen specialization:
-* **Web APIs**: `task_axum_rest_api`, `task_sqlx_postgres`
-* **CLI Tools**: `task_clap_subcommands`, `task_ratatui_dashboard`
-* **Systems**: `task_wasm_browser`, `task_grpc_tonic`
+This folder is an outline. The proposed exercises and project packages do not exist yet. Follow the [learning outline](../../lessons/step_3_specialization_tracks/README.md) when planning future practice.
+
+Choose one specialization. Plan practice for that track rather than completing every CLI, web, and systems topic. UI and async libraries are optional according to the goal.

@@ -127,3 +127,7 @@ Processing user: 'AdaLovelace' (Length: 11 bytes)
 ## 🎯 Next Steps
 * Ready to practice? Complete [`tasks/step_1_core_foundations/05_structs_and_enums/task_50_if_let_and_let_else/TASK.md`](../../../tasks/step_1_core_foundations/05_structs_and_enums/task_50_if_let_and_let_else/TASK.md).
 * You've completed Level 5! Next up: [Level 6: Rust's Sacred Core — Ownership & Memory](../06_ownership_and_memory/51_stack_vs_heap.md).
+
+## Continue Your Study Tracker
+
+After finishing this level's numbered tasks, build [checkpoint 5](../../../tasks/step_1_core_foundations/05_structs_and_enums/project_05_session_models/TASK.md). Bring forward your own previous checkpoint; keep its working version separate.

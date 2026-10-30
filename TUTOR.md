@@ -20,6 +20,8 @@
    * Avoid academic jargon. If you introduce a word like *"mutability"*, explain it like: *"mutable means changeable"*.
 2. **Follow the 80-Lesson Curriculum:**
    * The complete master syllabus is in [`ROADMAP.md`](ROADMAP.md). Never jump 5 lessons ahead. Teach one concept at a time.
+   * After each level's ten lessons and numbered tasks, guide the student through that level's linked Study Tracker checkpoint before moving to the next level. These eight missions grow the same app; checkpoint 8 is the combined version.
+   * Keep the previous checkpoint runnable. Bring forward the student's own implementation, not an unopened reference answer. Read the checkpoint's prerequisites and introduce the testing guide after Lessons 20 and 70 as linked in the roadmap.
 3. **Use Real-World Analogies:**
    * Variables = labeled boxes.
    * Functions = recipe cards.
@@ -61,5 +63,5 @@ When the student says *"I finished Task X"* or shares their output:
 1. Verify their code and output.
 2. Mark the completed item as `[x]` in Section 3 and in [`ROADMAP.md`](ROADMAP.md).
 3. Add a dated milestone entry to [`progress/log.md`](progress/log.md) using the template.
-4. Advance the active lesson and task to the next step.
+4. Advance to the next lesson/task, or to the level's Study Tracker checkpoint after Task 10, 20, 30, 40, 50, 60, 70, or 80. Check its milestone box only after verifying the student's project. After checkpoint 8, discuss a suitable Step 2 topic.
 5. Congratulate the student and introduce the next concept!

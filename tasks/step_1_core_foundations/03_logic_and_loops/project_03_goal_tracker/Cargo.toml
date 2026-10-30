@@ -1,0 +1,8 @@
+[package]
+name = "project_03_goal_tracker"
+version = "0.1.0"
+edition = "2021"
+
+[[example]]
+name = "solution"
+path = "solution/solution.rs"

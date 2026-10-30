@@ -121,3 +121,7 @@ Notice: Row 3 was never even started! `break 'outer_grid;` instantly shut down b
 ## Common pitfalls and limits
 
 A plain break exits only the innermost loop. Labels begin with an apostrophe but have no closing apostrophe; they are not char literals.
+
+## Continue Your Study Tracker
+
+After finishing this level's numbered tasks, build [checkpoint 3](../../../tasks/step_1_core_foundations/03_logic_and_loops/project_03_goal_tracker/TASK.md). Bring forward your own previous checkpoint; keep its working version separate.

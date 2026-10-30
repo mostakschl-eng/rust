@@ -150,3 +150,7 @@ A guest pass cannot remain valid after the underlying room lease ends. A lifetim
 ## 🎯 Next Steps
 * Ready to practice? Complete [`tasks/step_1_core_foundations/06_ownership_and_memory/task_60_lifetimes_intro/TASK.md`](../../../tasks/step_1_core_foundations/06_ownership_and_memory/task_60_lifetimes_intro/TASK.md).
 * You've completed Level 6! Next up: [Level 7: Robustness, Error Handling & System I/O](../07_errors_and_io/61_no_null_in_rust.md).
+
+## Continue Your Study Tracker
+
+After finishing this level's numbered tasks, build [checkpoint 6](../../../tasks/step_1_core_foundations/06_ownership_and_memory/project_06_borrowed_report/TASK.md). Bring forward your own previous checkpoint; keep its working version separate.

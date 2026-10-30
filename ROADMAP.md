@@ -9,11 +9,15 @@ Every lesson has:
 
 Check off `[x]` as you complete each lesson!
 
-The milestone names below are optional project ideas, not additional task packages. Attempt interactive milestones after Lesson 67, which teaches keyboard input. Complete the matching numbered tasks first; you do not need to invent an untaught feature to move to the next level.
+Build one Study Tracker through eight checkpoints after the matching levels. These independent code snapshots intentionally repeat earlier features. Keep earlier versions runnable and copyable; never overwrite an earlier answer with a later version. Checkpoint 8 combines the saved app with a threaded report. No keyboard input is required before Level 7. Check milestone boxes only after completing the work.
 
 ---
 
-## 🟢 Level 1: Absolute Baby Steps (Lessons 01 – 10)
+## Step 1: Core foundations — 80 lessons and eight milestones
+
+Start checking early: read [Testing basics, Part 1](guides/testing_basics.md#part-1-after-lesson-20) after Lesson 20 and [Part 2](guides/testing_basics.md#part-2-after-lesson-70-modules) after Lesson 70.
+
+### 🟢 Level 1: Absolute Baby Steps (Lessons 01 – 10)
 *How computers follow instructions, printing text, reusable functions, and variable boxes.*
 
 - [ ] **Lesson 01:** [What is Code & Instructions](lessons/step_1_core_foundations/01_baby_steps/01_what_is_code.md) — *Understanding how computers follow instructions, fn main(), and curly brackets {}*
@@ -27,11 +31,11 @@ The milestone names below are optional project ideas, not additional task packag
 - [ ] **Lesson 09:** [Mutability (mut - Locked vs Open Boxes)](lessons/step_1_core_foundations/01_baby_steps/09_mutability_mut.md) — *Why Rust variables are locked by default and how mut unlocks them*
 - [ ] **Lesson 10:** [Variable Shadowing & Constants (const)](lessons/step_1_core_foundations/01_baby_steps/10_shadowing_and_constants.md) — *Re-declaring variables with let vs permanently fixed constants*
 
-**⭐ Milestone 1: Personal Profile Terminal Card CLI**
+- [ ] **Milestone 1: [Study Tracker — Profile Card](tasks/step_1_core_foundations/01_baby_steps/project_01_profile_card/TASK.md)**
 
 ---
 
-## 🟡 Level 2: Basic Types & Arithmetic (Lessons 11 – 20)
+### 🟡 Level 2: Basic Types & Arithmetic (Lessons 11 – 20)
 *Numbers, fractions, true/false, math calculations, and reading compiler messages.*
 
 - [ ] **Lesson 11:** [Whole Numbers (Integers: i32, u32, bit sizes)](lessons/step_1_core_foundations/02_types_and_math/11_integers.md) — *Understanding integer sizes (i8, i16, i32, i64, u8) and positive vs signed numbers*
@@ -45,11 +49,11 @@ The milestone names below are optional project ideas, not additional task packag
 - [ ] **Lesson 19:** [Debug Printing ({:?} and {:#?})](lessons/step_1_core_foundations/02_types_and_math/19_debug_printing.md) — *Printing complex data on screen for debugging*
 - [ ] **Lesson 20:** [Understanding Beginner Compiler Errors](lessons/step_1_core_foundations/02_types_and_math/20_compiler_errors_decoded.md) — *Reading Rust compiler hints like a friendly teacher*
 
-**⭐ Milestone 2: Interactive Tip & Price Calculator**
+- [ ] **Milestone 2: [Study Tracker — Study Minutes](tasks/step_1_core_foundations/02_types_and_math/project_02_study_minutes/TASK.md)**
 
 ---
 
-## 🟠 Level 3: Logic, Choices & Loops (Lessons 21 – 30)
+### 🟠 Level 3: Logic, Choices & Loops (Lessons 21 – 30)
 *Teaching the computer how to make smart choices and repeat work automatically.*
 
 - [ ] **Lesson 21:** [Making Decisions: The if Statement](lessons/step_1_core_foundations/03_logic_and_loops/21_if_statement.md) — *Teaching your code to take different paths based on conditions*
@@ -63,17 +67,17 @@ The milestone names below are optional project ideas, not additional task packag
 - [ ] **Lesson 29:** [Counting & Ranges: for Loops (1..=10)](lessons/step_1_core_foundations/03_logic_and_loops/29_for_loops_and_ranges.md) — *Iterating cleanly through number ranges*
 - [ ] **Lesson 30:** [Loop Labels & Controlling Nested Loops](lessons/step_1_core_foundations/03_logic_and_loops/30_loop_labels.md) — *Breaking out of outer loops with named labels*
 
-**⭐ Milestone 3: Secret Number Guessing Game**
+- [ ] **Milestone 3: [Study Tracker — Goal Tracker](tasks/step_1_core_foundations/03_logic_and_loops/project_03_goal_tracker/TASK.md)**
 
 ---
 
-## 🔵 Level 4: Compound Types & Collections (Lessons 31 – 40)
+### 🔵 Level 4: Compound Types & Collections (Lessons 31 – 40)
 *Grouping related data: lists, shopping carts, vectors, and string slices.*
 
 - [ ] **Lesson 31:** [Grouping Fixed Data: Tuples](lessons/step_1_core_foundations/04_collections/31_tuples.md) — *Grouping multiple data types into a single tuple (x, y, z)*
 - [ ] **Lesson 32:** [Destructuring Tuples (let (x, y) = point)](lessons/step_1_core_foundations/04_collections/32_tuple_destructuring.md) — *Unpacking tuple values into separate variables*
 - [ ] **Lesson 33:** [Fixed-Size Lists: Arrays ([i32; 5])](lessons/step_1_core_foundations/04_collections/33_arrays.md) — *Storing multiple items of the same type in fixed-size arrays*
-- [ ] **Lesson 34:** [Accessing Array Elements & Index Bounds Checking](lessons/step_1_core_foundations/04_collections/34_array_indexing.md) — *Zero-based indexing and how Rust prevents buffer overflow crashes*
+- [ ] **Lesson 34:** [Accessing Array Elements & Index Bounds Checking](lessons/step_1_core_foundations/04_collections/34_array_indexing.md) — *Zero-based indexing and detecting invalid indices without out-of-bounds memory access*
 - [ ] **Lesson 35:** [Dynamic Lists: Vectors (Vec<T>, vec![])](lessons/step_1_core_foundations/04_collections/35_vectors.md) — *Lists that can grow and shrink in memory*
 - [ ] **Lesson 36:** [Modifying Vectors (push, pop, len)](lessons/step_1_core_foundations/04_collections/36_vector_operations.md) — *Adding, removing, and inspecting vector elements*
 - [ ] **Lesson 37:** [Iterating over Vectors with for loops](lessons/step_1_core_foundations/04_collections/37_vector_iteration.md) — *Looping through collections item by item*
@@ -81,11 +85,11 @@ The milestone names below are optional project ideas, not additional task packag
 - [ ] **Lesson 39:** [String Methods (len, contains, replace, push_str)](lessons/step_1_core_foundations/04_collections/39_string_methods.md) — *Manipulating text safely in Rust*
 - [ ] **Lesson 40:** [Key-Value Stores: HashMaps (HashMap<K, V>)](lessons/step_1_core_foundations/04_collections/40_hashmaps.md) — *Looking up values by names and keys like a dictionary*
 
-**⭐ Milestone 4: Shopping Cart & Inventory Tracker**
+- [ ] **Milestone 4: [Study Tracker — Session Collection](tasks/step_1_core_foundations/04_collections/project_04_session_collection/TASK.md)**
 
 ---
 
-## 🟣 Level 5: Structs, Enums & Pattern Matching (Lessons 41 – 50)
+### 🟣 Level 5: Structs, Enums & Pattern Matching (Lessons 41 – 50)
 *Designing custom data types and exhaustive pattern matching.*
 
 - [ ] **Lesson 41:** [Custom Types: Named Structs (struct User)](lessons/step_1_core_foundations/05_structs_and_enums/41_named_structs.md) — *Creating your own custom blueprint with named fields*
@@ -99,17 +103,17 @@ The milestone names below are optional project ideas, not additional task packag
 - [ ] **Lesson 49:** [Match Guards (Adding if inside match arms)](lessons/step_1_core_foundations/05_structs_and_enums/49_match_guards.md) — *Adding extra condition checks inside pattern matching*
 - [ ] **Lesson 50:** [Concise Matching: if let and let else](lessons/step_1_core_foundations/05_structs_and_enums/50_if_let_and_let_else.md) — *Shortcuts for handling single enum variants cleanly*
 
-**⭐ Milestone 5: Student Gradebook & Report Card System**
+- [ ] **Milestone 5: [Study Tracker — Session Models](tasks/step_1_core_foundations/05_structs_and_enums/project_05_session_models/TASK.md)**
 
 ---
 
-## 🔴 Level 6: Rust's Sacred Core — Ownership & Memory (Lessons 51 – 60)
-*How Rust manages computer memory with zero garbage collection and zero crashes.*
+### 🔴 Level 6: Rust's Sacred Core — Ownership & Memory (Lessons 51 – 60)
+*How ownership and borrowing manage resources and prevent particular memory-safety errors without a tracing garbage collector. Programs can still panic or contain logic bugs.*
 
 - [ ] **Lesson 51:** [Computer Memory Demystified: Stack vs Heap](lessons/step_1_core_foundations/06_ownership_and_memory/51_stack_vs_heap.md) — *Fast stack memory vs flexible heap memory*
 - [ ] **Lesson 52:** [The Three Sacred Rules of Rust Ownership](lessons/step_1_core_foundations/06_ownership_and_memory/52_three_ownership_rules.md) — *The golden principles that make Rust memory-safe without a garbage collector*
 - [ ] **Lesson 53:** [Variable Moves vs Primitive Copies (Move Semantics)](lessons/step_1_core_foundations/06_ownership_and_memory/53_move_vs_copy.md) — *Why passing a String moves ownership while integers copy*
-- [ ] **Lesson 54:** [Deep Copying with .clone()](lessons/step_1_core_foundations/06_ownership_and_memory/54_clone_deep_copy.md) — *Making an explicit duplicate of heap data*
+- [ ] **Lesson 54:** [Cloning Values with .clone()](lessons/step_1_core_foundations/06_ownership_and_memory/54_clone_deep_copy.md) — *Duplicating a String; other types define their own cloning behaviour*
 - [ ] **Lesson 55:** [Borrowing: Shared References (&T - Read Only)](lessons/step_1_core_foundations/06_ownership_and_memory/55_borrowing_shared.md) — *Looking at data without taking ownership using &*
 - [ ] **Lesson 56:** [Mutable Borrowing: Exclusive References (&mut T)](lessons/step_1_core_foundations/06_ownership_and_memory/56_borrowing_mutable.md) — *Changing borrowed data safely with &mut*
 - [ ] **Lesson 57:** [The Golden Borrowing Rule: Many Readers OR One Writer](lessons/step_1_core_foundations/06_ownership_and_memory/57_borrowing_rules.md) — *Preventing data races and pointer corruption*
@@ -117,11 +121,11 @@ The milestone names below are optional project ideas, not additional task packag
 - [ ] **Lesson 59:** [Slices: Borrowing Parts of Arrays and Strings](lessons/step_1_core_foundations/06_ownership_and_memory/59_slices_deep_dive.md) — *Referencing a contiguous sequence of items without copying*
 - [ ] **Lesson 60:** [Introduction to Lifetimes ('a annotations)](lessons/step_1_core_foundations/06_ownership_and_memory/60_lifetimes_intro.md) — *Ensuring references never outlive the data they point to*
 
-**⭐ Milestone 6: Safe Text Analyzer & Word Counter**
+- [ ] **Milestone 6: [Study Tracker — Borrowed Report](tasks/step_1_core_foundations/06_ownership_and_memory/project_06_borrowed_report/TASK.md)**
 
 ---
 
-## 🟤 Level 7: Robustness, Error Handling & System I/O (Lessons 61 – 70)
+### 🟤 Level 7: Robustness, Error Handling & System I/O (Lessons 61 – 70)
 *Handling errors cleanly, reading keyboard input, and saving data to disk.*
 
 - [ ] **Lesson 61:** [The Billion-Dollar Mistake: Why Rust Has No NULL](lessons/step_1_core_foundations/07_errors_and_io/61_no_null_in_rust.md) — *How Rust protects you from crashes caused by missing values*
@@ -135,11 +139,11 @@ The milestone names below are optional project ideas, not additional task packag
 - [ ] **Lesson 69:** [Writing Data to Files (std::fs::write)](lessons/step_1_core_foundations/07_errors_and_io/69_writing_files.md) — *Saving application data permanently to text files*
 - [ ] **Lesson 70:** [Organizing Code with Modules (mod, pub, use)](lessons/step_1_core_foundations/07_errors_and_io/70_modules_and_packages.md) — *Splitting large programs cleanly across multiple files*
 
-**⭐ Milestone 7: Persistent Terminal Todo App (Saves to Disk)**
+- [ ] **Milestone 7: [Study Tracker — Saved Tracker](tasks/step_1_core_foundations/07_errors_and_io/project_07_saved_tracker/TASK.md)**
 
 ---
 
-## 🏆 Level 8: Advanced Mastery & Concurrency (Lessons 71 – 80)
+### 🏆 Level 8: Advanced Mastery & Concurrency (Lessons 71 – 80)
 *Generics, Traits, Closures, Iterators, Multithreading, and Channels.*
 
 - [ ] **Lesson 71:** [Generics: Writing Code for Any Type (fn print<T>)](lessons/step_1_core_foundations/08_advanced_and_concurrency/71_generics_functions.md) — *Writing flexible code that works with integers, floats, or custom types*
@@ -150,94 +154,39 @@ The milestone names below are optional project ideas, not additional task packag
 - [ ] **Lesson 76:** [Closures: Anonymous Inline Functions (|x| x + 1)](lessons/step_1_core_foundations/08_advanced_and_concurrency/76_closures.md) — *Passing small functions around as variables*
 - [ ] **Lesson 77:** [Iterators: Transforming Data (map, filter, collect)](lessons/step_1_core_foundations/08_advanced_and_concurrency/77_iterators.md) — *Functional data processing pipelines*
 - [ ] **Lesson 78:** [Smart Pointers: Unique Heap Allocation (Box<T>)](lessons/step_1_core_foundations/08_advanced_and_concurrency/78_box_smart_pointer.md) — *Storing large or recursive data safely on the heap*
-- [ ] **Lesson 79:** [Concurrency: Spawning OS Threads (thread::spawn)](lessons/step_1_core_foundations/08_advanced_and_concurrency/79_threads_spawn.md) — *Running multiple tasks at the exact same time on your CPU*
+- [ ] **Lesson 79:** [Concurrency: Spawning OS Threads (thread::spawn)](lessons/step_1_core_foundations/08_advanced_and_concurrency/79_threads_spawn.md) — *Scheduling concurrent work that may run in parallel when resources allow*
 - [ ] **Lesson 80:** [Thread Communication: Message Passing with Channels (mpsc)](lessons/step_1_core_foundations/08_advanced_and_concurrency/80_channels_mpsc.md) — *Sending safe messages between concurrent threads*
 
-**⭐ Milestone 8: Multi-Threaded CLI Tool & Mini Server**
+- [ ] **Milestone 8: [Study Tracker — Threaded Tracker](tasks/step_1_core_foundations/08_advanced_and_concurrency/project_08_threaded_tracker/TASK.md)**
 
 ---
 
-## 🚀 Beyond 80 Lessons: The Production & Career Roadmap
+## Step 2: Selected libraries (outline)
 
-After practising the 80 lessons, use the following outline to choose further study and projects. Steps 2–4 are planned outlines; their complete lessons and task packages have not been written yet.
+These are planned topics, not completed lesson or task packages. Learn Cargo dependencies and features first. Choose a library for a real need; small programs may need only the standard library.
 
-### 🗺️ The 4-Stage Journey Beyond Core Rust
-```text
-[80 Core Lessons] 
-       │
-       ▼
-[Stage 1: The Universal Crates] ──► serde (JSON), tokio (Async), anyhow (Errors)
-       │
-       ▼
-[Stage 2: Pick Your Career Track] ──► Web APIs (axum), CLI (clap), Systems (Wasm/gRPC)
-       │
-       ▼
-[Stage 3: 3 Portfolio Projects] ──► Real apps with databases, tests, and documentation
-       │
-       ▼
-[Stage 4: Professional Mastery] ──► clippy, cargo fmt, unit testing, CI/CD pipelines
-```
+- JSON: learn to read and write structured data; then explore libraries for serialization.
+- Errors: continue with Result and clear error messages; consider error libraries when useful.
+- Async is optional: learn async/await and why your program needs asynchronous I/O before considering Tokio. No fixed performance or capacity is promised.
 
----
+See the [Step 2 outline](lessons/step_2_universal_crates/README.md).
 
-### 📦 Stage 1: The 3 "Universal" Crates (crates.io)
-Many Rust projects use external packages called **crates**. These are common choices for the needs listed below; a small program can use only Rust's standard library:
+## Step 3: Choose one specialization (outline)
 
-- [ ] **`serde` & `serde_json`:** Serialization & Deserialization. Automatically converts JSON from web APIs into Rust structs and back in a single line.
-- [ ] **`tokio`:** An asynchronous runtime often used for network services. Learn `async`/`await` and task scheduling; actual capacity depends on the workload and available resources.
-- [ ] **`anyhow` & `thiserror`:** Idiomatic production error handling for application development and reusable libraries.
+Choose **one** path first. All tracks and libraries are not mandatory.
 
----
+- CLI tools and automation: build useful terminal commands.
+- Web backends: learn HTTP, validation, and storage. Token handling is only part of authentication; JWT alone is not a complete login or authorization system.
+- Systems, networking or WebAssembly: choose a specific problem and learn its platform requirements. UI libraries are optional.
 
-### 🎯 Stage 2: Pick Your Specialization Track
+See the [Step 3 outline](lessons/step_3_specialization_tracks/README.md).
 
-Choose the track that fits your career goals:
+## Step 4: Grow projects within your chosen track (outline)
 
-#### 🌐 Track A: High-Performance Web Backends & REST APIs
-* **The Goal:** Build fast, secure microservices, web servers, and cloud backends.
-* **Core Stack to Learn:**
-  - [ ] **`axum`** (or `actix-web`): Modular, ergonomic web routing framework built on Tokio.
-  - [ ] **`sqlx`**: Async, compile-time checked SQL queries for PostgreSQL / MySQL / SQLite.
-  - [ ] **`reqwest`**: Async HTTP client for requesting third-party APIs.
-  - [ ] **`jsonwebtoken` (JWT)**: User authentication and secure tokens.
+Build a small project, then a medium project, then a larger project within the same track. Improving one idea is welcome. Three unrelated applications and a server are not required.
 
-#### 🛠️ Track B: Command-Line (CLI) & DevOps Utilities
-* **The Goal:** Build developer tooling, system monitors, and automation utilities.
-* **Core Stack to Learn:**
-  - [ ] **`clap` (v4)**: Modern command-line argument parser with subcommands and auto-generated `--help`.
-  - [ ] **`ratatui`** (formerly tui-rs): Interactive, full-terminal dashboard user interfaces.
-  - [ ] **`indicatif`**: Beautiful terminal progress bars and spinners.
+For a CLI path, try a local report tool, then a saved tracker with commands, then a tool with imports and stronger recovery. Choose scope before adding libraries.
 
-#### ⚙️ Track C: Systems, Networking & WebAssembly (Wasm)
-* **The Goal:** Write browser modules, network proxies, and distributed systems.
-* **Core Stack to Learn:**
-  - [ ] **`wasm-bindgen` & `yew`**: Compile Rust code directly into WebAssembly to run in web browsers.
-  - [ ] **`tonic`**: High-speed gRPC network communication for microservices.
-  - [ ] **`tokio-tungstenite`**: Full-duplex WebSocket communication.
+Quality starts in Step 1: check results, handle errors when taught, and keep instructions clear. Later, deepen unit and integration testing, formatting, linting, documentation, and automated checks. Tests cover chosen cases; they do not guarantee freedom from bugs. A larger project is not automatically production-ready.
 
----
-
-### 💼 Stage 3: Three Showcase Portfolio Projects for GitHub
-
-To prove your skills to employers and the open-source community, build and publish these 3 applications to your repository:
-
-- [ ] **Project 1: Production CLI Utility**  
-  *Build a command-line tool with `clap` that queries an external API (weather, GitHub repos, or crypto prices), formats data into clean tables, and caches output locally.*
-- [ ] **Project 2: Full-Featured REST API Backend**  
-  *Build an authentication-protected CRUD API (e.g. Bookmark or Task Manager) with `axum`, `sqlx`, SQLite/PostgreSQL, JSON responses, and input validation.*
-- [ ] **Project 3: Real-Time Concurrent Server**  
-  *Build a live chat server or real-time event pipeline using `tokio`, WebSockets, and channels (`mpsc`/`broadcast`).*
-
----
-
-### 🛡️ Stage 4: Professional Standards & Best Practices
-
-- [ ] **`cargo clippy`:** Run Rust's automated linter on all projects to enforce idiomatic style.
-- [ ] **`cargo fmt`:** Auto-format all code to official community standards.
-- [ ] **Unit & Integration Testing:** Write automated tests using `#[cfg(test)]` and `#[test]` to catch regressions in the cases you cover. No test suite guarantees that every bug is caught.
-- [ ] **GitHub Actions (CI/CD):** Create a `.github/workflows/ci.yml` that automatically runs `cargo check`, `cargo test`, and `cargo clippy` on every git push.
-
----
-
-
-
+See the [Step 4 outline](lessons/step_4_production_and_projects/README.md).

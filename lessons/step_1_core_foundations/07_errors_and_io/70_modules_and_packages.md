@@ -164,3 +164,9 @@ A restaurant exposes its order counter while keeping recipes in the kitchen. Vis
 ## 🎯 Next Steps
 * Ready to practice? Complete [`tasks/step_1_core_foundations/07_errors_and_io/task_70_modules_and_packages/TASK.md`](../../../tasks/step_1_core_foundations/07_errors_and_io/task_70_modules_and_packages/TASK.md).
 * You've completed Level 7! Next up: [Level 8: Advanced Mastery & Concurrency](../08_advanced_and_concurrency/71_generics_functions.md).
+
+## Continue Your Study Tracker
+
+After finishing this level's numbered tasks, build [checkpoint 7](../../../tasks/step_1_core_foundations/07_errors_and_io/project_07_saved_tracker/TASK.md). Bring forward your own previous checkpoint; keep its working version separate.
+
+Read [Testing basics, Part 2](../../../guides/testing_basics.md#part-2-after-lesson-70-modules) for unit-test syntax now that modules are familiar.

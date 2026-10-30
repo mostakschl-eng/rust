@@ -1,28 +1,13 @@
-# Step 4: Real-World Portfolio Projects & Production Standards
+# Step 4: Grow projects within your chosen track
 
-In Step 4, you assemble everything you have learned to build real software applications to showcase on GitHub and master industrial best practices.
+This is a planned outline. Full lessons and project packages have not been written yet.
 
----
+1. **Small:** finish one useful feature and explain how to run and check it.
+2. **Medium:** grow the same idea or build a related project. Add persistence, validation, and recovery only as the goal requires.
+3. **Larger:** combine features within your chosen specialization. Plan data handling, failure cases, documentation, and maintenance.
 
-## 💼 The 3 Portfolio Projects
+For example, a CLI learner could build a local report tool, a saved tracker with commands, then a tracker with imports and stronger recovery. A web learner can follow the same size progression within web development. Three unrelated apps and a concurrent server are not mandatory.
 
-1. **Project 1: Production CLI Tool**
-   * Built with `clap`, `reqwest`, `serde`, and local file caching.
-   * Fetches data from a live public API (Crypto, Weather, or GitHub) and presents a formatted terminal report.
+Quality starts in Step 1 with result checks, then error handling and unit-test syntax when taught. Here, deepen unit and integration tests, formatting, linting, documentation, and automated checks. Tools and passing checks do not guarantee production readiness. Publishing or deploying is a separate decision.
 
-2. **Project 2: Full-Featured REST API with Database**
-   * Built with `axum`, `sqlx`, and SQLite / PostgreSQL.
-   * Features user authentication, CRUD operations, database migrations, and JSON validation.
-
-3. **Project 3: Concurrent Real-Time Server**
-   * Built with `tokio` async channels and WebSockets (`tungstenite`).
-   * Handles multi-client broadcast messaging in real time.
-
----
-
-## 🛡️ Industrial Quality Standards
-
-* **`cargo clippy`**: Rust's automated linter that detects code smells and performance bottlenecks.
-* **`cargo fmt`**: Auto-formats your entire workspace to Rust community standards.
-* **Automated Testing (`#[test]`)**: Unit tests, integration tests in `tests/`, and benchmark profiling with `criterion`.
-* **CI/CD Pipelines**: Setting up GitHub Actions (`.github/workflows/ci.yml`) to test every commit automatically.
+[Back to the four-step roadmap](../../ROADMAP.md)

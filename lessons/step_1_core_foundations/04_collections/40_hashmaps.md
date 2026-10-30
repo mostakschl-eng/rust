@@ -173,3 +173,7 @@ This example stores `&str` keys. A string literal such as `"Apple"` is already a
 ## 🎯 Next Steps
 * Ready to practice? Complete [`tasks/step_1_core_foundations/04_collections/task_40_hashmaps/TASK.md`](../../../tasks/step_1_core_foundations/04_collections/task_40_hashmaps/TASK.md).
 * You've completed Level 4! Next up: [Level 5: Structs, Enums & Pattern Matching](../05_structs_and_enums/41_named_structs.md).
+
+## Continue Your Study Tracker
+
+After finishing this level's numbered tasks, build [checkpoint 4](../../../tasks/step_1_core_foundations/04_collections/project_04_session_collection/TASK.md). Bring forward your own previous checkpoint; keep its working version separate.

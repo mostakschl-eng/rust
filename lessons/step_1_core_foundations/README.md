@@ -26,3 +26,9 @@ Welcome to **Step 1** of your Rust journey! This stage introduces core syntax, o
 4. If you are stuck, reveal one hint at a time. Compare with `solution/solution.rs` after trying. Run the answer with `cargo run --example solution` from that task folder.
 
 An unfinished starter is not a completed exercise even when it compiles. Task 20 is the deliberate exception: its starter contains compiler errors for you to repair. Reading a lesson does not automatically mark it complete; explain the idea in your own words and finish its task first.
+
+## Connected milestones and checking
+
+Build one Study Tracker through eight milestones, one after each level. See the [checkpoint map](../../README.md#one-study-tracker-eight-checkpoints). These independent snapshots keep earlier answers runnable and copyable. The final checkpoint combines earlier features with a threaded report.
+
+Read [Testing basics, Part 1](../../guides/testing_basics.md#part-1-after-lesson-20) after Lesson 20 for runtime assertions. After Lesson 70, read [Part 2](../../guides/testing_basics.md#part-2-after-lesson-70-modules) for unit-test syntax. Start checking results during Step 1.

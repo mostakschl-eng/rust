@@ -155,3 +155,7 @@ Several sensor stations post parcels into one mailbox. The recipient finishes on
 * Review [`ROADMAP.md`](../../../ROADMAP.md) and [`progress/log.md`](../../../progress/log.md) to celebrate your 80-lesson graduation!
 
 Further reading: [Channel documentation](https://doc.rust-lang.org/std/sync/mpsc/index.html).
+
+## Continue Your Study Tracker
+
+After finishing this level's numbered tasks, build [checkpoint 8](../../../tasks/step_1_core_foundations/08_advanced_and_concurrency/project_08_threaded_tracker/TASK.md). Bring forward your own previous checkpoint; keep its working version separate.

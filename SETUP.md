@@ -1,6 +1,6 @@
 # Rust Learning Workspace: Setup and Structure
 
-This workspace teaches Rust as a first programming language. Step 1 has 80 lessons across eight levels. Steps 2–4 contain outlines for later study.
+This workspace teaches Rust as a first programming language. Step 1 has 80 lessons across eight levels and one Study Tracker growing through eight checkpoint packages. Steps 2–4 contain outlines for later study.
 
 ## Install Rust first
 
@@ -63,7 +63,8 @@ rust-learning/
 ├── AGENTS.md
 ├── guides/
 │   ├── cargo_cheatsheet.md
-│   └── compiler_errors.md
+│   ├── compiler_errors.md
+│   └── testing_basics.md                # Part 1 after Lesson 20; Part 2 after Lesson 70
 ├── lessons/
 │   ├── step_1_core_foundations/
 │   │   ├── 01_baby_steps/
@@ -80,6 +81,7 @@ rust-learning/
 ├── tasks/
 │   ├── step_1_core_foundations/           # Same eight level folders
 │   │   └── 01_baby_steps/
+│   │       ├── project_01_profile_card/  # Same task/solution layout
 │   │       └── task_01_hello/
 │   │           ├── Cargo.toml
 │   │           ├── Cargo.lock
@@ -94,6 +96,10 @@ rust-learning/
 ├── docs/superpowers/                     # Design and maintenance plans
 └── progress/log.md
 ```
+
+Each of the eight existing Step 1 level folders also contains its matching milestone package. See the [checkpoint map](README.md#one-study-tracker-eight-checkpoints). These snapshots are independent: run Cargo inside the specific task or project folder. Keep previous milestone answers when moving forward.
+
+After Lesson 20, read [Testing basics, Part 1](guides/testing_basics.md#part-1-after-lesson-20). After Lesson 70, return for Part 2. No dependency is needed for these checks.
 
 ## Maintaining the workspace
 
